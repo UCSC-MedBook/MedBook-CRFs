@@ -18,16 +18,39 @@ Template.CRFsShow.rendered = function() {
 };
 
 Template.CRFsShow.helpers({
-  editing: function() {
+  editing: function () {
     return Session.get(EDITING_KEY);
   },
 
-  CRFsReady: function() {
+  CRFsReady: function () {
     return Router.current().CRFsHandle.ready();
   },
 
-  CRFs: function() {
-    return CRFs.find({listId: this._id}, {sort: {createdAt : -1}});
+  CRFs: function () {
+    return CRFs.find({listId: this._id}, {sort: {createdAt: -1}});
+  },
+
+  currentForm: function() {
+    console.log("currentForm", this._id);
+    Session.set("currentForm", this._id);
+    return this._id;
+  },
+
+  snowball: function () {
+    var data = UI._templateInstance().data || {};
+    data.collection = window[this._id];
+    data.id = this._id;
+    data.type = "insert";
+    console.log(data)
+    alert(data)
+    return data;
+  },
+
+  dataTable: function () {
+    var data = window[this._id].find().fetch();
+    var schema = window[this._id]
+    HOTload(data)
+
   }
 });
 
@@ -158,3 +181,32 @@ Template.CRFsShow.events({
     $input.val('');
   }
 });
+
+
+function HOTload(schema, data) {
+  var settings = { minSpareRows:0, data:data };
+  setHOTsettingsFromSchema(firstRow, settings)
+  $('#HOTdiv').handsontable(settings);
+}
+
+function setHOTsettingsFromSchema(schema, settings) {
+  var columns = [];
+  var colHeaders = [];
+
+  for (var i = 0; i < firstRow.length; i++) {
+    var fieldName = firstRow[i];
+    colHeaders.push(fieldName);
+    var HOTcolumn = {
+      readOnly : true,
+      type: 'numeric',
+      format: '0,0.00'
+    };
+    columns.push(HOTcolumn);
+  }
+
+  if (columns.length > 0) {
+    settings.columns = columns;
+    settings.colHeaders = colHeaders;
+  }
+}
+

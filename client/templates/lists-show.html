@@ -44,29 +44,23 @@
         </div>
       {{/if}}
 
-      <form class="js-todo-new todo-new input-symbol">
+
+
+        <form class="js-todo-new todo-new input-symbol">
         <input type="text" placeholder="Type to add {{name}}">
         <span class="icon-add js-todo-add"></span>
       </form>
+
+
 
     </nav>
 
 
     <div class="content-scrollable list-items">
-      {{#if CRFsReady}}
-        {{#each CRFs}}
-          {{> CRFsItem}}
-        {{else}}
-          <div class="wrapper-message">
-            <div class="title-message">No tasks here</div>
-            <div class="subtitle-message">Add new tasks using the field above</div>
-          </div>
-        {{/each}}
-      {{else}}
-          <div class="wrapper-message">
-            <div class="title-message">Loading tasks...</div>
-          </div>
-      {{/if}}
+        <div style="margin-left:20px">
+          <br>
+          {{>quickForm collection=currentForm id="CRFquickForm" }}
+        </div>
     </div>
   </div>
 </template>

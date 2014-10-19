@@ -61,6 +61,15 @@
           <br>
           {{>quickForm collection=currentForm fields=fieldOrder id="CRFquickForm" doc=currentDoc type=update}}
         </div>
+        {{>HOTdiv}}
+
     </div>
   </div>
+</template>
+
+<template name="HOTdiv">
+    <div style="margin:3em">
+        Previous Records
+    </div>
+    <div id="HOTdiv"  style="overflow: scroll"  ></div>
 </template>

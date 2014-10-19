@@ -17,12 +17,13 @@ Template.CRFsShow.rendered = function() {
       });
     }
   };
-
-  $('#CRFquickForm').change(function (event) {
-    var coll =  window[Session.get("currentForm")];
-    var pid = $('*[name="Patient_ID"]').val();
-    console.log("change Patient_ID", pid);
-    Session.set("Patient_ID", pid);
+  $(document).ready(function() {
+    $('#CRFquickForm').change(function (event) {
+      var coll = window[Session.get("currentForm")];
+      var pid = $('*[name="Patient_ID"]').val();
+      console.log("change Patient_ID", pid);
+      Session.set("Patient_ID", pid);
+    });
   });
 
 };
@@ -204,21 +205,36 @@ Template.CRFsShow.events({
   }
 });
 
+Tracker.autorun(function(c){
+  console.log("autorun");
+  var cf = Session.get("currentForm")
+  setTimeout(function() {
+    HOTload(cf);
+  }, 500);
+});
 
-function HOTload(schema, data) {
-  var settings = { minSpareRows:0, data:data };
-  setHOTsettingsFromSchema(firstRow, settings)
-  $('#HOTdiv').handsontable(settings);
+
+function HOTload(crfName) {
+  if (crfName && crfName in window) {
+    var data = window[crfName].find({}, {sort: {_id: 1}}).fetch();
+    var settings = {minSpareRows: 0, data: data};
+    setHOTsettingsFromSchema(crfName, settings)
+    $('#HOTdiv').handsontable(settings);
+  }
 }
+window.HOTload = HOTload;
 
-function setHOTsettingsFromSchema(schema, settings) {
+function setHOTsettingsFromSchema(crfName, settings) {
   var columns = [];
   var colHeaders = [];
 
-  for (var i = 0; i < firstRow.length; i++) {
-    var fieldName = firstRow[i];
+  var fieldNames = CRFfieldOrder[crfName]
+
+  for (var i = 0; i < fieldNames.length; i++) {
+    var fieldName = fieldNames[i];
     colHeaders.push(fieldName);
     var HOTcolumn = {
+      data: fieldName,
       readOnly : true,
       type: 'numeric',
       format: '0,0.00'

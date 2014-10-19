@@ -18,7 +18,13 @@
                  <span class="count-list">{{incompleteCount}}</span>
             -->
         </h1>
-
+        {{#if phaseIs "none"}} <div class="topMesg" style="background:lightyellow">Please select a patient other than 000.</div>
+        {{else}}
+          {{#if phaseIs "inserting"}} <div class="topMesg" style="background:lightgreen">New patient record for this form. </div>
+          {{else}}
+            {{#if phaseIs "updating"}} <div class="topMesg" style="background:yellow">Caution: you are updating an existing patient record. </div>{{/if}}
+          {{/if}}
+        {{/if}}
       <!--
 
         <div class="nav-group right">
@@ -66,17 +72,11 @@
 
 
     </nav>
-{{#if phaseIs "none"}} Please select a patient other than 000; {{/if}}
-{{#if phaseIs "inserting"}} <div style="background:green">New patient record for this form. </div>{{/if}}
-{{#if phaseIs "updating"}} <div style="background:yellow">Caution: you are updating an existing patient record. </div>{{/if}}
-
 
       {{#if currentForm }}
       <div class="content-scrollable CRF-items" style="margin-left:20px">
 
-          <div class="nav right">
-              Right hand side.
-          </div>
+
 
         {{>quickForm collection=currentForm fields=fieldOrder id="CRFquickForm" doc=currentDoc type=update}}
 

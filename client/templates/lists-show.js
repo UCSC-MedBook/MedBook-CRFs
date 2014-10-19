@@ -2,6 +2,14 @@ var EDITING_KEY = 'editingList';
 Session.setDefault(EDITING_KEY, false);
 
 Template.CRFsShow.rendered = function() {
+
+ $('#CRFquickForm').change(function (event) {
+   var coll =  window[Session.get("currentForm")];
+   var patient_id = $('*[name="Patient_ID"]').val();
+   col.findOne({"Patient_id": patient_id})
+
+ });
+
   this.find('.js-title-nav')._uihooks = {
     insertElement: function(node, next) {
       $(node)
@@ -28,6 +36,10 @@ Template.CRFsShow.helpers({
 
   CRFs: function () {
     return CRFs.find({listId: this._id}, {sort: {createdAt: -1}});
+  },
+
+  fieldOrder: function() {
+    return CRFfieldOrder[this._id];
   },
 
   currentForm: function() {
@@ -209,4 +221,6 @@ function setHOTsettingsFromSchema(schema, settings) {
     settings.colHeaders = colHeaders;
   }
 }
+
+
 

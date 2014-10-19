@@ -11,7 +11,5 @@ Meteor.methods({
         console.log(bundle._id);
         // coll.update({_id: bundle._id}, bundle, {upsert:true});
         coll.insert(bundle);
-
-
     }
 })

@@ -17,17 +17,18 @@
           {{/if}}
         </div>
       {{else}}
-        <div class="btns-group">
           <a href="{{pathFor 'signin'}}" class="btn-secondary">Sign In</a>
+      <!--
           <a href="{{pathFor 'join'}}" class="btn-secondary">Join</a>
-        </div>
+          -->
       {{/if}}
 
-      <div class="list-CRFs">
+      <div class="MainCRFLists">
+<!--
         <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
-
+-->
         {{#each lists}}
-          <a href="{{pathFor 'CRFsShow'}}" class="list-todo {{activeListClass}}" title="{{name}}">
+          <a href="{{pathFor 'CRFsShow'}}" class="list-1-CRF {{activeListClass}}" title="{{name}}">
             {{#if userId}}
               <span class="icon-lock"></span>
             {{/if}}

@@ -39,13 +39,22 @@
     }
   }
 
-  .list-CRFs {
+  .MainCRFLists {
+
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-right:10px;
+    margin-left:10px;
+    width: 300px;
+
     a {
       box-shadow: rgba(255,255,255,.15) 0 1px 0 0;
       display: block;
       line-height: 1.5em;
-      padding: .75em 2.5em;
+      padding: 5px p5x;
       position: relative;
+
     }
 
     .count-list {
@@ -76,13 +85,16 @@
       opacity: .8;
     }
 
-    .list-todo {
-      color: rgba(255,255,255,.4);
+    .list-1-CRF {
+     // color: rgba(255,255,255,.4);
+      color: rgb(51, 51, 51);
 
       &:hover,
       &:active,
       &.active {
-        color: @color-empty;
+        // color: @color-empty;
+         color: black;
+        border: 1px solid black;
         .count-list { background: @color-primary; }
       }
 

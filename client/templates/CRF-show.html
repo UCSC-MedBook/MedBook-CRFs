@@ -13,10 +13,19 @@
           <a href="#" class="js-menu nav-item"><span class="icon-list-unordered" title="Show menu"></span></a>
         </div>
 
-        <h1 class="js-edit-list title-page"><span class="title-wrapper">{{name}}</span> <span class="count-list">{{incompleteCount}}</span></h1>
+        <h1 class="js-edit-list title-page"><span class="title-wrapper">{{name}}</span>
+            <!--
+                 <span class="count-list">{{incompleteCount}}</span>
+            -->
+        </h1>
+
+      <!--
 
         <div class="nav-group right">
           <div class="nav-item options-mobile">
+
+
+
             <select class="list-edit">
               <option disabled selected>Select an action</option>
               {{#if userId}}
@@ -26,6 +35,7 @@
               {{/if}}
               <option value="delete">Delete</option>
             </select>
+
             <span class="icon-cog"></span>
           </div>
           <div class="options-web">
@@ -42,34 +52,38 @@
             </a>
           </div>
         </div>
+        -->
       {{/if}}
 
+<!--
 
-
-        <form class="js-todo-new todo-new input-symbol">
+        <form class="js-CRF-new CRF-new input-symbol">
         <input type="text" placeholder="Type to add {{name}}">
-        <span class="icon-add js-todo-add"></span>
+        <span class="icon-add js-CRF-add"></span>
       </form>
+-->
 
 
 
     </nav>
 
+    {{#if currentForm }}
+      <div class="content-scrollable CRF-items" style="margin-left:20px">
+        <br>
+        {{>quickForm collection=currentForm fields=fieldOrder id="CRFquickForm" doc=currentDoc type=update}}
 
-    <div class="content-scrollable list-items">
-        <div style="margin-left:20px">
-          <br>
-          {{>quickForm collection=currentForm fields=fieldOrder id="CRFquickForm" doc=currentDoc type=update}}
-        </div>
-        {{>HOTdiv}}
+          {{#if previousEntries}}
+                  Previous entries:
+              {{>HOTdiv}}
+          {{else}}
+              There are no previous entries.
+          {{/if}}
 
-    </div>
+      </div>
+    {{/if}}
   </div>
 </template>
 
 <template name="HOTdiv">
-    <div style="margin:3em">
-        Previous Records
-    </div>
     <div id="HOTdiv"  style="overflow: scroll"  ></div>
 </template>

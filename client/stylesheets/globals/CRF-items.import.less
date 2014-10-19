@@ -1,7 +1,7 @@
-.list-items .list-item {
+.CRF-items .CRF-item {
   .font-s2;
 
-  // Layout of list-item children
+  // Layout of CRF-item children
   .display(flex);
   .flex-wrap(wrap);
   height: 3rem;
@@ -12,7 +12,7 @@
   .delete-item { .flex(0, 0, 3rem); }
 
 
-  // Style of list-item children
+  // Style of CRF-item children
   input[type="text"] {
     background: transparent;
     cursor: pointer;
@@ -32,7 +32,7 @@
 
 
   // Border between list items
-  & + .list-item { border-top: 1px solid #f0f9fb; }
+  & + .CRF-item { border-top: 1px solid #f0f9fb; }
 
   // Checked
   &.checked {

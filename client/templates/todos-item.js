@@ -1,4 +1,4 @@
-var EDITING_KEY = 'EDITING_TODO_ID';
+var EDITING_KEY = 'EDITING_CRF_ID';
 
 Template.CRFsItem.helpers({
   checkedClass: function() {

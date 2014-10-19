@@ -29,10 +29,10 @@ Template.CRFsShow.rendered = function() {
 };
 
 Template.CRFsShow.helpers({
-  currentDoc: function() {
+  currentDoc: function () {
     var pid = Session.get("Patient_ID");
     var coll = window[this._id];
-    var cd =  coll.findOne({_id: pid});
+    var cd = coll.findOne({_id: pid});
     console.log("currentDoc", cd)
     return cd;
   },
@@ -49,11 +49,11 @@ Template.CRFsShow.helpers({
     return CRFs.find({listId: this._id}, {sort: {createdAt: -1}});
   },
 
-  fieldOrder: function() {
+  fieldOrder: function () {
     return CRFfieldOrder[this._id];
   },
 
-  currentForm: function() {
+  currentForm: function () {
     console.log("currentForm", this._id);
     Session.set("currentForm", this._id);
     return this._id;
@@ -67,6 +67,14 @@ Template.CRFsShow.helpers({
     console.log(data)
     alert(data)
     return data;
+  },
+
+  previousEntries: function () {
+    if (this._id == null) return false;
+    var coll = window[this._id];
+    if (coll == null) return false;
+    var data = coll.find();
+    return data.count() > 0;
   },
 
   dataTable: function () {
@@ -99,8 +107,8 @@ var deleteList = function(list) {
   var message = "Are you sure you want to delete the list " + list.name + "?";
   if (confirm(message)) {
     // we must remove each item individually from the client
-    CRFs.find({listId: list._id}).forEach(function(todo) {
-      CRFs.remove(todo._id);
+    CRFs.find({listId: list._id}).forEach(function(crf) {
+      CRFs.remove(crf._id);
     });
     CRFmetadataCollection.remove(list._id);
 
@@ -183,11 +191,11 @@ Template.CRFsShow.events({
     deleteList(this, template);
   },
   
-  'click .js-todo-add': function(event, template) {
-    template.$('.js-todo-new input').focus();
+  'click .js-CRF-add': function(event, template) {
+    template.$('.js-CRF-new input').focus();
   },
 
-  'submit .js-todo-new': function(event) {
+  'submit .js-CRF-new': function(event) {
     event.preventDefault();
 
     var $input = $(event.target).find('[type=text]');

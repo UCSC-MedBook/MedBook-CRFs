@@ -6,13 +6,11 @@ textarea {
   // Sizing
   .font-s2;
   .type-regular;
-  padding: .75rem 0; //total height ~48
-  line-height: 1.5rem !important;
 
   // Style
   .placeholder(@color-complementary);
-  border: none;
-  border-radius: 0;
+  border: solid #778b91 2px;
+  border-radius: 5ox;
   box-sizing: border-box;
   color: @color-full;
   outline: none;
@@ -20,15 +18,26 @@ textarea {
   &[disabled] { opacity: .5; }
 }
 
+.form-group {
+  padding-bottom:12px;
+}
+
 // Remove chrome/saf autofill yellow background
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px @color-empty inset;
 }
 
+button {
+  border-radius:10px;
+  margin: 5px;
+  border: rgb(10,10,10,.8) solid 1px;
+
+}
+
 // Custom checkbox
 .checkbox {
   display: inline-block;
-  height: 3rem;
+  height: 2rem;
   position: relative;
   vertical-align: middle;
   width: 44px;

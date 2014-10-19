@@ -3,12 +3,6 @@ Session.setDefault(EDITING_KEY, false);
 
 Template.CRFsShow.rendered = function() {
 
- $('#CRFquickForm').change(function (event) {
-   var coll =  window[Session.get("currentForm")];
-   var patient_id = $('*[name="Patient_ID"]').val();
-   col.findOne({"Patient_id": patient_id})
-
- });
 
   this.find('.js-title-nav')._uihooks = {
     insertElement: function(node, next) {
@@ -23,9 +17,25 @@ Template.CRFsShow.rendered = function() {
       });
     }
   };
+
+  $('#CRFquickForm').change(function (event) {
+    var coll =  window[Session.get("currentForm")];
+    var pid = $('*[name="Patient_ID"]').val();
+    console.log("change Patient_ID", pid);
+    Session.set("Patient_ID", pid);
+  });
+
 };
 
 Template.CRFsShow.helpers({
+  currentDoc: function() {
+    var pid = Session.get("Patient_ID");
+    var coll = window[this._id];
+    var cd =  coll.findOne({_id: pid});
+    console.log("currentDoc", cd)
+    return cd;
+  },
+
   editing: function () {
     return Session.get(EDITING_KEY);
   },

@@ -66,10 +66,19 @@
 
 
     </nav>
+      <div style="margin: 20 10 20 10"
+{{#if phaseIs "none"}} Please select a patient other than 000; {{/if}}
+{{#if phaseIs "inserting"}} <div style="background:lightgreen">New patient record for this form. </div>{{/if}}
+{{#if phaseIs "updating"}} <div style="background:yellow">Caution: you are updating an existing patient record. </div>{{/if}}
 
-    {{#if currentForm }}
+
+      {{#if currentForm }}
       <div class="content-scrollable CRF-items" style="margin-left:20px">
-        <br>
+
+          <div class="nav right">
+              Right hand side.
+          </div>
+
         {{>quickForm collection=currentForm fields=fieldOrder id="CRFquickForm" doc=currentDoc type=update}}
 
           {{#if previousEntries}}

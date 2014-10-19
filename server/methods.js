@@ -10,6 +10,8 @@ Meteor.methods({
         bundle._id = bundle["Patient_ID"];
         console.log(bundle._id);
         // coll.update({_id: bundle._id}, bundle, {upsert:true});
-        coll.insert(bundle);
+        // coll.insert(bundle);
+        var ret = coll.upsert({_id: bundle._id}, {$set: bundle});
+        console.log("upsert", ret)
     }
 })

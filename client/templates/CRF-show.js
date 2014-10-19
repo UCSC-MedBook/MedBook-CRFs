@@ -17,14 +17,7 @@ Template.CRFsShow.rendered = function() {
       });
     }
   };
-  $(document).ready(function() {
-    $('#CRFquickForm').change(function (event) {
-      var coll = window[Session.get("currentForm")];
-      var pid = $('*[name="Patient_ID"]').val();
-      console.log("change Patient_ID", pid);
-      Session.set("Patient_ID", pid);
-    });
-  });
+
 
 };
 
@@ -33,9 +26,21 @@ Template.CRFsShow.helpers({
     var pid = Session.get("Patient_ID");
     var coll = window[this._id];
     var cd = coll.findOne({_id: pid});
-    console.log("currentDoc", cd)
+    console.log("currentDoc", cd);
     return cd;
   },
+
+  phaseIs: function(phase) {
+    console.log("phase", phase);
+    var coll = window[this._id];
+    var pid = Session.get("Patient_ID");
+    if (pid == null && phase == "none") return true;
+    var cd = coll.findOne({_id: pid});
+    if (cd && phase == "updating") return true;
+    if (cd == null && phase == "inserting") return true;
+    return false;
+  },
+
 
   editing: function () {
     return Session.get(EDITING_KEY);
@@ -137,6 +142,14 @@ var toggleListPrivacy = function(list) {
 };
 
 Template.CRFsShow.events({
+
+  'change select[name="Patient_ID"]': function (event) {
+    var coll = window[Session.get("currentForm")];
+    var pid = event.target.value;
+    console.log("change Patient_ID", pid);
+    Session.set("Patient_ID", pid);
+  },
+
   'click .js-cancel': function() {
     Session.set(EDITING_KEY, false);
   },

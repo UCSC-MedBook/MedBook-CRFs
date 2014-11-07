@@ -83,10 +83,7 @@ Template.CRFsShow.helpers({
   },
 
   dataTable: function () {
-    var data = window[this._id].find().fetch();
-    var schema = window[this._id]
-    HOTload(data)
-
+    HOTflash();
   }
 });
 
@@ -244,6 +241,14 @@ function HOTload(crfName) {
   }
 }
 window.HOTload = HOTload;
+
+HOTflash = function () {
+  var cf = Session.get("currentForm")
+  setTimeout(function() {
+    HOTload(cf);
+  }, 500);
+}
+
 
 function setHOTsettingsFromSchema(crfName, settings) {
   var columns = [];

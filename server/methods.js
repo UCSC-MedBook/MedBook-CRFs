@@ -3,15 +3,17 @@
  */
 
 Meteor.methods({
-    addCRF : function(bundle) {
-       var crf = bundle.crf;
-        delete bundle["crf"];
+    addCRF : function(insertDoc, updateDoc) {
+       var crf = insertDoc.crf;
+        delete insertDoc["crf"];
         var coll = CRFcollections[crf];
-        bundle._id = bundle["Patient_ID"];
-        console.log(bundle._id);
-        // coll.update({_id: bundle._id}, bundle, {upsert:true});
-        // coll.insert(bundle);
-        var ret = coll.upsert({_id: bundle._id}, {$set: bundle});
-        console.log("upsert", ret)
+        insertDoc._id = insertDoc["Patient_ID"];
+        console.log(insertDoc);
+        if (coll.findOne({Patient_ID: insertDoc.Patient_ID}))
+            coll.update({Patient_ID: insertDoc.Patient_ID}, updateDoc);
+        else
+            coll.insert(insertDoc);
+        //var ret = coll.upsert({_id: insertDoc._id}, {$set: insertDoc});
+        // console.log("upsert", ret)
     }
 })

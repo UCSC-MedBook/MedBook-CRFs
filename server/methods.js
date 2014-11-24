@@ -7,13 +7,28 @@ Meteor.methods({
        var crf = insertDoc.crf;
         delete insertDoc["crf"];
         var coll = CRFcollections[crf];
-        insertDoc._id = insertDoc["Patient_ID"];
+        var _id;
+
+        if (crf in ComplexIDFields) {
+            _id = ""
+            _.each(ComplexIDFields[crf], function(f) {
+                if (_id.length > 0)
+                    _id += " " + insertDoc[f];
+                else
+                    _id += insertDoc[f];
+            })
+        } else {
+            _id = insertDoc["Patient_ID"];
+        }
+
+
+        insertDoc._id = _id;
         console.log(insertDoc);
-        if (coll.findOne({Patient_ID: insertDoc.Patient_ID}))
-            coll.update({Patient_ID: insertDoc.Patient_ID}, updateDoc);
+        if (coll.findOne({_id: _id}))
+            coll.update({_id: _id}, updateDoc);
         else
             coll.insert(insertDoc);
-        //var ret = coll.upsert({_id: insertDoc._id}, {$set: insertDoc});
+        //var ret = coll.upsert({_id: _id}, {$set: insertDoc});
         // console.log("upsert", ret)
     }
 })

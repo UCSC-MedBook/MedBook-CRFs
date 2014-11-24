@@ -23,21 +23,17 @@ Template.CRFsShow.rendered = function() {
 
 Template.CRFsShow.helpers({
   currentDoc: function () {
-    var pid = Session.get("Patient_ID");
-    var coll = window[this._id];
-    var cd = coll.findOne({_id: pid});
-    console.log("currentDoc", cd);
-    return cd;
+    return Session.get("CurrentDoc");
   },
 
   phaseIs: function(phase) {
-    console.log("phase", phase);
-    var coll = window[this._id];
-    var pid = Session.get("Patient_ID");
-    if (pid == null && phase == "none") return true;
-    var cd = coll.findOne({_id: pid});
-    if (cd && phase == "updating") return true;
-    if (cd == null && phase == "inserting") return true;
+    var cd = Session.get("CurrentDoc");
+    switch (phase) {
+        case "none": return $('form').find("[name='Patient_ID']").val() == "DTB-000";
+        case "updating": return cd != null;
+        case "inserting": return cd == null;
+    }
+    alert("Unknown phase", phase);
     return false;
   },
 
@@ -55,7 +51,7 @@ Template.CRFsShow.helpers({
   },
 
   fieldOrder: function () {
-    return CRFfieldOrder[this._id];
+    return CRFfieldOrder[this._id].join(",");
   },
 
   currentForm: function () {
@@ -141,10 +137,11 @@ var toggleListPrivacy = function(list) {
 Template.CRFsShow.events({
 
   'change select[name="Patient_ID"]': function (event) {
-    var coll = window[Session.get("currentForm")];
-    var pid = event.target.value;
-    console.log("change Patient_ID", pid);
-    Session.set("Patient_ID", pid);
+    Session.set("CurrentDoc", currentDoc());
+  },
+
+  'change select[name="core"]': function (event) {
+    Session.set("CurrentDoc", currentDoc());
   },
 
   'click .js-cancel': function() {
@@ -249,23 +246,46 @@ HOTflash = function () {
   }, 500);
 }
 
+function coreProperty(index, property) {
+      return function (row, newValue) {
+          if (row.cores && index < row.cores.length) {
+              // console.log("coreProperty", property, row, row.cores[index][property]); 
+              return (row.cores[index][property]);
+          }
+          return "";
+    }
+}
+
 
 function setHOTsettingsFromSchema(crfName, settings) {
   var columns = [];
   var colHeaders = [];
+  function make(fieldName, fieldExpr) {
+        console.log("make", fieldName, fieldExpr);
+        colHeaders.push(fieldName);
+        var HOTcolumn = {
+          data: fieldExpr,
+          readOnly : true,
+          type: 'numeric',
+          format: '0,0.00'
+        };
+        columns.push(HOTcolumn);
+  }
 
   var fieldNames = CRFfieldOrder[crfName]
-
   for (var i = 0; i < fieldNames.length; i++) {
     var fieldName = fieldNames[i];
-    colHeaders.push(fieldName);
-    var HOTcolumn = {
-      data: fieldName,
-      readOnly : true,
-      type: 'numeric',
-      format: '0,0.00'
-    };
-    columns.push(HOTcolumn);
+    if (fieldName.match(/^cores\..*/)) {
+        _.each(["A","B","C","D","E", "F", "G"], function(coreName,n) {
+            for (var j = i; j < fieldNames.length; j++)  {
+                var fieldName = fieldNames[j];
+                var expr = fieldName.replace("cores.$.","");
+                make(coreName + " " + expr,  coreProperty(n, expr));
+            }
+        });
+        break;
+    }
+    make(fieldName, fieldName);
   }
 
   if (columns.length > 0) {
@@ -276,3 +296,20 @@ function setHOTsettingsFromSchema(crfName, settings) {
 
 
 
+function currentDoc() {
+    var crf = Session.get("currentForm");
+    var coll = window[crf];
+    var q = {};
+
+    if (crf in ComplexIDFields) {
+        _id = {}
+        _.each(ComplexIDFields[crf], function(f) {
+            q[f] = $('form').find("[name='" + f + "']").val();
+        })
+    } else {
+        q["Patient_ID"] = $('form').find("[name='Patient_ID']").val();
+    }
+    var cd = coll.findOne(q);
+    return cd;
+}
+window.currentDoc = currentDoc

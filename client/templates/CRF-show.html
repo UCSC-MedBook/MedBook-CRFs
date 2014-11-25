@@ -76,12 +76,10 @@
       {{#if currentForm }}
       <div class="content-scrollable CRF-items" style="margin-left:20px">
 
-
-
-        {{>quickForm collection=currentForm id="CRFquickForm" doc=currentDoc type=update}}
+          {{>quickForm collection=currentForm id="CRFquickForm" fields=fieldOrder doc=currentDoc type=update}}
 
           {{#if previousEntries}}
-                  Previous entries:
+              Previous entries:
               {{>HOTdiv dataTable}}
           {{else}}
               There are no previous entries.

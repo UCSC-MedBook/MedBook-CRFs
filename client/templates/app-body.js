@@ -43,6 +43,9 @@ Template.appBody.rendered = function() {
     }
   };
 };
+function stop() {
+    console.log("STOP");
+}
 
 Template.appBody.helpers({
   // We use #each on an array of one item so that the "list" template is
@@ -59,18 +62,20 @@ Template.appBody.helpers({
     return Meteor.isCordova && 'cordova';
   },
   emailLocalPart: function() {
-    var emails = Meteor.user().emails;
-    if (emails && emails.length > 1) {
-        var email = Meteor.user().emails[0].address;
-        return email.substring(0, email.indexOf('@'));
-    }
-    return "";
+    var user = Meteor.user();
+    if (user == null) return "";
+    var profile = user.profile;
+    if (profile == null) return "";
+    var email = profile.email
+    if (email == null) return "";
+    return email.substring(0, email.indexOf('@'));
   },
   userMenuOpen: function() {
     return Session.get(USER_MENU_KEY);
   },
   lists: function() {
-    return CRFmetadataCollection.find();
+    var md =  CRFmetadataCollection.find({}, {sort: {n: 1}});
+    return md;
   },
   activeListClass: function() {
     var current = Router.current();

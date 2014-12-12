@@ -272,7 +272,7 @@ function setHOTsettingsFromSchema(crfName, settings) {
         columns.push(HOTcolumn);
   }
 
-  var fieldNames = CRFfieldOrder[crfName]
+  var fieldNames = CRFfieldOrder[crfName];
   for (var i = 0; i < fieldNames.length; i++) {
     var fieldName = fieldNames[i];
     if (fieldName.match(/^cores\..*/)) {
@@ -313,3 +313,4 @@ function currentDoc() {
     return cd;
 }
 window.currentDoc = currentDoc
+

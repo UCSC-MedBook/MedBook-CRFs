@@ -10,8 +10,10 @@ Meteor.publish('privateLists', function() {
   }
 });
 
+/*
 Meteor.publish('CRFs', function(listId) {
   check(listId, String);
   
   return CRFs.find({listId: listId});
 });
+*/

@@ -1,8 +1,9 @@
 accounts-base@1.1.3
 accounts-password@1.0.5
-aldeed:autoform@4.2.2
-aldeed:collection2@2.3.1
-aldeed:simple-schema@1.3.0
+aldeed:autoform@4.2.1
+aldeed:autoform-select2@1.0.4
+aldeed:collection2@2.3.0
+aldeed:simple-schema@1.2.0
 application-configuration@1.0.4
 autoupdate@1.1.4
 base64@1.0.2
@@ -20,6 +21,7 @@ email@1.0.5
 fastclick@1.0.2
 follower-livedata@1.0.3
 geojson-utils@1.0.2
+handlebars@1.0.2
 html-tools@1.0.3
 htmljs@1.0.3
 http@1.0.9
@@ -45,8 +47,9 @@ meteor-platform@1.2.1
 minifiers@1.1.3
 minimongo@1.0.6
 mobile-status-bar@1.0.2
-momentjs:moment@2.8.4
 mongo@1.0.11
+mrt:moment@2.6.0
+natestrauser:select2@3.5.1
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 olragon:handsontable@0.11.3
@@ -64,8 +67,10 @@ spacebars@1.0.4
 spacebars-compiler@1.0.4
 srp@1.0.2
 standard-app-packages@1.0.4
+stylus@1.0.6
 templating@1.0.10
 tracker@1.0.4
+ucscmedbook:api@0.0.2
 ui@1.0.5
 underscore@1.0.2
 url@1.0.3

@@ -1,0 +1,11 @@
+textarea {
+    min-width: 600;
+}
+
+input[type='text'] {
+    min-width: 600;
+}
+
+.select2-container {
+    min-width: 600px;
+}

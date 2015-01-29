@@ -1,7 +1,7 @@
 accounts-base@1.1.3
 accounts-password@1.0.5
 aldeed:autoform@4.2.1
-aldeed:autoform-select2@1.0.4
+aldeed:autoform-select2@1.0.2
 aldeed:collection2@2.3.0
 aldeed:simple-schema@1.2.0
 application-configuration@1.0.4
@@ -21,7 +21,6 @@ email@1.0.5
 fastclick@1.0.2
 follower-livedata@1.0.3
 geojson-utils@1.0.2
-handlebars@1.0.2
 html-tools@1.0.3
 htmljs@1.0.3
 http@1.0.9
@@ -67,10 +66,9 @@ spacebars@1.0.4
 spacebars-compiler@1.0.4
 srp@1.0.2
 standard-app-packages@1.0.4
-stylus@1.0.6
 templating@1.0.10
 tracker@1.0.4
-ucscmedbook:api@0.0.2
+ucscmedbook:api@0.0.1
 ui@1.0.5
 underscore@1.0.2
 url@1.0.3

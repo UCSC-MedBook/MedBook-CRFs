@@ -51,7 +51,11 @@ Template.CRFsShow.helpers({
   },
 
   fieldOrder: function () {
-    return CRFfieldOrder[this._id].join(",");
+    var fo = CRFfieldOrder[this._id];
+    console.log("fieldOrder", fo);
+    if (fo && fo.length > 0)
+        return fo.join(",");
+    return "";
   },
 
   currentForm: function () {

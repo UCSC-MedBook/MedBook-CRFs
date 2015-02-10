@@ -238,7 +238,9 @@ function HOTload(crfName) {
     var data = window[crfName].find({}, {sort: {_id: 1}}).fetch();
     var settings = {minSpareRows: 0, data: data};
     setHOTsettingsFromSchema(crfName, settings)
-    $('#HOTdiv').handsontable(settings);
+    var $HOTdiv = $('#HOTdiv');
+    if ($HOTdiv.length > 0)
+        $HOTdiv.handsontable(settings);
   }
 }
 window.HOTload = HOTload;

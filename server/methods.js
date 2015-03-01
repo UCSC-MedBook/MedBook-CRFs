@@ -1,8 +1,21 @@
 /**
- * Created by ted on 10/18/14.
+ * Created by ted on 02/28/15.
  */
 
+
+HTTP.methods({
+    ingestOncore : function() {
+        ingestOncore();
+    },
+});
+
+
+
 Meteor.methods({
+    ingestOncore : function() {
+        ingestOncore();
+    },
+
     addCRF : function(insertDoc, updateDoc) {
        var crf = insertDoc.crf;
         delete insertDoc["crf"];

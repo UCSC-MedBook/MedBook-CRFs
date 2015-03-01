@@ -26,6 +26,12 @@ Template.CRFsShow.helpers({
     return Session.get("CurrentDoc");
   },
 
+  getType: function() {
+    if (TableNeedsSample_ID.indexOf(this._id) >= 0)
+        return "readonly"
+    return "update";
+  },
+
   phaseIs: function(phase) {
     var cd = Session.get("CurrentDoc");
     switch (phase) {

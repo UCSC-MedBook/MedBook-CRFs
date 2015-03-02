@@ -287,7 +287,14 @@ function setHOTsettingsFromSchema(crfName, settings) {
           readOnly : true,
         };
         if (isDate) {
+          HOTcolumn.type = 'numeric';
+          HOTcolumn.isDate = true;
+          HOTcolumn.format = isDecimal ?'0,0.00' : '0';
+          /*
           HOTcolumn.type = 'date';
+          HOTcolumn.correctFormat = true;
+          HOTcolumn.dateFormat = "MM/DD/YYYY";
+          */
         } else {
           HOTcolumn.type = 'numeric';
           HOTcolumn.format = isDecimal ?'0,0.00' : '0';
@@ -318,9 +325,21 @@ function setHOTsettingsFromSchema(crfName, settings) {
   settings.data.map(function(datum) {
     columns.map(function(col) {
         if (!(col.data in datum)) {
-            datum[col.data] = "";
-            console.log("missing", col.data);
+            if (col.isDate)
+                datum[col.data] = null
+            else
+                datum[col.data] = "";
+        } else if (col.isDate) {
+            var obj = datum[col.data];
+            var m = (1+obj.getMonth()).toString();
+            if (m.length < 2)
+                m = "0" + m;
+            var d = obj.getDate().toString()
+            if (d.length < 2)
+                d = "0" + d;
+            datum[col.data] = obj.getFullYear().toString() +   "/" + m + "/" +  d
         }
+            
     });
   });
 

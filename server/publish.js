@@ -1,3 +1,8 @@
+
+Meteor.publish('Oncore', function() {
+  return Oncore.find({});
+});
+
 Meteor.publish('publicLists', function() {
   return CRFmetadataCollection.find({userId: {$exists: false}});
 });

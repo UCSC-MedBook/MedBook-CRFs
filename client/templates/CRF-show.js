@@ -241,8 +241,8 @@ Tracker.autorun(function(c){
 
 function HOTload(crfName) {
   if (crfName && crfName in window) {
-    var data = window[crfName].find({}, {sort: {_id: 1}}).fetch();
-    var settings = {minSpareRows: 0, data: data};
+    var data = window[crfName].find({}, {sort: {Patient_ID: 1, Sample_ID: 1}}).fetch();
+    var settings = {search:true, columnSorting: true, minSpareRows: 0, data: data};
     setHOTsettingsFromSchema(crfName, settings)
     var $HOTdiv = $('#HOTdiv');
     if ($HOTdiv.length > 0)
@@ -272,15 +272,26 @@ function coreProperty(index, property) {
 function setHOTsettingsFromSchema(crfName, settings) {
   var columns = [];
   var colHeaders = [];
+  var schema = CRFprototypes[crfName];
+
+
   function make(fieldName, fieldExpr) {
         console.log("make", fieldName, fieldExpr);
         colHeaders.push(fieldName);
+        var schemaField = schema[fieldName];
+        var isDecimal = schemaField.decimal;
+        var isDate = schemaField.type == "Date";
+
         var HOTcolumn = {
           data: fieldExpr,
           readOnly : true,
-          type: 'numeric',
-          format: '0,0.00'
         };
+        if (isDate) {
+          HOTcolumn.type = 'date';
+        } else {
+          HOTcolumn.type = 'numeric';
+          HOTcolumn.format = isDecimal ?'0,0.00' : '0';
+        }
         columns.push(HOTcolumn);
   }
 
@@ -304,6 +315,17 @@ function setHOTsettingsFromSchema(crfName, settings) {
     settings.columns = columns;
     settings.colHeaders = colHeaders;
   }
+  settings.data.map(function(datum) {
+    columns.map(function(col) {
+        if (!(col.data in datum)) {
+            datum[col.data] = "";
+            console.log("missing", col.data);
+        }
+    });
+  });
+
+
+
 }
 
 

@@ -3,20 +3,10 @@
  */
 
 
-HTTP.methods({
-    ingestOncore : function() {
-        ingestOncore();
-    },
-});
-
-
 
 Meteor.startup(
   function() {
     Meteor.methods({
-        ingestOncore : function() {
-            ingestOncore();
-        },
 
         addCRF : function(insertDoc, updateDoc) {
            var crf = insertDoc.crf;

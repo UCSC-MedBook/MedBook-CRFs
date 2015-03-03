@@ -83,6 +83,10 @@ Template.CRFsShow.helpers({
     Session.set("currentForm", this._id);
     return this._id;
   },
+  
+  readOnly: function () {
+      return this._id in OncoreTable_NeedsSample_ID;
+  },
 
   currentCollection: function () {
     return CRFcollections[this._id];

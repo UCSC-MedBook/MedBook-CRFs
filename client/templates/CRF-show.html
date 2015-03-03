@@ -76,15 +76,20 @@
       {{#if currentForm }}
       <div class="content-scrollable CRF-items" style="margin-left:20px">
 
-          {{>quickForm collection=currentForm id="CRFquickForm" template="bootstrap3-horizontal" 
-               label-class="col-sm-3" input-col-class="col-sm-9" 
-               fields=fieldOrder doc=currentDoc type=update}}
-
           {{#if previousEntries}}
               Previous entries:
               {{> reactiveTable  class="table table-bordered table-hover" settings=reactiveTableSettings}}
           {{else}}
               There are no previous entries.
+          {{/if}}
+
+          {{#if readOnly}}
+              This is a Read Only Table (information come from OnCore or other system).
+          {{else}}
+              {{>quickForm collection=currentForm id="CRFquickForm" template="bootstrap3-horizontal" 
+                   label-class="col-sm-3" input-col-class="col-sm-9" 
+                   fields=fieldOrder doc=currentDoc type=update}}
+
           {{/if}}
 
 

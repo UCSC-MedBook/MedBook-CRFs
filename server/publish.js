@@ -1,6 +1,15 @@
 
 Meteor.publish('Oncore', function() {
-  return Oncore.find({});
+  if (this.userId == null)
+      return [];
+
+  var user = Meteor.users.findOne({_id: this.userId});
+  console.log("publish collabration", user);
+  var collaborations = user.profile.collaborations;
+  if (collaborations && collaborations.indexOf("WCDT") >= 0)
+      return Oncore.find({});
+  return [];
+
 });
 
 Meteor.publish('publicLists', function() {

@@ -4,13 +4,16 @@ aldeed:autoform@4.2.1
 aldeed:autoform-select2@1.0.2
 aldeed:collection2@2.3.0
 aldeed:simple-schema@1.2.0
+anti:i18n@0.4.3
 application-configuration@1.0.4
+aslagle:reactive-table@0.6.14
 autoupdate@1.1.4
 base64@1.0.2
 binary-heap@1.0.2
 blaze@2.0.4
 blaze-tools@1.0.2
 boilerplate-generator@1.0.2
+bootstrap@1.0.1
 callback-hook@1.0.2
 cfs:http-methods@0.0.27
 check@1.0.3
@@ -46,6 +49,7 @@ meteor@1.1.4
 meteor-platform@1.2.1
 minifiers@1.1.3
 minimongo@1.0.6
+mizzao:bootstrap-3@3.3.1_1
 mobile-status-bar@1.0.2
 mongo@1.0.11
 mrt:moment@2.6.0

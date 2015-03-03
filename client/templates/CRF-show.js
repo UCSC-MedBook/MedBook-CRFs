@@ -20,6 +20,20 @@ Template.CRFsShow.rendered = function() {
 
 
 };
+function simpleDate(obj) {
+   try {
+        var m = (1+obj.getMonth()).toString();
+        if (m.length < 2)
+            m = "0" + m;
+        var d = obj.getDate().toString()
+        if (d.length < 2)
+            d = "0" + d;
+        return  obj.getFullYear().toString() +   "/" + m + "/" +  d
+     } catch (reason) {
+         console.log("Handsontable mapping failed on column", obj, reason);
+         return "Error (see Javascript console)";
+     }
+}
 
 Template.CRFsShow.helpers({
   currentDoc: function () {
@@ -68,6 +82,54 @@ Template.CRFsShow.helpers({
     console.log("currentForm", this._id);
     Session.set("currentForm", this._id);
     return this._id;
+  },
+
+  currentCollection: function () {
+    return CRFcollections[this._id];
+  },
+  reactiveTableSettings: function () {
+
+    var schema = CRFprototypes[this._id];
+    return {
+        collection: CRFcollections[this._id],
+        rowsPerPage: 10,
+        showFilter: true,
+        fields:  CRFfieldOrder[this._id].map( function(fieldName) {
+
+            try {
+                var schemaField = schema[fieldName];
+                var isDecimal = schemaField.decimal;
+                var isDate = schemaField.type == "Date";
+            } catch(reason) {
+                console.log(fieldName, "not in schema", fieldName);
+            }
+
+
+            return {
+                key: fieldName,
+                // label: new Spacebars.SafeString("<span style="white-space: nowrap;">" + fieldName.replace(/_/g, " ") + "</span>"),
+                label: fieldName.replace(/_/g, " "),
+                fn: function(value, obj) {
+                    try {
+                        if (value == null) return "";
+
+                        if (isDate)
+                            return simpleDate(value);
+                        else if (typeof value == 'string' || value instanceof String) {
+                            value = value.replace(/-/g, "&#8209;")
+                            return new Spacebars.SafeString("<span>" + value + "</span>");
+                        } else
+                            return value;
+                    } catch (reason) {
+                        console.log( reason);
+                        debugger;
+                    }
+
+                },
+
+            }
+        }),
+    };
   },
 
   snowball: function () {

@@ -278,9 +278,14 @@ function setHOTsettingsFromSchema(crfName, settings) {
   function make(fieldName, fieldExpr) {
         console.log("make", fieldName, fieldExpr);
         colHeaders.push(fieldName);
-        var schemaField = schema[fieldName];
-        var isDecimal = schemaField.decimal;
-        var isDate = schemaField.type == "Date";
+        try {
+            var schemaField = schema[fieldName];
+            var isDecimal = schemaField.decimal;
+            var isDate = schemaField.type == "Date";
+        } catch(reason) {
+            console.log(fieldName, "not in schema", crfName);
+        }
+
 
         var HOTcolumn = {
           data: fieldExpr,

@@ -11,7 +11,6 @@ aldeed:simple-schema
 insecure
 iron:router
 less
-olragon:handsontable
 standard-app-packages
 chriswessels:glyphicons-halflings
 

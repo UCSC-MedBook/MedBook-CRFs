@@ -56,7 +56,6 @@ mrt:moment@2.6.0
 natestrauser:select2@3.5.1
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
-olragon:handsontable@0.11.3
 ordered-dict@1.0.2
 random@1.0.2
 reactive-dict@1.0.5

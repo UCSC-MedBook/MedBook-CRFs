@@ -30,7 +30,7 @@ function simpleDate(obj) {
             d = "0" + d;
         return  obj.getFullYear().toString() +   "/" + m + "/" +  d
      } catch (reason) {
-         console.log("Handsontable mapping failed on column", obj, reason);
+         console.log("simpleDate  mapping failed on column", obj, reason);
          return "Error (see Javascript console)";
      }
 }
@@ -296,33 +296,6 @@ Template.CRFsShow.events({
   }
 });
 
-Tracker.autorun(function(c){
-  console.log("autorun");
-  var cf = Session.get("currentForm")
-  setTimeout(function() {
-    HOTload(cf);
-  }, 500);
-});
-
-
-function HOTload(crfName) {
-  if (crfName && crfName in window) {
-    var data = window[crfName].find({}, {sort: {Patient_ID: 1, Sample_ID: 1}}).fetch();
-    var settings = {search:true, columnSorting: true, minSpareRows: 0, data: data};
-    setHOTsettingsFromSchema(crfName, settings)
-    var $HOTdiv = $('#HOTdiv');
-    if ($HOTdiv.length > 0)
-        $HOTdiv.handsontable(settings);
-  }
-}
-window.HOTload = HOTload;
-
-HOTflash = function () {
-  var cf = Session.get("currentForm")
-  setTimeout(function() {
-    HOTload(cf);
-  }, 500);
-}
 
 function coreProperty(index, property) {
       return function (row, newValue) {
@@ -333,90 +306,6 @@ function coreProperty(index, property) {
           return "";
     }
 }
-
-
-function setHOTsettingsFromSchema(crfName, settings) {
-  var columns = [];
-  var colHeaders = [];
-  var schema = CRFprototypes[crfName];
-
-
-  function make(fieldName, fieldExpr) {
-        console.log("make", fieldName, fieldExpr);
-        colHeaders.push(fieldName);
-        try {
-            var schemaField = schema[fieldName];
-            var isDecimal = schemaField.decimal;
-            var isDate = schemaField.type == "Date";
-        } catch(reason) {
-            console.log(fieldName, "not in schema", crfName);
-        }
-
-
-        var HOTcolumn = {
-          data: fieldExpr,
-          readOnly : true,
-        };
-        if (isDate) {
-          HOTcolumn.type = 'numeric';
-          HOTcolumn.isDate = true;
-          HOTcolumn.format = isDecimal ?'0,0.00' : '0';
-          /*
-          HOTcolumn.type = 'date';
-          HOTcolumn.correctFormat = true;
-          HOTcolumn.dateFormat = "MM/DD/YYYY";
-          */
-        } else {
-          HOTcolumn.type = 'numeric';
-          HOTcolumn.format = isDecimal ?'0,0.00' : '0';
-        }
-        columns.push(HOTcolumn);
-  }
-
-  var fieldNames = CRFfieldOrder[crfName];
-  for (var i = 0; i < fieldNames.length; i++) {
-    var fieldName = fieldNames[i];
-    if (fieldName.match(/^cores\..*/)) {
-        _.each(["A","B","C","D","E", "F", "G"], function(coreName,n) {
-            for (var j = i; j < fieldNames.length; j++)  {
-                var fieldName = fieldNames[j];
-                var expr = fieldName.replace("cores.$.","");
-                make(coreName + " " + expr,  coreProperty(n, expr));
-            }
-        });
-        break;
-    }
-    make(fieldName, fieldName);
-  }
-
-  if (columns.length > 0) {
-    settings.columns = columns;
-    settings.colHeaders = colHeaders;
-  }
-  settings.data.map(function(datum) {
-    columns.map(function(col) {
-        if (!(col.data in datum)) {
-            if (col.isDate)
-                datum[col.data] = null
-            else
-                datum[col.data] = "";
-        } else if (col.isDate) 
-           try {
-            var obj = datum[col.data];
-            var m = (1+obj.getMonth()).toString();
-            if (m.length < 2)
-                m = "0" + m;
-            var d = obj.getDate().toString()
-            if (d.length < 2)
-                d = "0" + d;
-            datum[col.data] = obj.getFullYear().toString() +   "/" + m + "/" +  d
-         } catch (reason) {
-             console.log("Handsontable mapping failed on column", col.data, obj, reason);
-             datum[col.data] = "Error (see Javascript console)";
-        }
-    }); // columns
-  }); // settings.data
-} // setHOTsettingsFromSchema
 
 
 

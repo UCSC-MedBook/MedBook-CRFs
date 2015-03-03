@@ -1,10 +1,21 @@
 
+Meteor.publish('collaboration', function(name) {
+  console.log("publish collaboration", name);
+  if (this.userId == null)
+      return [];
+
+  var user = Meteor.users.findOne({_id: this.userId});
+  var collaborations = user.profile.collaborations;
+  if (collaborations && collaborations.indexOf("WCDT") >= 0)
+      return CRFcollections[name].find({});
+  return [];
+});
+
 Meteor.publish('Oncore', function() {
   if (this.userId == null)
       return [];
 
   var user = Meteor.users.findOne({_id: this.userId});
-  console.log("publish collabration", user);
   var collaborations = user.profile.collaborations;
   if (collaborations && collaborations.indexOf("WCDT") >= 0)
       return Oncore.find({});

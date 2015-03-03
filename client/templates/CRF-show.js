@@ -329,7 +329,8 @@ function setHOTsettingsFromSchema(crfName, settings) {
                 datum[col.data] = null
             else
                 datum[col.data] = "";
-        } else if (col.isDate) {
+        } else if (col.isDate) 
+           try {
             var obj = datum[col.data];
             var m = (1+obj.getMonth()).toString();
             if (m.length < 2)
@@ -338,14 +339,14 @@ function setHOTsettingsFromSchema(crfName, settings) {
             if (d.length < 2)
                 d = "0" + d;
             datum[col.data] = obj.getFullYear().toString() +   "/" + m + "/" +  d
+         } catch (reason) {
+             console.log("Handsontable mapping failed on column", col.data, obj, reason);
+             datum[col.data] = "Error (see Javascript console)";
         }
-            
-    });
-  });
+    }); // columns
+  }); // settings.data
+} // setHOTsettingsFromSchema
 
-
-
-}
 
 
 

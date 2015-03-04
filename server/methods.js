@@ -23,18 +23,23 @@ Meteor.startup(
                         _id += insertDoc[f];
                 })
             } else {
-                _id = insertDoc["Patient_ID"];
+                if ("Patient_ID" in  insertDoc)
+                    _id = insertDoc["Patient_ID"];
+                else if ("Sample_ID" in  insertDoc)
+                    _id = insertDoc["Sample_ID"];
+                else 
+                    _id = null;
             }
 
 
-            insertDoc._id = _id;
+            if (_id)
+                insertDoc._id = _id;
             console.log(insertDoc);
-            if (coll.findOne({_id: _id}))
+            if (_id && coll.findOne({_id: _id}))
                 coll.update({_id: _id}, updateDoc);
             else
                 coll.insert(insertDoc);
             //var ret = coll.upsert({_id: _id}, {$set: insertDoc});
-            // console.log("upsert", ret)
         }
     })
 })

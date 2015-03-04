@@ -21,6 +21,8 @@ Template.CRFsShow.rendered = function() {
 
 };
 function simpleDate(obj) {
+       if (obj == null)
+           return obj;
    try {
         var m = (1+obj.getMonth()).toString();
         if (m.length < 2)

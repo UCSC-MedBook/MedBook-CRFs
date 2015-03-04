@@ -37,6 +37,19 @@ function simpleDate(obj) {
      }
 }
 
+
+var before = "<table class='table table-striped table-bordered table-condensed table-hover' style='border: 1px solid black;'><tbody>" ;
+var after = "</tbody></table>";
+
+function arrayDoc(array) {
+
+    return array.map(function(element) {
+        return before +  Object.keys(element).sort().map( function(key) { 
+                return "<tr><td>"+key+"</td><td>"+element[key]+ "<td></tr>";
+            }) + after;
+    }).join("<p>")
+}
+
 Template.CRFsShow.helpers({
   currentDoc: function () {
     return Session.get("CurrentDoc");
@@ -75,8 +88,10 @@ Template.CRFsShow.helpers({
   fieldOrder: function () {
     var fo = CRFfieldOrder[this._id];
     console.log("fieldOrder", fo);
+
+
     if (fo && fo.length > 0)
-        return fo.join(",");
+        return fo.join(",")
     return "";
   },
 
@@ -96,30 +111,31 @@ Template.CRFsShow.helpers({
   reactiveTableSettings: function () {
 
     var schema = CRFprototypes[this._id];
-    return {
-        collection: CRFcollections[this._id],
-        rowsPerPage: 10,
-        showFilter: true,
-        fields:  CRFfieldOrder[this._id].map( function(fieldName) {
+    var fields = CRFfieldOrder[this._id];
+    fields = fields.map( 
+            function(fieldName) {
 
             try {
                 var schemaField = schema[fieldName];
                 var isDecimal = schemaField.decimal;
                 var isDate = schemaField.type == "Date";
+                var isArray = schemaField.type == Array;
             } catch(reason) {
                 console.log(fieldName, "not in schema", fieldName);
             }
 
+            fieldName = fieldName.replace(/\$/g, "0");
 
             return {
-                key: fieldName,
+                key: fieldName .replace(/\$/g, "0"),
                 // label: new Spacebars.SafeString("<span style="white-space: nowrap;">" + fieldName.replace(/_/g, " ") + "</span>"),
                 label: fieldName.replace(/_/g, " "),
                 fn: function(value, obj) {
                     try {
                         if (value == null) return "";
-
-                        if (isDate)
+                        if (Array.isArray(value))
+                            return new Spacebars.SafeString("<span>" + arrayDoc(value) + "</span>");
+                        else if (isDate)
                             return simpleDate(value);
                         else if (typeof value == 'string' || value instanceof String) {
                             value = value.replace(/-/g, "&#8209;")
@@ -128,13 +144,19 @@ Template.CRFsShow.helpers({
                             return value;
                     } catch (reason) {
                         console.log( reason);
-                        debugger;
                     }
 
                 },
 
             }
-        }),
+        })
+
+
+    return {
+        collection: CRFcollections[this._id],
+        rowsPerPage: 10,
+        showFilter: true,
+        fields: fields,
     };
   },
 

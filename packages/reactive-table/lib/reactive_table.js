@@ -19,7 +19,9 @@ var get = function(obj, field) {
 
 
 var updateFilter = _.debounce(function (template, filterText) {
+    console.log("filterText", filterText);
     template.context.filter.set(filterText);
+    Session.set("CRF_filter", filterText);
     template.context.currentPage.set(0);
 }, 200);
 
@@ -110,7 +112,15 @@ var getDefaultTrueSetting = function (key, templateData) {
     return true;
 };
 
-
+/*
+if (Meter.isClient)
+    Template.registerHelper("CRF_filter", function() {
+        var val = Session.get("CRF_filter");
+        if (/^\s+$/.test(val))
+            return null;
+        return val;
+    });
+*/
 
 var setup = function () {
     var context = {};
@@ -276,8 +286,11 @@ var setup = function () {
 
     context.reactiveTableSetup = true;
 
+    context.filter.set(Session.get("CRF_filter"));
+
     this.context = context;
 };
+
 
 var getDefaultFieldVisibility = function (field) {
     return !field.hidden || (_.isFunction(field.hidden) && !field.hidden());

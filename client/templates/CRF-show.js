@@ -133,13 +133,14 @@ Template.CRFsShow.helpers({
                 fn: function(value, obj) {
                     try {
                         if (value == null) return "";
-                        if (Array.isArray(value))
+                        if (Array.isArray(value)) {
                             return new Spacebars.SafeString("<span>" + arrayDoc(value) + "</span>");
-                        else if (isDate)
+                        } else if (isDate)
                             return simpleDate(value);
                         else if (typeof value == 'string' || value instanceof String) {
                             value = value.replace(/-/g, "&#8209;")
-                            return new Spacebars.SafeString("<span>" + value + "</span>");
+                            return new Spacebars.SafeString("<span sort='"+ value +"'>" + value + "</span>");
+
                         } else
                             return value;
                     } catch (reason) {

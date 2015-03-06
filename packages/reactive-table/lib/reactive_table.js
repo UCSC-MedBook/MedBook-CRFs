@@ -192,6 +192,7 @@ var setup = function () {
 
     var sortKey = null;
     var sortDirection = 1;
+    var filterNulls = true;
 
     var normalizeField = function (field) {
         if (typeof field === 'string') {
@@ -224,6 +225,7 @@ var setup = function () {
     context.fields = fields;
     context.sortKey = !_.isUndefined(oldContext.sortKey) ? oldContext.sortKey : new ReactiveVar(sortKey);
     context.sortDirection = !_.isUndefined(oldContext.sortDirection) ? oldContext.sortDirection : new ReactiveVar(sortDirection);
+    context.filterNulls = !_.isUndefined(oldContext.filterNulls) ? oldContext.sortDirection : new ReactiveVar(filterNulls);
 
     var visibleFields = [];
     _.each(fields, function (field, i) {
@@ -424,6 +426,7 @@ Template.reactiveTable.helpers({
             });
         } else  {
             var sortDirection = this.sortDirection.get();
+            var filterNulls = this.filterNulls.get();
             var sortKeyFieldId = this.sortKey.get();
             var sortKeyField = _.findWhere(this.fields, {fieldId: sortKeyFieldId});
 
@@ -441,7 +444,8 @@ Template.reactiveTable.helpers({
                 }); 
             } else if (sortKeyField.fn && !sortKeyField.sortByValue) {
 
-                excludeNulls(filterQuery, sortKeyField.key);
+                if (filterNulls)
+                    excludeNulls(filterQuery, sortKeyField.key);
 
                 var data = this.collection.find(filterQuery).fetch();
                 var sorted =_.sortBy(data, function (object) {
@@ -500,6 +504,11 @@ Template.reactiveTable.helpers({
 });
 
 Template.reactiveTable.events({
+    'change .filterNulls': function (event) {
+        var template = Template.instance();
+        console.log("filterNulls", event.target.value);
+        template.context.filterNulls.set(event.target.checked);
+    }, 
     'click .reactive-table .sortable': function (event) {
         var template = Template.instance();
         var target = $(event.target).is('i') ? $(event.target).parent() : $(event.target);

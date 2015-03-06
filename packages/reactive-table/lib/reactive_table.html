@@ -6,6 +6,8 @@
         {{#if showFilter}}
           <div class="form-group reactive-table-filter col-sm-8 pull-right">
             <div class="input-group">
+                <label> Filter nulls</label>
+                <input type="checkbox" checked class="filterNulls">
               <span class="input-group-addon">
                 {{#if useFontAwesome}}
                   <i class="fa fa-filter"></i>
@@ -13,11 +15,11 @@
                   {{i18n 'reactiveTable.filter'}}
                 {{/if}}
               </span>
-              {{#if useFontAwesome}}
-    	        <input class="reactive-table-input form-control" type="text" value="{{filter}}" placeholder="{{i18n 'reactiveTable.filter'}}">
-              {{else}}
-    	        <input class="reactive-table-input form-control" type="text" value="{{filter}}">
-              {{/if}}
+                  {{#if useFontAwesome}}
+                    <input class="reactive-table-input form-control" type="text" value="{{filter}}" placeholder="{{i18n 'reactiveTable.filter'}}">
+                  {{else}}
+                    <input class="reactive-table-input form-control" type="text" value="{{filter}}">
+                  {{/if}}
             </div>
           </div>
         {{/if}}

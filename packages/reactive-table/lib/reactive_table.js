@@ -294,6 +294,19 @@ var getPageCount = function () {
     }
 };
 
+function excludeNulls(filterQuery, sortKeyField_key) {
+    if (sortKeyField_key in filterQuery) {
+        var previousQuery = filterQuery[sortKeyField_key];
+        filterQuery[sortKeyField_key] = 
+            {$and: [
+                    previousQuery,
+                    { $ne: null } 
+                ]
+            };
+    } else
+        filterQuery[sortKeyField_key] = { $ne: null } 
+}
+
 
 Template.reactiveTable.helpers({
 
@@ -419,6 +432,7 @@ Template.reactiveTable.helpers({
             var skip = currentPage * limit;
             var filterQuery = getFilterQuery(this.filter.get(), this.fields, {enableRegex: this.enableRegex});
 
+
             if (!sortKeyField) {
                 // No sort field set, return unsorted collection
                 return this.collection.find(filterQuery, {
@@ -426,6 +440,9 @@ Template.reactiveTable.helpers({
                     limit: limit
                 }); 
             } else if (sortKeyField.fn && !sortKeyField.sortByValue) {
+
+                excludeNulls(filterQuery, sortKeyField.key);
+
                 var data = this.collection.find(filterQuery).fetch();
                 var sorted =_.sortBy(data, function (object) {
                     return sortKeyField.fn(object[sortKeyField.key], object);
@@ -437,7 +454,10 @@ Template.reactiveTable.helpers({
             } else {
                 var sortKey = sortKeyField.key || sortKeyField;
                 var sortQuery = {};
-                sortQuery[sortKey] = sortDirection;
+
+                excludeNulls(filterQuery, sortKeyField.key);
+
+                filterQuery[sortKeyField.key]  = { $ne: null };  // don't let nulls in
 
                 return this.collection.find(filterQuery, {
                     sort: sortQuery,

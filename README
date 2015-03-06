@@ -1,4 +1,0 @@
-This is an implementation of Clinical Report Forms for MedBook using Meteor.
-meteor remove insecure
-meteor add accounts-password aldeed:autoform aldeed:collection2 aldeed:simple-schema iron:router less olragon:handsontable standard-app-packages 
-

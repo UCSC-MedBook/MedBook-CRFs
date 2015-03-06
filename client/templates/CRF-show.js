@@ -346,7 +346,11 @@ function currentDoc() {
             q[f] = $('form').find("[name='" + f + "']").val();
         })
     } else {
-        q["Patient_ID"] = $('form').find("[name='Patient_ID']").val();
+        var s = $('form').find("[name='Sample_ID']").val();
+        if (s == null)
+            q["Patient_ID"] = $('form').find("[name='Patient_ID']").val();
+        else
+            q["Sample_ID"] = s;
     }
     var cd = coll.findOne(q);
     return cd;

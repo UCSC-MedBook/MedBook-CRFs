@@ -85,8 +85,14 @@
               Previous entries:
               {{> reactiveTable  class="table table-bordered table-hover" settings=reactiveTableSettings}}
           {{else}}
-              There are no previous entries.
+              &nbsp; There are no previous entries.
           {{/if}}
+
+          {{#if CRF_filter}}
+              Filtering on {{ CRF_filter}}
+          {{/if}}
+
+          {{ CRF_filter }}
 
           {{#if readOnly}}
               This is a Read Only Table (information comes comes OnCore or other system).

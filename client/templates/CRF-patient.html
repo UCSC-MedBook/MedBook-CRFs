@@ -7,10 +7,11 @@
 
       <div class="content-scrollable CRF-items" style="margin-left:20px">
 
-         {{#each AllCRFs}}
-              {{this}}
-              &nbsp;
-              {{dataForTHIScollection}}
+         {{#each collectionsInPreferredTableOrder}}
+         <H2>
+            {{this.displayName}} &nbsp; {{ this.count }} &nbsp; entries
+         </H2>
+             {{> reactiveTable showFilter=false  showNavigation="auto" collection=this.docs class="table table-bordered table-hover" settings=reactiveTableSettings }}
               <br>
          {{/each}}
 

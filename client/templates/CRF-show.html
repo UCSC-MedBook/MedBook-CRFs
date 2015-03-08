@@ -70,45 +70,31 @@
 
     </nav>
 
-      {{#if currentForm }}
-      <div class="content-scrollable CRF-items" style="margin-left:20px">
+    {{#if currentForm }}
+        {{>migrate collection=currentForm fields=fieldOrder doc=currentDoc filter=CRF_filter settings=reactiveTableSettings previousEntries=previousEntries}}
+    {{/if}}
 
+  </div>
+</template>
+
+<template name="migrate">
+      <div class="content-scrollable CRF-items" style="margin-left:20px">
           {{#if previousEntries}}
               Previous entries:
-              {{> migrateRT settings=reactiveTableSettings}}
+              {{> reactiveTable collection=previousEntries class="table table-bordered table-hover" settings=settings}}
           {{else}}
               &nbsp; There are no previous entries.
           {{/if}}
 
-          {{#if CRF_filter}}
-              Filtering on {{ CRF_filter}}
+          {{#if filter}}
+              Filtering on {{ filter}}
           {{/if}}
-
-          {{ CRF_filter }}
 
           {{#if readOnly}}
               This is a Read Only Table (information comes comes OnCore or other system).
           {{else}}
-              {{>migrateQF collection=currentForm fields=fieldOrder doc=currentDoc type=update}}
-
+              {{>quickForm collection=collection fields=fields doc=doc type=update
+                   id="CRFquickForm" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" }}
           {{/if}}
-
-
-
-
       </div>
-    {{/if}}
-  </div>
 </template>
-
-<template name="migrateRT">
-      {{> reactiveTable  class="table table-bordered table-hover" settings=settings}}
-</template>
-
-<template name="migrateQF">
-      {{>quickForm collection=collection id="CRFquickForm" template="bootstrap3-horizontal" 
-           label-class="col-sm-3" input-col-class="col-sm-9" 
-           fields=fields doc=doc type=update}}
-</template>
-
-

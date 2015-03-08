@@ -50,6 +50,75 @@ function arrayDoc(array) {
     }).join("<p>")
 }
 
+reactiveTableSettings = function () {
+
+    var collName;
+
+    if (this instanceof String && this.name in CRFprototypes)
+        collName = this;
+    else if (this.name && this.name in CRFprototypes)
+        collName = this.name;
+    else if (this._id && this._id in CRFprototypes)
+        collName = this._id;
+    else
+        throw "reactiveTableSettings needs to know what collection to use";
+
+
+    var schema = CRFprototypes[collName];
+    var fields = CRFfieldOrder[collName];
+    fields = fields.map( 
+        function(fieldName, i) {
+            console.log(collName);
+
+            try {
+                var schemaField = schema[fieldName];
+                var isDecimal = schemaField.decimal;
+                var isDate = schemaField.type == Date || schemaField.type == "Date";
+                var isArray = schemaField.type == Array;
+            } catch(reason) {
+                console.log(fieldName, "not in schema", fieldName);
+            }
+            // console.log(i, "rts", fieldName, schemaField.type, isDate);
+
+            fieldName = fieldName.replace(/\$/g, "0");
+
+            return {
+                key: fieldName .replace(/\$/g, "0"),
+                // label: new Spacebars.SafeString("<span style="white-space: nowrap;">" + fieldName.replace(/_/g, " ") + "</span>"),
+                label: fieldName.replace(/_/g, " "),
+                fn: function(value, obj) {
+                    try {
+                        if (value == null) return "";
+                        if (Array.isArray(value)) {
+                            return new Spacebars.SafeString("<span>" + arrayDoc(value) + "</span>");
+                        } else if (isDate) {
+                            return simpleDate(value);
+                        } else if (typeof value == 'string' || value instanceof String) {
+                            value = value.replace(/-/g, "&#8209;")
+                            return new Spacebars.SafeString("<span sort='"+ value +"'>" + value + "</span>");
+
+                        } else
+                            return value;
+                    } catch (reason) {
+                        console.log( reason);
+                    }
+
+                },
+
+            }
+        })
+
+
+    return {
+        rowsPerPage: 10,
+        showFilter: true,
+        fields: fields,
+    };
+};
+
+Template.registerHelper("reactiveTableSettings", reactiveTableSettings);
+
+
 Template.CRFsShow.helpers({
   currentDoc: function () {
     return Session.get("CurrentDoc");
@@ -87,7 +156,7 @@ Template.CRFsShow.helpers({
 
   fieldOrder: function () {
     var fo = CRFfieldOrder[this._id];
-    console.log("fieldOrder", fo);
+    // console.log("fieldOrder", fo);
 
 
     if (fo && fo.length > 0)
@@ -96,7 +165,7 @@ Template.CRFsShow.helpers({
   },
 
   currentForm: function () {
-    console.log("currentForm", this._id);
+    // console.log("currentForm", this._id);
     Session.set("currentForm", this._id);
     return this._id;
   },
@@ -108,65 +177,12 @@ Template.CRFsShow.helpers({
   currentCollection: function () {
     return CRFcollections[this._id];
   },
-  reactiveTableSettings: function () {
-
-    var schema = CRFprototypes[this._id];
-    var fields = CRFfieldOrder[this._id];
-    fields = fields.map( 
-            function(fieldName, i) {
-
-            try {
-                var schemaField = schema[fieldName];
-                var isDecimal = schemaField.decimal;
-                var isDate = schemaField.type == Date;
-                var isArray = schemaField.type == Array;
-            } catch(reason) {
-                console.log(fieldName, "not in schema", fieldName);
-            }
-
-            fieldName = fieldName.replace(/\$/g, "0");
-
-            return {
-                key: fieldName .replace(/\$/g, "0"),
-                // label: new Spacebars.SafeString("<span style="white-space: nowrap;">" + fieldName.replace(/_/g, " ") + "</span>"),
-                label: fieldName.replace(/_/g, " "),
-                fn: function(value, obj) {
-                    try {
-                        if (value == null) return "";
-                        if (Array.isArray(value)) {
-                            return new Spacebars.SafeString("<span>" + arrayDoc(value) + "</span>");
-                        } else if (isDate) {
-                            return simpleDate(value);
-                        } else if (typeof value == 'string' || value instanceof String) {
-                            value = value.replace(/-/g, "&#8209;")
-                            return new Spacebars.SafeString("<span sort='"+ value +"'>" + value + "</span>");
-
-                        } else
-                            return value;
-                    } catch (reason) {
-                        console.log( reason);
-                    }
-
-                },
-
-            }
-        })
-
-
-    return {
-        collection: CRFcollections[this._id],
-        rowsPerPage: 10,
-        showFilter: true,
-        fields: fields,
-    };
-  },
-
   snowball: function () {
     var data = UI._templateInstance().data || {};
     data.collection = window[this._id];
     data.id = this._id;
     data.type = "insert";
-    console.log(data)
+    // console.log(data)
     alert(data)
     return data;
   },
@@ -175,13 +191,9 @@ Template.CRFsShow.helpers({
     if (this._id == null) return false;
     var coll = window[this._id];
     if (coll == null) return false;
-    var data = coll.find();
-    return data.count() > 0;
+    return coll;
   },
 
-  dataTable: function () {
-    HOTflash();
-  }
 });
 
 var editList = function(list, template) {

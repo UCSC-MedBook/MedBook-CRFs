@@ -1,4 +1,30 @@
 
+Meteor.publish('patient', function(patient_id) {
+  console.log("publish patient", patient_id);
+  if (this.userId == null)
+      return [];
+
+  var user = Meteor.users.findOne({_id: this.userId});
+  var collaborations = user.profile.collaborations;
+  if (collaborations && collaborations.indexOf("WCDT") >= 0) {
+
+      // kosher user
+      var manyCursors = []
+      CRFs.map(function(collName) {
+          var coll = CRFcollections[collName];
+          var cursor = coll.find({ 
+              $or: [
+                  {Patient_ID: patient_id},
+                  {Sample_ID: { $regex: "^" + patient_id + ".*"}}
+              ]});
+          console.log("subscribe patient", patient_id, collName);
+          manyCursors.push(cursor);
+      });
+      return manyCursors;
+  }
+  return [];
+});
+
 Meteor.publish('collaboration', function(name) {
   console.log("publish collaboration", name);
   if (this.userId == null)

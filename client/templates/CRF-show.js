@@ -113,12 +113,12 @@ Template.CRFsShow.helpers({
     var schema = CRFprototypes[this._id];
     var fields = CRFfieldOrder[this._id];
     fields = fields.map( 
-            function(fieldName) {
+            function(fieldName, i) {
 
             try {
                 var schemaField = schema[fieldName];
                 var isDecimal = schemaField.decimal;
-                var isDate = schemaField.type == "Date";
+                var isDate = schemaField.type == Date;
                 var isArray = schemaField.type == Array;
             } catch(reason) {
                 console.log(fieldName, "not in schema", fieldName);
@@ -135,9 +135,9 @@ Template.CRFsShow.helpers({
                         if (value == null) return "";
                         if (Array.isArray(value)) {
                             return new Spacebars.SafeString("<span>" + arrayDoc(value) + "</span>");
-                        } else if (isDate)
+                        } else if (isDate) {
                             return simpleDate(value);
-                        else if (typeof value == 'string' || value instanceof String) {
+                        } else if (typeof value == 'string' || value instanceof String) {
                             value = value.replace(/-/g, "&#8209;")
                             return new Spacebars.SafeString("<span sort='"+ value +"'>" + value + "</span>");
 

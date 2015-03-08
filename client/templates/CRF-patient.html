@@ -1,0 +1,19 @@
+<template name="CRFsPatient">
+  <div class="page lists-show">
+    <nav class="js-title-nav">
+     Top part
+
+    </nav>
+
+      <div class="content-scrollable CRF-items" style="margin-left:20px">
+
+         {{#each AllCRFs}}
+              {{this}}
+              &nbsp;
+              {{dataForTHIScollection}}
+              <br>
+         {{/each}}
+
+      </div>
+  </div>
+</template>

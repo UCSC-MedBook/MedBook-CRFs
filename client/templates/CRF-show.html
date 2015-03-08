@@ -66,14 +66,6 @@
         -->
       {{/if}}
 
-<!--
-
-        <form class="js-CRF-new CRF-new input-symbol">
-        <input type="text" placeholder="Type to add {{name}}">
-        <span class="icon-add js-CRF-add"></span>
-      </form>
--->
-
 
 
     </nav>
@@ -83,7 +75,7 @@
 
           {{#if previousEntries}}
               Previous entries:
-              {{> reactiveTable  class="table table-bordered table-hover" settings=reactiveTableSettings}}
+              {{> migrateRT settings=reactiveTableSettings}}
           {{else}}
               &nbsp; There are no previous entries.
           {{/if}}
@@ -97,18 +89,7 @@
           {{#if readOnly}}
               This is a Read Only Table (information comes comes OnCore or other system).
           {{else}}
-              {{>quickForm collection=currentForm id="CRFquickForm" template="bootstrap3-horizontal" 
-                   label-class="col-sm-3" input-col-class="col-sm-9" 
-                   fields=fieldOrder doc=currentDoc type=update}}
-          <!--
-             {{> quickForm id="fields3" schema=Schemas.Histological_Assessment_form }}
-             {{> quickForm id="fields3" doc=currentDoc type=update
-                  schema=Schemas.Histological_Assessment_form collection="Histological_Assessment_form" }}
-              {{>quickForm collection=currentForm id="CRFquickForm" template="bootstrap3-horizontal" 
-                   label-class="col-sm-3" input-col-class="col-sm-9" 
-                  schema=Schemas.Histological_Assessment_form
-                   fields=fieldOrder doc=currentDoc type=update}}
-           -->
+              {{>migrateQF collection=currentForm fields=fieldOrder doc=currentDoc type=update}}
 
           {{/if}}
 
@@ -120,6 +101,14 @@
   </div>
 </template>
 
-<template name="HOTdiv">
-    <div id="HOTdiv"  style="overflow: scroll"  ></div>
+<template name="migrateRT">
+      {{> reactiveTable  class="table table-bordered table-hover" settings=settings}}
 </template>
+
+<template name="migrateQF">
+      {{>quickForm collection=collection id="CRFquickForm" template="bootstrap3-horizontal" 
+           label-class="col-sm-3" input-col-class="col-sm-9" 
+           fields=fields doc=doc type=update}}
+</template>
+
+

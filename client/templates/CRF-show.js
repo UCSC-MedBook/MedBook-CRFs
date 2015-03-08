@@ -241,6 +241,10 @@ Template.CRFsShow.events({
     Session.set("CurrentDoc", currentDoc());
   },
 
+  'change select[name="Sample_ID"]': function (event) {
+    Session.set("CurrentDoc", currentDoc());
+  },
+
   'change select[name="core"]': function (event) {
     Session.set("CurrentDoc", currentDoc());
   },

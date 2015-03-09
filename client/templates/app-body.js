@@ -29,6 +29,35 @@ Meteor.startup(function () {
 });
 
 Template.appBody.rendered = function() {
+  $('.MainCRFLists').sortable( {
+      axis:  "y",
+      handle: '.handle',
+
+ // get the dragged html element and the one before
+      stop: function(e, ui) {
+          var pref = personalPreferredTableOrder();
+          console.log("stop", pref);
+
+          cur  = $(ui.item.get(0)).data("crfname")
+          before = $(ui.item.prev().get(0)).data("crfname")
+          after = $(ui.item.next().get(0)).data("crfname")
+          console.log("stop", before, cur, after);
+
+          pref.splice(pref.indexOf(cur), 1);
+
+          if (before == null)
+              pref.splice(0, 0, cur);
+          else
+              pref.splice(pref.indexOf(before) + 1, 0, cur);
+
+
+          console.log("stop", pref);
+          Meteor.users.update({_id:Meteor.userId()}, { $set:{"profile.preferredTableOrder": pref}} )
+          Session.set("PreferredTableOrder", pref);
+
+        }
+  });
+
   this.find('#content-container')._uihooks = {
     insertElement: function(node, next) {
       $(node)
@@ -52,8 +81,13 @@ Template.appBody.helpers({
   // removed and a new copy is added when changing lists, which is
   // important for animation purposes. #each looks at the _id property of it's
   // items to know when to insert a new item and when to update an old one.
+
   thisArray: function() {
     return [this];
+  },
+
+  PersonalTableOrder : function() {
+      return Session.get("PersonalTableOrder");
   },
   menuOpen: function() {
     return Session.get(MENU_KEY) && 'menu-open';
@@ -79,9 +113,11 @@ Template.appBody.helpers({
   },
   activeListClass: function() {
     var current = Router.current();
-    if (current.route.name === 'CRFsShow' && current.params._id === this._id) {
-      return 'active';
+    if (current && current.route && current.params &&
+        current.route.name === 'CRFsShow' && current.params._id === this._id) {
+          return 'active';
     }
+    return null;
   },
   connected: function() {
     if (Session.get(SHOW_CONNECTION_ISSUE_KEY)) {
@@ -96,6 +132,11 @@ Template.appBody.events({
   'click .js-menu': function() {
     Session.set(MENU_KEY, ! Session.get(MENU_KEY));
   },
+
+  'click .list-1-CRF' : function(event) {
+      event.preventDefault();
+      Router.go("CRFsShow", {_id: $(event.target).data("crfname") });
+   },
 
   'click .content-overlay': function(event) {
     Session.set(MENU_KEY, false);

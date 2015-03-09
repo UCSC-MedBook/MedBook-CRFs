@@ -21,3 +21,5 @@ cfs:http-methods
 bootstrap
 mizzao:bootstrap-3
 ucsc-medbook:reactive-table
+mrt:jquery-ui
+pfafman:font-awesome-4

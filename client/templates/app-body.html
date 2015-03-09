@@ -26,23 +26,7 @@
           -->
       {{/if}}
 
-      <div class="MainCRFLists">
-<!--
-        <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
--->
-        {{#each lists}}
-          <a href="{{pathFor 'CRFsShow'}}" class="list-1-CRF {{activeListClass}}" title="{{name}}">
-            {{#if userId}}
-              <span class="icon-lock"></span>
-            {{/if}}
-            {{#if incompleteCount}}
-              <span class="count-list">{{incompleteCount}}</span>
-            {{/if}}
-            {{name}}
-          </a>
-        {{/each}}
-
-      </div>
+      {{>MainCRFLists}}
     </section>
 
     {{#unless connected}}
@@ -65,4 +49,27 @@
       {{/each}}
     </div>
   </div>
+</template>
+
+<template name="MainCRFLists">
+      <div class="MainCRFLists">
+<!--
+        <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
+-->
+        {{#each personalPreferredTableOrder}}
+          <a href="#" onclick="Go()" data-crfname="{{this}}" class="list-1-CRF {{activeListClass}}" title="{{this}}">
+            {{#if userId}}
+              <span class="icon-lock"></span>
+            {{/if}}
+            {{#if incompleteCount}}
+              <span class="count-list">{{incompleteCount}}</span>
+            {{/if}}
+            {{this}}
+            <span class="handle">
+                <i class="fa fa-list"></i> 
+            </span>
+          </a>
+        {{/each}}
+
+      </div>
 </template>

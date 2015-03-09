@@ -24,19 +24,19 @@ Template.registerHelper("AllCRFs",
 );
 
 window.personalPreferredTableOrder = function () {
-   var prefer = Meteor.user().profile.preferredTableOrder;
-   if (prefer == null) {
-      Meteor.users.update({_id:Meteor.userId()}, { $set:{"profile.preferredTableOrder": CRFs}} )
-      prefer = Meteor.user().profile.preferredTableOrder;
-   }
-   return prefer;
+  var user = Meteor.user();
+  if (user && user.profile) {
+       var prefer = user.profile.preferredTableOrder;
+       if (prefer != null) 
+           return prefer;
+  }
+  return CRFs;
 }
 
 Template.registerHelper("personalPreferredTableOrder", personalPreferredTableOrder);
 
 
-Template.CRFsPatient.helpers({
-    collectionsInPreferredTableOrder: function () {
+collectionsInPreferredTableOrder =  function () {
         var output = [];
         var controller = Iron.controller();
         var patient_id = controller.state.get("Current_Patient_ID");
@@ -59,22 +59,10 @@ Template.CRFsPatient.helpers({
 
         var remaining = _.difference(Object.keys(CRFcollections), myOrder);
         remaining.map(prep);
+        
+        console.log( "collectionsInPreferredTableOrder", output );
 
         return output;
-    },
+    }
 
-    dataForTHIScollection: function () {
-          var collName = this;  // WIERD is THIS
-          var controller = Iron.controller();
-          var patient_id = controller.state.get("Current_Patient_ID");
-
-          var coll = CRFcollections[collName];
-          var cursor = coll.find({
-              $or: [
-                  {Patient_ID: patient_id},
-                  {Sample_ID: { $regex: "^" + patient_id + ".*"}}
-              ]});
-          // console.log("dataForTHIScollection patient", patient_id, collName);
-          return cursor.count();
-      }
-  });
+Template.registerHelper( "collectionsInPreferredTableOrder", collectionsInPreferredTableOrder );

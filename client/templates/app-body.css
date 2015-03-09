@@ -15,7 +15,10 @@
 }
 
 .list-1-CRF:hover .handle {
-        opacity: 1.00;
-        filter: alpha(opacity=100); /* For IE8 and earlier */
+    opacity: 1.00;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
+.MainCRFLists {
+    margin-bottom:20px !important;
+}

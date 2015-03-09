@@ -27,12 +27,13 @@
           -->
       {{/if}}
 
-      {{>MainCRFLists}}
-
       <div class="MainCRFLists">
-       Patients
+       <h3><center>Find Patient</center></h3>
        {{> Patient_ID go=true}}
        </div>
+
+      {{>MainCRFLists}}
+
     </section>
 
     {{#unless connected}}
@@ -59,6 +60,7 @@
 
 <template name="MainCRFLists">
       <div class="MainCRFLists">
+       <h3><center>Find Form</center></h3>
 <!--
         <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
 -->
@@ -71,7 +73,7 @@
               <span class="count-list">{{incompleteCount}}</span>
             {{/if}}
             {{this}}
-            <span class="handle">
+            <span class="handle" title="Drag handle up or down to rearrange order">
                 <i class="fa fa-reorder"></i> 
             </span>
           </a>

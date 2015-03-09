@@ -1,6 +1,7 @@
 <template name="appBody">
   <div id="container" class="{{menuOpen}} {{cordova}}">
 
+
     <section id="menu">
     <!--
       {{> MedBookNavigator}}
@@ -27,6 +28,11 @@
       {{/if}}
 
       {{>MainCRFLists}}
+
+      <div class="MainCRFLists">
+       Patients
+       {{> Patient_ID go=true}}
+       </div>
     </section>
 
     {{#unless connected}}

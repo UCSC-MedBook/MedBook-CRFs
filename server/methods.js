@@ -13,6 +13,16 @@ Meteor.startup(
             delete insertDoc["crf"];
             var coll = CRFcollections[crf];
             var _id;
+			if (this.userId) {
+				insertDoc['userID'] = this.userId;	
+				insertDoc['createdAt'] = new Date;
+				insertDoc['updatedAt'] = new Date;
+				updateDoc['updatedAt'] = new Date;			
+			}
+			else {
+				console.log('user not logged in, nothing inserted or updated')
+				return
+			}
 
             if (crf in ComplexIDFields) {
                 _id = ""

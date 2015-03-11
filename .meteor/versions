@@ -1,6 +1,7 @@
 accounts-base@1.1.3
 accounts-password@1.0.6
 aldeed:autoform@4.2.2
+aldeed:autoform-bs-datepicker@1.1.1
 aldeed:autoform-select2@1.0.4
 aldeed:collection2@2.3.2
 aldeed:simple-schema@1.3.0
@@ -59,6 +60,7 @@ npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2
 pfafman:font-awesome-4@4.3.0
+rajit:bootstrap3-datepicker@1.4.1
 random@1.0.2
 reactive-dict@1.0.5
 reactive-var@1.0.4

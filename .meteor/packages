@@ -23,3 +23,6 @@ mizzao:bootstrap-3
 ucsc-medbook:reactive-table
 mrt:jquery-ui
 pfafman:font-awesome-4
+rajit:bootstrap3-datepicker
+aldeed:autoform-bs-datepicker
+momentjs:moment

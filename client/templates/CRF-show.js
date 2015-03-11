@@ -21,20 +21,14 @@ Template.CRFsShow.rendered = function() {
 
 };
 function simpleDate(obj) {
-       if (obj == null)
-           return obj;
+   if (obj == null)
+        return obj;
    try {
-        var m = (1+obj.getMonth()).toString();
-        if (m.length < 2)
-            m = "0" + m;
-        var d = obj.getDate().toString()
-        if (d.length < 2)
-            d = "0" + d;
-        return  obj.getFullYear().toString() +   "/" + m + "/" +  d
-     } catch (reason) {
-         console.log("simpleDate  mapping failed on column", obj, reason);
-         return "Error (see Javascript console)";
-     }
+        return moment(obj).utc().format("MM/DD/YYYY")
+   } catch (reason) {
+        console.log("simpleDate  mapping failed on column", obj, reason);
+        return "Error (see Javascript console)";
+   }
 }
 
 

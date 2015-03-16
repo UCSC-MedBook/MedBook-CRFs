@@ -36,7 +36,9 @@ var before = "<table class='table table-striped table-bordered table-condensed t
 var after = "</tbody></table>";
 
 function arrayDoc(array) {
-
+    if (typeof(array[0]) == "string")
+        return array.join("; ");
+   
     return array.map(function(element) {
         return before +  Object.keys(element).sort().map( function(key) { 
                 return "<tr><td>"+key+"</td><td>"+element[key]+ "<td></tr>";

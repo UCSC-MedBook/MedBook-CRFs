@@ -65,7 +65,7 @@
         <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
 -->
         {{#each personalPreferredTableOrder}}
-          <a href="#" onclick="Go()" data-crfname="{{this}}" class="list-1-CRF {{activeListClass}}" title="{{this}}">
+          <a href="#" onclick="Go()" data-crfname="{{this}}" class="notdraggable list-1-CRF {{activeListClass}}" title="{{this}}">
             {{#if userId}}
               <span class="icon-lock"></span>
             {{/if}}

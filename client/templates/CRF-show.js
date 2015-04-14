@@ -1,6 +1,38 @@
 var EDITING_KEY = 'editingList';
 Session.setDefault(EDITING_KEY, false);
 
+Template.renderAutoForm.rendered = function() {
+    /*
+    if (Session.get("currentForm") == "Histology_Research") {
+        $("input[name='Trichotomy']").prop("disabled", true);
+        $("input[name='Small_Cell']").prop("disabled", true);
+        $("input[name='Adeno']").prop("disabled", true);
+    }
+
+    if (Session.get("currentForm") == "Histology_Research") {
+            Tracker.autorun(function() {
+                 var doc = {};
+                 doc.Histology_Call =  AutoForm.getFieldValue("CRFquickForm", "Histology_Call");
+                 generate_histology_categories(doc);
+                 debugger;
+             });
+    }
+    */
+}
+Template.renderAutoForm.events( {
+     'click select[name="Histology_Call"]' : function(evt, tmpl) {
+         var doc = {};
+         doc.Histology_Call = $(evt.target).val();
+         generate_histology_categories(doc);
+         Object.keys(doc).map(function(key) {
+             var elem = tmpl.find('input[name="' + key + '"]')
+             if (elem)
+                 $(elem).val(doc[key])
+         });
+     }
+});
+
+
 Template.CRFsShow.rendered = function() {
 
 

@@ -71,13 +71,13 @@
     </nav>
 
     {{#if currentForm }}
-        {{>migrate collection=currentForm fields=fieldOrder doc=currentDoc filter=CRF_filter settings=reactiveTableSettings previousEntries=previousEntries}}
+        {{>renderAutoForm collection=currentForm fields=fieldOrder doc=currentDoc filter=CRF_filter settings=reactiveTableSettings previousEntries=previousEntries}}
     {{/if}}
 
   </div>
 </template>
 
-<template name="migrate">
+<template name="renderAutoForm">
       <div class="content-scrollable CRF-items" style="margin-left:20px">
           {{#if previousEntries}}
               Previous entries:

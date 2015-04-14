@@ -35,8 +35,10 @@ window.personalPreferredTableOrder = function () {
   var user = Meteor.user();
   if (user && user.profile) {
        var prefer = user.profile.preferredTableOrder;
-       if (prefer != null) 
-           return prefer;
+       if (prefer != null)  {
+           var remaining = _.difference(CRFs, prefer);
+           return prefer.concat(remaining);
+       }
   }
   return CRFs;
 }
@@ -66,8 +68,6 @@ collectionsInPreferredTableOrder =  function () {
         var myOrder = personalPreferredTableOrder();
         myOrder.map(prep);
 
-        var remaining = _.difference(Object.keys(CRFcollections), myOrder);
-        remaining.map(prep);
         
         console.log( "collectionsInPreferredTableOrder", output );
 

@@ -30,7 +30,6 @@ Meteor.startup(function () {
 
 Template.appBody.rendered = function() {
   $('.notdraggable').each(function(i,e) { 
-          debugger;
           e.ondragstart = function() { return false; };
   });
 

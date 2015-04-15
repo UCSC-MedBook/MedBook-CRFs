@@ -29,6 +29,9 @@ Template.renderAutoForm.events( {
              if (elem)
                  $(elem).val(doc[key])
          });
+     },
+    'click .reactive-table tr': function (event) {
+        Session.set("CurrentDoc", this);
      }
 });
 

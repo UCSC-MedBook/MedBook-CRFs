@@ -1,7 +1,6 @@
 
 Template.CRFsPatient.rendered = function() {
 
-
   this.find('.js-title-nav')._uihooks = {
     insertElement: function(node, next) {
       $(node)
@@ -16,6 +15,13 @@ Template.CRFsPatient.rendered = function() {
     }
   };
 };
+Template.CRFsPatient.events({
+      'click .reactive-table tr': function (event) {
+          debugger;
+              //var post = this;
+              // Session.set('post', post);
+       }
+});
 
 Template.registerHelper("Current_Patient_ID", 
    function () {

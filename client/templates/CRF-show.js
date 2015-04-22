@@ -1,7 +1,52 @@
 var EDITING_KEY = 'editingList';
 Session.setDefault(EDITING_KEY, false);
 
+All_Sample_ID = [];
+
 Template.renderAutoForm.rendered = function() {
+
+    var pef = CRFcollections.Patient_Enrollment_form.find({}, { fields: {Sample_ID:1, Patient_ID:1}}).fetch();
+    var dem = CRFcollections.Demographics.find({}, { fields: {Patient_ID:1}}).fetch();
+    var biops = CRFcollections.SU2C_Biopsy_V2.find({}, { fields: {Sample_ID:1}}).fetch();
+
+    function id_text(s) { return { id: s, text: s}};
+
+    var Patient_ID = _.union(
+        _.pluck(pef, 'Patient_ID'),
+        _.pluck(dem, 'Patient_ID')
+    ).filter(function(f) {return f != null}).sort().map(id_text);
+
+
+    var Sample_ID = _.union(
+        _.pluck(pef, 'Sample_ID'),
+        _.pluck(biops, 'Sample_ID')
+    ).filter(function(f) {return f != null}).sort().map(id_text);
+    All_Sample_ID = Sample_ID;
+
+    console.log("Sample_ID", Sample_ID);
+    
+    $("input[name='Sample_ID']").select2( {  data: Sample_ID, placeholder: "Select a  Sample ID", allowClear: false } );
+    $("input[name='Patient_ID']").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
+    console.log("Patient_ID", Patient_ID);
+
+    var lastCd = null;
+    Tracker.autorun(function() {
+        var cd  = Session.get("CurrentDoc");
+
+        if (cd && lastCd != cd) {
+            lastCd = cd;
+
+            var $Patient_ID = $("input[name='Patient_ID']");
+            if (cd.Patient_ID != null && $Patient_ID.length > 0 && $Patient_ID.val() != cd.Patient_ID)
+                $Patient_ID.select2("val", cd.Patient_ID);
+
+            var $Sample_ID = $("input[name='Sample_ID']");
+            if (cd.Sample_ID != null && $Sample_ID.length > 0 && $Sample_ID.val() != cd.Sample_ID)
+                $Sample_ID.select2("val", cd.Sample_ID);
+        }
+    });
+
+
     /*
     if (Session.get("currentForm") == "Histology_Research") {
         $("input[name='Trichotomy']").prop("disabled", true);
@@ -14,7 +59,6 @@ Template.renderAutoForm.rendered = function() {
                  var doc = {};
                  doc.Histology_Call =  AutoForm.getFieldValue("CRFquickForm", "Histology_Call");
                  generate_histology_categories(doc);
-                 debugger;
              });
     }
     */
@@ -278,18 +322,34 @@ var toggleListPrivacy = function(list) {
   }
 };
 
+function Patient_ID_Update_Sample_ID(event) {
+  var patient_id = $(event.target).val();
+  SetCurrentDoc('Patient_ID', patient_id);
+  var Sample_ID = All_Sample_ID.filter(
+      function(f) { 
+          try {
+              return f.text.match(patient_id + ".*")
+          } catch (s) {
+              debugger
+          }
+      });
+  debugger
+  $("input[name='Sample_ID']").select2( { data: Sample_ID });
+}
+
+
 Template.CRFsShow.events({
 
-  'change select[name="Patient_ID"]': function (event) {
-    Session.set("CurrentDoc", currentDoc());
-  },
+  'change select[name="Patient_ID"]': Patient_ID_Update_Sample_ID,
 
-  'change select[name="Sample_ID"]': function (event) {
-    Session.set("CurrentDoc", currentDoc());
+  'change input[name="Patient_ID"]':  Patient_ID_Update_Sample_ID,
+
+  'change input[name="Sample_ID"]': function (event) {
+      SetCurrentDoc('Sample_ID', $('input[name="Sample_ID"]').val());
   },
 
   'change select[name="core"]': function (event) {
-    Session.set("CurrentDoc", currentDoc());
+    // Session.set("CurrentDoc", currentDoc());
   },
 
   'click .js-cancel': function() {
@@ -379,10 +439,22 @@ function coreProperty(index, property) {
     }
 }
 
+function SetCurrentDoc(field, value) {
+    var crf = Session.get("currentForm");
+    var coll = window[crf];
+    var q = {};
+    q[field] = value;
+    var cd = coll.findOne(q);
+    Session.set("CurrentDoc", cd);
+    return cd;
+}
 
 
+
+/*
 
 function currentDoc() {
+
     var crf = Session.get("currentForm");
     var coll = window[crf];
     var q = {};
@@ -403,4 +475,5 @@ function currentDoc() {
     return cd;
 }
 window.currentDoc = currentDoc
+*/
 

@@ -23,11 +23,11 @@ Template.renderAutoForm.rendered = function() {
     ).filter(function(f) {return f != null}).sort().map(id_text);
     All_Sample_ID = Sample_ID;
 
-    console.log("Sample_ID", Sample_ID);
     
     $("input[name='Sample_ID']").select2( {  data: Sample_ID, placeholder: "Select a  Sample ID", allowClear: false } );
     $("input[name='Patient_ID']").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
-    console.log("Patient_ID", Patient_ID);
+    $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
+
 
     var lastCd = null;
     Tracker.autorun(function() {
@@ -43,6 +43,8 @@ Template.renderAutoForm.rendered = function() {
             var $Sample_ID = $("input[name='Sample_ID']");
             if (cd.Sample_ID != null && $Sample_ID.length > 0 && $Sample_ID.val() != cd.Sample_ID)
                 $Sample_ID.select2("val", cd.Sample_ID);
+
+            $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
         }
     });
 
@@ -143,8 +145,6 @@ reactiveTableSettings = function () {
     var fields = CRFfieldOrder[collName];
     fields = fields.map( 
         function(fieldName, i) {
-            console.log(collName);
-
             try {
                 var schemaField = schema[fieldName];
                 var isDecimal = schemaField.decimal;
@@ -231,7 +231,6 @@ Template.CRFsShow.helpers({
 
   fieldOrder: function () {
     var fo = CRFfieldOrder[this._id];
-    // console.log("fieldOrder", fo);
 
 
     if (fo && fo.length > 0)
@@ -240,7 +239,6 @@ Template.CRFsShow.helpers({
   },
 
   currentForm: function () {
-    // console.log("currentForm", this._id);
     Session.set("currentForm", this._id);
     return this._id;
   },
@@ -257,7 +255,6 @@ Template.CRFsShow.helpers({
     data.collection = window[this._id];
     data.id = this._id;
     data.type = "insert";
-    // console.log(data)
     alert(data)
     return data;
   },
@@ -333,7 +330,6 @@ function Patient_ID_Update_Sample_ID(event) {
               debugger
           }
       });
-  debugger
   $("input[name='Sample_ID']").select2( { data: Sample_ID });
 }
 

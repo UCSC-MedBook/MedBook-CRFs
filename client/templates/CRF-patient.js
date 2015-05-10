@@ -17,7 +17,6 @@ Template.CRFsPatient.rendered = function() {
 };
 Template.CRFsPatient.events({
       'click .reactive-table tr': function (event) {
-          debugger;
               //var post = this;
               // Session.set('post', post);
        }

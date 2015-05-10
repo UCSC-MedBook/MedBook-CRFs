@@ -1,5 +1,5 @@
 var EDITING_KEY = 'editingList';
-Session.setDefault(EDITING_KEY, false);
+
 
 Template.renderAutoForm.rendered = function() {
     /*
@@ -14,7 +14,6 @@ Template.renderAutoForm.rendered = function() {
                  var doc = {};
                  doc.Histology_Call =  AutoForm.getFieldValue("CRFquickForm", "Histology_Call");
                  generate_histology_categories(doc);
-                 debugger;
              });
     }
     */

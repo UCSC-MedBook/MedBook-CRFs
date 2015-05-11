@@ -25,7 +25,7 @@ Template.renderAutoForm.rendered = function() {
 
     
     $("input[name='Sample_ID']").select2( {  data: Sample_ID, placeholder: "Select a  Sample ID", allowClear: false } );
-    $("input[name='Patient_ID']").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
+    $(".Patient_ID_Type").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
     $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
 
 

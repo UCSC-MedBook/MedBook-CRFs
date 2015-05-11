@@ -74,7 +74,7 @@ standard-app-packages@1.0.5
 templating@1.1.1
 tracker@1.0.7
 ucsc-medbook:reactive-table@0.6.15
-ucscmedbook:api@0.2.0
+ucscmedbook:api@0.2.1
 ui@1.0.6
 underscore@1.0.3
 url@1.0.4

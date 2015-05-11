@@ -33,6 +33,9 @@ Template.renderAutoForm.rendered = function() {
     Tracker.autorun(function() {
         var cd  = Session.get("CurrentDoc");
 
+        if (cd) 
+           GeneList_docToForm(cd);
+
         if (cd && lastCd != cd) {
             lastCd = cd;
 
@@ -78,7 +81,17 @@ Template.renderAutoForm.events( {
      },
     'click .reactive-table tr': function (event) {
         Session.set("CurrentDoc", this);
-     }
+     },
+
+   'change .genelist' : function(evt, tmpl) {
+        var name = this.name;
+        var $genelist = $(tmpl.find("input[prop='" + name + "']"));
+        var value = $genelist.select2("val");
+        var cd = Session.get("CurrentDoc");
+        cd[name] = value;
+        Session.set("CurrentDoc", cd);
+     },
+
 });
 
 

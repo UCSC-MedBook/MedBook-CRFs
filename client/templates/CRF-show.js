@@ -4,10 +4,9 @@ var EDITING_KEY = 'editingList';
 All_Sample_ID = [];
 
 Template.renderAutoForm.rendered = function() {
-
     var pef = CRFcollections.Patient_Enrollment_form.find({}, { fields: {Sample_ID:1, Patient_ID:1}}).fetch();
     var dem = CRFcollections.Demographics.find({}, { fields: {Patient_ID:1}}).fetch();
-    var biops = CRFcollections.SU2C_Biopsy_V2.find({}, { fields: {Sample_ID:1}}).fetch();
+    var biops = CRFcollections.SU2C_Biopsy_V3.find({}, { fields: {Sample_ID:1}}).fetch();
 
     function id_text(s) { return { id: s, text: s}};
 
@@ -25,7 +24,8 @@ Template.renderAutoForm.rendered = function() {
 
     
     $("input[name='Sample_ID']").select2( {  data: Sample_ID, placeholder: "Select a  Sample ID", allowClear: false } );
-    $(".Patient_ID_Type").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
+    $("input[name='Patient_ID']").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
+    $("input[name='Patient_ID']").val(Patient_ID)
     $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
 
 
@@ -69,7 +69,7 @@ Template.renderAutoForm.rendered = function() {
     */
 }
 Template.renderAutoForm.events( {
-     'click select[name="Histology_Call"]' : function(evt, tmpl) {
+     'change select[name="Histology_Call"]' : function(evt, tmpl) {
          var doc = {};
          doc.Histology_Call = $(evt.target).val();
          generate_histology_categories(doc);

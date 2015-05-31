@@ -1,0 +1,21 @@
+{
+  "isopack-1": {
+    "name": "medbook:testing-accounts",
+    "summary": "Adds Medbook test users.",
+    "version": "1.0.4",
+    "isTest": false,
+    "builds": [
+      {
+        "kind": "main",
+        "arch": "os",
+        "path": "os.json"
+      },
+      {
+        "kind": "main",
+        "arch": "web.browser",
+        "path": "web.browser.json"
+      }
+    ],
+    "plugins": []
+  }
+}

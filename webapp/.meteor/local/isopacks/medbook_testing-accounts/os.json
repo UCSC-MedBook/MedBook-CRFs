@@ -1,0 +1,27 @@
+{
+  "format": "unipackage-unibuild-pre1",
+  "packageVariables": [],
+  "uses": [
+    {
+      "package": "meteor"
+    },
+    {
+      "package": "accounts-base",
+      "constraint": "1.1.3"
+    },
+    {
+      "package": "accounts-password",
+      "constraint": "1.0.5"
+    }
+  ],
+  "resources": [
+    {
+      "type": "prelink",
+      "file": "os/packages/medbook_testing-accounts.js",
+      "length": 49090,
+      "offset": 0,
+      "servePath": "/packages/medbook_testing-accounts.js",
+      "sourceMap": "os/packages/medbook_testing-accounts.js.map"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "builtBy": "meteor/16",
+  "unibuildDependencies": {
+    "os.json": {
+      "files": {
+        "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/package.js": "da6475ff3b03c844617b03e1f016d1486251aff8",
+        "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/lib/filter.js": "8674974464d25978a039f6ee09306dc250cb01e3",
+        "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/lib/server.js": "7ed8384e8ce4004a9fbc02c9c97936bc01a1ce6a"
+      },
+      "directories": []
+    },
+    "web.browser.json": {
+      "files": {
+        "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/package.js": "da6475ff3b03c844617b03e1f016d1486251aff8",
+        "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/lib/reactive_table.html": "8e0cd822ddb4bd1da41b3a84df023932a4396133",
+        "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/lib/reactive_table_i18n.js": "c4b5b32960476eeef457b0d0a4778b461997f878",
+        "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/lib/reactive_table.js": "dadb245b769bae5bed6e5f7d7325cf73f77c71e1",
+        "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/lib/reactive_table.css": "753795b3b9252808e53a9000a7587cf32c0e5f7d",
+        "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/lib/filter.js": "8674974464d25978a039f6ee09306dc250cb01e3"
+      },
+      "directories": []
+    }
+  },
+  "pluginDependencies": {
+    "files": {
+      "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table/package.js": "da6475ff3b03c844617b03e1f016d1486251aff8"
+    },
+    "directories": []
+  },
+  "pluginProviderPackageMap": {
+    "ucsc-medbook:reactive-table": {
+      "kind": "local",
+      "sourceRoot": "/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/webapp/packages/reactive-table"
+    },
+    "meteor": {
+      "kind": "versioned",
+      "version": "1.1.6"
+    },
+    "mongo": {
+      "kind": "versioned",
+      "version": "1.1.0"
+    },
+    "templating": {
+      "kind": "versioned",
+      "version": "1.1.1"
+    },
+    "jquery": {
+      "kind": "versioned",
+      "version": "1.11.3_2"
+    },
+    "underscore": {
+      "kind": "versioned",
+      "version": "1.0.3"
+    },
+    "reactive-var": {
+      "kind": "versioned",
+      "version": "1.0.5"
+    },
+    "anti:i18n": {
+      "kind": "versioned",
+      "version": "0.4.3"
+    }
+  },
+  "includeCordovaUnibuild": false
+}

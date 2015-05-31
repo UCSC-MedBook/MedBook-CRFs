@@ -1,0 +1,21 @@
+{
+  "isopack-1": {
+    "name": "ucsc-medbook:reactive-table",
+    "summary": "A reactive table designed for Meteor",
+    "version": "0.6.15",
+    "isTest": false,
+    "builds": [
+      {
+        "kind": "main",
+        "arch": "os",
+        "path": "os.json"
+      },
+      {
+        "kind": "main",
+        "arch": "web.browser",
+        "path": "web.browser.json"
+      }
+    ],
+    "plugins": []
+  }
+}

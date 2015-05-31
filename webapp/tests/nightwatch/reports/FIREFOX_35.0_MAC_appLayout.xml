@@ -5,9 +5,9 @@
 
   <testsuite name="appLayout"
     errors="0" failures="0" hostname="" id="" package="appLayout" skipped="0"
-    tests="1" time="6.654" timestamp="Sun, 31 May 2015 02:29:31 GMT">
+    tests="1" time="5.584" timestamp="Sun, 31 May 2015 03:41:17 GMT">
   
-    <testcase name="Layout &amp; Static Pages" time="6.654" assertions="4">
+    <testcase name="Layout &amp; Static Pages" time="5.584" assertions="4">
 
     
 

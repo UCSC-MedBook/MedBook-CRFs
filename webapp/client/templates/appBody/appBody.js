@@ -29,7 +29,7 @@ Meteor.startup(function () {
 });
 
 Template.appBody.rendered = function() {
-  $('.notdraggable').each(function(i,e) { 
+  $('.notdraggable').each(function(i,e) {
           e.ondragstart = function() { return false; };
   });
 
@@ -64,7 +64,7 @@ Template.appBody.rendered = function() {
         }
   });
 
-  this.find('#content-container')._uihooks = {
+  /*this.find('#content-container')._uihooks = {
     insertElement: function(node, next) {
       $(node)
         .hide()
@@ -76,7 +76,7 @@ Template.appBody.rendered = function() {
         this.remove();
       });
     }
-  };
+  };*/
 };
 function stop() {
     console.log("STOP");
@@ -110,9 +110,6 @@ Template.appBody.helpers({
     if (email == null) return "";
     return email.substring(0, email.indexOf('@'));
   },
-  userMenuOpen: function() {
-    return Session.get(USER_MENU_KEY);
-  },
   lists: function() {
     var md =  CRFmetadataCollection.find({}, {sort: {n: 1}});
     return md;
@@ -134,15 +131,17 @@ Template.appBody.helpers({
   }
 });
 
+
+
 Template.appBody.events({
   'click .js-menu': function() {
     Session.set(MENU_KEY, ! Session.get(MENU_KEY));
   },
 
-  'click .list-1-CRF' : function(event) {
+  /*'click .list-1-CRF' : function(event) {
       event.preventDefault();
       Router.go("CRFsShow", {_id: $(event.target).data("crfname") });
-   },
+   },*/
 
   'click .content-overlay': function(event) {
     Session.set(MENU_KEY, false);
@@ -159,9 +158,9 @@ Template.appBody.events({
     Session.set(MENU_KEY, false);
   },
 
-  'click .js-logout': function() {
+  'click #logoutButton': function() {
     Meteor.logout();
-    
+
     // if we are on a private list, we'll need to go to a public one
     var current = Router.current();
     if (current.route.name === 'CRFsShow' && current.data().userId) {
@@ -175,4 +174,10 @@ Template.appBody.events({
 
     Router.go('CRFsShow', list);
   }
+});
+
+
+
+Template.registerHelper("userMenuOpen", function(argument){
+  return Session.get(USER_MENU_KEY);
 });

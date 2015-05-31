@@ -1,15 +1,4 @@
-Router.onBeforeAction(function () {
-  // all properties available in the route function
-  // are also available here such as this.params
 
-  var user = Meteor.user();
-  if (user && user.profile && user.profile.collaborations && user.profile.collaborations.indexOf("WCDT")) {
-      this.next();
-      return;
-  }
-  this.render('signin');
-
-});
 
 Router.configure({
   // we use the  appBody template to define the layout for the entire app
@@ -30,10 +19,45 @@ Router.configure({
     ];
   }
 });
+Router.onBeforeAction(function () {
+  // all properties available in the route function
+  // are also available here such as this.params
+
+  if(!Meteor.user()){
+    this.render('signin');
+  }else{
+    this.next();
+  }
+
+  /*var user = Meteor.user();
+  if (user && user.profile && user.profile.collaborations && user.profile.collaborations.indexOf("WCDT")) {
+      this.next();
+      return;
+  }
+  this.render('signin');*/
+});
+
+
+Router.route('/',{
+  template: 'CRFsItem',
+  name: "homeRoute",
+  onAfterAction: function(){
+    console.log("homeRoute");
+  }
+});
+
 
 Router.map(function() {
   // this.route('join');
   this.route('signin');
+
+  /*this.route('CRFsItem', {
+    path: "/",
+    template: 'CRFsItem',
+    onAfterAction: function(){
+      console.log("homeRoute");
+      }
+    });*/
 
   this.route('CRFsPatient', {
     path: '/CRF/patient/:_patient',
@@ -59,7 +83,7 @@ Router.map(function() {
       return manyCursors;
     }
   });
-  
+
 
   this.route('CRFsShow', {
     path: '/CRF/lists/:_id',
@@ -73,10 +97,13 @@ Router.map(function() {
       this.next();
     },
     data: function() {
-      return CRFmetadataCollection.findOne(this.params._id);
+      console.log("this.params._id", this.params._id);
+      var crfMetadata = CRFmetadataCollection.findOne(this.params._id);
+      console.log("crfMetadata", crfMetadata);
+      return crfMetadata;
     }
   });
-  
+
   this.route('home', {
     template: "dashboard",
     path: '/CRF/',

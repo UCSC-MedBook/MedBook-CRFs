@@ -1,5 +1,6 @@
 Meteor.startup(function() {
 
+
 CRFmetadataCollection = new Meteor.Collection('CRFmetadataCollection');
 
 // Calculate a default name for a list in the form of 'List A'
@@ -30,8 +31,8 @@ CoreAllowedValues = [
 
 CRFcollections = {}
 CRFfieldOrder = {
-'Blood_Labs_V2': 
-   [ 
+'Blood_Labs_V2':
+   [
      'Patient_ID',
      'Sample_ID',
      'Segment',
@@ -59,7 +60,7 @@ CRFfieldOrder = {
      'Day',
      'Phase',
    ],
-  'Demographics': 
+  'Demographics':
    [ 'Patient_ID',
      'Age',
      'Study_Site',
@@ -82,7 +83,7 @@ CRFfieldOrder = {
      'Consent_Date',
      'Arms',
    ],
-  'ECOG_Weight_V3': 
+  'ECOG_Weight_V3':
    [ 'Patient_ID',
      'Sample_ID',
      'Day',
@@ -93,14 +94,14 @@ CRFfieldOrder = {
      'Weight',
      'Arm',
    ],
-  'Followup': 
+  'Followup':
    [ 'Patient_ID',
      'Followup_Center',
      'Last_Known_Survival_Status',
      'Last_Date_Known_Alive',
      'Last_Followup_Date',
      'Expired_Date',
-  
+
      'Date_of_Progression',
      'Followup_Start_Date',
 
@@ -118,8 +119,8 @@ CRFfieldOrder = {
 	 'QA_Date',
 
    ],
-  'GU_Disease_Assessment_V3': 
-   [ 
+  'GU_Disease_Assessment_V3':
+   [
    'Patient_ID',
    'Sample_ID',
 
@@ -135,7 +136,7 @@ CRFfieldOrder = {
      'Comments',
      'Arm',
    ],
-  'Prostate_Diagnosis_V4': 
+  'Prostate_Diagnosis_V4':
    [ 'Patient_ID',
     'Date_of_CRPC_as_Defined_by_Treating_Physician',
     'Date_of_CRPC_as_Defined_by_Treating_Physician_Ext',
@@ -154,7 +155,7 @@ CRFfieldOrder = {
      'Day',
      'Date_of_diagnosis',
    ],
-  'SU2C_Biopsy_AE_V1': 
+  'SU2C_Biopsy_AE_V1':
    [ 'Patient_ID',
      'Sample_ID',
      'Arm',
@@ -169,14 +170,14 @@ CRFfieldOrder = {
      'Onset_Date',
      'Onset_Date_Ext',
      'Outcome',
-     'Resolved_Date_(Log_Column)',
-     'Resolved_Date_(Log_Column)_Ext',
+     //'Resolved_Date_(Log_Column)',
+     //'Resolved_Date_(Log_Column)_Ext',
      'Serious',
      'Unexpected?',
      'Toxicity_Category',
      'Toxicity_Code',
    ],
-  'SU2C_Biopsy_V3': 
+  'SU2C_Biopsy_V3':
    [ 'Patient_ID',
       'Sample_ID',
      'Site',
@@ -190,7 +191,7 @@ CRFfieldOrder = {
      'Segment',
       'Arm',
    ],
-  'SU2C_Pr_Ca_Tx_Sumry_V2': 
+  'SU2C_Pr_Ca_Tx_Sumry_V2':
    [ 'Patient_ID',
      'Sample_ID',
      'Day',
@@ -207,7 +208,7 @@ CRFfieldOrder = {
      'Surgery_Date',
      'Arm',
    ],
-  'SU2C_Prior_TX_V3': 
+  'SU2C_Prior_TX_V3':
    [ 'Patient_ID',
        'Sample_ID',
      'Drug_Name',
@@ -235,9 +236,9 @@ CRFfieldOrder = {
      'Segment',
       'Arm',
       'Day',
-  
+
    ],
-  'SU2C_Specimen_V1': 
+  'SU2C_Specimen_V1':
    [ 'Patient_ID',
        'Sample_ID',
             'Arm',
@@ -248,7 +249,7 @@ CRFfieldOrder = {
      'Were_study_blood_samples_collected_at_this_visit?',
      'Notes',
    ],
-   'SU2C_Subsequent_Treatment_V1': 
+   'SU2C_Subsequent_Treatment_V1':
     [ 'Patient_ID',
       'Sample_ID',
       'BL_PSA',
@@ -283,7 +284,7 @@ CRFfieldOrder = {
       'Segment',
       'Arm',
     ],
-  'SU2C_Subsequent_TX_V2': 
+  'SU2C_Subsequent_TX_V2':
    [ 'Patient_ID',
      'Sample_ID',
      'Drug_Name',
@@ -313,13 +314,13 @@ CRFfieldOrder = {
 CRFs = [
     'Clinical_Info',
     "SU2C_Biopsy_V3",
-    "Followup", 
-    'SU2C_Subsequent_Treatment_V1', 
+    "Followup",
+    'SU2C_Subsequent_Treatment_V1',
     "SU2C_Prior_TX_V3",
     "Prostate_Diagnosis_V4",
-    "Blood_Labs_V2", 
+    "Blood_Labs_V2",
     "Demographics",
-    "ECOG_Weight_V3", 
+    "ECOG_Weight_V3",
 
 
     "GU_Disease_Assessment_V3",
@@ -343,17 +344,17 @@ CRFs = [
 ];
 CRFsInfo = [
     "Demographics",
-    "Followup", 
+    "Followup",
     "Prostate_Diagnosis_V4",
-    "Blood_Labs_V2", 
-    "ECOG_Weight_V3", 
+    "Blood_Labs_V2",
+    "ECOG_Weight_V3",
     "GU_Disease_Assessment_V3",
     "SU2C_Biopsy_AE_V1",
     "SU2C_Biopsy_V3",
     "SU2C_Pr_Ca_Tx_Sumry_V2",
     "SU2C_Prior_TX_V3",
     "SU2C_Specimen_V1",
-    'SU2C_Subsequent_Treatment_V1', 
+    'SU2C_Subsequent_Treatment_V1',
 
     "Patient_Enrollment_form",
     // Obsolete: 'Treatment_History',
@@ -368,30 +369,30 @@ CRFsInfo = [
 ];
 
 Patient_ID_Type_Meta = {
-    "allowedValues": [], 
+    "allowedValues": [],
     "label": "Patient ID",
     type: String
 };
 
 Patient_ID_Type = {
-    "label": "Patient ID",
-    type: String,
+  "label": "Patient ID",
+  type: String,
 	autoform: {
-	    afFieldInput: {
-	      class: "Patient_ID_Type"
-	    }
+    afFieldInput: {
+      class: "Patient_ID_Type"
+    }
 	}
 };
 
 Sample_ID_Type = {
 	"label": "Sample ID",
-    type: String,
+  type: String,
 	autoform: {
-	    afFieldInput: {
-	      class: "Sample_ID_Type"
-	    }
+	   afFieldInput: {
+	     class: "Sample_ID_Type"
+	   }
 	}
-	
+
 };
 
 core_type = {
@@ -438,7 +439,7 @@ CRFfieldOrder['Patient_Enrollment_form']=[
     "Progression_Biopsy_Date",
     "Progression_Biopsy_Site"
 */
-	
+
 ];
 
 
@@ -466,15 +467,15 @@ CRFfieldOrder['Blood_Specimen_form']=[
 
 CRFfieldOrder['Pathology_form']=[
     "Sample_ID",
-	"Tumor_Content",
+  	"Tumor_Content",
     "Preliminary_Histology",
-	"Final_Histology",
+	  "Final_Histology",
     "AR-FISH_IHC",
-	"PSA_IHC",
+	  "PSA_IHC",
     "CHGA_IHC",
     "AR-FISH_test_performed",
     "AR_chromosomeX_ratio",
-	"AR_amplification",
+	  //"AR_amplification",
     "ION_Torrent_test_performed",
     "PTEN_IHC",
     "PTEN_test_performed",
@@ -655,7 +656,7 @@ CRFprototypes = {
      'Off_Treatment_Reason_Explain': { optional: true, type: 'String' },
      'Last_Followup_Date': { optional: true, type: 'Date', autoform: autoformDate  },
   },
-  'GU_Disease_Assessment_V3': { 
+  'GU_Disease_Assessment_V3': {
      "Patient_ID": Patient_ID_Type,
      "Sample_ID": Sample_ID_Type,
     'Best_Response': { optional: true, type: 'String' },
@@ -670,7 +671,7 @@ CRFprototypes = {
      Arm: { optional: true, type: 'String' },
      'Compared_with_previous_scan': { optional: true, type: 'String' },
      Comments: { optional: true, type: 'String' } },
-  'Prostate_Diagnosis_V4': { 
+  'Prostate_Diagnosis_V4': {
      "Patient_ID": Patient_ID_Type,
 	  'Date_of_CRPC_as_Defined_by_Treating_Physician': { optional: true, type: 'Date', autoform: autoformDate  },
 	  'Date_of_CRPC_as_Defined_by_Treating_Physician_Ext' : { optional: true, type: 'String' },
@@ -689,7 +690,7 @@ CRFprototypes = {
 	 'Visit_Date': { optional: true, type: 'Date', autoform: autoformDate  },
      'Date_of_diagnosis': { optional: true, type: 'Date', autoform: autoformDate  },
   },
-  'SU2C_Biopsy_AE_V1': { 
+  'SU2C_Biopsy_AE_V1': {
      "Patient_ID": Patient_ID_Type,
      "Sample_ID": Sample_ID_Type,
     'Best_Response': { optional: true, type: 'String' },
@@ -770,8 +771,8 @@ CRFprototypes = {
      'Treatment_Details': { optional: true, type: 'String' },
      'If_other__specify': { optional: true, type: 'String' },
      Arm: { optional: true, type: 'String' } },
-  'SU2C_Specimen_V1': 
-   { 
+  'SU2C_Specimen_V1':
+   {
      "Patient_ID": Patient_ID_Type,
      "Sample_ID": Sample_ID_Type,
      'Best_Response': { optional: true, type: 'String' },
@@ -782,8 +783,8 @@ CRFprototypes = {
      'Visit_Date': { optional: true, type: 'Date', autoform: autoformDate  },
      'Were_study_blood_samples_collected_at_this_visit?': { optional: true, type: 'String' },
      Notes: { optional: true, type: 'String' } },
-	'SU2C_Subsequent_Treatment_V1': 
-	    { 
+	'SU2C_Subsequent_Treatment_V1':
+	    {
 	      "Patient_ID": Patient_ID_Type,
 	      "Sample_ID": Sample_ID_Type,
 	       Arm: { optional: true, type: 'String' },
@@ -816,10 +817,10 @@ CRFprototypes = {
 	      'Visit_Date': { optional: true, type: 'Date', autoform: autoformDate  },
 	      'Treatment_Details': { optional: true, type: 'String' },
 	      'Reason_for_Stopping_Treatment_Details': { optional: true, type: 'String' },
-	 	   'If_other__specify': { optional: true, type: 'String' } 
+	 	   'If_other__specify': { optional: true, type: 'String' }
 	    },
-  'SU2C_Subsequent_TX_V2': 
-   { 
+  'SU2C_Subsequent_TX_V2':
+   {
      "Patient_ID": Patient_ID_Type,
      "Sample_ID": Sample_ID_Type,
       Arm: { optional: true, type: 'String' },
@@ -842,7 +843,7 @@ CRFprototypes = {
      'Visit_Date': { optional: true, type: 'Date', autoform: autoformDate  },
      'Treatment_Details': { optional: true, type: 'String' },
      'Reason_for_Stopping_Treatment_Details': { optional: true, type: 'String' },
-	   'If_other__specify': { optional: true, type: 'String' } 
+	   'If_other__specify': { optional: true, type: 'String' }
    }
 }
 
@@ -910,7 +911,7 @@ function fixRow(obj) {
 mapIfPossible = function(obj, field, thisMap) {
     if (field in obj) {
         var value = obj[field];
-        if (value in thisMap) 
+        if (value in thisMap)
             obj[field] = thisMap[value];
     }
 }
@@ -961,7 +962,7 @@ function mapPatient(patient) {
                 pro = d;
                 continue;
             }
-            
+
             if (pro2 == null && d > pro ) {
                 pro2 = d;
                 continue;
@@ -1011,6 +1012,7 @@ function mapPatient(patient) {
                         if (d >= pro2)
                             Sample_ID += "2";
                     }
+
                     row.Patient_ID = Patient_ID;
                     row.Sample_ID = Sample_ID;
 
@@ -1033,7 +1035,7 @@ function mapPatient(patient) {
                     fixDate(row);
 
 
-                    if (t == "Followup") 
+                    if (t == "Followup")
                         mapIfPossible(obj, "Followup_Center", SU2C_Center_map);
                     else if (t == "Demographics")
                         mapIfPossible(obj, "Study_Site", SU2C_Center_map);
@@ -1050,7 +1052,7 @@ function mapPatient(patient) {
                         console.log("insert exception", t, obj);
                         throw ex
                     }
-                } 
+                }
                 // else console.log(Patient_ID, "is missing", t);
         }
     };
@@ -1061,15 +1063,13 @@ if (Meteor.isClient)
 
 map_SU2C_Subsequent_Treatment_V1__Responder = function(SU2C_Subsequent_Treatment_V1) {
     var bone_response = SU2C_Subsequent_Treatment_V1.Bone_Response;
-	var Reason_for_Stopping_Treatment = SU2C_Subsequent_Treatment_V1.Reason_for_Stopping_Treatment;
-	var Progression_Date = SU2C_Subsequent_Treatment_V1.Progression_Date;
 
     TooSoonToAnalyze = false;
 
-    if ( SU2C_Subsequent_Treatment_V1.Progression_Date == null)
+    if ( ["Complete Response", "Partial Response", "Stable Disease" ].indexOf(bone_response) >= 0)
         SU2C_Subsequent_Treatment_V1.Responder = "Responder";
 
-    else if (["Progressive Disease", "Patient Choice", "Less than Partial Response"].indexOf(Reason_for_Stopping_Treatment) >= 0)
+    else if (["Progressive Disease", "Less than Partial Response"].indexOf(bone_response) >= 0)
         SU2C_Subsequent_Treatment_V1.Responder = "Non Responder";
     else
         TooSoonToAnalyze = true;
@@ -1093,10 +1093,8 @@ map_SU2C_Subsequent_Treatment_V1__Responder = function(SU2C_Subsequent_Treatment
                     SU2C_Subsequent_Treatment_V1.ResponderEnzalutamide = SU2C_Subsequent_Treatment_V1.Responder;
                 else if (d == "Abiraterone")
                     SU2C_Subsequent_Treatment_V1.ResponderAbiraterone  = SU2C_Subsequent_Treatment_V1.Responder;
-                else {
+                else
                     SU2C_Subsequent_Treatment_V1.ResponderOtherTherapy = SU2C_Subsequent_Treatment_V1.Responder;
-					console.log('other drug',d)
-                }
             });
         else
                 SU2C_Subsequent_Treatment_V1.ResponderOtherTherapy = SU2C_Subsequent_Treatment_V1.Responder;
@@ -1181,7 +1179,7 @@ ingestOncore = function () {
 	ingestClinical();
 }
 
-ingestClinical = function () {	
+ingestClinical = function () {
 	var samples = {}
 	var SU2C_Biopsy_V3 = CRFcollections['SU2C_Biopsy_V3']
 	var SU2C_Prior_TX_V3 = CRFcollections['SU2C_Prior_TX_V3']
@@ -1191,10 +1189,10 @@ ingestClinical = function () {
 	var Demographics = CRFcollections['Demographics']
 	var Followup = CRFcollections['Followup']
 
-	// ingest Demographics 
+	// ingest Demographics
 
 	var sample_list = Demographics.find({})
-	sample_list.forEach(function(sample) {	
+	sample_list.forEach(function(sample) {
 		var sample_id = sample['Patient_ID']
 		//data = {'Sample_ID':sample_id}
 		if (!samples[sample_id]) {
@@ -1203,7 +1201,7 @@ ingestClinical = function () {
 		}
 		if (sample['Study_Site']) {
 			samples[sample_id]['site'] = sample['Study_Site']
-			
+
 		}
 		samples[sample_id]['Patient_ID'] = sample_id
 		if (sample['Age']) {
@@ -1216,22 +1214,22 @@ ingestClinical = function () {
 		}
 		try {
  			var ret = clinical_info.update(
-				{'Sample_ID':sample_id}, 
-				{$set:samples[sample_id]}, 
+				{'Sample_ID':sample_id},
+				{$set:samples[sample_id]},
 				{upsert:true}
 			)
 			if (ret != 1) console.log('clinical info returns', ret)
-		} 
+		}
     	catch (ex) {
        		console.log("update exception", sample_id, samples[sample_id]);
        	 throw ex
-    	}	
+    	}
 	})
 
-	// ingest Followup 
+	// ingest Followup
 
 	var sample_list = Followup.find({})
-	sample_list.forEach(function(sample) {	
+	sample_list.forEach(function(sample) {
 		var sample_id = sample['Patient_ID']
 		if (!samples[sample_id]) {
 			//console.log('no record for', sample_id)
@@ -1248,16 +1246,16 @@ ingestClinical = function () {
 				//console.log('ON type of date',samples[sample_id]["On_Study_Date"],samples[sample_id]["On_Study_Date"] instanceof Date, samples[sample_id]["On_Study_Date"].valueOf())
 				samples[sample_id]["Days_on_Study"] = (samples[sample_id]["Off_Study_Date"].valueOf() - samples[sample_id]["On_Study_Date"].valueOf()) / 86400000
 				//console.log(sample_id,'Days_on_Study',samples[sample_id]["Days_on_Study"] )
-				
+
 		}
-		
+
 	})
 
-	// ingest Biopsy 
+	// ingest Biopsy
 
 	var sample_list = SU2C_Biopsy_V3.find({})
 	console.log('count of samples', sample_list.length)
-	sample_list.forEach(function(sample) {	
+	sample_list.forEach(function(sample) {
 		var sample_id = sample['Sample_ID']
 		//data = {'Sample_ID':sample_id}
 		if (!samples[sample_id]) {
@@ -1269,29 +1267,28 @@ ingestClinical = function () {
 			samples[sample_id]['biopsy_site'] = sample['Site']
 			samples[sample_id]['Patient_ID'] = sample['Patient_ID']
 			map_biopsy_site(samples[sample_id]);
-			//console.log('upsert biopsy',sample_id, {$set:samples[sample_id]})
+			console.log('upsert biopsy',sample_id, {$set:samples[sample_id]})
 			try {
 	 			var ret = clinical_info.update(
-					{'Sample_ID':sample_id}, 
-					{$set:samples[sample_id]}, 
+					{'Sample_ID':sample_id},
+					{$set:samples[sample_id]},
 					{upsert:true}
 				)
 				if (ret != 1) console.log('clinical info returns', ret)
-			} 
+			}
         	catch (ex) {
            		console.log("update exception", sample_id, samples[sample_id]);
            	 throw ex
-        	}	
+        	}
 		}
 	})
 
-	// ingest Prior Treatment 
+	// ingest Prior Treatment
 
 	var treatment_list = SU2C_Prior_TX_V3.find({})
 	var prior = {}
 	treatment_list.forEach(function(treatment) {
 		var sample_id = treatment['Sample_ID']
-		var patient_id = treatment['Patient_ID']
 		var drug = treatment['Drug_Name']
 		/*if (treatment.Drug_Name && treatment.Drug_name != 'undefined') {
 			if (!samples[sample_id]['treatment_for_mcrpc_prior_to_biopsy']) {
@@ -1322,83 +1319,75 @@ ingestClinical = function () {
 			var abi = prior[sample_id]['Abiraterone']
 			var enza = prior[sample_id]['Enzalutamide']
 			if (abi === undefined) {
-				prior[sample_id]['Abiraterone'] = 'Naive'	
+				prior[sample_id]['Abiraterone'] = 'Naive'
 			}
 			if (enza === undefined) {
-				prior[sample_id]['Enzalutamide'] = 'Naive'	
+				prior[sample_id]['Enzalutamide'] = 'Naive'
 			}
 			var update_j = prior[sample_id]
 			if (samples[sample_id] && samples[sample_id] != undefined) {
 				try {
-					if (samples[sample_id]['Patient_ID'] == undefined) 
+					if (samples[sample_id]['Patient_ID'] == undefined)
 						samples[sample_id]['Patient_ID'] = sample_id
 					samples[sample_id]['Abiraterone'] = prior[sample_id]['Abiraterone']
 					samples[sample_id]['Enzalutamide'] = prior[sample_id]['Enzalutamide']
 					//console.log("update ",sample_id,{$set:samples[sample_id]})
 					//console.log('upsert',sample_id, {$set:samples[sample_id]})
 		 			var ret = clinical_info.update(
-						{'Sample_ID':sample_id}, 
-						{$set:samples[sample_id]}, 
+						{'Sample_ID':sample_id},
+						{$set:samples[sample_id]},
 						{upsert:true}
 
 						)
 						//console.log('clinical info prior returns', ret)
-				} 
+				}
 		        catch (ex) {
 		           		console.log("update exception", ex, update_j );
 		           	 throw ex
-		        }	
-					
+		        }
+
 			}
 		/*	try {
-				
+
 				console.log("update ",sample_id,{ $set: update_j } )
 	 			var ret = clinical_info.update(
-					{'Sample_ID':sample_id}, 
-					{ $set: update_j }, 
+					{'Sample_ID':sample_id},
+					{ $set: update_j },
 					{upsert:true}
 				)
 				console.log('clinical info prior returns', ret)
-			} 
+			}
         	catch (ex) {
            		console.log("update exception", ex, update_j );
            	 throw ex
-        	}*/	
+        	}*/
 		}
 		else
 		{
-			console.log('prior' , sample_id, 'Naive2')			
+			console.log('prior' , sample_id, 'Naive2')
 		}
-			
+
 	}
 
-	// ingest Subsequent Treatment 
+	// ingest Subsequent Treatment
 
-	
-	var treatment_list = SU2C_Subsequent_Treatment_V1.find({})
-	treatment_list.forEach(function(treatment) {
-		var patient_id = treatment['Patient_ID']
-		var sample_id = treatment['Sample_ID']
-		var timepoint = 'baseline'
-		if (sample_id.search(/pro/i) > 0) {
-			timepoint = 'progression'
-		}
-		var drug = treatment['Drug_Name']
-		var priorAbi = samples[patient_id]['Abiraterone']
-		console.log('Pat samp time drug', patient_id, sample_id , timepoint, drug);
-		var data = {'Abiraterone':priorAbi, 'Patient_ID': patient_id}
+
+/*	var sample_list = SU2C_Subsequent_TX_V2.find({})
+	sample_list.forEach(function(sample) {
+		var drug = sample['Drug_Name']
+		var data = {'sample_ID':sample['Sample_ID']}
 		if (drug == 'Abiraterone') {
-			data.abi_psa_response = treatment.PSA_Response
+			data.Abi_Best_Response = sample.Best_Response
 		}
-		console.log("subs TX", data,'input',sample_id)
-	
+		//console.log("subs TX", data,'input',sample)
+
 		clinical_info.update(
-			{'Sample_ID':sample_id}, 
-			{$set:data}, 
+			{'sample_ID':sample},
+			{$set:data},
 			{upsert:true}
 		)
 	})
-	
+*/
 }
 get_PSA_response = function(sample, date) {
 	var blood_lab = CRFcollections['Blood_Labs_V2']
@@ -1406,7 +1395,7 @@ get_PSA_response = function(sample, date) {
 	var minPSA = 0
 	var maxPSA = 999999999;
 	psa_list.forEach(function(psa) {
-		
+
 	})
 }
     console.log("Oncore is defined");
@@ -1434,7 +1423,7 @@ get_PSA_response = function(sample, date) {
 
         })
   }// isServer
- 
+
 
     /*
     Histological Assessment
@@ -1531,7 +1520,7 @@ get_PSA_response = function(sample, date) {
                     "positive for cancer (but not suitable for processing)",
                     "positive for processing"]
       }
-    
+
     });
 
     /*
@@ -1666,7 +1655,7 @@ get_PSA_response = function(sample, date) {
             type: String,
 		    optional: true
         },
-		
+
 	   "Baseline_Sample_ID": {
 		   type: String,
 		   label: "Baseline Sample ID"
@@ -1676,9 +1665,9 @@ get_PSA_response = function(sample, date) {
 		   optional: true,
 		   label: "Progression Sample ID"
 	    } ,
-	
-	*/	
-  
+
+	*/
+
     CRFprototypes['Tissue_Specimen_form'] = ({
       "Patient_ID": Patient_ID_Type,
        //"Core": core_type,
@@ -1783,7 +1772,7 @@ get_PSA_response = function(sample, date) {
 			optional: true
         }
 
-		
+
     } );
 
     CRFprototypes['Blood_Specimen_form'] = ({
@@ -2213,7 +2202,7 @@ CRFfieldOrder['Treatment_Response_form']=[
 Rahul's list
 Patient ID
 Site (Denographics)
-Prior tissue  
+Prior tissue
 When/where stored?  (oncore?)
 Final Path Call    (path form)
 Classification #1  (path form)
@@ -2268,24 +2257,24 @@ Reason for Stop
 Date of Death or Last Contact
 Death or Last Contact
 */
-/* Chuck Ryan 
+/* Chuck Ryan
 RNA_seq status
 On study drug
-BRCA1 
+BRCA1
 FANCON ATM1
 DNA repair gene
 */
     CRFfieldOrder["Clinical_Info"] =  [
         "Patient_ID",
-     	"Sample_ID",
+     	  "Sample_ID",
         "biopsy_site",
         "Enzalutamide",
-         "Abiraterone",
+        "Abiraterone",
         "site",
-		"age",
+		    "age",
         "Reason_for_Stopping_Treatment",
-		"AR_Amplification_by_FISH",
-		"Days_on_Study",
+		    "AR_Amplification_by_FISH",
+		    "Days_on_Study",
         "On_Study_Date",
         "Off_Study_Date",
         "abi_psa_response",
@@ -2307,34 +2296,32 @@ DNA repair gene
         "chga_at_biopsy",
         "nse_at_biopsy",
         "ecog_ps_at_biopsy",
-        "date_of_diagnosis",
+        //"date_of_diagnosis",
         "gleason_grade",
-        "adt_start_date",
+        //"adt_start_date",
         "orchiectomy",
         "psa_nadir_on_padt",
-        "date_of_castration_resistance",
-        "first_date_of_metastases",
+        //"date_of_castration_resistance",
+        //"first_date_of_metastases",
         "treatment_for_mcrpc_prior_to_biopsy",
         "post-biopsy_treatment",
         "psa_response",
         "radiographic_response",
-        "date_of_progression",
-        "treatment_stop_date",
-        "date_of_death_or_last_contact",
+        //"date_of_progression",
+        //"treatment_stop_date",
+        //"date_of_death_or_last_contact",
         "death_or_last_contact"
     ] ;
 CRFprototypes["Clinical_Info"] =  {
     "abi_psa_response": {
         "allowedValues": [
-			"No Decline",
-            "0%-30%",
-            "30%-50%",
-			"50%-90%",
-            ">90%",
+            "0-30%",
+            "30-50%",
+            ">50%",
             "N/A",
         ],
         "label": "Abi PSA response",
-        "type": String, 
+        "type": String,
 		"optional": true,
     },
     "abi_radiographic_response": {
@@ -2356,7 +2343,7 @@ CRFprototypes["Clinical_Info"] =  {
 		"optional": true,
         "type": String
     },
-	
+
     "abi_reason_for_d/c": {
         "allowedValues": [
             "Clinical PD",
@@ -2882,7 +2869,7 @@ CRFprototypes["Clinical_Info"] =  {
     },
     "when_where_stored": {
         "label": "When/where stored?",
-		"optional": true,		
+		"optional": true,
         type: Date,
     },
 } ;
@@ -2919,7 +2906,7 @@ CRFprototypes["Clinical_Info"] =  {
          for (key in a) {
              var value = a[key];
              var type = typeof(value);
-             
+
              if (value == null)
                  ;
              else if (type == "function") {
@@ -2928,7 +2915,7 @@ CRFprototypes["Clinical_Info"] =  {
                      console.log("key", key, " function is unamed");
                      value = "object";
                  }
-                 
+
              } else if (type == "object")
                  value = copyClean(value);
              else
@@ -2955,7 +2942,7 @@ CRFprototypes["Clinical_Info"] =  {
         aCRFcollection.attachSchema(aCRFschema);
 		console.log('#attach',x)
 	    Schemas[x] = aCRFschema;
-	
+
         if (Meteor.isServer) {
 
             CRFmetadataCollection.update({_id: x},

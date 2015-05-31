@@ -5,9 +5,9 @@
 
   <testsuite name="tablesWalkthrough"
     errors="0" failures="0" hostname="" id="" package="tablesWalkthrough" skipped="0"
-    tests="2" time="149.8" timestamp="Sun, 31 May 2015 02:29:38 GMT">
+    tests="2" time="147.3" timestamp="Sun, 31 May 2015 03:41:22 GMT">
   
-    <testcase name="Tables Walkthrough" time="76.07" assertions="446">
+    <testcase name="Tables Walkthrough" time="75.08" assertions="446">
 
     
 
@@ -902,7 +902,7 @@
     
     </testcase>
   
-    <testcase name="Forms Walkthrough" time="73.77" assertions="428">
+    <testcase name="Forms Walkthrough" time="72.25" assertions="428">
 
     
 

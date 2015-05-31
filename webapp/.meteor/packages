@@ -26,3 +26,5 @@ rajit:bootstrap3-datepicker
 aldeed:autoform-bs-datepicker
 momentjs:moment
 ucscmedbook:api@0.2.2
+
+medbook:testing-accounts

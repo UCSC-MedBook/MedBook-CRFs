@@ -1,0 +1,100 @@
+<template name="CRFsShow">
+  <div class="page lists-show">
+    <nav class="js-title-nav">
+      {{#if editing}}
+        <form class="js-edit-form list-edit-form">
+          <input type="text" name="name" value="{{name}}">
+          <div class="nav-group right">
+            <a href="#" class="js-cancel nav-item"><span class="icon-close js-cancel" title="Cancel"></span></a>
+          </div>
+        </form>
+      {{else}}
+        <div class="nav-group">
+          <a href="#" class="js-menu nav-item"><span class="icon-list-unordered" title="Show menu"></span></a>
+        </div>
+
+        <h1 class="js-edit-list title-page"><span class="title-wrapper">{{name}}</span>
+            <!--
+                 <span class="count-list">{{incompleteCount}}</span>
+            -->
+        </h1>
+          {{#if readOnly}}
+              
+             <div class="topMesg" style="background:white">This is a Read Only Table (information comes from OnCore or other system).</div>
+        {{else}}
+            {{#if phaseIs "none"}} <div class="topMesg" style="background:lightyellow">Please select a patient other than 000.</div>
+            {{else}}
+              {{#if phaseIs "inserting"}} <div class="topMesg" style="background:lightgreen">New patient record for this form. </div>
+              {{else}}
+                {{#if phaseIs "updating"}} <div class="topMesg" style="background:yellow">Caution: you are updating an existing patient record. </div>{{/if}}
+              {{/if}}
+            {{/if}}
+        {{/if}}
+      <!--
+
+        <div class="nav-group right">
+          <div class="nav-item options-mobile">
+
+
+
+            <select class="list-edit">
+              <option disabled selected>Select an action</option>
+              {{#if userId}}
+                <option value="public">Make Public</option>
+              {{else}}
+                <option value="private">Make Private</option>
+              {{/if}}
+              <option value="delete">Delete</option>
+            </select>
+
+            <span class="icon-cog"></span>
+          </div>
+          <div class="options-web">
+            <a class="js-toggle-list-privacy nav-item">
+              {{#if userId}}
+                <span class="icon-lock" title="Make list private"></span>
+              {{else}}
+                <span class="icon-unlock" title="Make list public"></span>
+              {{/if}}
+            </a>
+
+            <a class="js-delete-list nav-item">
+              <span class="icon-trash" title="Delete list"></span>
+            </a>
+          </div>
+        </div>
+        -->
+      {{/if}}
+
+
+
+    </nav>
+
+    {{#if currentForm }}
+        {{>renderAutoForm collection=currentForm fields=fieldOrder doc=currentDoc filter=CRF_filter settings=reactiveTableSettings previousEntries=previousEntries}}
+    {{/if}}
+
+  </div>
+</template>
+
+<template name="renderAutoForm">
+      <div class="content-scrollable CRF-items" style="margin-left:20px">
+          {{#if previousEntries}}
+              Previous entries:
+              {{> reactiveTable collection=previousEntries class="table table-bordered table-hover" settings=settings}}
+          {{else}}
+              &nbsp; There are no previous entries.
+          {{/if}}
+
+          {{#if filter}}
+              Filtering on {{ filter}}
+          {{/if}}
+
+          {{#if readOnly}}
+              This is a Read Only Table (information comes comes OnCore or other system).
+          {{else}}
+              {{>quickForm collection=collection fields=fields doc=doc type=update
+                   id="CRFquickForm" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" }}
+          {{/if}}
+      </div>
+</template>

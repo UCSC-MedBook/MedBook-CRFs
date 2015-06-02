@@ -1,0 +1,28 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+accounts-password
+aldeed:autoform
+aldeed:collection2
+aldeed:simple-schema
+insecure
+iron:router
+less
+standard-app-packages
+chriswessels:glyphicons-halflings
+
+aldeed:autoform-select2
+natestrauser:select2
+cfs:http-methods
+bootstrap
+mizzao:bootstrap-3
+ucsc-medbook:reactive-table
+mrt:jquery-ui
+pfafman:font-awesome-4
+rajit:bootstrap3-datepicker
+aldeed:autoform-bs-datepicker
+momentjs:moment
+ucscmedbook:api@0.2.2

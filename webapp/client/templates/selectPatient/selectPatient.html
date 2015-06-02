@@ -1,0 +1,9 @@
+<template name="selectPatient">
+  <div id="selectPatient">
+    <select id="patientSelectMenu" class="Patient_ID form-control" type="text" name="Patient_ID" {{atts}}>
+      {{#each patients}}
+        <option value="{{patient}}">{{patient}}</option>
+      {{/each}}
+    </select>
+  </div>
+</template>

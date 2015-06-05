@@ -15,7 +15,7 @@ Meteor.publish('patient', function(patient_id) {
           var cursor = coll.find({ 
               $or: [
                   {Patient_ID: patient_id},
-                  {Sample_ID: { $regex: "^" + patient_id + ".*"}}
+				  {Sample_ID: { $regex: "^" + patient_id + ".*"}}
               ]});
           console.log("subscribe patient", patient_id, collName);
           manyCursors.push(cursor);

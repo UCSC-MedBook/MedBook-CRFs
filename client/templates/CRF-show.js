@@ -3,7 +3,7 @@ var EDITING_KEY = 'editingList';
 
 All_Sample_ID = [];
 
-Template.renderAutoForm.rendered = function() {
+fixUpRenderedAutoForm = function() {
     var pef = CRFcollections.Patient_Enrollment_form.find({}, { fields: {Patient_ID:1}}).fetch();
     var dem = CRFcollections.Demographics.find({}, { fields: {Patient_ID:1}}).fetch();
     var biops = CRFcollections.SU2C_Biopsy_V3.find({}, { fields: {Sample_ID:1}}).fetch();
@@ -76,7 +76,19 @@ Template.renderAutoForm.rendered = function() {
              });
     }
     */
-}
+};
+
+AutoForm.hooks({
+    CRFquickForm: {
+        onSuccess: function(formType, result) {
+           fixUpRenderedAutoForm();
+        },
+    }
+});
+
+Template.renderAutoForm.rendered = fixUpRenderedAutoForm;
+
+
 Template.renderAutoForm.events( {
      'change select[name="Histology_Call"]' : function(evt, tmpl) {
          var doc = {};

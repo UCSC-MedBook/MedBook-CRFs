@@ -2,30 +2,18 @@
   <div id="container" class="{{menuOpen}} {{cordova}}">
 
 
-    <section id="menu">
-       <div  class="MainCRFLists" style="height:80px; margin-top: 20px; margin-left:20px">
+    <section id="sidebarMenu">
+       <div  class="MainCRFLists" style="height:80px; margin-top: 20px; margin-left:10px">
           {{> MedBookNavigator}}
        </div>
-      {{#if currentUser}}
-        <div class="btns-group-vertical">
-          <a href="#" class="js-user-menu btn-secondary">
-            {{#if userMenuOpen}}
-              <span class="icon-arrow-up"></span>
-              {{else}}
-              <span class="icon-arrow-down"></span>
-            {{/if}}
-            {{emailLocalPart}}
-          </a>
-          {{#if userMenuOpen}}
-            <a class="js-logout btn-secondary">Logout</a>
-          {{/if}}
-        </div>
-      {{else}}
+
+       <div id="accountEntryButtons" class="MainCRFLists btns-group-vertical">
+        {{#if currentUser}}
+          <a id="logoutButton" class="js-logout btn-secondary">Logout</a>
+        {{else}}
           <a href="{{pathFor 'signin'}}" class="btn-secondary">Sign In</a>
-      <!--
-          <a href="{{pathFor 'join'}}" class="btn-secondary">Join</a>
-          -->
-      {{/if}}
+        {{/if}}
+       </div>
 
       <div class="MainCRFLists" style="margin-bottom:20px!important;" >
        <h3><center>Find Patient</center></h3>
@@ -65,7 +53,7 @@
         <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
 -->
         {{#each personalPreferredTableOrder}}
-          <a href="#" data-crfname="{{this}}" class="notdraggable list-1-CRF {{activeListClass}}" title="{{this}}">
+          <a id="{{this}}Button" href="/CRF/lists/{{this}}" data-crfname="{{this}}" class="notdraggable list-1-CRF {{activeListClass}}" title="{{this}}">
             {{#if userId}}
               <span class="icon-lock"></span>
             {{/if}}
@@ -74,7 +62,7 @@
             {{/if}}
             {{this}}
             <span class="handle" title="Drag handle up or down to rearrange order">
-                <i class="fa fa-reorder"></i> 
+                <i class="fa fa-reorder"></i>
             </span>
           </a>
         {{/each}}

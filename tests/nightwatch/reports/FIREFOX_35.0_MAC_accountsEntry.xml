@@ -5,9 +5,9 @@
 
   <testsuite name="accountsEntry"
     errors="0" failures="0" hostname="" id="" package="accountsEntry" skipped="0"
-    tests="2" time="26.91" timestamp="Sun, 07 Jun 2015 06:20:53 GMT">
+    tests="2" time="32.72" timestamp="Mon, 08 Jun 2015 00:32:52 GMT">
   
-    <testcase name="Accounts Entry" time="10.23" assertions="16">
+    <testcase name="Accounts Entry" time="15.95" assertions="16">
 
     
 
@@ -42,7 +42,7 @@
     
     </testcase>
   
-    <testcase name="Ingest Oncore Datafiles" time="16.68" assertions="25">
+    <testcase name="Ingest Oncore Datafiles" time="16.77" assertions="25">
 
     
 

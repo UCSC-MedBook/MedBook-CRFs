@@ -29,7 +29,7 @@ Meteor.startup(function () {
 });
 
 Template.appBody.rendered = function() {
-  $('.notdraggable').each(function(i,e) { 
+  $('.notdraggable').each(function(i,e) {
           e.ondragstart = function() { return false; };
   });
 
@@ -64,7 +64,7 @@ Template.appBody.rendered = function() {
         }
   });
 
-  this.find('#content-container')._uihooks = {
+  /*this.find('#content-container')._uihooks = {
     insertElement: function(node, next) {
       $(node)
         .hide()
@@ -76,7 +76,7 @@ Template.appBody.rendered = function() {
         this.remove();
       });
     }
-  };
+  };*/
 };
 function stop() {
     console.log("STOP");
@@ -155,13 +155,13 @@ Template.appBody.events({
     event.stopImmediatePropagation();
   },
 
-  'click #menu a': function() {
+  'click #sidebarMenu a': function() {
     Session.set(MENU_KEY, false);
   },
 
   'click .js-logout': function() {
     Meteor.logout();
-    
+
     // if we are on a private list, we'll need to go to a public one
     var current = Router.current();
     if (current.route.name === 'CRFsShow' && current.data().userId) {

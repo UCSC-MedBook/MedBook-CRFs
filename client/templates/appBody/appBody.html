@@ -1,0 +1,71 @@
+<template name="appBody">
+  <div id="container" class="{{menuOpen}} {{cordova}}">
+
+
+    <section id="sidebarMenu">
+       <div  class="MainCRFLists" style="height:80px; margin-top: 20px; margin-left:10px">
+          {{> MedBookNavigator}}
+       </div>
+
+       <div id="accountEntryButtons" class="MainCRFLists btns-group-vertical">
+        {{#if currentUser}}
+          <a id="logoutButton" class="js-logout btn-secondary">Logout</a>
+        {{else}}
+          <a href="{{pathFor 'signin'}}" class="btn-secondary">Sign In</a>
+        {{/if}}
+       </div>
+
+      <div class="MainCRFLists" style="margin-bottom:20px!important;" >
+       <h3><center>Find Patient</center></h3>
+       {{> Patient_ID go=true}}
+       </div>
+
+      {{>MainCRFLists}}
+
+    </section>
+
+    {{#unless connected}}
+      <div class="notifications">
+        <div class="notification">
+          <span class="icon-sync"></span>
+          <div class="meta">
+            <div class="title-notification">Trying to connect</div>
+            <div class="description">There seems to be a connection issue</div>
+          </div>
+        </div>
+      </div>
+    {{/unless}}
+
+    <div class="content-overlay"></div>
+
+    <div id="content-container">
+      {{#each thisArray}}
+        {{> yield}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+
+<template name="MainCRFLists">
+      <div class="MainCRFLists">
+       <h3><center>Find Form</center></h3>
+<!--
+        <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
+-->
+        {{#each personalPreferredTableOrder}}
+          <a id="{{this}}Button" href="/CRF/lists/{{this}}" data-crfname="{{this}}" class="notdraggable list-1-CRF {{activeListClass}}" title="{{this}}">
+            {{#if userId}}
+              <span class="icon-lock"></span>
+            {{/if}}
+            {{#if incompleteCount}}
+              <span class="count-list">{{incompleteCount}}</span>
+            {{/if}}
+            {{this}}
+            <span class="handle" title="Drag handle up or down to rearrange order">
+                <i class="fa fa-reorder"></i>
+            </span>
+          </a>
+        {{/each}}
+
+      </div>
+</template>

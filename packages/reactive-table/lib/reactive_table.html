@@ -2,11 +2,11 @@
   {{#with context}}
   {{#if ready}}
     <div class="clearfix">
-      <div class="reactive-table-options col-sm-8 pull-right">
+      <div class="reactive-table-options col-sm-8 pull-left">
         {{#if showFilter}}
-          <div class="form-group reactive-table-filter col-sm-8 pull-right">
+          <div class="form-group reactive-table-filter col-sm-8 pull-left">
             <div class="input-group">
-                <label> Filter nulls</label>
+                <label>Nulls</label>
                 <input type="checkbox" checked class="filterNulls">
               <span class="input-group-addon">
                 {{#if useFontAwesome}}
@@ -16,10 +16,11 @@
                 {{/if}}
               </span>
                   {{#if useFontAwesome}}
-                    <input class="reactive-table-input form-control" type="text" value="{{filter}}" placeholder="{{i18n 'reactiveTable.filter'}}">
+                    <input class="reactive-table-input " type="text" value="{{filter}}" placeholder="{{i18n 'reactiveTable.filter'}}">
                   {{else}}
-                    <input class="reactive-table-input form-control" type="text" value="{{filter}}">
+                    <input class="reactive-table-input " type="text" value="{{filter}}">
                   {{/if}}
+                  &nbsp; {{getCount}}
             </div>
           </div>
         {{/if}}

@@ -273,6 +273,7 @@ reactiveTableSettings = function () {
         fields: fields,
 
         enableRegex: true,
+        useFontAwesome: true,
     };
 };
 

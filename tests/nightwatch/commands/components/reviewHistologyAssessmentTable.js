@@ -1,3 +1,12 @@
+    /*var histologyAssessmentRecord = {
+      sampleId: "",
+      core: "",
+      blockImage: "",
+      referenceSlideNumber: "",
+      referenceSlideImages: "",
+      blockStatus: ""
+    }
+    */
 exports.command = function() {
   this
     .verify.elementPresent("table")

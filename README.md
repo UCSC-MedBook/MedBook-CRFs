@@ -41,7 +41,6 @@ $ ROOT_URL=http://localhost/CRF/ meteor
 
 # launch the test runner  
 $ starrynight run-tests --framework nightwatch
-
 ````
 
 ==================================

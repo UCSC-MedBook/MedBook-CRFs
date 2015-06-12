@@ -105,6 +105,7 @@ module.exports = {
       drawDate: "",
       crcAtCollection: ""
     }
+
     var histologyAssessmentRecord = {
       sampleId: "",
       core: "",
@@ -176,6 +177,7 @@ module.exports = {
       coreNotes: "",
       timepointNotes: ""
     }
+
     var patientEnrollmentRecord = {
       patientId: "DTB-999",
       institution: ""

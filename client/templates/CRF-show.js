@@ -99,8 +99,9 @@ function customHandler(i,u,c) {
         try {
             var cc;
             if (i && c && u && c._id != null && c != null && i.Patient_ID == c.Patient_ID && i.Sample_ID == c.Sample_ID) {
-                if (window[crf].update({_id: c._id}, u ) != 1) {
-                    alert(2);
+                v = window[crf].update({_id: c._id}, u );
+                if (v != 1) {
+                    alert(v);
                     debugger;
                 }
                 i._id = c.id;

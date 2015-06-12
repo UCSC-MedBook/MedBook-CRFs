@@ -91,9 +91,9 @@
           {{/if}}
 
           {{#if readOnly}}
-              This is a Read Only Table (information comes comes OnCore or other system).
+              This is a Read Only Table (information comes from OnCore or other system).
           {{else}}
-              {{>quickForm collection=collection fields=fields doc=doc type=update
+              {{>quickForm collection=collection fields=fields doc=doc 
                    id="CRFquickForm" template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9" }}
           {{/if}}
       </div>

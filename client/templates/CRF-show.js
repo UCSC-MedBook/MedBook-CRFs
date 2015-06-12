@@ -24,13 +24,13 @@ fixUpRenderedAutoForm = function() {
 
     
 	if (Session.get("currentForm") != "Biopsy_Research") { 
-    	$("input[name='Sample_ID']").select2( {  data: Sample_ID, placeholder: "Select a  Sample ID", allowClear: false } );
+    	// $("input[name='Sample_ID']").select2( {  data: Sample_ID, placeholder: "Select a  Sample ID", allowClear: false } );
 	}
 	if (Session.get("currentForm") != "Patient_Enrollment_form") {
  
- 	   $("input[name='Patient_ID']").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
+ 	   // $("input[name='Patient_ID']").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
     $("input[name='Patient_ID']").val(Patient_ID)
-    $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
+    // $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
    }
 	
 
@@ -45,17 +45,21 @@ fixUpRenderedAutoForm = function() {
             lastCd = cd;
 
             var $Patient_ID = $("input[name='Patient_ID']");
+            /*
             if (cd.Patient_ID != null && $Patient_ID.length > 0 && $Patient_ID.val() != cd.Patient_ID)
                 $Patient_ID.select2("val", cd.Patient_ID);
+                */
 
             var $Sample_ID = $("input[name='Sample_ID']");
     
 		if (Session.get("currentForm") != "Biopsy_Research") { 
  
+           /*
             if (cd.Sample_ID != null && $Sample_ID.length > 0 && $Sample_ID.val() != cd.Sample_ID)
                 $Sample_ID.select2("val", cd.Sample_ID);
 
             $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
+            */
 		};
         }
     });
@@ -78,11 +82,47 @@ fixUpRenderedAutoForm = function() {
     */
 };
 
+function customHandler(i,u,c) {
+    var crf = Session.get("currentForm");
+    var coll = window[crf];
+    if (i == null) {
+        debugger;
+        console.log("insertDoc==null how did this happen?");
+        alert(1);
+        return new Error("Submission failed");
+    } else
+        try {
+            var cc;
+            if (i && c && u && c._id != null && c != null && i.Patient_ID == c.Patient_ID && i.Sample_ID == c.Sample_ID) {
+                if (window[crf].update({_id: c._id}, u ) != 1) {
+                    alert(2);
+                    debugger;
+                }
+                i._id = c.id;
+                Session.set("CurrentDoc", i);
+            } else {
+                i._id = window[crf].insert(i);
+                Session.set("CurrentDoc", i);
+            }
+            return null;
+        } catch (why) {
+            debugger;
+            alert(3);
+            return new Error("Submission failed: " + why);
+        }
+}
+
 AutoForm.hooks({
     CRFquickForm: {
         onSuccess: function(formType, result) {
            fixUpRenderedAutoForm();
+
         },
+        onSubmit: function (insertDoc, updateDoc, currentDoc) {
+          debugger;
+          this.done(customHandler(insertDoc, updateDoc, currentDoc));
+          return false;
+        }
     }
 });
 
@@ -364,9 +404,11 @@ function Patient_ID_Update_Sample_ID(event) {
               debugger
           }
       });
+  /*
   if (Session.get("currentForm") != "Biopsy_Research") { 
   	$("input[name='Sample_ID']").select2( { data: Sample_ID });
   }
+  */
 }
 
 
@@ -471,7 +513,7 @@ function coreProperty(index, property) {
     }
 }
 
-function SetCurrentDoc(field, value) {
+SetCurrentDoc = function(field, value) {
     var crf = Session.get("currentForm");
     var coll = window[crf];
     var q = {};

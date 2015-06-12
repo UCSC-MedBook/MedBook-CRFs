@@ -82,6 +82,11 @@ fixUpRenderedAutoForm = function() {
     */
 };
 
+stopMe = function() {
+    console.log("stopMe");
+    debugger;
+}
+
 function customHandler(i,u,c) {
     var crf = Session.get("currentForm");
     var coll = window[crf];
@@ -99,11 +104,12 @@ function customHandler(i,u,c) {
                     debugger;
                 }
                 i._id = c.id;
-                Session.set("CurrentDoc", i);
             } else {
                 i._id = window[crf].insert(i);
-                Session.set("CurrentDoc", i);
             }
+            // Session.set("RowsPerPage", 1 + Session.get("RowsPerPage"));
+            Session.set("CRF_filter", i.Patient_ID)
+            Session.set("CurrentDoc", i);
             return null;
         } catch (why) {
             debugger;
@@ -201,6 +207,8 @@ function arrayDoc(array) {
     }).join("<p>")
 }
 
+Session.set("RowsPerPage", 10);
+
 reactiveTableSettings = function () {
 
     var collName;
@@ -259,9 +267,11 @@ reactiveTableSettings = function () {
 
 
     return {
-        rowsPerPage: 10,
+        rowsPerPage: Session.get("RowsPerPage"),
         showFilter: true,
         fields: fields,
+
+        enableRegex: true,
     };
 };
 

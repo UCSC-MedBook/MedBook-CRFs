@@ -80,7 +80,6 @@
 <template name="renderAutoForm">
       <div class="content-scrollable CRF-items" style="margin-left:20px">
           {{#if previousEntries}}
-              Previous entries:
               {{> reactiveTable collection=previousEntries class="table table-bordered table-hover" settings=settings}}
           {{else}}
               &nbsp; There are no previous entries.

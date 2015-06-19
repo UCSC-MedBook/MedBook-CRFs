@@ -15,71 +15,28 @@ fixUpRenderedAutoForm = function() {
         _.pluck(dem, 'Patient_ID')
     ).filter(function(f) {return f != null}).sort().map(id_text);
 
+    if (Session.get("currentForm") != "Patient_Enrollment_form") {
+          $("input[name='Patient_ID']").val(Patient_ID)
+    }
 
     var Sample_ID = _.union(
+        _.pluck(pef, 'Patient_ID'),
         _.pluck(br, 'Sample_ID'),
         _.pluck(biops, 'Sample_ID')
     ).filter(function(f) {return f != null}).sort().map(id_text);
     All_Sample_ID = Sample_ID;
 
-    
-	if (Session.get("currentForm") != "Biopsy_Research") { 
-    	// $("input[name='Sample_ID']").select2( {  data: Sample_ID, placeholder: "Select a  Sample ID", allowClear: false } );
-	}
-	if (Session.get("currentForm") != "Patient_Enrollment_form") {
- 
- 	   // $("input[name='Patient_ID']").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
-    $("input[name='Patient_ID']").val(Patient_ID)
-    // $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
-   }
-	
-
-    var lastCd = null;
-    Tracker.autorun(function() {
-        var cd  = Session.get("CurrentDoc");
-
-        if (cd) 
-           GeneList_docToForm(cd);
-
-        if (cd && lastCd != cd) {
-            lastCd = cd;
-
-            var $Patient_ID = $("input[name='Patient_ID']");
-            /*
-            if (cd.Patient_ID != null && $Patient_ID.length > 0 && $Patient_ID.val() != cd.Patient_ID)
-                $Patient_ID.select2("val", cd.Patient_ID);
-                */
-
-            var $Sample_ID = $("input[name='Sample_ID']");
-    
-		if (Session.get("currentForm") != "Biopsy_Research") { 
- 
-           /*
-            if (cd.Sample_ID != null && $Sample_ID.length > 0 && $Sample_ID.val() != cd.Sample_ID)
-                $Sample_ID.select2("val", cd.Sample_ID);
-
-            $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
-            */
-		};
+    if (Session.get("currentForm") != "Biopsy_Research") { 
+        if ($("select[name='Patient_ID']").length == 0 && $("select[name='Sample_ID']").length > 0) {
+            var $s = $("select[name='Sample_ID']");
+            $s.find('option').remove();
+            All_Sample_ID.map(function(o) {
+                var o = o.text;
+                $s.append('<option value="' +  o + '">' + o  + '</option>')
+            });
         }
-    });
-
-
-    /*
-    if (Session.get("currentForm") == "Histology_Research") {
-        $("input[name='Trichotomy']").prop("disabled", true);
-        $("input[name='Small_Cell']").prop("disabled", true);
-        $("input[name='Adeno']").prop("disabled", true);
     }
 
-    if (Session.get("currentForm") == "Histology_Research") {
-            Tracker.autorun(function() {
-                 var doc = {};
-                 doc.Histology_Call =  AutoForm.getFieldValue("CRFquickForm", "Histology_Call");
-                 generate_histology_categories(doc);
-             });
-    }
-    */
 };
 
 stopMe = function() {

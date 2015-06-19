@@ -117,7 +117,3 @@ Meteor.methods({
         }) // on data
      } // wrangleTSV
 }); // methods
-
-Meteor.startup(function() {
-   Meteor.call("wrangleTSV", "trdDbjhuFsAA7Bk5v")
-});

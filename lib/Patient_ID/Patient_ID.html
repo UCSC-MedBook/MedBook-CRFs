@@ -1,13 +1,19 @@
 <template name="Patient_ID">
 <span>
-  <select class="Patient_ID form-control" type="text" name="Patient_ID" {{atts}}>
+  <select data-role="tagsinput" class="Patient_ID form-control" type="text" name="Patient_ID" {{atts}}>
+  {{#each patients}}
+      <option value={{this}}>{{this}}</option>
+  {{/each}}
   </select>&nbsp;&nbsp;<span class="info" hidden></span>
 </span>
 </template>
 
 <template name="Sample_ID">
 <span>
-  <select class="Sample_ID form-control" type="text" name="Sample_ID" {{atts}}>
+  <select data-role="tagsinput" class="Sample_ID form-control" type="text" name="Sample_ID" {{atts}}>
+  {{#each samples}}
+      <option value={{this}}>{{this}}</option>
+  {{/each}}
   </select>&nbsp;&nbsp;<span class="info" hidden></span>
 </span>
 </template>

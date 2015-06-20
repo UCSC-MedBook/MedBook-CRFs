@@ -1,7 +1,5 @@
 var EDITING_KEY = 'editingList';
 
-LastSubmit = null;
-
 
 All_Sample_ID = [];
 
@@ -17,81 +15,74 @@ fixUpRenderedAutoForm = function() {
         _.pluck(dem, 'Patient_ID')
     ).filter(function(f) {return f != null}).sort().map(id_text);
 
-    if (Session.get("currentForm") != "Patient_Enrollment_form") {
-          $("input[name='Patient_ID']").val(Patient_ID)
-    }
 
     var Sample_ID = _.union(
-        _.pluck(pef, 'Patient_ID'),
         _.pluck(br, 'Sample_ID'),
         _.pluck(biops, 'Sample_ID')
     ).filter(function(f) {return f != null}).sort().map(id_text);
     All_Sample_ID = Sample_ID;
 
-    if (Session.get("currentForm") != "Biopsy_Research") { 
-        if ($("select[name='Patient_ID']").length == 0 && $("select[name='Sample_ID']").length > 0) {
-            var $s = $("select[name='Sample_ID']");
-            $s.find('option').remove();
-            All_Sample_ID.map(function(o) {
-                var o = o.text;
-                $s.append('<option value="' +  o + '">' + o  + '</option>')
-            });
+    
+	if (Session.get("currentForm") != "Biopsy_Research") { 
+    	$("input[name='Sample_ID']").select2( {  data: Sample_ID, placeholder: "Select a  Sample ID", allowClear: false } );
+	}
+	if (Session.get("currentForm") != "Patient_Enrollment_form") {
+ 
+ 	   $("input[name='Patient_ID']").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
+    $("input[name='Patient_ID']").val(Patient_ID)
+    $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
+   }
+	
+
+    var lastCd = null;
+    Tracker.autorun(function() {
+        var cd  = Session.get("CurrentDoc");
+
+        if (cd) 
+           GeneList_docToForm(cd);
+
+        if (cd && lastCd != cd) {
+            lastCd = cd;
+
+            var $Patient_ID = $("input[name='Patient_ID']");
+            if (cd.Patient_ID != null && $Patient_ID.length > 0 && $Patient_ID.val() != cd.Patient_ID)
+                $Patient_ID.select2("val", cd.Patient_ID);
+
+            var $Sample_ID = $("input[name='Sample_ID']");
+    
+		if (Session.get("currentForm") != "Biopsy_Research") { 
+ 
+            if (cd.Sample_ID != null && $Sample_ID.length > 0 && $Sample_ID.val() != cd.Sample_ID)
+                $Sample_ID.select2("val", cd.Sample_ID);
+
+            $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
+		};
         }
+    });
+
+
+    /*
+    if (Session.get("currentForm") == "Histology_Research") {
+        $("input[name='Trichotomy']").prop("disabled", true);
+        $("input[name='Small_Cell']").prop("disabled", true);
+        $("input[name='Adeno']").prop("disabled", true);
     }
 
+    if (Session.get("currentForm") == "Histology_Research") {
+            Tracker.autorun(function() {
+                 var doc = {};
+                 doc.Histology_Call =  AutoForm.getFieldValue("CRFquickForm", "Histology_Call");
+                 generate_histology_categories(doc);
+             });
+    }
+    */
 };
-
-stopMe = function() {
-    console.log("stopMe");
-    debugger;
-}
-
-function customHandler(i,u,c) {
-
-    var crf = Session.get("currentForm");
-    var coll = window[crf];
-    if (i == null) {
-        debugger;
-        console.log("insertDoc==null how did this happen?");
-        alert(1);
-        return new Error("Submission failed");
-    } else
-        try {
-            LastSubmit = i.Patient_ID != null ? i.Patient_ID : i.Sample_ID;
-
-            var cc;
-            if (i && c && u && c._id != null && c != null && i.Patient_ID == c.Patient_ID && i.Sample_ID == c.Sample_ID) {
-                v = window[crf].update({_id: c._id}, u );
-                if (v != 1) {
-                    alert(v);
-                    debugger;
-                }
-                i._id = c.id;
-            } else {
-                i._id = window[crf].insert(i);
-            }
-            // Session.set("RowsPerPage", 1 + Session.get("RowsPerPage"));
-            Session.set("CRF_filter", i.Patient_ID)
-            Session.set("CurrentDoc", i);
-            return null;
-        } catch (why) {
-            debugger;
-            alert(3);
-            return new Error("Submission failed: " + why);
-        }
-}
 
 AutoForm.hooks({
     CRFquickForm: {
         onSuccess: function(formType, result) {
            fixUpRenderedAutoForm();
-
         },
-        onSubmit: function (insertDoc, updateDoc, currentDoc) {
-          debugger;
-          this.done(customHandler(insertDoc, updateDoc, currentDoc));
-          return false;
-        }
     }
 });
 
@@ -127,7 +118,6 @@ Template.renderAutoForm.events( {
 
 Template.CRFsShow.rendered = function() {
 
-  LastSubmit = null;
 
   this.find('.js-title-nav')._uihooks = {
     insertElement: function(node, next) {
@@ -170,8 +160,6 @@ function arrayDoc(array) {
             }) + after;
     }).join("<p>")
 }
-
-Session.set("RowsPerPage", 10);
 
 reactiveTableSettings = function () {
 
@@ -231,12 +219,9 @@ reactiveTableSettings = function () {
 
 
     return {
-        rowsPerPage: Session.get("RowsPerPage"),
+        rowsPerPage: 10,
         showFilter: true,
         fields: fields,
-
-        enableRegex: true,
-        useFontAwesome: true,
     };
 };
 
@@ -258,7 +243,6 @@ Template.CRFsShow.helpers({
     var cd = Session.get("CurrentDoc");
     switch (phase) {
         case "none": return $('form').find("[name='Patient_ID']").val() == "DTB-000";
-        case "success": return cd != null && LastSubmit != null && cd.Patient_ID == LastSubmit.Patient_ID && cd.Sampleient_ID == LastSubmit.Sample_ID;
         case "updating": return cd != null;
         case "inserting": return cd == null;
     }
@@ -380,11 +364,9 @@ function Patient_ID_Update_Sample_ID(event) {
               debugger
           }
       });
-  /*
   if (Session.get("currentForm") != "Biopsy_Research") { 
   	$("input[name='Sample_ID']").select2( { data: Sample_ID });
   }
-  */
 }
 
 
@@ -489,7 +471,7 @@ function coreProperty(index, property) {
     }
 }
 
-SetCurrentDoc = function(field, value) {
+function SetCurrentDoc(field, value) {
     var crf = Session.get("currentForm");
     var coll = window[crf];
     var q = {};

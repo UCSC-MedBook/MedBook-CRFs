@@ -1,5 +1,7 @@
 var EDITING_KEY = 'editingList';
 
+LastSubmit = null;
+
 
 All_Sample_ID = [];
 
@@ -45,6 +47,7 @@ stopMe = function() {
 }
 
 function customHandler(i,u,c) {
+
     var crf = Session.get("currentForm");
     var coll = window[crf];
     if (i == null) {
@@ -54,6 +57,8 @@ function customHandler(i,u,c) {
         return new Error("Submission failed");
     } else
         try {
+            LastSubmit = i.Patient_ID != null ? i.Patient_ID : i.Sample_ID;
+
             var cc;
             if (i && c && u && c._id != null && c != null && i.Patient_ID == c.Patient_ID && i.Sample_ID == c.Sample_ID) {
                 v = window[crf].update({_id: c._id}, u );
@@ -122,6 +127,7 @@ Template.renderAutoForm.events( {
 
 Template.CRFsShow.rendered = function() {
 
+  LastSubmit = null;
 
   this.find('.js-title-nav')._uihooks = {
     insertElement: function(node, next) {
@@ -252,6 +258,7 @@ Template.CRFsShow.helpers({
     var cd = Session.get("CurrentDoc");
     switch (phase) {
         case "none": return $('form').find("[name='Patient_ID']").val() == "DTB-000";
+        case "success": return cd != null && LastSubmit != null && cd.Patient_ID == LastSubmit.Patient_ID && cd.Sampleient_ID == LastSubmit.Sample_ID;
         case "updating": return cd != null;
         case "inserting": return cd == null;
     }

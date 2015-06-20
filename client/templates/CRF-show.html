@@ -26,7 +26,10 @@
             {{else}}
               {{#if phaseIs "inserting"}} <div class="topMesg" style="background:lightgreen">New patient record for this form. </div>
               {{else}}
-                {{#if phaseIs "updating"}} <div class="topMesg" style="background:yellow">Caution: you are updating an existing patient record. </div>{{/if}}
+                  {{#if phaseIs "success"}} <div class="topMesg" style="background:lawngreen">Patient record successfully submitted.</div>
+                  {{else}}
+                        {{#if phaseIs "updating"}} <div class="topMesg" style="background:yellow">Caution: you are updating an existing patient record. </div>{{/if}}
+              {{/if}}
               {{/if}}
             {{/if}}
         {{/if}}

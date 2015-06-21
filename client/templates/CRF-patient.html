@@ -8,11 +8,11 @@
       <div class="content-scrollable CRF-items">
 
          {{#each collectionsInPreferredTableOrder}}
-         <H2>
-            {{this.displayName}} &nbsp; {{ this.count }} &nbsp; entries
-         </H2>
-             {{> reactiveTable showFilter=false  showNavigation="auto" collection=this.docs class="table table-bordered table-hover" settings=reactiveTableSettings }}
-              <br>
+           <h2>
+              {{this.displayName}} &nbsp; {{ this.count }} &nbsp; entries
+           </h2>
+           {{> reactiveTable showFilter=false  showNavigation="auto" collection=this.docs class="table table-bordered table-hover" settings=reactiveTableSettings }}
+            <br>
          {{/each}}
 
       </div>

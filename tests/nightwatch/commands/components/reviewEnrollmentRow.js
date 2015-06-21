@@ -17,7 +17,5 @@ exports.command = function(patientEnrollmentRecord, rowIndex) {
       .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Study_Site", patientEnrollmentRecord.institution )
     }
 
-
-
   return this;
 };

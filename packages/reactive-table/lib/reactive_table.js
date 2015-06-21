@@ -296,6 +296,18 @@ var getDefaultFieldVisibility = function (field) {
     return !field.hidden || (_.isFunction(field.hidden) && !field.hidden());
 }
 
+var getCount = function () {
+    var count;
+    if (this.server) {
+        count = ReactiveTableCounts.findOne(this.publicationId.get());
+        return (count ? count.count : 0);
+    } else {
+        var filterQuery = getFilterQuery(this.filter.get(), this.fields, {enableRegex: this.enableRegex});
+        countTotal = this.collection.find().count();
+        count = this.collection.find(filterQuery).count();
+        return count + " of " + countTotal;
+    }
+};
 var getPageCount = function () {
     var count;
     var rowsPerPage = this.rowsPerPage.get();
@@ -490,6 +502,8 @@ Template.reactiveTable.helpers({
     },
 
     'getPageCount' : getPageCount,
+
+    'getCount' : getCount,
 
     'getRowsPerPage' : function () {
         return this.rowsPerPage.get();

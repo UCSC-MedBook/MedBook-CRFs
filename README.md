@@ -83,7 +83,8 @@ else
 - Do the benefits justify the architectural complexity/abstractions that sorting introduces?
 - Why are we attaching collections to the window[] object???  :(
 - What happens when list of patient outgrows what can display on a drop-down menu?
-
+- Should publish/subscribes be kept in lib/Patient_ID?  (hint: no)
+- Join
 
 ==================================
 #### Architecture Recommendations  

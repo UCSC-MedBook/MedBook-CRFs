@@ -20,6 +20,7 @@ exports.command = function(pathologyRecord, rowIndex) {
     .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ")")
 
     if(pathologyRecord){
+      this
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Sample_ID")
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Tumor_Content")
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Preliminary_Histology")

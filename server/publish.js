@@ -12,10 +12,10 @@ Meteor.publish('patient', function(patient_id) {
       var manyCursors = []
       CRFs.map(function(collName) {
           var coll = CRFcollections[collName];
-          var cursor = coll.find({ 
+          var cursor = coll.find({
               $or: [
                   {Patient_ID: patient_id},
-				  {Sample_ID: { $regex: "^" + patient_id + ".*"}}
+				          {Sample_ID: { $regex: "^" + patient_id + ".*"}}
               ]});
           console.log("subscribe patient", patient_id, collName);
           manyCursors.push(cursor);
@@ -50,21 +50,31 @@ Meteor.publish('Oncore', function() {
 });
 
 Meteor.publish('publicLists', function() {
-  return CRFmetadataCollection.find({userId: {$exists: false}});
+  console.log("publication: publicLists");
+
+  var result = CRFmetadataCollection.find({userId: {$exists: false}});
+  //console.log(result);
+
+  return result;
 });
 
 Meteor.publish('privateLists', function() {
+  console.log("publication: privateLists");
+
   if (this.userId) {
-    return CRFmetadataCollection.find({userId: this.userId});
+    var result = CRFmetadataCollection.find({userId: this.userId});
+    //console.log(result);
+
+    return result;
+
   } else {
     this.ready();
   }
 });
 
-/*
+
 Meteor.publish('CRFs', function(listId) {
   check(listId, String);
-  
+
   return CRFs.find({listId: listId});
 });
-*/

@@ -17,7 +17,7 @@ exports.command = function(rnaSequence) {
   this
     .verify.elementPresent("form")
 
-    .verify.elementPresent('input[name="Patient_ID"]')
+    .verify.elementPresent('select[name="Patient_ID"]')
     .verify.elementPresent('input[name="LNCAP_control_source"]')
     .verify.elementPresent('input[name="QC_reports"]')
     .verify.elementPresent('input[name="RIN_score_from_UCSF"]')
@@ -31,7 +31,7 @@ exports.command = function(rnaSequence) {
     if(rnaSequence){
       this
 
-        .setValue('input[name="Patient_ID"]', rnaSequence.patientId )
+        .setValue('select[name="Patient_ID"]', rnaSequence.patientId )
         .setValue('input[name="LNCAP_control_source"]', rnaSequence.lncapControlSource )
         .setValue('input[name="QC_reports"]', rnaSequence.qcReports )
         .setValue('input[name="RIN_score_from_UCSF"]', rnaSequence.rinScoreFromUcsf )

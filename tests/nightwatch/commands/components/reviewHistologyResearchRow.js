@@ -15,6 +15,7 @@ exports.command = function(histologyResearchRecord, rowIndex) {
     .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ")")
 
     if(histologyResearchRecord){
+      this
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Sample_ID")
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Mutated_Genes")
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Immunohistochemistry_Upregulated_Genes")
@@ -29,7 +30,7 @@ exports.command = function(histologyResearchRecord, rowIndex) {
       .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Histology_Call", histologyResearchRecord.histologyCall )
       .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Adeno", histologyResearchRecord.adeno )
       .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Small_Cell", histologyResearchRecord.smallCell )
-      .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Trichotomy", histologyResearchRecord.trichotomy )      
+      .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Trichotomy", histologyResearchRecord.trichotomy )
     }
 
 

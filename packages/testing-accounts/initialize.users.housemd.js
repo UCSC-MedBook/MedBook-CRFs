@@ -16,7 +16,8 @@ Meteor.startup(function () {
       profile: {
         name: 'Allison Camron',
         role: 'Physician',
-        avatar: '/packages/clinical_accounts-housemd/housemd/allison.camron.jpg'
+        avatar: '/packages/clinical_accounts-housemd/housemd/allison.camron.jpg',
+        collaborations: ["WCDT"]
       }
     });
     console.info('Account created: ' + userId);
@@ -30,7 +31,8 @@ Meteor.startup(function () {
       profile: {
         name: 'Eric Foreman',
         role: 'Physician',
-        avatar: '/packages/clinical_accounts-housemd/housemd/eric.foreman.jpg'
+        avatar: '/packages/clinical_accounts-housemd/housemd/eric.foreman.jpg',
+        collaborations: ["WCDT"]
       }
     });
     console.info('Account created: ' + userId);
@@ -44,7 +46,8 @@ Meteor.startup(function () {
       profile: {
         name: 'Gregory House',
         role: 'Physician',
-        avatar: '/packages/clinical_accounts-housemd/housemd/gregory.house.jpg'
+        avatar: '/packages/clinical_accounts-housemd/housemd/gregory.house.jpg',
+        collaborations: ["WCDT"]
       }
     });
     console.info('Account created: ' + userId);
@@ -58,7 +61,8 @@ Meteor.startup(function () {
       profile: {
         name: 'James Wilson',
         role: 'Physician',
-        avatar: '/packages/clinical_accounts-housemd/housemd/james.wilson.jpg'
+        avatar: '/packages/clinical_accounts-housemd/housemd/james.wilson.jpg',
+        collaborations: ["WCDT"]
       }
     });
     console.info('Account created: ' + userId);
@@ -72,7 +76,8 @@ Meteor.startup(function () {
       profile: {
         name: 'Lawrence Kutner',
         role: 'Physician',
-        avatar: '/packages/clinical_accounts-housemd/housemd/lawrence.kutner.jpg'
+        avatar: '/packages/clinical_accounts-housemd/housemd/lawrence.kutner.jpg',
+        collaborations: ["WCDT"]
       }
     });
     console.info('Account created: ' + userId);
@@ -86,7 +91,8 @@ Meteor.startup(function () {
       profile: {
         name: 'Lisa Cuddy',
         role: 'Physician',
-        avatar: '/packages/clinical_accounts-housemd/housemd/lisa.cuddy.jpg'
+        avatar: '/packages/clinical_accounts-housemd/housemd/lisa.cuddy.jpg',
+        collaborations: ["WCDT"]
       }
     });
     console.info('Account created: ' + userId);
@@ -100,7 +106,8 @@ Meteor.startup(function () {
       profile: {
         name: 'Robert Chase',
         role: 'Physician',
-        avatar: '/packages/clinical_accounts-housemd/housemd/robert.chase.jpg'
+        avatar: '/packages/clinical_accounts-housemd/housemd/robert.chase.jpg',
+        collaborations: ["WCDT"]
       }
     });
     console.info('Account created: ' + userId);
@@ -115,7 +122,8 @@ Meteor.startup(function () {
       profile: {
         name: 'Thirteen',
         role: 'Physician',
-        avatar: '/packages/clinical_accounts-housemd/housemd/thirteen.jpg'
+        avatar: '/packages/clinical_accounts-housemd/housemd/thirteen.jpg',
+        collaborations: ["WCDT"]
       }
     });
     console.info('Account created: ' + userId);

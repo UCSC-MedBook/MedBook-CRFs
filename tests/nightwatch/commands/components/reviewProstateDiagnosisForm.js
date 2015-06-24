@@ -2,8 +2,8 @@ exports.command = function() {
   this
     .verify.elementPresent("form")
 
-    .verify.elementPresent('input[name="Patient_ID"]')
-    
+    .verify.elementPresent('select[name="Patient_ID"]')
+
     .verify.elementPresent('input[name="Date_of_CRPC_as_Defined_by_Treating_Physician"]')
     .verify.elementPresent('input[name="Date_of_CRPC_as_Defined_by_Treating_Physician_Ext"]')
     .verify.elementPresent('input[name="Date_of_First_Metastases"]')

@@ -15,6 +15,7 @@ exports.command = function(laserCaptureRecord, rowIndex) {
     .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ")")
 
     if(laserCaptureRecord){
+      this
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Sample_ID")
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Core")
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Completion_Date")
@@ -31,7 +32,7 @@ exports.command = function(laserCaptureRecord, rowIndex) {
       .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Estimated_total_capture_area", laserCaptureRecord.estimatedTotalCaptureArea )
       .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Lysates", laserCaptureRecord.lysates )
       .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Lysates_Volume", laserCaptureRecord.lystatesVolume )
-      .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Downstream_use", laserCaptureRecord.downstreamUse )      
+      .verify.containsText("table thead tr:nth-child(" + rowIndex + ") .Downstream_use", laserCaptureRecord.downstreamUse )
     }
 
 

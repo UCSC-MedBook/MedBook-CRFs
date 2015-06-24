@@ -15,7 +15,7 @@ exports.command = function(histologyResearch) {
   this
     .verify.elementPresent("form")
 
-    .verify.elementPresent('input[name="Sample_ID"]')
+    .verify.elementPresent('select[name="Sample_ID"]')
     .verify.elementPresent('input[prop="Mutated_Genes"]')
     .verify.elementPresent('input[prop="Immunohistochemistry_Upregulated_Genes"]')
     .verify.elementPresent('select[name="Histology_Call"]')
@@ -25,7 +25,7 @@ exports.command = function(histologyResearch) {
 
     if(histologyResearch){
       this
-        .setValue('input[name="Sample_ID"]', histologyResearch.sampleId)
+        .setValue('select[name="Sample_ID"]', histologyResearch.sampleId)
         .setValue('input[prop="Mutated_Genes"]', histologyResearch.mutatedGenes)
         .setValue('input[prop="Immunohistochemistry_Upregulated_Genes"]', histologyResearch.immunohistochemistry)
         .setValue('select[name="Histology_Call"]', histologyResearch.histologyCall)

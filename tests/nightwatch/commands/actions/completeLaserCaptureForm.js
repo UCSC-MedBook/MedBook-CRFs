@@ -15,7 +15,7 @@ exports.command = function(laserCapture) {
   this
     .verify.elementPresent("form")
 
-    .verify.elementPresent('input[name="Sample_ID"]')
+    .verify.elementPresent('select[name="Sample_ID"]')
     .verify.elementPresent('select[name="Core"]')
     .verify.elementPresent('input[name="Completion_Date"]')
     .verify.elementPresent('input[name="SlideNumber"]')
@@ -26,7 +26,7 @@ exports.command = function(laserCapture) {
 
     if(laserCapture){
       this
-        .setValue('input[name="Sample_ID"]', laserCapture.sampleId )
+        .setValue('select[name="Sample_ID"]', laserCapture.sampleId )
         .setValue('select[name="Core"]', laserCapture.core )
         .setValue('input[name="Completion_Date"]', laserCapture.completionDate )
         .setValue('input[name="SlideNumber"]', laserCapture.slideNumber )

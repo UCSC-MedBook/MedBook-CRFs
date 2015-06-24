@@ -21,6 +21,7 @@ exports.command = function(tissueSpecimenRecord, rowIndex) {
     .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ")")
 
     if(tissueSpecimenRecord){
+      this
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Sample_ID")
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Timepoint")
       .verify.elementPresent("table thead tr:nth-child(" + rowIndex + ") .Procedure_Date")

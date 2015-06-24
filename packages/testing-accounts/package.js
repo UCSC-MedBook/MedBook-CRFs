@@ -18,5 +18,6 @@ Package.on_use(function (api) {
 
   api.add_files('initialize.users.js', 'server');
   api.add_files('initialize.users.housemd.js', 'server');
+  api.add_files('initialize.collaborations.js', 'server');
 
 });

@@ -57,7 +57,8 @@ $ starrynight run-tests --framework nightwatch
 - Don't use variables starting with a dollar sign.  $ is used as a keyword indicator in Mongo!
 - Class names shouldn't have punctuation:  parentheses, question marks, etc.
 - Be consistent with single vs double quotes; pick one
-- Be consistent with indentation
+- Be consistent with indentation.
+- Describe what code is suppose to do.  Add comments.
 
 ==================================
 #### Bad Grammar and Syntax Habits

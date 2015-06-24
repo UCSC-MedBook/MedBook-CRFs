@@ -31,7 +31,6 @@ medbook:testing-accounts
 cfs:standard-packages
 cfs:gridfs
 
-
 meteorhacks:npm
 
 

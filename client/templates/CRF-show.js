@@ -28,7 +28,7 @@ fixUpRenderedAutoForm = function() {
     ).filter(function(f) {return f != null}).sort().map(id_text);
     All_Sample_ID = Sample_ID;
 
-    if (Session.get("currentForm") != "Biopsy_Research") { 
+    if (Session.get("currentForm") != "Biopsy_Research") {
         if ($("select[name='Patient_ID']").length == 0 && $("select[name='Sample_ID']").length > 0) {
             var $s = $("select[name='Sample_ID']");
             $s.find('option').remove();
@@ -82,17 +82,16 @@ function customHandler(i,u,c) {
 }
 
 AutoForm.hooks({
-    CRFquickForm: {
-        onSuccess: function(formType, result) {
-           fixUpRenderedAutoForm();
-
-        },
-        onSubmit: function (insertDoc, updateDoc, currentDoc) {
-          debugger;
-          this.done(customHandler(insertDoc, updateDoc, currentDoc));
-          return false;
-        }
+  CRFquickForm: {
+    onSuccess: function(formType, result) {
+     fixUpRenderedAutoForm();
+    },
+    onSubmit: function (insertDoc, updateDoc, currentDoc) {
+      debugger;
+      this.done(customHandler(insertDoc, updateDoc, currentDoc));
+      return false;
     }
+  }
 });
 
 Template.renderAutoForm.rendered = fixUpRenderedAutoForm;
@@ -163,9 +162,9 @@ var after = "</tbody></table>";
 function arrayDoc(array) {
     if (typeof(array[0]) == "string")
         return array.join("; ");
-   
+
     return array.map(function(element) {
-        return before +  Object.keys(element).sort().map( function(key) { 
+        return before +  Object.keys(element).sort().map( function(key) {
                 return "<tr><td>"+key+"</td><td>"+element[key]+ "<td></tr>";
             }) + after;
     }).join("<p>")
@@ -189,7 +188,7 @@ reactiveTableSettings = function () {
 
     var schema = CRFprototypes[collName];
     var fields = CRFfieldOrder[collName];
-    fields = fields.map( 
+    fields = fields.map(
         function(fieldName, i) {
             try {
                 var schemaField = schema[fieldName];
@@ -292,7 +291,7 @@ Template.CRFsShow.helpers({
     Session.set("currentForm", this._id);
     return this._id;
   },
-  
+
   readOnly: function () {
       return this._id in OncoreTable_NeedsSample_ID;
   },
@@ -310,17 +309,19 @@ Template.CRFsShow.helpers({
   },
 
   previousEntries: function () {
+    console.log("previousEntries", this);
+
     if (this._id == null) return false;
     var coll = window[this._id];
     if (coll == null) return false;
     return coll;
-  },
+  }
 
 });
 
 var editList = function(list, template) {
   Session.set(EDITING_KEY, true);
-  
+
   // force the template to redraw based on the reactive change
   Tracker.flush();
   template.$('.js-edit-form input[type=text]').focus();
@@ -336,7 +337,7 @@ var deleteList = function(list) {
   if (! list.userId && CRFmetadataCollection.find({userId: {$exists: false}}).count() === 1) {
     return alert("Sorry, you cannot delete the final public list!");
   }
-  
+
   var message = "Are you sure you want to delete the list " + list.name + "?";
   if (confirm(message)) {
     // we must remove each item individually from the client
@@ -373,7 +374,7 @@ function Patient_ID_Update_Sample_ID(event) {
   var patient_id = $(event.target).val();
   SetCurrentDoc('Patient_ID', patient_id);
   var Sample_ID = All_Sample_ID.filter(
-      function(f) { 
+      function(f) {
           try {
               return f.text.match(patient_id + ".*")
           } catch (s) {
@@ -381,7 +382,7 @@ function Patient_ID_Update_Sample_ID(event) {
           }
       });
   /*
-  if (Session.get("currentForm") != "Biopsy_Research") { 
+  if (Session.get("currentForm") != "Biopsy_Research") {
   	$("input[name='Sample_ID']").select2( { data: Sample_ID });
   }
   */
@@ -405,7 +406,7 @@ Template.CRFsShow.events({
   'click .js-cancel': function() {
     Session.set(EDITING_KEY, false);
   },
-  
+
   'keydown input[type=text]': function(event) {
     // ESC
     if (27 === event.which) {
@@ -413,7 +414,7 @@ Template.CRFsShow.events({
       $(event.target).blur();
     }
   },
-  
+
   'blur input[type=text]': function(event, template) {
     // if we are still editing (we haven't just clicked the cancel button)
     if (Session.get(EDITING_KEY))
@@ -424,7 +425,7 @@ Template.CRFsShow.events({
     event.preventDefault();
     saveList(this, template);
   },
-  
+
   // handle mousedown otherwise the blur handler above will swallow the click
   // on iOS, we still require the click event so handle both
   'mousedown .js-cancel, click .js-cancel': function(event) {
@@ -443,19 +444,19 @@ Template.CRFsShow.events({
 
     event.target.selectedIndex = 0;
   },
-  
+
   'click .js-edit-list': function(event, template) {
     editList(this, template);
   },
-  
+
   'click .js-toggle-list-privacy': function(event, template) {
     toggleListPrivacy(this, template);
   },
-  
+
   'click .js-delete-list': function(event, template) {
     deleteList(this, template);
   },
-  
+
   'click .js-CRF-add': function(event, template) {
     template.$('.js-CRF-new input').focus();
   },
@@ -466,7 +467,7 @@ Template.CRFsShow.events({
     var $input = $(event.target).find('[type=text]');
     if (! $input.val())
       return;
-    
+
     CRFs.insert({
       listId: this._id,
       text: $input.val(),
@@ -482,7 +483,7 @@ Template.CRFsShow.events({
 function coreProperty(index, property) {
       return function (row, newValue) {
           if (row.cores && index < row.cores.length) {
-              // console.log("coreProperty", property, row, row.cores[index][property]); 
+              // console.log("coreProperty", property, row, row.cores[index][property]);
               return (row.cores[index][property]);
           }
           return "";
@@ -526,4 +527,3 @@ function currentDoc() {
 }
 window.currentDoc = currentDoc
 */
-

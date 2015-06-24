@@ -1,9 +1,11 @@
 var EDITING_KEY = 'editingList';
 
+LastSubmit = null;
+
 
 All_Sample_ID = [];
 
-Template.renderAutoForm.rendered = function() {
+fixUpRenderedAutoForm = function() {
     var pef = CRFcollections.Patient_Enrollment_form.find({}, { fields: {Patient_ID:1}}).fetch();
     var dem = CRFcollections.Demographics.find({}, { fields: {Patient_ID:1}}).fetch();
     var biops = CRFcollections.SU2C_Biopsy_V3.find({}, { fields: {Sample_ID:1}}).fetch();
@@ -15,68 +17,86 @@ Template.renderAutoForm.rendered = function() {
         _.pluck(dem, 'Patient_ID')
     ).filter(function(f) {return f != null}).sort().map(id_text);
 
+    if (Session.get("currentForm") != "Patient_Enrollment_form") {
+          $("input[name='Patient_ID']").val(Patient_ID)
+    }
 
     var Sample_ID = _.union(
+        _.pluck(pef, 'Patient_ID'),
         _.pluck(br, 'Sample_ID'),
         _.pluck(biops, 'Sample_ID')
     ).filter(function(f) {return f != null}).sort().map(id_text);
     All_Sample_ID = Sample_ID;
 
-    
-	if (Session.get("currentForm") != "Biopsy_Research") { 
-    	$("input[name='Sample_ID']").select2( {  data: Sample_ID, placeholder: "Select a  Sample ID", allowClear: false } );
-	}
-	if (Session.get("currentForm") != "Patient_Enrollment_form") {
- 
- 	   $("input[name='Patient_ID']").select2( { data: Patient_ID, placeholder: "Select a Patient ID ", allowClear: false } );
-    $("input[name='Patient_ID']").val(Patient_ID)
-    $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
-   }
-	
-
-    var lastCd = null;
-    Tracker.autorun(function() {
-        var cd  = Session.get("CurrentDoc");
-
-        if (cd) 
-           GeneList_docToForm(cd);
-
-        if (cd && lastCd != cd) {
-            lastCd = cd;
-
-            var $Patient_ID = $("input[name='Patient_ID']");
-            if (cd.Patient_ID != null && $Patient_ID.length > 0 && $Patient_ID.val() != cd.Patient_ID)
-                $Patient_ID.select2("val", cd.Patient_ID);
-
-            var $Sample_ID = $("input[name='Sample_ID']");
-    
-		if (Session.get("currentForm") != "Biopsy_Research") { 
- 
-            if (cd.Sample_ID != null && $Sample_ID.length > 0 && $Sample_ID.val() != cd.Sample_ID)
-                $Sample_ID.select2("val", cd.Sample_ID);
-
-            $('.select2-choice').css( {left:0, top:0, position:'absolute', width: "100%", height: "100%"})
-		};
+    if (Session.get("currentForm") != "Biopsy_Research") {
+        if ($("select[name='Patient_ID']").length == 0 && $("select[name='Sample_ID']").length > 0) {
+            var $s = $("select[name='Sample_ID']");
+            $s.find('option').remove();
+            All_Sample_ID.map(function(o) {
+                var o = o.text;
+                $s.append('<option value="' +  o + '">' + o  + '</option>')
+            });
         }
-    });
-
-
-    /*
-    if (Session.get("currentForm") == "Histology_Research") {
-        $("input[name='Trichotomy']").prop("disabled", true);
-        $("input[name='Small_Cell']").prop("disabled", true);
-        $("input[name='Adeno']").prop("disabled", true);
     }
 
-    if (Session.get("currentForm") == "Histology_Research") {
-            Tracker.autorun(function() {
-                 var doc = {};
-                 doc.Histology_Call =  AutoForm.getFieldValue("CRFquickForm", "Histology_Call");
-                 generate_histology_categories(doc);
-             });
-    }
-    */
+};
+
+stopMe = function() {
+    console.log("stopMe");
+    debugger;
 }
+
+function customHandler(i,u,c) {
+
+    var crf = Session.get("currentForm");
+    var coll = window[crf];
+    if (i == null) {
+        debugger;
+        console.log("insertDoc==null how did this happen?");
+        alert(1);
+        return new Error("Submission failed");
+    } else
+        try {
+            LastSubmit = i.Patient_ID != null ? i.Patient_ID : i.Sample_ID;
+
+            var cc;
+            if (i && c && u && c._id != null && c != null && i.Patient_ID == c.Patient_ID && i.Sample_ID == c.Sample_ID) {
+                v = window[crf].update({_id: c._id}, u );
+                if (v != 1) {
+                    alert(v);
+                    debugger;
+                }
+                i._id = c.id;
+            } else {
+                i._id = window[crf].insert(i);
+            }
+            // Session.set("RowsPerPage", 1 + Session.get("RowsPerPage"));
+            Session.set("CRF_filter", i.Patient_ID)
+            Session.set("CurrentDoc", i);
+            return null;
+        } catch (why) {
+            debugger;
+            alert(3);
+            return new Error("Submission failed: " + why);
+        }
+}
+
+AutoForm.hooks({
+  CRFquickForm: {
+    onSuccess: function(formType, result) {
+     fixUpRenderedAutoForm();
+    },
+    onSubmit: function (insertDoc, updateDoc, currentDoc) {
+      debugger;
+      this.done(customHandler(insertDoc, updateDoc, currentDoc));
+      return false;
+    }
+  }
+});
+
+Template.renderAutoForm.rendered = fixUpRenderedAutoForm;
+
+
 Template.renderAutoForm.events( {
      'change select[name="Histology_Call"]' : function(evt, tmpl) {
          var doc = {};
@@ -106,6 +126,7 @@ Template.renderAutoForm.events( {
 
 Template.CRFsShow.rendered = function() {
 
+  LastSubmit = null;
 
   this.find('.js-title-nav')._uihooks = {
     insertElement: function(node, next) {
@@ -141,13 +162,15 @@ var after = "</tbody></table>";
 function arrayDoc(array) {
     if (typeof(array[0]) == "string")
         return array.join("; ");
-   
+
     return array.map(function(element) {
-        return before +  Object.keys(element).sort().map( function(key) { 
+        return before +  Object.keys(element).sort().map( function(key) {
                 return "<tr><td>"+key+"</td><td>"+element[key]+ "<td></tr>";
             }) + after;
     }).join("<p>")
 }
+
+Session.set("RowsPerPage", 10);
 
 reactiveTableSettings = function () {
 
@@ -165,7 +188,7 @@ reactiveTableSettings = function () {
 
     var schema = CRFprototypes[collName];
     var fields = CRFfieldOrder[collName];
-    fields = fields.map( 
+    fields = fields.map(
         function(fieldName, i) {
             try {
                 var schemaField = schema[fieldName];
@@ -207,9 +230,12 @@ reactiveTableSettings = function () {
 
 
     return {
-        rowsPerPage: 10,
+        rowsPerPage: Session.get("RowsPerPage"),
         showFilter: true,
         fields: fields,
+
+        enableRegex: true,
+        useFontAwesome: true,
     };
 };
 
@@ -231,6 +257,7 @@ Template.CRFsShow.helpers({
     var cd = Session.get("CurrentDoc");
     switch (phase) {
         case "none": return $('form').find("[name='Patient_ID']").val() == "DTB-000";
+        case "success": return cd != null && LastSubmit != null && cd.Patient_ID == LastSubmit.Patient_ID && cd.Sampleient_ID == LastSubmit.Sample_ID;
         case "updating": return cd != null;
         case "inserting": return cd == null;
     }
@@ -264,7 +291,7 @@ Template.CRFsShow.helpers({
     Session.set("currentForm", this._id);
     return this._id;
   },
-  
+
   readOnly: function () {
       return this._id in OncoreTable_NeedsSample_ID;
   },
@@ -282,17 +309,19 @@ Template.CRFsShow.helpers({
   },
 
   previousEntries: function () {
+    console.log("previousEntries", this);
+
     if (this._id == null) return false;
     var coll = window[this._id];
     if (coll == null) return false;
     return coll;
-  },
+  }
 
 });
 
 var editList = function(list, template) {
   Session.set(EDITING_KEY, true);
-  
+
   // force the template to redraw based on the reactive change
   Tracker.flush();
   template.$('.js-edit-form input[type=text]').focus();
@@ -308,7 +337,7 @@ var deleteList = function(list) {
   if (! list.userId && CRFmetadataCollection.find({userId: {$exists: false}}).count() === 1) {
     return alert("Sorry, you cannot delete the final public list!");
   }
-  
+
   var message = "Are you sure you want to delete the list " + list.name + "?";
   if (confirm(message)) {
     // we must remove each item individually from the client
@@ -345,16 +374,18 @@ function Patient_ID_Update_Sample_ID(event) {
   var patient_id = $(event.target).val();
   SetCurrentDoc('Patient_ID', patient_id);
   var Sample_ID = All_Sample_ID.filter(
-      function(f) { 
+      function(f) {
           try {
               return f.text.match(patient_id + ".*")
           } catch (s) {
               debugger
           }
       });
-  if (Session.get("currentForm") != "Biopsy_Research") { 
+  /*
+  if (Session.get("currentForm") != "Biopsy_Research") {
   	$("input[name='Sample_ID']").select2( { data: Sample_ID });
   }
+  */
 }
 
 
@@ -375,7 +406,7 @@ Template.CRFsShow.events({
   'click .js-cancel': function() {
     Session.set(EDITING_KEY, false);
   },
-  
+
   'keydown input[type=text]': function(event) {
     // ESC
     if (27 === event.which) {
@@ -383,7 +414,7 @@ Template.CRFsShow.events({
       $(event.target).blur();
     }
   },
-  
+
   'blur input[type=text]': function(event, template) {
     // if we are still editing (we haven't just clicked the cancel button)
     if (Session.get(EDITING_KEY))
@@ -394,7 +425,7 @@ Template.CRFsShow.events({
     event.preventDefault();
     saveList(this, template);
   },
-  
+
   // handle mousedown otherwise the blur handler above will swallow the click
   // on iOS, we still require the click event so handle both
   'mousedown .js-cancel, click .js-cancel': function(event) {
@@ -413,19 +444,19 @@ Template.CRFsShow.events({
 
     event.target.selectedIndex = 0;
   },
-  
+
   'click .js-edit-list': function(event, template) {
     editList(this, template);
   },
-  
+
   'click .js-toggle-list-privacy': function(event, template) {
     toggleListPrivacy(this, template);
   },
-  
+
   'click .js-delete-list': function(event, template) {
     deleteList(this, template);
   },
-  
+
   'click .js-CRF-add': function(event, template) {
     template.$('.js-CRF-new input').focus();
   },
@@ -436,7 +467,7 @@ Template.CRFsShow.events({
     var $input = $(event.target).find('[type=text]');
     if (! $input.val())
       return;
-    
+
     CRFs.insert({
       listId: this._id,
       text: $input.val(),
@@ -452,14 +483,14 @@ Template.CRFsShow.events({
 function coreProperty(index, property) {
       return function (row, newValue) {
           if (row.cores && index < row.cores.length) {
-              // console.log("coreProperty", property, row, row.cores[index][property]); 
+              // console.log("coreProperty", property, row, row.cores[index][property]);
               return (row.cores[index][property]);
           }
           return "";
     }
 }
 
-function SetCurrentDoc(field, value) {
+SetCurrentDoc = function(field, value) {
     var crf = Session.get("currentForm");
     var coll = window[crf];
     var q = {};
@@ -496,4 +527,3 @@ function currentDoc() {
 }
 window.currentDoc = currentDoc
 */
-

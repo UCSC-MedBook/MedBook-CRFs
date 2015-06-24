@@ -177,10 +177,10 @@ All columns are sortable by default, but sorting can be disabled by setting `sor
 To set the css class for table header **&lt;th&gt;**, use the optional *headerClass* key. This attribute can be a String or a Function.
 
     { fields: [
-      { key: 'name', label: 'Name' , headerClass: 'col-md-4'},  // as String
+      { key: 'name', label: 'Name' , headerClass: 'col-sm-4'},  // as String
       { key: 'location', label: 'Location',
         headerClass: function () {
-         var css = 'col-md2';
+         var css = 'col-sm2';
          '/*do some logic here */
          return css;}  // as Function
       },
@@ -192,10 +192,10 @@ To set the css class for table header **&lt;th&gt;**, use the optional *headerCl
 To set the css class for the table cells in a column, add the *cellClass* key to the field settings. This attribute can be a String or a Function. The function arguments will be the value for this key, and the full row object.
 
     { fields: [
-      { key: 'name', label: 'Name' , cellClass: 'col-md-4'},  // as String
+      { key: 'name', label: 'Name' , cellClass: 'col-sm-4'},  // as String
       { key: 'location', label: 'Location',
         cellClass: function (value, object) {
-         var css = 'col-md2';
+         var css = 'col-sm2';
          '/*do some logic here */
          return css;}  // as Function
       },

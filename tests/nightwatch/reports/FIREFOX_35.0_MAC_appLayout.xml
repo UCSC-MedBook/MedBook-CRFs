@@ -5,9 +5,9 @@
 
   <testsuite name="appLayout"
     errors="0" failures="0" hostname="" id="" package="appLayout" skipped="0"
-    tests="1" time="9.587" timestamp="Wed, 24 Jun 2015 20:04:15 GMT">
+    tests="1" time="4.858" timestamp="Wed, 24 Jun 2015 23:47:27 GMT">
   
-    <testcase name="Layout &amp; Static Pages" time="9.587" assertions="4">
+    <testcase name="Layout &amp; Static Pages" time="4.858" assertions="4">
 
     
 
@@ -17,6 +17,20 @@
 
     
     </testcase>
+      <system-err>
+        Unable to locate element: &quot;table thead tr:nth-child(2) .Patient_ID&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(2) .Study_Site&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(1) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(2) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(3) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(4) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(5) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(1) td:nth-child(2)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(2) td:nth-child(2)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(3) td:nth-child(2)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(4) td:nth-child(2)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tr:nth-child(5) td:nth-child(2)&quot; using: css selector
+      </system-err>
   
   
   </testsuite>

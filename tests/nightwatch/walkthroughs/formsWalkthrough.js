@@ -130,11 +130,11 @@ module.exports = {
 
     var histologyAssessmentRecord = {
       sampleId: "",
-      core: "",
-      blockImage: "",
-      referenceSlideNumber: "",
-      referenceSlideImages: "",
-      blockStatus: ""
+      core: "A",
+      blockImage: "1",
+      referenceSlideNumber: "1",
+      referenceSlideImages: "1",
+      blockStatus: "negative"
     }
 
     var histologyResearchRecord = {
@@ -224,6 +224,7 @@ module.exports = {
       .saveScreenshot(screenshotDir + "D-PatientEnrollmentForm.png")
       .reviewPatientEnrollmentForm()
       .completePatientEnrollmentForm(patientEnrollmentRecord)
+      .reviewPatientEnrollmentRow(patientEnrollmentRecord, 2)
 
       .sectionBreak("Histology Research Form")
       .selectFromSidebar('#Histology_ResearchButton')
@@ -231,6 +232,7 @@ module.exports = {
       .saveScreenshot(screenshotDir + "E-HistologyResearchForm.png")
       .reviewHistologyResearchForm()
       .completeHistologyResearchForm(histologyResearchRecord)
+      .reviewHistologyResearchRow(histologyResearchRecord, 1)
 
       .sectionBreak("Tissue Specimen Form")
       .selectFromSidebar('#Tissue_Specimen_formButton')
@@ -238,6 +240,7 @@ module.exports = {
       .saveScreenshot(screenshotDir + "F-TissueSpecimenForm.png")
       .reviewTissueSpecimenForm()
       .completeTissueSpecimenForm(tissueSpecimenRecord)
+      .reviewTissueSpecimenRow(tissueSpecimenRecord, 1)
 
       .sectionBreak("Blood Specimen Form")
       .selectFromSidebar('#Blood_Specimen_formButton')
@@ -245,6 +248,7 @@ module.exports = {
       .saveScreenshot(screenshotDir + "G-BloodSpecimenForm.png")
       .reviewBloodSpecimenForm()
       .completeBloodSpecimenForm(bloodSpecimenRecord)
+      .reviewBloodSpecimenRow(bloodSpecimenRecord, 1)
 
       .sectionBreak("Histological Assessment Form")
       .selectFromSidebar('#Histological_Assessment_formButton')
@@ -252,6 +256,7 @@ module.exports = {
       .saveScreenshot(screenshotDir + "H-HistologyAssessmentForm.png")
       .reviewHistologyAssessmentForm()
       .completeHistologyAssessmentForm(histologyAssessmentRecord)
+      .reviewHistologyAssessmentRow(histologyAssessmentRecord, 1)
 
       .sectionBreak("Laser Capture Form")
       .selectFromSidebar('#Laser_Capture_MicrodissectionButton')
@@ -259,6 +264,7 @@ module.exports = {
       .saveScreenshot(screenshotDir + "I-LaserCaptureForm.png")
       .reviewLaserCaptureForm()
       .completeLaserCaptureForm(laserCaptureRecord)
+      .reviewLaserCaptureRow(laserCaptureRecord, 1)
 
       .sectionBreak("RNA Sequence Completion Form")
       .selectFromSidebar('#RNASeq_completion_formButton')
@@ -266,6 +272,7 @@ module.exports = {
       .saveScreenshot(screenshotDir + "J-RnaSequenceForm.png")
       .reviewRnaSequenceForm()
       .completeRnaSequenceForm(rnaSequenceRecord)
+      .reviewRnaSequenceRow(rnaSequenceRecord, 1)
 
       .sectionBreak("Pathology Form")
       .selectFromSidebar('#Pathology_formButton')
@@ -273,6 +280,7 @@ module.exports = {
       .saveScreenshot(screenshotDir + "K-PathologyForm.png")
       .reviewPathologyForm()
       .completePathologyForm(pathologyRecord)
+      .reviewPathologyRow(pathologyRecord, 1)
 
       .signOut()
       .reviewSignInPage()

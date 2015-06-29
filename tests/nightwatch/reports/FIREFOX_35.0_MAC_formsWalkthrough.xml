@@ -5,9 +5,9 @@
 
   <testsuite name="formsWalkthrough"
     errors="0" failures="0" hostname="" id="" package="formsWalkthrough" skipped="0"
-    tests="2" time="119.8" timestamp="Wed, 24 Jun 2015 20:04:25 GMT">
+    tests="2" time="120.3" timestamp="Mon, 29 Jun 2015 22:25:55 GMT">
   
-    <testcase name="Readonly Forms Walkthrough" time="74.29" assertions="471">
+    <testcase name="Readonly Forms Walkthrough" time="75.92" assertions="471">
 
     
 
@@ -952,7 +952,7 @@
     
     </testcase>
   
-    <testcase name="Interactive Forms Walkthrough" time="45.47" assertions="209">
+    <testcase name="Interactive Forms Walkthrough" time="44.42" assertions="209">
 
     
 

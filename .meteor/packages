@@ -27,11 +27,11 @@ aldeed:autoform-bs-datepicker
 momentjs:moment
 ucscmedbook:api@0.2.2
 
-medbook:testing-accounts
 cfs:standard-packages
 cfs:gridfs
 
 meteorhacks:npm
-
-
 npm-container
+
+medbook:testing-accounts
+medbook:patient-id

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="1"
+            tests="9">
+
+  <testsuite name="formsInteractive"
+    errors="1" failures="1" hostname="" id="" package="formsInteractive" skipped="7"
+    tests="9" time="17.42" timestamp="Thu, 25 Jun 2015 03:17:10 GMT">
+  
+    <testcase name="SignIn" time="5.779" assertions="10">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Patient Enrollment Form" time="11.64" assertions="17">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(2)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(2) .Patient_ID&gt; is present.">Testing if element &lt;table tbody tr:nth-child(2) .Patient_ID&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(2) .Study_Site&gt; is present.">Testing if element &lt;table tbody tr:nth-child(2) .Study_Site&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Failed [equal]: ({&quot;message&quot;:&quot;no such element\n  (Session info: chrome=43.0.2357.130)\n  (Driver info: chromedriver=2.15.322455 (ae8db840dac8d0c45 == &quot;DTB-999&quot;)">Failed [equal]: ({&quot;message&quot;:&quot;no such element\n  (Session info: chrome=43.0.2357.130)\n  (Driver info: chromedriver=2.15.322455 (ae8db840dac8d0c45 == &quot;DTB-999&quot;): Expected &quot;DTB-999&quot; but got: &quot;[object Object]&quot;
+    at Object.equal (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/api.js:66:24)
+    at Object.&lt;anonymous&gt; (/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/tests/nightwatch/commands/components/reviewPatientEnrollmentRow.js:23:23)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16</failure>
+
+    
+    </testcase>
+  
+  
+    
+    <testcase
+      name="Histology Research Form">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Tissue Specimen Form">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Blood Specimen Form">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Histological Assessment Form">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Laser Capture Form">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="RNA Sequence Completion Form">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Pathology Form">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

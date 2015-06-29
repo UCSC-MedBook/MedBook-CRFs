@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="enrollPatient"
+    errors="0" failures="1" hostname="" id="" package="enrollPatient" skipped="0"
+    tests="1" time="14.51" timestamp="Thu, 25 Jun 2015 03:16:55 GMT">
+  
+    <testcase name="Patient Enrollment Form" time="14.51" assertions="27">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Failed [equal]: (&quot;DTB‑999&quot; == &quot;DTB-999&quot;)">Failed [equal]: (&quot;DTB‑999&quot; == &quot;DTB-999&quot;): Expected &quot;DTB-999&quot; but got: &quot;DTB‑999&quot;
+    at Object.equal (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/api.js:66:24)
+    at Object.&lt;anonymous&gt; (/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/tests/nightwatch/commands/components/reviewPatientEnrollmentRow.js:23:23)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:351:24)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16</failure>
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>

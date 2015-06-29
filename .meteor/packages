@@ -32,6 +32,6 @@ cfs:standard-packages
 cfs:gridfs
 
 meteorhacks:npm
-
+medbook:patient-id
 
 npm-container

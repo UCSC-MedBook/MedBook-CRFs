@@ -9,7 +9,7 @@ fixUpRenderedAutoForm = function() {
     var pef = CRFcollections.Patient_Enrollment_form.find({}, { fields: {Patient_ID:1}}).fetch();
     var dem = CRFcollections.Demographics.find({}, { fields: {Patient_ID:1}}).fetch();
     var biops = CRFcollections.SU2C_Biopsy_V3.find({}, { fields: {Sample_ID:1}}).fetch();
-	var br = CRFcollections.Biopsy_Research.find({}, { fields: {Sample_ID:1}}).fetch();
+	  var br = CRFcollections.Biopsy_Research.find({}, { fields: {Sample_ID:1}}).fetch();
     function id_text(s) { return { id: s, text: s}};
 
     var Patient_ID = _.union(
@@ -46,33 +46,33 @@ stopMe = function() {
     debugger;
 }
 
-function customHandler(i,u,c) {
+function customHandler(insertDoc,updateDoc,currentDoc) {
 
-    var crf = Session.get("currentForm");
-    var coll = window[crf];
-    if (i == null) {
+    var currentForm = Session.get("currentForm");
+    var coll = window[currentForm];
+    if (insertDoc == null) {
         debugger;
         console.log("insertDoc==null how did this happen?");
         alert(1);
         return new Error("Submission failed");
     } else
         try {
-            LastSubmit = i.Patient_ID != null ? i.Patient_ID : i.Sample_ID;
+            LastSubmit = insertDoc.Patient_ID != null ? insertDoc.Patient_ID : insertDoc.Sample_ID;
 
             var cc;
-            if (i && c && u && c._id != null && c != null && i.Patient_ID == c.Patient_ID && i.Sample_ID == c.Sample_ID) {
-                v = window[crf].update({_id: c._id}, u );
+            if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
+                v = window[currentForm].update({_id: currentDoc._id}, updateDoc );
                 if (v != 1) {
                     alert(v);
                     debugger;
                 }
-                i._id = c.id;
+                insertDoc._id = currentDoc.id;
             } else {
-                i._id = window[crf].insert(i);
+                insertDoc._id = window[currentForm].insert(insertDoc);
             }
             // Session.set("RowsPerPage", 1 + Session.get("RowsPerPage"));
-            Session.set("CRF_filter", i.Patient_ID)
-            Session.set("CurrentDoc", i);
+            Session.set("CRF_filter", insertDoc.Patient_ID)
+            Session.set("CurrentDoc", insertDoc);
             return null;
         } catch (why) {
             debugger;
@@ -84,10 +84,17 @@ function customHandler(i,u,c) {
 AutoForm.hooks({
   CRFquickForm: {
     onSuccess: function(formType, result) {
+      console.log("Autoform.onSuccess.formType", formType);
+      console.log("Autoform.onSuccess.result", result);
+
      fixUpRenderedAutoForm();
     },
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
-      debugger;
+      //debugger;
+      console.log("AutoForm.onSubmit.insertDoc", insertDoc);
+      console.log("AutoForm.onSubmit.updateDoc", updateDoc);
+      console.log("AutoForm.onSubmit.currentDoc", currentDoc);
+
       this.done(customHandler(insertDoc, updateDoc, currentDoc));
       return false;
     }
@@ -279,11 +286,11 @@ Template.CRFsShow.helpers({
   },
 
   fieldOrder: function () {
-    var fo = CRFfieldOrder[this._id];
+    var fieldOrder = CRFfieldOrder[this._id];
 
 
-    if (fo && fo.length > 0)
-        return fo.join(",")
+    if (fieldOrder && fieldOrder.length > 0)
+        return fieldOrder.join(",")
     return "";
   },
 

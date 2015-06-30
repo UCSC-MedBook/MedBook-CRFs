@@ -3,43 +3,11 @@
             failures="0"
             tests="1">
 
-  <testsuite name="tablesWalkthrough"
-    errors="0" failures="0" hostname="" id="" package="tablesWalkthrough" skipped="0"
-    tests="1" time="82.23" timestamp="Tue, 30 Jun 2015 02:07:28 GMT">
+  <testsuite name="formsReadonly"
+    errors="0" failures="0" hostname="" id="" package="formsReadonly" skipped="0"
+    tests="1" time="35.01" timestamp="Thu, 25 Jun 2015 03:17:27 GMT">
   
-    <testcase name="Tables Walkthrough" time="82.23" assertions="487">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+    <testcase name="Readonly Forms Walkthrough" time="35.01" assertions="471">
 
     
 

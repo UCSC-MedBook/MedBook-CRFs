@@ -5,9 +5,9 @@
 
   <testsuite name="appLayout"
     errors="0" failures="0" hostname="" id="" package="appLayout" skipped="0"
-    tests="1" time="9.587" timestamp="Wed, 24 Jun 2015 20:04:15 GMT">
+    tests="1" time="5.354" timestamp="Tue, 30 Jun 2015 02:04:22 GMT">
   
-    <testcase name="Layout &amp; Static Pages" time="9.587" assertions="4">
+    <testcase name="Layout &amp; Static Pages" time="5.354" assertions="4">
 
     
 
@@ -17,6 +17,26 @@
 
     
     </testcase>
+      <system-err>
+        Unable to locate element: &quot;table tbody tr:nth-child(1) .Study_Site&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Sample_ID&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Study_Site&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Sample_ID&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(1)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(2)&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&quot; using: css selector
+      </system-err>
   
   
   </testsuite>

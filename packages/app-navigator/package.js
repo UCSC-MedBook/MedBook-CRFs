@@ -12,7 +12,15 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.addFiles('app-navigator.js');
+  api.use('meteor-platform');
+  api.use('less');
+  api.use('iron:router');
+
+  api.addFiles('components/appNavigator/appNavigator.html', 'client');
+  api.addFiles('components/appNavigator/appNavigator.js', 'client');
+  api.addFiles('components/appNavigator/appNavigator.less', 'client');
+
+  api.export('appNavigator');
 });
 
 Package.onTest(function(api) {

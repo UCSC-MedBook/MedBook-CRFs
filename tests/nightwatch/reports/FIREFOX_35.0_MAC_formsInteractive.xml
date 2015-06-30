@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites errors="1"
+<testsuites errors="2"
             failures="2"
             tests="9">
 
   <testsuite name="formsInteractive"
-    errors="1" failures="2" hostname="" id="" package="formsInteractive" skipped="0"
-    tests="9" time="81.74" timestamp="Fri, 26 Jun 2015 19:35:21 GMT">
+    errors="2" failures="2" hostname="" id="" package="formsInteractive" skipped="0"
+    tests="9" time="79.41" timestamp="Tue, 30 Jun 2015 02:04:49 GMT">
   
-    <testcase name="SignIn" time="7.177" assertions="10">
+    <testcase name="SignIn" time="7.874" assertions="10">
 
     
 
@@ -30,7 +30,7 @@
     
     </testcase>
   
-    <testcase name="Patient Enrollment Form" time="10.89" assertions="20">
+    <testcase name="Patient Enrollment Form" time="12.66" assertions="20">
 
     
 
@@ -54,151 +54,102 @@
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&gt; contains text: &quot;2015-01-01&quot;.">Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&gt; contains text: &quot;2015-01-01&quot;.: Expected &quot;2015-01-01&quot; but got: &quot;01/01/2015&quot;
+      <failure message="Testing if element &lt;table tbody tr&gt; is present.">Testing if element &lt;table tbody tr&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:351:24)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
     at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
     at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Patient_ID&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Patient_ID&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Study_Site&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Study_Site&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Study_Site&gt; contains text: &quot;OHSU&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Study_Site&gt; contains text: &quot;OHSU&quot;. Element could not be located.: Expected &quot;OHSU&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Sample_ID&gt; contains text: &quot;123&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Sample_ID&gt; contains text: &quot;123&quot;. Element could not be located.: Expected &quot;123&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&gt; contains text: &quot;2015-01-01&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&gt; contains text: &quot;2015-01-01&quot;. Element could not be located.: Expected &quot;2015-01-01&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&gt; contains text: &quot;Bone&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&gt; contains text: &quot;Bone&quot;. Element could not be located.: Expected &quot;Bone&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
     at IncomingMessage.emit (events.js:117:20)
     at _stream_readable.js:943:16
     at process._tickCallback (node.js:419:13)</failure>
 
     
-
-    
     </testcase>
   
-    <testcase name="Histology Research Form" time="5.375" assertions="37">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Tissue Specimen Form" time="7.882" assertions="56">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+    <testcase name="Histology Research Form" time="5.845" assertions="37">
 
     
 
@@ -275,7 +226,69 @@
     
     </testcase>
   
-    <testcase name="Blood Specimen Form" time="3.942" assertions="25">
+    <testcase name="Tissue Specimen Form" time="8.641" assertions="56">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 
@@ -328,7 +341,60 @@
     
     </testcase>
   
-    <testcase name="Histological Assessment Form" time="25.38" assertions="45">
+    <testcase name="Blood Specimen Form" time="4.300" assertions="25">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Histological Assessment Form" time="15.88" assertions="45">
 
     
 
@@ -620,7 +686,7 @@
     
     </testcase>
   
-    <testcase name="Laser Capture Form" time="5.699" assertions="41">
+    <testcase name="Laser Capture Form" time="6.257" assertions="41">
 
     
 
@@ -705,7 +771,7 @@
     
     </testcase>
   
-    <testcase name="RNA Sequence Completion Form" time="6.544" assertions="47">
+    <testcase name="RNA Sequence Completion Form" time="7.567" assertions="47">
 
     
 
@@ -802,7 +868,7 @@
     
     </testcase>
   
-    <testcase name="Pathology Form" time="8.850" assertions="61">
+    <testcase name="Pathology Form" time="10.39" assertions="61">
 
     
 

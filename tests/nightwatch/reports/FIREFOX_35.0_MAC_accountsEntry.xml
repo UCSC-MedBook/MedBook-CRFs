@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="1"
+            failures="0"
             tests="2">
 
   <testsuite name="accountsEntry"
-    errors="0" failures="1" hostname="" id="" package="accountsEntry" skipped="0"
-    tests="2" time="22.26" timestamp="Fri, 26 Jun 2015 19:34:34 GMT">
+    errors="0" failures="0" hostname="" id="" package="accountsEntry" skipped="0"
+    tests="2" time="25.92" timestamp="Tue, 30 Jun 2015 02:03:56 GMT">
   
-    <testcase name="Accounts Entry" time="9.599" assertions="16">
+    <testcase name="Accounts Entry" time="10.40" assertions="16">
 
     
 
@@ -42,7 +42,15 @@
     
     </testcase>
       <system-err>
-        Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&quot; using: css selector
+        Unable to locate element: &quot;table tbody tr:nth-child(1) .Study_Site&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Sample_ID&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Study_Site&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Sample_ID&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&quot; using: css selector
@@ -54,7 +62,7 @@ Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody t
 Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&quot; using: css selector
       </system-err>
   
-    <testcase name="Ingest Oncore Datafiles" time="12.66" assertions="25">
+    <testcase name="Ingest Oncore Datafiles" time="15.52" assertions="25">
 
     
 
@@ -82,27 +90,9 @@ Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody t
 
     
 
-      <failure message="Testing if element &lt;#dashboard svg text&gt; is not present.">Testing if element &lt;#dashboard svg text&gt; is not present.: Expected &quot;not present&quot; but got: &quot;11&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
+    
 
-      <failure message="Testing if element &lt;#dashboard svg rect&gt; is not present.">Testing if element &lt;#dashboard svg rect&gt; is not present.: Expected &quot;not present&quot; but got: &quot;12&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
+    
 
     
 
@@ -125,7 +115,15 @@ Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody t
     
     </testcase>
       <system-err>
-        Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&quot; using: css selector
+        Unable to locate element: &quot;table tbody tr:nth-child(1) .Study_Site&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Sample_ID&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Study_Site&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Sample_ID&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&quot; using: css selector
+Unable to locate element: &quot;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&quot; using: css selector
+Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&quot; using: css selector

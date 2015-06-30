@@ -42,5 +42,4 @@ Template.dashboard.rendered = function() {
             }
         }
      });
-
 };

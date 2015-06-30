@@ -23,12 +23,12 @@ exports.command = function(patientRecord) {
         .clearValue('input[name="Baseline_Biopsy_Date"]')
         .setValue('input[name="Baseline_Sample_ID"]', patientRecord.baselineSampleId)
 
-        .setValue('input[name="Baseline_Biopsy_Date"]', patientRecord.baselineBiopsyDate).pause(200)
+        .setValue('input[name="Baseline_Biopsy_Date"]', patientRecord.baselineBiopsyDate).pause(500)
         .setValue('select[name="Baseline_Biopsy_Site"]', patientRecord.baselineBiopsySite)
 
         .setValue('input[name="Progression_Sample_ID"]', patientRecord.progressionSampleId)
         .clearValue('input[name="Progression_Biopsy_Date"]')
-        .setValue('input[name="Progression_Biopsy_Date"]', patientRecord.progressionBiopsyDate).pause(200)
+        .setValue('input[name="Progression_Biopsy_Date"]', patientRecord.progressionBiopsyDate).pause(500)
         .setValue('select[name="Progression_Biopsy_Site"]', patientRecord.progressionBiopsySite)
 
         .verify.elementPresent('button[type="submit"]')

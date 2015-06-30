@@ -78,11 +78,14 @@ var tissueSpecimenRecord = {
 }
 
 var patientEnrollmentRecord = {
-  patientId: "DTB-999",
+  patientId: 'DTB-999',
   institution: "OHSU",
-  baselineSampleId: "123",
-  baselineBiopsyDate: "2015-01-01",
-  baselineBiopsySite: "Bone"
+  baselineSampleId: "999A",
+  baselineBiopsyDate: "01/01/2015",
+  baselineBiopsySite: "Liver",
+  progressionSampleId: "999B",
+  progressionBiopsyDate: "01/06/2015",
+  progressionBiopsySite: "Liver"
 }
 
 var screenshotDir = "tests/nightwatch/screenshots/desktop/interactiveForms/";

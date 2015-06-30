@@ -1,18 +1,17 @@
 exports.command = function() {
   this
-    .verify.elementPresent("table")
-    .verify.elementPresent("table thead")
-    .verify.elementPresent("table thead tr")
+    .verify.elementPresent("table tbody")
+    .verify.elementPresent("table tbody tr")
 
-    .verify.elementPresent("table thead tr .Patient_ID")
-    .verify.elementPresent("table thead tr .Sample_ID")
-    .verify.elementPresent("table thead tr .Day")
-    .verify.elementPresent("table thead tr .ECOG_PS")
-    .verify.elementPresent("table thead tr .Phase")
-    .verify.elementPresent("table thead tr .Segment")
-    .verify.elementPresent("table thead tr .Visit_Date")
-    .verify.elementPresent("table thead tr .Weight")
-    .verify.elementPresent("table thead tr .Arm")
+    .verify.elementPresent("table tbody tr .Patient_ID")
+    .verify.elementPresent("table tbody tr .Sample_ID")
+    .verify.elementPresent("table tbody tr .Day")
+    .verify.elementPresent("table tbody tr .ECOG_PS")
+    .verify.elementPresent("table tbody tr .Phase")
+    .verify.elementPresent("table tbody tr .Segment")
+    .verify.elementPresent("table tbody tr .Visit_Date")
+    .verify.elementPresent("table tbody tr .Weight")
+    .verify.elementPresent("table tbody tr .Arm")
 
   return this;
 };

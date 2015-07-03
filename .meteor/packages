@@ -19,7 +19,7 @@ mrt:jquery-ui
 pfafman:font-awesome-4
 rajit:bootstrap3-datepicker
 momentjs:moment
-ucscmedbook:api@0.2.3
+#ucscmedbook:api@0.2.3
 
 medbook:testing-accounts
 cfs:standard-packages
@@ -30,7 +30,6 @@ medbook:patient-id
 
 npm-container
 
-#medbook:autoform
 
 aldeed:collection2
 aldeed:simple-schema
@@ -42,3 +41,4 @@ natestrauser:select2
 aldeed:autoform-select2
 
 msavin:jetsetter
+genomics:medbook-api@0.2.3

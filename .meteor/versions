@@ -38,6 +38,7 @@ deps@1.0.7
 ejson@1.0.6
 email@1.0.6
 fastclick@1.0.3
+genomics:medbook-api@0.2.3
 geojson-utils@1.0.3
 html-tools@1.0.4
 htmljs@1.0.4
@@ -99,7 +100,6 @@ standard-app-packages@1.0.5
 templating@1.1.1
 tracker@1.0.7
 ucsc-medbook:reactive-table@0.6.15
-ucscmedbook:api@0.2.3
 ui@1.0.6
 underscore@1.0.3
 url@1.0.4

@@ -48,7 +48,6 @@ exports.command = function(pathology) {
         .setValue('select[name="PTEN_test_performed"]', pathology.ptenTestPerformed )
 
         .verify.elementPresent('button[type="submit"]')
-        .click('button[type="submit"]').pause(500)
     }
 
 

@@ -191,14 +191,14 @@ var setup = function () {
         return uniqueFieldIds.length === fields.length;
     };
 
-    // If at least one field specifies a fieldId, all fields must specify a
+    // If at least one field specifies a fieldId, all fields must specify a 
     // fieldId with a unique value
     if (_.find(fields, function (field) {
         return !_.isUndefined(field.fieldId)
         }) && !fieldIdsArePresentAndUnique(fields)) {
         console.error("reactiveTable error: all fields must have a unique-valued fieldId if at least one has a fieldId attribute");
         fields = [];
-    }
+    } 
 
     var sortKey = null;
     var sortDirection = 1;
@@ -276,7 +276,7 @@ var setup = function () {
         context.useFontAwesome = this.data.useFontAwesome;
     }
     context.enableRegex = getDefaultFalseSetting('enableRegex', this.data);
-
+    
     context.ready = new ReactiveVar(true);
 
     if (context.server) {
@@ -324,14 +324,14 @@ var getPageCount = function () {
 function excludeNulls(filterQuery, sortKeyField_key) {
     if (sortKeyField_key in filterQuery) {
         var previousQuery = filterQuery[sortKeyField_key];
-        filterQuery[sortKeyField_key] =
+        filterQuery[sortKeyField_key] = 
             {$and: [
                     previousQuery,
-                    { $ne: null }
+                    { $ne: null } 
                 ]
             };
     } else
-        filterQuery[sortKeyField_key] = { $ne: null }
+        filterQuery[sortKeyField_key] = { $ne: null } 
 }
 
 
@@ -353,12 +353,7 @@ Template.reactiveTable.helpers({
         var fn = this.fn || function (value) { return value; };
         var key = this.key || this;
         var value = get(object, key);
-        if(this.key == "Patient_ID"){
-          return value;
-        }else{
-          // this is a scrubbed value which returns a n-dash instead of an m-dash  :(
-          return fn(value, object);
-        }
+        return fn(value, object);
     },
 
     'getFieldIndex': function () {
@@ -399,7 +394,7 @@ Template.reactiveTable.helpers({
         }
         return css;
     },
-
+  
     'labelIsTemplate': function () {
         return this.label && _.isObject(this.label) && this.label instanceof Blaze.Template;
     },
@@ -471,7 +466,7 @@ Template.reactiveTable.helpers({
                 return this.collection.find(filterQuery, {
                     skip: skip,
                     limit: limit
-                });
+                }); 
             } else if (sortKeyField.fn && !sortKeyField.sortByValue) {
 
                 if (filterNulls)
@@ -540,7 +535,7 @@ Template.reactiveTable.events({
         var template = Template.instance();
         console.log("filterNulls", event.target.value);
         template.context.filterNulls.set(event.target.checked);
-    },
+    }, 
     'click .reactive-table .sortable': function (event) {
         var template = Template.instance();
         var target = $(event.target).is('i') ? $(event.target).parent() : $(event.target);

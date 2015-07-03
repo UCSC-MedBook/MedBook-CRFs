@@ -17,7 +17,11 @@
                 {{/if}}
               </span>
                 -->
-                  <input class="reactive-table-input " type="text" value="{{filter}}" placeholder="{{i18n 'reactiveTable.filter'}}">
+                  {{#if useFontAwesome}}
+                    <input class="reactive-table-input " type="text" value="{{filter}}" placeholder="{{i18n 'reactiveTable.filter'}}">
+                  {{else}}
+                    <input class="reactive-table-input " type="text" value="{{filter}}">
+                  {{/if}}
                   &nbsp; {{getCount}}
             </div>
           </div>
@@ -37,7 +41,7 @@
                       {{else}}
                         <input type="checkbox" data-fieldid="{{fieldId}}">
                       {{/if}}
-                      {{#if labelIsTemplate}} {{#with labelData}} {{> ../label}} {{/with}} {{else}} {{getLabel}} {{/if}}
+                      {{#if labelIsTemplate}}{{#with labelData}}{{> ../label}}{{/with}}{{else}}{{getLabel}}{{/if}}
                     </label>
                   </a></li>
                 {{/unless}}
@@ -85,15 +89,7 @@
           <tr class="{{../rowClass this}}">
             {{#each ../fields}}
               {{#if isVisible}}
-                <td class="{{getCellClass ..}}">
-                  {{#if tmpl}}
-                    {{#with ..}}
-                      {{> ../tmpl}}
-                    {{/with}}
-                  {{else}}
-                    {{getField ..}}
-                  {{/if}}
-                </td>
+                <td class="{{getCellClass ..}}">{{#if tmpl}}{{#with ..}}{{> ../tmpl}}{{/with}}{{else}}{{getField ..}}{{/if}}</td>
               {{/if}}
             {{/each}}
           </tr>

@@ -5,7 +5,7 @@ exports.command = function() {
     .verify.elementPresent("table thead tr")
 
     .verify.elementPresent("table thead tr .Patient_ID")
-    //.verify.elementPresent("table thead tr .LNCAP_control_source")
+    .verify.elementPresent("table thead tr .LNCAP_control_source")
     .verify.elementPresent("table thead tr .QC_reports")
     .verify.elementPresent("table thead tr .RIN_score_from_UCSF")
     .verify.elementPresent("table thead tr .date_completed")

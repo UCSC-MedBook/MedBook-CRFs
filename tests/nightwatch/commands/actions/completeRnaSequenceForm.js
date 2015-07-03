@@ -18,6 +18,7 @@ exports.command = function(rnaSequence) {
     .verify.elementPresent("form")
 
     .verify.elementPresent('select[name="Patient_ID"]')
+    .verify.elementPresent('input[name="LNCAP_control_source"]')
     .verify.elementPresent('input[name="QC_reports"]')
     .verify.elementPresent('input[name="RIN_score_from_UCSF"]')
     .verify.elementPresent('input[name="date_completed"]')
@@ -25,20 +26,13 @@ exports.command = function(rnaSequence) {
     .verify.elementPresent('select[name="library_prep_used"]')
     .verify.elementPresent('input[name="library_prep_notes"]')
     .verify.elementPresent('input[name="location_of_fastq_file"]')
+    .verify.elementPresent('input[name="LNCAP_control_source"]')
 
     if(rnaSequence){
       this
-        .clearValue('select[name="Patient_ID"]')
-        .clearValue('input[name="QC_reports"]')
-        .clearValue('input[name="RIN_score_from_UCSF"]')
-        .clearValue('input[name="date_completed"]')
-        .clearValue('input[name="date_received"]')
-        .clearValue('select[name="library_prep_used"]')
-        .clearValue('input[name="library_prep_notes"]')
-        .clearValue('input[name="location_of_fastq_file"]')
-        .pause(500)
 
         .setValue('select[name="Patient_ID"]', rnaSequence.patientId )
+        .setValue('input[name="LNCAP_control_source"]', rnaSequence.lncapControlSource )
         .setValue('input[name="QC_reports"]', rnaSequence.qcReports )
         .setValue('input[name="RIN_score_from_UCSF"]', rnaSequence.rinScoreFromUcsf )
         .setValue('input[name="date_completed"]', rnaSequence.dateCompleted )
@@ -46,9 +40,9 @@ exports.command = function(rnaSequence) {
         .setValue('select[name="library_prep_used"]', rnaSequence.libraryPrepUsed )
         .setValue('input[name="library_prep_notes"]', rnaSequence.libraryPrepNotes )
         .setValue('input[name="location_of_fastq_file"]', rnaSequence.locationOfFastqFile )
+        .setValue('input[name="LNCAP_control_source"]', rnaSequence.lncapControlSource )
 
         .verify.elementPresent('button[type="submit"]')
-        .click('button[type="submit"]').pause(500)
     }
 
 

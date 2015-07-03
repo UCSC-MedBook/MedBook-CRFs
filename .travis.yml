@@ -55,10 +55,8 @@ before_install:
   - "sleep 10"
 
   # give meteor a few seconds after installing
-  - "starrynight generate-autoconfig"
-
-  # give meteor a few seconds after installing
-  - "sleep 10"
+  # - "starrynight generate-autoconfig"
+  # - "sleep 10"
 
   # setup Meteor app
   # - "cd webapp"

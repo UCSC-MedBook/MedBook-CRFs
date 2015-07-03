@@ -5,9 +5,9 @@
 
   <testsuite name="enrollPatient"
     errors="0" failures="0" hostname="" id="" package="enrollPatient" skipped="0"
-    tests="1" time="19.89" timestamp="Wed, 01 Jul 2015 01:51:50 GMT">
+    tests="1" time="19.95" timestamp="Fri, 03 Jul 2015 21:26:03 GMT">
   
-    <testcase name="Patient Enrollment Form" time="19.89" assertions="34">
+    <testcase name="Patient Enrollment Form" time="19.95" assertions="34">
 
     
 

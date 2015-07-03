@@ -5,9 +5,9 @@
 
   <testsuite name="formsReadonly"
     errors="0" failures="0" hostname="" id="" package="formsReadonly" skipped="0"
-    tests="1" time="34.38" timestamp="Fri, 03 Jul 2015 02:42:23 GMT">
+    tests="1" time="35.52" timestamp="Fri, 03 Jul 2015 21:49:33 GMT">
   
-    <testcase name="Readonly Forms Walkthrough" time="34.38" assertions="468">
+    <testcase name="Readonly Forms Walkthrough" time="35.52" assertions="468">
 
     
 

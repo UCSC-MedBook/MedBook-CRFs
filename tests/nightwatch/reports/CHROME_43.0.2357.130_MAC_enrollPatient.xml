@@ -5,9 +5,9 @@
 
   <testsuite name="enrollPatient"
     errors="0" failures="0" hostname="" id="" package="enrollPatient" skipped="0"
-    tests="1" time="15.70" timestamp="Fri, 03 Jul 2015 02:41:02 GMT">
+    tests="1" time="16.48" timestamp="Fri, 03 Jul 2015 21:48:08 GMT">
   
-    <testcase name="Patient Enrollment Form" time="15.70" assertions="34">
+    <testcase name="Patient Enrollment Form" time="16.48" assertions="34">
 
     
 
@@ -48,7 +48,7 @@
     
 
     
-<system-out>[[ATTACHMENT|/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/tests/nightwatch/screenshots/ERROR_Thu-Jul-02-2015-214111-GMT-0500.png]][[ATTACHMENT|/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/tests/nightwatch/screenshots/ERROR_Thu-Jul-02-2015-214112-GMT-0500.png]][[ATTACHMENT|/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/tests/nightwatch/screenshots/ERROR_Thu-Jul-02-2015-214113-GMT-0500.png]]</system-out>
+<system-out>[[ATTACHMENT|/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/tests/nightwatch/screenshots/ERROR_Fri-Jul-03-2015-164817-GMT-0500.png]][[ATTACHMENT|/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/tests/nightwatch/screenshots/ERROR_Fri-Jul-03-2015-164818-GMT-0500.png]][[ATTACHMENT|/Users/abigailwatson/Code/SantaCruz/MedBook-CRFs/tests/nightwatch/screenshots/ERROR_Fri-Jul-03-2015-164819-GMT-0500.png]]</system-out>
     
 
     

@@ -5,9 +5,9 @@
 
   <testsuite name="accountsEntry"
     errors="0" failures="0" hostname="" id="" package="accountsEntry" skipped="0"
-    tests="2" time="23.88" timestamp="Wed, 01 Jul 2015 01:51:21 GMT">
+    tests="2" time="29.62" timestamp="Fri, 03 Jul 2015 21:25:28 GMT">
   
-    <testcase name="Accounts Entry" time="9.197" assertions="16">
+    <testcase name="Accounts Entry" time="9.403" assertions="16">
 
     
 
@@ -42,29 +42,10 @@
     
     </testcase>
       <system-err>
-        Unable to locate element: &quot;input[name=&quot;Sample_ID&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Adeno&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Small_Cell&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Trichotomy&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Adeno&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Small_Cell&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Trichotomy&quot;]&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Histology_Call&quot; using: css selector
+        Unable to locate element: &quot;table tbody tr:nth-child(1) .Histology_Call&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Adeno&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Small_Cell&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Trichotomy&quot; using: css selector
-Unable to locate element: &quot;input[name=&quot;Sample_ID&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Procedure_Date&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Attending_Radiologist&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;CRC_at_Collection&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Number_of_Cores&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Fixed_Core_Ship_Date&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Freezer&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Box_ID&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Core_Notes&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;TimepointNotes&quot;]&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Timepoint&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Procedure_Date&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Attending_Radiologist&quot; using: css selector
@@ -72,7 +53,6 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .CRC_at_Collection&q
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Number_of_Cores&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Fixed_Core_Ship_Date&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Freezer&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Box_ID&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Core_Notes&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .TimepointNotes&quot; using: css selector
@@ -80,7 +60,7 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .Patient_ID&quot; us
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Timepoint&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Draw_Date&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .CRC_at_Collection&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
+Unable to locate element: &quot;select[name=&quot;Cores.0.Core&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&quot; using: css selector
@@ -89,9 +69,7 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody t
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(2)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Core&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Completion_Date&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .SlideNumber&quot; using: css selector
@@ -100,15 +78,12 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .Lysates&quot; using
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Lysates_Volume&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Downstream_use&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Patient_ID&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .LNCAP_control_source&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .QC_reports&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .RIN_score_from_UCSF&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .date_completed&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .date_received&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .library_prep_used&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .library_prep_notes&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .location_of_fastq_file&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Tumor_Content&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Preliminary_Histology&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Final_Histology&quot; using: css selector
@@ -122,7 +97,7 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .PTEN_IHC&quot; usin
 Unable to locate element: &quot;table tbody tr:nth-child(1) .PTEN_test_performed&quot; using: css selector
       </system-err>
   
-    <testcase name="Ingest Oncore Datafiles" time="14.69" assertions="25">
+    <testcase name="Ingest Oncore Datafiles" time="20.22" assertions="25">
 
     
 
@@ -175,29 +150,10 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .PTEN_test_performed
     
     </testcase>
       <system-err>
-        Unable to locate element: &quot;input[name=&quot;Sample_ID&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Adeno&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Small_Cell&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Trichotomy&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Adeno&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Small_Cell&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Trichotomy&quot;]&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Histology_Call&quot; using: css selector
+        Unable to locate element: &quot;table tbody tr:nth-child(1) .Histology_Call&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Adeno&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Small_Cell&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Trichotomy&quot; using: css selector
-Unable to locate element: &quot;input[name=&quot;Sample_ID&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Procedure_Date&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Attending_Radiologist&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;CRC_at_Collection&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Number_of_Cores&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Fixed_Core_Ship_Date&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Freezer&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Box_ID&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;Core_Notes&quot;]&quot; using: css selector
-Unable to locate element: &quot;select[name=&quot;TimepointNotes&quot;]&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Timepoint&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Procedure_Date&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Attending_Radiologist&quot; using: css selector
@@ -205,7 +161,6 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .CRC_at_Collection&q
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Number_of_Cores&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Fixed_Core_Ship_Date&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Freezer&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Box_ID&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Core_Notes&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .TimepointNotes&quot; using: css selector
@@ -213,7 +168,7 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .Patient_ID&quot; us
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Timepoint&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Draw_Date&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .CRC_at_Collection&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
+Unable to locate element: &quot;select[name=&quot;Cores.0.Core&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&quot; using: css selector
@@ -222,9 +177,7 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody t
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(2)&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Core&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Completion_Date&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .SlideNumber&quot; using: css selector
@@ -233,15 +186,12 @@ Unable to locate element: &quot;table tbody tr:nth-child(1) .Lysates&quot; using
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Lysates_Volume&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Downstream_use&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Patient_ID&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .LNCAP_control_source&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .QC_reports&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .RIN_score_from_UCSF&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .date_completed&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .date_received&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .library_prep_used&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .library_prep_notes&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .location_of_fastq_file&quot; using: css selector
-Unable to locate element: &quot;table tbody tr:nth-child(1) .Sample_ID&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Tumor_Content&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Preliminary_Histology&quot; using: css selector
 Unable to locate element: &quot;table tbody tr:nth-child(1) .Final_Histology&quot; using: css selector

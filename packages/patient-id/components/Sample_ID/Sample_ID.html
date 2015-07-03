@@ -1,0 +1,9 @@
+<template name="Sample_ID">
+  <span>
+    <select data-role="tagsinput" class="Sample_ID form-control" type="text" name="Sample_ID" {{atts}}>
+    {{#each samples}}
+        <option value={{this}}>{{this}}</option>
+    {{/each}}
+    </select>
+  </span>
+</template>

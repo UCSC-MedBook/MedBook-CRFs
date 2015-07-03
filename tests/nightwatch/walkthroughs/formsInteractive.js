@@ -1,12 +1,12 @@
 var bloodSpecimenRecord = {
-  patientId: "",
-  timepoint: "",
-  drawDate: "",
-  crcAtCollection: ""
+  patientId: "DTB-999",
+  timepoint: "Baseline",
+  drawDate: "01/01/2015",
+  crcAtCollection: "lorem ipsum"
 }
 
 var histologyAssessmentRecord = {
-  sampleId: "",
+  sampleId: "DTB‑999",
   core: "A",
   blockImage: "1",
   referenceSlideNumber: "1",
@@ -15,74 +15,79 @@ var histologyAssessmentRecord = {
 }
 
 var histologyResearchRecord = {
-  sampleId: "",
-  mutatedGenes: "",
-  immunohistochemistry: "",
-  histologyCall: "",
-  adeno: "",
-  smallCell: "",
-  trichotomy: ""
+  sampleId: "DTB‑999",
+  /*mutatedGenes: "",
+  immunohistochemistry: "",*/
+  histologyCall: "Adeno",
+  adeno: "Adeno",
+  smallCell: "Not Small Cell",
+  trichotomy: "Adeno"
 }
 
 var laserCaptureRecord = {
-  sampleId: "",
-  core: "",
-  completionDate: "",
-  slideNumber: "",
-  estimatedTotalCaptureArea: "",
-  lysates: "",
-  lystatesVolume: "",
-  downstreamUse: ""
+  sampleId: "DTB‑999",
+  core: "A",
+  completionDate: "01/01/2015",
+  slideNumber: "1",
+  estimatedTotalCaptureArea: "1",
+  lysates: "1",
+  lystatesVolume: "50",
+  downstreamUse: "RNA analysis"
 }
 
 var pathologyRecord = {
-  sampleId: "",
-  tumorContent: "",
-  preliminaryHistology: "",
-  finalHistology: "",
-  arFishIhc: "",
-  psaIhc: "",
-  chgaIhc: "",
-  arFishPerformed: "",
-  arChromosomeXRatio: "",
-  ionTorrentTestPerformed: "",
-  ptenIhc: "",
-  ptenTestPerformed: ""
+  sampleId: "DTB‑999",
+  tumorContent: "5%",
+  preliminaryHistology: "Adenocarcinoma",
+  finalHistology: "ANPC",
+  arFishIhc: "Positive",
+  psaIhc: "Positive",
+  chgaIhc: "Positive",
+  chgaTestPerformed: "Performed",
+  arFishPerformed: "Performed",
+  arChromosomeXRatio: "1",
+  ionTorrentTestPerformed: "Yes",
+  ptenIhc: "Positive",
+  ptenTestPerformed: "Performed"
 }
 var rnaSequenceRecord = {
-  patientId: "",
-  lncapControlSource: "",
-  qcReports: "",
-  rinScoreFromUcsf: "",
-  dateCompleted: "",
-  dateReceived: "",
-  libraryPrepUsed: "",
-  libraryPrepNotes: "",
-  locationOfFastqFile: "",
+  patientId: "DTB-999",
+  lncapControlSource: "foo",
+  qcReports: "lorem ipsum",
+  rinScoreFromUcsf: "1",
+  dateCompleted: "01/01/2015",
+  dateReceived: "01/01/2015",
+  libraryPrepUsed: "NuGen stranded",
+  libraryPrepNotes: "lorem ipsum",
+  locationOfFastqFile: "lorem ipsum",
   lncapControlSource: ""
 }
 var tissueSpecimenRecord = {
-  sampleId: "",
-  timepoint: "",
-  procedureDate: "",
-  biopsySite: "",
-  attendingRadiologist: "",
-  crcAtCollection: "",
-  numberOfCores: "",
-  coresId: "",
-  coresCore: "",
-  fixedCoreShipDate: "",
-  boxId: "",
-  coreNotes: "",
-  timepointNotes: ""
+  sampleId: "DTB-999",
+  timepoint: "Baseline",
+  procedureDate: "01/01/2015",
+  //biopsySite: "",
+  attendingRadiologist: "Dr. Foo",
+  crcAtCollection: "Foo",
+  numberOfCores: "1",
+  coresId: "A",
+  coresCore: "Frozen",
+  fixedCoreShipDate: "01/01/2015",
+  freezer: "foo",
+  boxId: "foo123",
+  coreNotes: "lorem ipsum",
+  timepointNotes: "lorem ipsum"
 }
 
 var patientEnrollmentRecord = {
-  patientId: "DTB-999",
+  patientId: 'DTB-999',
   institution: "OHSU",
-  baselineSampleId: "123",
-  baselineBiopsyDate: "2015-01-01",
-  baselineBiopsySite: "Bone"
+  baselineSampleId: "999A",
+  baselineBiopsyDate: "01/01/2015",
+  baselineBiopsySite: "Liver",
+  progressionSampleId: "999B",
+  progressionBiopsyDate: "01/06/2015",
+  progressionBiopsySite: "Liver"
 }
 
 var screenshotDir = "tests/nightwatch/screenshots/desktop/interactiveForms/";

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites errors="2"
-            failures="2"
+<testsuites errors="7"
+            failures="7"
             tests="9">
 
   <testsuite name="formsInteractive"
-    errors="2" failures="2" hostname="" id="" package="formsInteractive" skipped="0"
-    tests="9" time="79.41" timestamp="Tue, 30 Jun 2015 02:04:49 GMT">
+    errors="7" failures="7" hostname="" id="" package="formsInteractive" skipped="0"
+    tests="9" time="198.9" timestamp="Fri, 03 Jul 2015 21:26:23 GMT">
   
-    <testcase name="SignIn" time="7.874" assertions="10">
+    <testcase name="SignIn" time="7.513" assertions="10">
 
     
 
@@ -30,7 +30,611 @@
     
     </testcase>
   
-    <testcase name="Patient Enrollment Form" time="12.66" assertions="20">
+    <testcase name="Patient Enrollment Form" time="11.45" assertions="20">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Histology Research Form" time="18.90" assertions="33">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Testing if attribute value of &lt;select[name=&quot;Histology_Call&quot;]&gt; equals &quot;Adeno&quot;.">Testing if attribute value of &lt;select[name=&quot;Histology_Call&quot;]&gt; equals &quot;Adeno&quot;.: Expected &quot;Adeno&quot; but got: &quot;&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:351:24)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if attribute value of &lt;input[name=&quot;Adeno&quot;]&gt; equals &quot;Adeno&quot;.">Testing if attribute value of &lt;input[name=&quot;Adeno&quot;]&gt; equals &quot;Adeno&quot;.: Expected &quot;Adeno&quot; but got: &quot;&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:351:24)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if attribute value of &lt;input[name=&quot;Small_Cell&quot;]&gt; equals &quot;Not Small Cell&quot;.">Testing if attribute value of &lt;input[name=&quot;Small_Cell&quot;]&gt; equals &quot;Not Small Cell&quot;.: Expected &quot;Not Small Cell&quot; but got: &quot;&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:351:24)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if attribute value of &lt;input[name=&quot;Trichotomy&quot;]&gt; equals &quot;Adeno&quot;.">Testing if attribute value of &lt;input[name=&quot;Trichotomy&quot;]&gt; equals &quot;Adeno&quot;.: Expected &quot;Adeno&quot; but got: &quot;&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:351:24)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+    
+
+      <failure message="Testing if element &lt;table tbody tr&gt; is present.">Testing if element &lt;table tbody tr&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Histology_Call&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Histology_Call&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Adeno&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Adeno&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Small_Cell&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Small_Cell&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Trichotomy&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Trichotomy&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Histology_Call&gt; contains text: &quot;Adeno&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Histology_Call&gt; contains text: &quot;Adeno&quot;. Element could not be located.: Expected &quot;Adeno&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Adeno&gt; contains text: &quot;Adeno&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Adeno&gt; contains text: &quot;Adeno&quot;. Element could not be located.: Expected &quot;Adeno&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Small_Cell&gt; contains text: &quot;Not Small Cell&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Small_Cell&gt; contains text: &quot;Not Small Cell&quot;. Element could not be located.: Expected &quot;Not Small Cell&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Trichotomy&gt; contains text: &quot;Adeno&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Trichotomy&gt; contains text: &quot;Adeno&quot;. Element could not be located.: Expected &quot;Adeno&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Tissue Specimen Form" time="35.00" assertions="57">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Testing if element &lt;table tbody tr&gt; is present.">Testing if element &lt;table tbody tr&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Timepoint&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Timepoint&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Procedure_Date&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Procedure_Date&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Attending_Radiologist&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Attending_Radiologist&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .CRC_at_Collection&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .CRC_at_Collection&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Number_of_Cores&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Number_of_Cores&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Fixed_Core_Ship_Date&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Fixed_Core_Ship_Date&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Freezer&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Freezer&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Box_ID&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Box_ID&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Core_Notes&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Core_Notes&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .TimepointNotes&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .TimepointNotes&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Timepoint&gt; contains text: &quot;Baseline&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Timepoint&gt; contains text: &quot;Baseline&quot;. Element could not be located.: Expected &quot;Baseline&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Procedure_Date&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Procedure_Date&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.: Expected &quot;01/01/2015&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Attending_Radiologist&gt; contains text: &quot;Dr. Foo&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Attending_Radiologist&gt; contains text: &quot;Dr. Foo&quot;. Element could not be located.: Expected &quot;Dr. Foo&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .CRC_at_Collection&gt; contains text: &quot;Foo&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .CRC_at_Collection&gt; contains text: &quot;Foo&quot;. Element could not be located.: Expected &quot;Foo&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Number_of_Cores&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Number_of_Cores&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores&gt; contains text: &quot;Frozen&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores&gt; contains text: &quot;Frozen&quot;. Element could not be located.: Expected &quot;Frozen&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Fixed_Core_Ship_Date&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Fixed_Core_Ship_Date&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.: Expected &quot;01/01/2015&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Box_ID&gt; contains text: &quot;foo123&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Box_ID&gt; contains text: &quot;foo123&quot;. Element could not be located.: Expected &quot;foo123&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Core_Notes&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Core_Notes&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.: Expected &quot;lorem ipsum&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .TimepointNotes&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .TimepointNotes&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.: Expected &quot;lorem ipsum&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+    
+    </testcase>
+  
+    <testcase name="Blood Specimen Form" time="13.99" assertions="25">
+
+    
+
+    
+
+    
 
     
 
@@ -87,7 +691,7 @@
     at _stream_readable.js:943:16
     at process._tickCallback (node.js:419:13)</failure>
 
-      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Study_Site&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Study_Site&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Timepoint&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Timepoint&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
     at HttpRequest.emit (events.js:98:17)
@@ -98,9 +702,8 @@
     at _stream_readable.js:943:16
     at process._tickCallback (node.js:419:13)</failure>
 
-      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Study_Site&gt; contains text: &quot;OHSU&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Study_Site&gt; contains text: &quot;OHSU&quot;. Element could not be located.: Expected &quot;OHSU&quot; but got: &quot;null&quot;
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Draw_Date&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Draw_Date&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
     at HttpRequest.emit (events.js:98:17)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
@@ -110,9 +713,8 @@
     at _stream_readable.js:943:16
     at process._tickCallback (node.js:419:13)</failure>
 
-      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Sample_ID&gt; contains text: &quot;123&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Sample_ID&gt; contains text: &quot;123&quot;. Element could not be located.: Expected &quot;123&quot; but got: &quot;null&quot;
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .CRC_at_Collection&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .CRC_at_Collection&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
     at HttpRequest.emit (events.js:98:17)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
@@ -122,7 +724,7 @@
     at _stream_readable.js:943:16
     at process._tickCallback (node.js:419:13)</failure>
 
-      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&gt; contains text: &quot;2015-01-01&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Date&gt; contains text: &quot;2015-01-01&quot;. Element could not be located.: Expected &quot;2015-01-01&quot; but got: &quot;null&quot;
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Patient_ID&gt; contains text: &quot;DTB-999&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Patient_ID&gt; contains text: &quot;DTB-999&quot;. Element could not be located.: Expected &quot;DTB-999&quot; but got: &quot;null&quot;
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
@@ -134,7 +736,7 @@
     at _stream_readable.js:943:16
     at process._tickCallback (node.js:419:13)</failure>
 
-      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&gt; contains text: &quot;Bone&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Baseline_Biopsy_Site&gt; contains text: &quot;Bone&quot;. Element could not be located.: Expected &quot;Bone&quot; but got: &quot;null&quot;
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Timepoint&gt; contains text: &quot;Baseline&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Timepoint&gt; contains text: &quot;Baseline&quot;. Element could not be located.: Expected &quot;Baseline&quot; but got: &quot;null&quot;
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
@@ -146,424 +748,7 @@
     at _stream_readable.js:943:16
     at process._tickCallback (node.js:419:13)</failure>
 
-    
-    </testcase>
-  
-    <testcase name="Histology Research Form" time="5.845" assertions="37">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Tissue Specimen Form" time="8.641" assertions="56">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Blood Specimen Form" time="4.300" assertions="25">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Histological Assessment Form" time="15.88" assertions="45">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(2)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(1)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&gt; is present.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-    
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&gt; contains text: &quot;BlockImage&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&gt; contains text: &quot;BlockImage&quot;. Element could not be located.: Expected &quot;BlockImage&quot; but got: &quot;null&quot;
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Draw_Date&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Draw_Date&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.: Expected &quot;01/01/2015&quot; but got: &quot;null&quot;
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
@@ -575,103 +760,7 @@
     at _stream_readable.js:943:16
     at process._tickCallback (node.js:419:13)</failure>
 
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&gt; contains text: &quot;BlockStatus&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&gt; contains text: &quot;BlockStatus&quot;. Element could not be located.: Expected &quot;BlockStatus&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&gt; contains text: &quot;Core&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&gt; contains text: &quot;Core&quot;. Element could not be located.: Expected &quot;Core&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&gt; contains text: &quot;ReferenceSlideImages&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&gt; contains text: &quot;ReferenceSlideImages&quot;. Element could not be located.: Expected &quot;ReferenceSlideImages&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(1)&gt; contains text: &quot;ReferenceSlideNumber&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(1)&gt; contains text: &quot;ReferenceSlideNumber&quot;. Element could not be located.: Expected &quot;ReferenceSlideNumber&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&gt; contains text: &quot;negative&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&gt; contains text: &quot;negative&quot;. Element could not be located.: Expected &quot;negative&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&gt; contains text: &quot;A&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&gt; contains text: &quot;A&quot;. Element could not be located.: Expected &quot;A&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(2)&gt; contains text: &quot;undefined&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(2)&gt; contains text: &quot;undefined&quot;. Element could not be located.: Expected &quot;undefined&quot; but got: &quot;null&quot;
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
-    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
-    at HttpRequest.emit (events.js:98:17)
-    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
-    at HttpRequest.emit (events.js:106:17)
-    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
-    at IncomingMessage.emit (events.js:117:20)
-    at _stream_readable.js:943:16
-    at process._tickCallback (node.js:419:13)</failure>
-
-      <failure message="Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table thead tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .CRC_at_Collection&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .CRC_at_Collection&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.: Expected &quot;lorem ipsum&quot; but got: &quot;null&quot;
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
     at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
     at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
@@ -686,7 +775,7 @@
     
     </testcase>
   
-    <testcase name="Laser Capture Form" time="6.257" assertions="41">
+    <testcase name="Histological Assessment Form" time="32.89" assertions="48">
 
     
 
@@ -722,7 +811,17 @@
 
     
 
-    
+      <failure message="Testing if attribute value of &lt;select[name=&quot;Cores.0.Core&quot;]&gt; equals &quot;A&quot;.">Testing if attribute value of &lt;select[name=&quot;Cores.0.Core&quot;]&gt; equals &quot;A&quot;.: Expected &quot;A&quot; but got: &quot;&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:351:24)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
     
 
@@ -730,48 +829,297 @@
 
     
 
-    
+      <failure message="Testing if attribute value of &lt;select[name=&quot;Cores.0.BlockStatus&quot;]&gt; equals &quot;negative&quot;.">Testing if attribute value of &lt;select[name=&quot;Cores.0.BlockStatus&quot;]&gt; equals &quot;negative&quot;.: Expected &quot;negative&quot; but got: &quot;&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:351:24)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
     
 
-    
+      <failure message="Testing if element &lt;table tbody tr&gt; is present.">Testing if element &lt;table tbody tr&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(2)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&gt; contains text: &quot;BlockImage&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(1)&gt; contains text: &quot;BlockImage&quot;. Element could not be located.: Expected &quot;BlockImage&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&gt; contains text: &quot;BlockStatus&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(1)&gt; contains text: &quot;BlockStatus&quot;. Element could not be located.: Expected &quot;BlockStatus&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&gt; contains text: &quot;Core&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(1)&gt; contains text: &quot;Core&quot;. Element could not be located.: Expected &quot;Core&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&gt; contains text: &quot;ReferenceSlideImages&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(4) td:nth-child(1)&gt; contains text: &quot;ReferenceSlideImages&quot;. Element could not be located.: Expected &quot;ReferenceSlideImages&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(1)&gt; contains text: &quot;ReferenceSlideNumber&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(1)&gt; contains text: &quot;ReferenceSlideNumber&quot;. Element could not be located.: Expected &quot;ReferenceSlideNumber&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(1) td:nth-child(2)&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&gt; contains text: &quot;negative&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(2) td:nth-child(2)&gt; contains text: &quot;negative&quot;. Element could not be located.: Expected &quot;negative&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&gt; contains text: &quot;A&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(3) td:nth-child(2)&gt; contains text: &quot;A&quot;. Element could not be located.: Expected &quot;A&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Cores table tbody tr:nth-child(5) td:nth-child(2)&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
     
     </testcase>
   
-    <testcase name="RNA Sequence Completion Form" time="7.567" assertions="47">
+    <testcase name="Laser Capture Form" time="27.49" assertions="47">
 
     
 
@@ -815,7 +1163,17 @@
 
     
 
-    
+      <failure message="Testing if attribute value of &lt;select[name=&quot;Core&quot;]&gt; equals &quot;A&quot;.">Testing if attribute value of &lt;select[name=&quot;Core&quot;]&gt; equals &quot;A&quot;.: Expected &quot;A&quot; but got: &quot;&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:351:24)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:322:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:148:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
     
 
@@ -831,44 +1189,447 @@
 
     
 
-    
+      <failure message="Testing if element &lt;table tbody tr&gt; is present.">Testing if element &lt;table tbody tr&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Core&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Core&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Completion_Date&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Completion_Date&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .SlideNumber&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .SlideNumber&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Estimated_total_capture_area&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Estimated_total_capture_area&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Lysates&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Lysates&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Lysates_Volume&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Lysates_Volume&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Downstream_use&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Downstream_use&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Core&gt; contains text: &quot;A&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Core&gt; contains text: &quot;A&quot;. Element could not be located.: Expected &quot;A&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Completion_Date&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Completion_Date&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.: Expected &quot;01/01/2015&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .SlideNumber&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .SlideNumber&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Estimated_total_capture_area&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Estimated_total_capture_area&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Lysates&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Lysates&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Lysates_Volume&gt; contains text: &quot;50&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Lysates_Volume&gt; contains text: &quot;50&quot;. Element could not be located.: Expected &quot;50&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Downstream_use&gt; contains text: &quot;RNA analysis&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Downstream_use&gt; contains text: &quot;RNA analysis&quot;. Element could not be located.: Expected &quot;RNA analysis&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
     
     </testcase>
   
-    <testcase name="Pathology Form" time="10.39" assertions="61">
+    <testcase name="RNA Sequence Completion Form" time="25.05" assertions="40">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Testing if element &lt;table tbody tr&gt; is present.">Testing if element &lt;table tbody tr&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Patient_ID&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Patient_ID&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .QC_reports&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .QC_reports&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .RIN_score_from_UCSF&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .RIN_score_from_UCSF&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .date_completed&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .date_completed&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .date_received&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .date_received&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .library_prep_used&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .library_prep_used&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .library_prep_notes&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .library_prep_notes&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .location_of_fastq_file&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .location_of_fastq_file&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Patient_ID&gt; contains text: &quot;DTB-999&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Patient_ID&gt; contains text: &quot;DTB-999&quot;. Element could not be located.: Expected &quot;DTB-999&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .QC_reports&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .QC_reports&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.: Expected &quot;lorem ipsum&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .RIN_score_from_UCSF&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .RIN_score_from_UCSF&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .date_completed&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .date_completed&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .date_received&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .date_received&gt; contains text: &quot;01/01/2015&quot;. Element could not be located.: Expected &quot;01/01/2015&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .library_prep_notes&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .library_prep_notes&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.: Expected &quot;lorem ipsum&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .location_of_fastq_file&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .location_of_fastq_file&gt; contains text: &quot;lorem ipsum&quot;. Element could not be located.: Expected &quot;lorem ipsum&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
+
+    
+    </testcase>
+  
+    <testcase name="Pathology Form" time="26.67" assertions="60">
 
     
 
@@ -930,57 +1691,291 @@
 
     
 
-    
+      <failure message="Testing if element &lt;table tbody tr&gt; is present.">Testing if element &lt;table tbody tr&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1)&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Sample_ID&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Tumor_Content&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Tumor_Content&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Preliminary_Histology&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Preliminary_Histology&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Final_Histology&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .Final_Histology&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .AR-FISH_IHC&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .AR-FISH_IHC&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .PSA_IHC&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .PSA_IHC&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .CHGA_IHC&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .CHGA_IHC&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .AR-FISH_test_performed&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .AR-FISH_test_performed&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .AR_chromosomeX_ratio&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .AR_chromosomeX_ratio&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .ION_Torrent_test_performed&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .ION_Torrent_test_performed&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .PTEN_IHC&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .PTEN_IHC&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .PTEN_test_performed&gt; is present.">Testing if element &lt;table tbody tr:nth-child(1) .PTEN_test_performed&gt; is present.: Expected &quot;present&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Tumor_Content&gt; contains text: &quot;5%&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Tumor_Content&gt; contains text: &quot;5%&quot;. Element could not be located.: Expected &quot;5%&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Preliminary_Histology&gt; contains text: &quot;Adenocarcinoma&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Preliminary_Histology&gt; contains text: &quot;Adenocarcinoma&quot;. Element could not be located.: Expected &quot;Adenocarcinoma&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .Final_Histology&gt; contains text: &quot;ANPC&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .Final_Histology&gt; contains text: &quot;ANPC&quot;. Element could not be located.: Expected &quot;ANPC&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .AR-FISH_IHC&gt; contains text: &quot;Positive&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .AR-FISH_IHC&gt; contains text: &quot;Positive&quot;. Element could not be located.: Expected &quot;Positive&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .PSA_IHC&gt; contains text: &quot;Positive&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .PSA_IHC&gt; contains text: &quot;Positive&quot;. Element could not be located.: Expected &quot;Positive&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .CHGA_IHC&gt; contains text: &quot;Positive&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .CHGA_IHC&gt; contains text: &quot;Positive&quot;. Element could not be located.: Expected &quot;Positive&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .AR-FISH_test_performed&gt; contains text: &quot;Performed&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .AR-FISH_test_performed&gt; contains text: &quot;Performed&quot;. Element could not be located.: Expected &quot;Performed&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .AR_chromosomeX_ratio&gt; contains text: &quot;1&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .AR_chromosomeX_ratio&gt; contains text: &quot;1&quot;. Element could not be located.: Expected &quot;1&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .ION_Torrent_test_performed&gt; contains text: &quot;Yes&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .ION_Torrent_test_performed&gt; contains text: &quot;Yes&quot;. Element could not be located.: Expected &quot;Yes&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .PTEN_IHC&gt; contains text: &quot;Positive&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .PTEN_IHC&gt; contains text: &quot;Positive&quot;. Element could not be located.: Expected &quot;Positive&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
-    
-
-    
+      <failure message="Testing if element &lt;table tbody tr:nth-child(1) .PTEN_test_performed&gt; contains text: &quot;Performed&quot;. Element could not be located.">Testing if element &lt;table tbody tr:nth-child(1) .PTEN_test_performed&gt; contains text: &quot;Performed&quot;. Element could not be located.: Expected &quot;Performed&quot; but got: &quot;null&quot;
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/api/element-commands.js:341:22)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:299:20)
+    at HttpRequest.emit (events.js:98:17)
+    at HttpRequest.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/index.js:346:15)
+    at HttpRequest.emit (events.js:106:17)
+    at IncomingMessage.&lt;anonymous&gt; (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/http/request.js:150:16)
+    at IncomingMessage.emit (events.js:117:20)
+    at _stream_readable.js:943:16
+    at process._tickCallback (node.js:419:13)</failure>
 
     
 

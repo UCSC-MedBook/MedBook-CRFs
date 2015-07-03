@@ -5,17 +5,12 @@
 
 meteor-platform
 accounts-password
-aldeed:autoform
-aldeed:collection2
-aldeed:simple-schema
 insecure
 iron:router
 less
 standard-app-packages
 chriswessels:glyphicons-halflings
 
-aldeed:autoform-select2
-natestrauser:select2
 cfs:http-methods
 bootstrap
 mizzao:bootstrap-3
@@ -23,9 +18,8 @@ ucsc-medbook:reactive-table
 mrt:jquery-ui
 pfafman:font-awesome-4
 rajit:bootstrap3-datepicker
-aldeed:autoform-bs-datepicker
 momentjs:moment
-ucscmedbook:api@0.2.2
+ucscmedbook:api@0.2.3
 
 medbook:testing-accounts
 cfs:standard-packages
@@ -35,3 +29,16 @@ meteorhacks:npm
 medbook:patient-id
 
 npm-container
+
+
+aldeed:collection2
+aldeed:simple-schema
+
+aldeed:autoform
+aldeed:autoform-bs-datepicker
+
+natestrauser:select2
+aldeed:autoform-select2
+
+msavin:jetsetter
+#genomics:medbook-api@0.2.3

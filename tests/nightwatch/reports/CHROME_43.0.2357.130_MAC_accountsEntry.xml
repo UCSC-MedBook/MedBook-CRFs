@@ -5,9 +5,9 @@
 
   <testsuite name="accountsEntry"
     errors="0" failures="1" hostname="" id="" package="accountsEntry" skipped="0"
-    tests="2" time="18.42" timestamp="Thu, 25 Jun 2015 03:16:32 GMT">
+    tests="2" time="19.31" timestamp="Fri, 03 Jul 2015 21:47:44 GMT">
   
-    <testcase name="Accounts Entry" time="7.678" assertions="16">
+    <testcase name="Accounts Entry" time="8.336" assertions="16">
 
     
 
@@ -42,10 +42,10 @@
     
     </testcase>
       <system-err>
-        Unable to locate element: &quot;table tbody tr:nth-child(2) .Patient_ID span&quot; using: css selector
+        Unable to locate element: &quot;table tbody tr:nth-child(1) .PSA_IHC&quot; using: css selector
       </system-err>
   
-    <testcase name="Ingest Oncore Datafiles" time="10.74" assertions="25">
+    <testcase name="Ingest Oncore Datafiles" time="10.98" assertions="25">
 
     
 
@@ -116,7 +116,7 @@
     
     </testcase>
       <system-err>
-        Unable to locate element: &quot;table tbody tr:nth-child(2) .Patient_ID span&quot; using: css selector
+        Unable to locate element: &quot;table tbody tr:nth-child(1) .PSA_IHC&quot; using: css selector
       </system-err>
   
   

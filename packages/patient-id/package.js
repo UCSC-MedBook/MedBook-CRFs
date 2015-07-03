@@ -13,9 +13,19 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
   api.use('meteor-platform');
+  api.use('aldeed:autoform');
 
-  api.addFiles('components/Patient_ID/Patient_ID.html');
-  api.addFiles('components/Patient_ID/Patient_ID.js');
+  api.addFiles('helpers.js');
+
+  api.addFiles('components/Patient_ID/Patient_ID.html', 'client');
+  api.addFiles('components/Patient_ID/Patient_ID.js', 'client');
+
+  api.addFiles('components/Sample_ID/Sample_ID.html', 'client');
+  api.addFiles('components/Sample_ID/Sample_ID.js', 'client');
+
+  api.addFiles('server.js', 'server');
+
+  api.export('SetCurrentDoc');
 });
 
 Package.onTest(function(api) {

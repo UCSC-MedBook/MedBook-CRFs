@@ -5,9 +5,9 @@
 
   <testsuite name="appLayout"
     errors="0" failures="0" hostname="" id="" package="appLayout" skipped="0"
-    tests="1" time="4.329" timestamp="Thu, 25 Jun 2015 03:16:51 GMT">
+    tests="1" time="4.407" timestamp="Fri, 03 Jul 2015 21:48:04 GMT">
   
-    <testcase name="Layout &amp; Static Pages" time="4.329" assertions="4">
+    <testcase name="Layout &amp; Static Pages" time="4.407" assertions="4">
 
     
 
@@ -18,7 +18,7 @@
     
     </testcase>
       <system-err>
-        Unable to locate element: &quot;table tbody tr:nth-child(2) .Patient_ID span&quot; using: css selector
+        Unable to locate element: &quot;table tbody tr:nth-child(1) .PSA_IHC&quot; using: css selector
       </system-err>
   
   

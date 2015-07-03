@@ -30,7 +30,6 @@ medbook:patient-id
 
 npm-container
 
-#medbook:autoform
 
 aldeed:collection2
 aldeed:simple-schema

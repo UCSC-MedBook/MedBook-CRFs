@@ -17,20 +17,19 @@ exports.command = function(histologyResearchRecord, rowIndex) {
     if(histologyResearchRecord){
       this
       .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Sample_ID")
-      .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Mutated_Genes")
-      .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Immunohistochemistry_Upregulated_Genes")
       .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Histology_Call")
       .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Adeno")
       .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Small_Cell")
       .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Trichotomy")
 
-      .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Sample_ID", histologyResearchRecord.sampleId )
-      .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Mutated_Genes", histologyResearchRecord.mutatedGenes )
-      .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Immunohistochemistry_Upregulated_Genes", histologyResearchRecord.immunohistochemistry )
+      //.verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Sample_ID", histologyResearchRecord.sampleId )
       .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Histology_Call", histologyResearchRecord.histologyCall )
       .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Adeno", histologyResearchRecord.adeno )
       .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Small_Cell", histologyResearchRecord.smallCell )
       .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Trichotomy", histologyResearchRecord.trichotomy )
+
+      .verify.elementPresent('button[type="submit"]')
+      .click('button[type="submit"]').pause(500)
     }
 
 

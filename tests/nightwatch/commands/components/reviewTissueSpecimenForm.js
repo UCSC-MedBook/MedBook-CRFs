@@ -17,6 +17,8 @@ exports.command = function() {
 
     .verify.elementPresent('input[name="Fixed_Core_Ship_Date"]')
     .verify.elementPresent('input[name="Box_ID"]')
+    .verify.elementPresent('input[name="Freezer"]')    
+
     .verify.elementPresent('input[name="Core_Notes"]')
     .verify.elementPresent('input[name="TimepointNotes"]')
 

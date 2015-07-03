@@ -25,7 +25,7 @@ exports.command = function(laserCaptureRecord, rowIndex) {
       .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Lysates_Volume")
       .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Downstream_use")
 
-      .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Sample_ID", laserCaptureRecord.sampleId )
+      //.verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Sample_ID", laserCaptureRecord.sampleId )
       .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Core", laserCaptureRecord.core )
       .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Completion_Date", laserCaptureRecord.completionDate )
       .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .SlideNumber", laserCaptureRecord.slideNumber )

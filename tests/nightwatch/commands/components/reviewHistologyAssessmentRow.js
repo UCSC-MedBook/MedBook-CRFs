@@ -31,7 +31,7 @@ exports.command = function(histologyAssessmentRecord, rowIndex) {
         .verify.elementPresent("table tbody tr:nth-child(" + rowIndex + ") .Cores table tbody tr:nth-child(5) td:nth-child(2)")
 
 
-        .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Sample_ID", histologyAssessmentRecord.sampleId )
+        //.verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Sample_ID", histologyAssessmentRecord.sampleId )
 
         .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Cores table tbody tr:nth-child(1) td:nth-child(1)", "BlockImage")
         .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Cores table tbody tr:nth-child(2) td:nth-child(1)", "BlockStatus")
@@ -42,7 +42,7 @@ exports.command = function(histologyAssessmentRecord, rowIndex) {
         .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Cores table tbody tr:nth-child(1) td:nth-child(2)", histologyAssessmentRecord.blockImage)
         .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Cores table tbody tr:nth-child(2) td:nth-child(2)", histologyAssessmentRecord.blockStatus )
         .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Cores table tbody tr:nth-child(3) td:nth-child(2)", histologyAssessmentRecord.core )
-        .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Cores table tbody tr:nth-child(4) td:nth-child(2)", histologyAssessmentRecord.ReferenceSlideImages )
+        //.verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Cores table tbody tr:nth-child(4) td:nth-child(2)", histologyAssessmentRecord.ReferenceSlideImages )
         .verify.containsText("table tbody tr:nth-child(" + rowIndex + ") .Cores table tbody tr:nth-child(5) td:nth-child(2)", histologyAssessmentRecord.referenceSlideNumber )
 
     }

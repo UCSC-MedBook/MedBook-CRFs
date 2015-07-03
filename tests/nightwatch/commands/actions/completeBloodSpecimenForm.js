@@ -22,6 +22,7 @@ exports.command = function(bloodSpecimen) {
         .setValue('input[name="CRC_at_Collection"]', bloodSpecimen.crcAtCollection)
 
         .verify.elementPresent('button[type="submit"]')
+        .click('button[type="submit"]').pause(500)
     }
 
   return this;

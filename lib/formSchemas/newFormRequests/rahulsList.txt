@@ -1,0 +1,64 @@
+Rahul's list
+Patient ID
+Site (Denographics)
+Prior tissue
+When/where stored?  (oncore?)
+Final Path Call    (path form)
+Classification #1  (path form)
+Classification #2  (path form)
+Classification #3  (path form)
+AR Amplification by FISH  (path form)
+Biopsy Date    Biopsy form
+Biopsy site    Biopsy form
+Steroid at time of biopsy    (parse drug?)
+Steroid stop date
+Sites of Metastases at time of biopsy   (biopsy form)
+PSA At Biopsy	(blood lab)
+LDH at biopsy	(blood lab)
+Alk phos at biopsy	(blood lab)
+Hemoglobin at biopsy (blood lab)
+Serum CHGA at biopsy  (blood lab)
+Serum NSE at Biopsy   (blood lab)
+ECOG PS at biopsy   (blood lab)
+Date of Diagnosis   (blood lab)
+Gleason Grade
+ADT Start Date
+Orchiectomy
+PSA Nadir on PADT
+Date of Castration Resistance
+Duration of Primary ADT before CRPC
+First Date of Metastases
+Date of mCRPC
+Treatment for mCRPC Prior to Biopsy
+Enzalutamide
+Enza start date
+Enza date of progression
+Enza stop date
+Duration of Enza Tx
+Enza PSA response
+Enza radiographic response
+Enza reason for D/C
+Abiraterone
+Abi start date
+Abi date of PD
+Abi stop date
+Duration of Abi Tx
+Abi PSA response
+Abi radiographic response
+Abi reason for d/c
+Post-Biopsy Treatment
+Start Date
+PSA response
+Radiographic Response
+Date of Progression
+Treatment Stop Date
+Reason for Stop
+Date of Death or Last Contact
+Death or Last Contact
+*/
+/* Chuck Ryan
+RNA_seq status
+On study drug
+BRCA1
+FANCON ATM1
+DNA repair gene

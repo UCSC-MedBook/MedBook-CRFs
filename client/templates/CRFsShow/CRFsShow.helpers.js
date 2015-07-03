@@ -1,0 +1,296 @@
+var EDITING_KEY = 'editingList';
+
+LastSubmit = null;
+All_Sample_ID = [];
+
+Session.set("RowsPerPage", 10);
+
+
+
+stopMe = function() {
+    console.log("stopMe");
+    debugger;
+}
+
+customHandler = function(insertDoc, updateDoc, currentDoc) {
+
+    var currentForm = Session.get("currentForm");
+    var coll = window[currentForm];
+    if (insertDoc == null) {
+        debugger;
+        console.log("insertDoc==null how did this happen?");
+        alert("customHandler: " + 1);
+        return new Error("Submission failed");
+    } else
+        try {
+            LastSubmit = insertDoc.Patient_ID != null ? insertDoc.Patient_ID : insertDoc.Sample_ID;
+
+            var cc;
+            if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
+                v = window[currentForm].update({_id: currentDoc._id}, updateDoc );
+                if (v != 1) {
+                    //alert("LastSubmit: " + v);
+                    console.log("Updating window[currentForm] wasnt successful.  :(");
+
+                    //debugger;
+                }
+                insertDoc._id = currentDoc.id;
+            } else {
+                insertDoc._id = window[currentForm].insert(insertDoc);
+            }
+            // Session.set("RowsPerPage", 1 + Session.get("RowsPerPage"));
+            Session.set("CRF_filter", insertDoc.Patient_ID)
+            Session.set("CurrentDoc", insertDoc);
+            return null;
+        } catch (why) {
+            debugger;
+            alert("LastSubmit[error]: " + 3);
+            return new Error("Submission failed: " + why);
+        }
+}
+
+AutoForm.hooks({
+  CRFquickForm: {
+    onSuccess: function(formType, result) {
+      console.log("Autoform.onSuccess.formType", formType);
+      console.log("Autoform.onSuccess.result", result);
+
+     fixUpRenderedAutoForm();
+    },
+    onSubmit: function (insertDoc, updateDoc, currentDoc) {
+      //debugger;
+      console.log("AutoForm.onSubmit.insertDoc", insertDoc);
+      console.log("AutoForm.onSubmit.updateDoc", updateDoc);
+      console.log("AutoForm.onSubmit.currentDoc", currentDoc);
+
+      this.done(customHandler(insertDoc, updateDoc, currentDoc));
+      return false;
+    }
+  }
+});
+
+
+
+
+
+
+
+var before = "<table class='table table-striped table-bordered table-condensed table-hover' style='border: 1px solid black;'><tbody>" ;
+var after = "</tbody></table>";
+
+arrayDoc = function(array) {
+    if (typeof(array[0]) == "string")
+        return array.join("; ");
+
+    return array.map(function(element) {
+        return before +  Object.keys(element).sort().map( function(key) {
+                return "<tr><td>"+key+"</td><td>"+element[key]+ "<td></tr>";
+            }) + after;
+    }).join("<p>")
+}
+simpleDate = function (obj) {
+   if (obj == null){
+    return obj;
+   } try {
+        return moment(obj).utc().format("MM/DD/YYYY")
+   } catch (reason) {
+        console.log("simpleDate  mapping failed on column", obj, reason);
+        return "Error (see Javascript console)";
+   }
+}
+
+reactiveTableSettings = function () {
+
+    var collName;
+
+    if (this instanceof String && this.name in CRFprototypes){
+      collName = this;
+    }else if (this.name && this.name in CRFprototypes){
+      collName = this.name;
+    }else if (this._id && this._id in CRFprototypes){
+      collName = this._id;
+    }else{
+      throw "reactiveTableSettings needs to know what collection to use";
+    }
+
+    var schema = CRFprototypes[collName];
+    var fields = CRFfieldOrder[collName];
+
+    fields = fields.map(
+      function(fieldName, i) {
+        try {
+            var schemaField = schema[fieldName];
+            var isDecimal = schemaField.decimal;
+            var isDate = schemaField.type == Date || schemaField.type == "Date";
+            var isArray = schemaField.type == Array;
+        } catch(reason) {
+            console.log(fieldName, "not in schema", fieldName);
+        }
+        // console.log(i, "rts", fieldName, schemaField.type, isDate);
+
+        fieldName = fieldName.replace(/\$/g, "0");
+
+        return {
+            key: fieldName .replace(/\$/g, "0"),
+            // label: new Spacebars.SafeString("<span style="white-space: nowrap;">" + fieldName.replace(/_/g, " ") + "</span>"),
+            label: fieldName.replace(/_/g, " "),
+            fn: function(value, obj) {
+                try {
+                    if (value == null) return "";
+                    if (Array.isArray(value)) {
+                        return new Spacebars.SafeString("<span>" + arrayDoc(value) + "</span>");
+                    } else if (isDate) {
+                        return simpleDate(value);
+                    } else if (typeof value == 'string' || value instanceof String) {
+                        value = value.replace(/-/g, "&#8209;")
+                        return new Spacebars.SafeString("<span sort='"+ value +"'>" + value + "</span>");
+
+                    } else
+                        return value;
+                } catch (reason) {
+                    console.log( reason);
+                }
+            }
+        }
+      }
+    );
+
+
+    return {
+      rowsPerPage: Session.get("RowsPerPage"),
+      showFilter: true,
+      fields: fields,
+
+      enableRegex: true,
+      useFontAwesome: true
+    };
+};
+
+Template.registerHelper("reactiveTableSettings", reactiveTableSettings);
+
+
+
+
+var editList = function(list, template) {
+  Session.set(EDITING_KEY, true);
+
+  // force the template to redraw based on the reactive change
+  Tracker.flush();
+  template.$('.js-edit-form input[type=text]').focus();
+};
+
+var saveList = function(list, template) {
+  Session.set(EDITING_KEY, false);
+  CRFmetadataCollection.update(list._id, {$set: {name: template.$('[name=name]').val()}});
+}
+
+var deleteList = function(list) {
+  // ensure the last public list cannot be deleted.
+  if (! list.userId && CRFmetadataCollection.find({userId: {$exists: false}}).count() === 1) {
+    return alert("Sorry, you cannot delete the final public list!");
+  }
+
+  var message = "Are you sure you want to delete the list " + list.name + "?";
+  if (confirm(message)) {
+    // we must remove each item individually from the client
+    CRFs.find({listId: list._id}).forEach(function(crf) {
+      CRFs.remove(crf._id);
+    });
+    CRFmetadataCollection.remove(list._id);
+
+    Router.go('home');
+    return true;
+  } else {
+    return false;
+  }
+};
+
+var toggleListPrivacy = function(list) {
+  if (! Meteor.user()) {
+    return alert("Please sign in or create an account to make private lists.");
+  }
+
+  if (list.userId) {
+    CRFmetadataCollection.update(list._id, {$unset: {userId: true}});
+  } else {
+    // ensure the last public list cannot be made private
+    if (CRFmetadataCollection.find({userId: {$exists: false}}).count() === 1) {
+      return alert("Sorry, you cannot make the final public list private!");
+    }
+
+    CRFmetadataCollection.update(list._id, {$set: {userId: Meteor.userId()}});
+  }
+};
+
+Patient_ID_Update_Sample_ID = function(event) {
+  var patient_id = $(event.target).val();
+  SetCurrentDoc('Patient_ID', patient_id);
+  var Sample_ID = All_Sample_ID.filter(
+      function(f) {
+          try {
+              return f.text.match(patient_id + ".*")
+          } catch (s) {
+              debugger
+          }
+      });
+  /*
+  if (Session.get("currentForm") != "Biopsy_Research") {
+  	$("input[name='Sample_ID']").select2( { data: Sample_ID });
+  }
+  */
+}
+
+
+
+
+
+coreProperty = function(index, property) {
+  return function (row, newValue) {
+    if (row.cores && index < row.cores.length) {
+      // console.log("coreProperty", property, row, row.cores[index][property]);
+      return (row.cores[index][property]);
+    }
+    return "";
+  }
+}
+
+
+/*SetCurrentDoc = function(field, value) {
+    var currentForm = Session.get("currentForm");
+    var collection = window[currentForm];
+    var queryRecord = {};
+    queryRecord[field] = value;
+    var currentDoc = collection.findOne(queryRecord);
+    Session.set("CurrentDoc", currentDoc);
+    console.log("SetCurrentDoc", currentDoc);
+
+    return currentDoc;
+}*/
+
+
+
+/*
+
+function currentDoc() {
+
+    var crf = Session.get("currentForm");
+    var coll = window[crf];
+    var q = {};
+
+    if (crf in ComplexIDFields) {
+        _id = {}
+        _.each(ComplexIDFields[crf], function(f) {
+            q[f] = $('form').find("[name='" + f + "']").val();
+        })
+    } else {
+        var s = $('form').find("[name='Sample_ID']").val();
+        if (s == null)
+            q["Patient_ID"] = $('form').find("[name='Patient_ID']").val();
+        else
+            q["Sample_ID"] = s;
+    }
+    var cd = coll.findOne(q);
+    return cd;
+}
+window.currentDoc = currentDoc
+*/

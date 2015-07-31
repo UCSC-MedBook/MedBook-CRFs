@@ -4,20 +4,13 @@
     <div class="clearfix">
       <div class="reactive-table-options col-sm-8 pull-left">
         {{#if showFilter}}
-          <div class="form-group col-sm-8 pull-left">
+          <div class="form-group reactive-table-filter col-sm-8 pull-left">
             <div class="input-group">
-            <!--
-                <label>Nulls</label>
-                <input type="checkbox" checked class="filterNulls">
-              <span class="input-group-addon">
-                {{#if useFontAwesome}}
-                  <i class="fa fa-filter"></i>
-                {{else}}
-                  {{i18n 'reactiveTable.filter'}}
-                {{/if}}
-              </span>
-                -->
-                  <input class="reactive-table-input " type="text" value="{{filter}}" placeholder="{{i18n 'reactiveTable.filter'}}">
+                  {{#if useFontAwesome}}
+                    <input class="reactive-table-input " type="text" value="{{filter}}" placeholder="{{i18n 'reactiveTable.filter'}}">
+                  {{else}}
+                    <input class="reactive-table-input " type="text" value="{{filter}}">
+                  {{/if}}
                   &nbsp; {{getCount}}
             </div>
           </div>
@@ -37,7 +30,7 @@
                       {{else}}
                         <input type="checkbox" data-fieldid="{{fieldId}}">
                       {{/if}}
-                      {{#if labelIsTemplate}} {{#with labelData}} {{> ../label}} {{/with}} {{else}} {{getLabel}} {{/if}}
+                      {{#if labelIsTemplate}}{{#with labelData}}{{> ../label}}{{/with}}{{else}}{{getLabel}}{{/if}}
                     </label>
                   </a></li>
                 {{/unless}}
@@ -85,15 +78,7 @@
           <tr class="{{../rowClass this}}">
             {{#each ../fields}}
               {{#if isVisible}}
-                <td class="{{getCellClass ..}}">
-                  {{#if tmpl}}
-                    {{#with ..}}
-                      {{> ../tmpl}}
-                    {{/with}}
-                  {{else}}
-                    {{getField ..}}
-                  {{/if}}
-                </td>
+                <td class="{{getCellClass ..}}">{{#if tmpl}}{{#with ..}}{{> ../tmpl}}{{/with}}{{else}}{{getField ..}}{{/if}}</td>
               {{/if}}
             {{/each}}
           </tr>

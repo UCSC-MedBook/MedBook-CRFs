@@ -80,7 +80,10 @@ var after = "</tbody></table>";
 
 arrayDoc = function(array) {
     if (typeof(array[0]) == "string")
-        return array.join("; ");
+        if (array[0][0] == '<')
+            return array.join(""); // its html just return it.
+        else 
+            return array.join("; ");
 
     return array.map(function(element) {
         return before +  Object.keys(element).sort().map( function(key) {

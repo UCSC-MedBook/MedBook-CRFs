@@ -1,3 +1,4 @@
+ Meteor.startup(function() {
      CRFcollections.studies.upsert({id: "prad_wcdt"}, {$set: { 
 	"cbio_id" : "112",
 	"id" : "prad_wcdt",
@@ -50,3 +51,4 @@
         "collaborations" :  ["treehouse"],
      }});
 
+});

@@ -1,3 +1,5 @@
+var EDITING_KEY = "EditingCRFsShow";
+
 Template.CRFsShow.rendered = function() {
   LastSubmit = null;
 

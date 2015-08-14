@@ -36,16 +36,31 @@ Template.registerHelper("AllCRFs",
    }
 );
 
+window.currentStudy = function () {
+  var study = Session.get("Current_Study");
+  if (study == null) study = "prad_wcdt";
+  return study;
+}
+
 window.personalPreferredTableOrder = function () {
   var user = Meteor.user();
+  var study = currentStudy();
+  var crfs = 
+      CRFmetadataCollection.find({study:"common"}, {fields: {name:1}}).fetch().map(function(o) {return o.name}).concat(
+      CRFmetadataCollection.find({study:study}, {fields: {name:1}}).fetch().map(function(o) {return o.name}));
+  
   if (user && user.profile) {
        var prefer = user.profile.preferredTableOrder;
        if (prefer != null)  {
-           var remaining = _.difference(CRFs, prefer);
-           return prefer.concat(remaining);
+           if (study in prefer)
+	       prefer = prefer[study];
+           var first = _.intersection(crfs, prefer);
+           var remaining = _.difference(crfs, prefer);
+           return first.concat(remaining);
        }
   }
-  return CRFs;
+
+  return crfs;
 }
 
 Template.registerHelper("personalPreferredTableOrder", personalPreferredTableOrder);

@@ -36,9 +36,12 @@ Meteor.startup(function() {
   ComplexIDFields = {};
   
   CRFcollections = {}
-
-  CRFs = [
+  var common_crfs = [
+      'studies',
       'Clinical_Info',
+  ];
+
+  var prad_wcdt_crfs = [
       "SU2C_Biopsy_V3",
       "Followup",
       'SU2C_Subsequent_Treatment_V1',
@@ -64,7 +67,6 @@ Meteor.startup(function() {
       'Laser_Capture_Microdissection',
       'RNASeq_completion_form',
       'Pathology_form',
-      'studies',
       // Obsolete 'Treatment_Response_form', (if obsolete also remove formSchemas/* file)
   ];
   CRFsInfo = [
@@ -125,7 +127,6 @@ Meteor.startup(function() {
   		}
     });
   }
-  // TEO: I believe this if is supposed to end here
 
   OncoreTable_NeedsSample_ID = {
       "Followup": false,
@@ -779,17 +780,16 @@ Meteor.startup(function() {
   }
 
 
-  _.each(CRFs, function(x, n) {
+  function initializeCollectionCRF(x, n) {
 
     var aCRFcollection = new Mongo.Collection(x);
-
     CRFcollections[x] = aCRFcollection;
     /*
     if (Meteor.isServer)
     aCRFcollection.remove({});
     */
     if (Meteor.isClient)
-    window[x] = aCRFcollection;
+       window[x] = aCRFcollection;
 
     var aCRFschema = new SimpleSchema([clinicalReportFormSchemaObject, CRFprototypes[x]]);
     aCRFcollection.attachSchema(aCRFschema);
@@ -806,6 +806,7 @@ Meteor.startup(function() {
         incompleteCount: 0,
         fieldTypes: copyClean(CRFprototypes[x]),
         fieldOrder: CRFfieldOrder[x],
+	study: this.study,
       }
       ,
       {
@@ -825,13 +826,10 @@ Meteor.startup(function() {
 
 
     }
-  });
+  };
 
-// TEO: } // bizarre if statement "if (true || ...)"
-
-  if (Meteor.isClient) {
-    Meteor.subscribe("Oncore");
-  }
+  _.each(prad_wcdt_crfs, initializeCollectionCRF, {study: 'prad_wcdt'});
+  _.each(common_crfs, initializeCollectionCRF, {study: 'common'}); 
 
 }); // end Meteor.startup
 

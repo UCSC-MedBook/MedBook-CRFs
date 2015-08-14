@@ -8,6 +8,17 @@ Meteor.startup(
   function() {
     Meteor.methods({
 
+        getStudies : function() {
+	     var collabs = ["public"];
+	     if (this.userId) {
+		  var user = Meteor.users.findOne({_id: this.userId});
+		  if (user && user.profile.collaborations)
+		  	collabs = _.union(collabs, user.profile.collaborations);
+	     }
+             var studies = CRFcollections.studies.find({collaborations: collabs}).fetch();
+	     return studies;
+	},
+
         addCRF : function(insertDoc, updateDoc) {
            var crf = insertDoc.crf;
             delete insertDoc["crf"];

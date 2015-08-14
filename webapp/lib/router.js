@@ -61,7 +61,7 @@ Router.map(function() {
     },
     data: function() {
       var manyCursors = []
-      CRFs.map(function(collName) {
+      Object.keys(CRFcollections).map(function(collName) {
           var coll = CRFcollections[collName];
           var patient_id = Session.get("Current_Patient_ID");
           var cursor = coll.find({
@@ -79,13 +79,9 @@ Router.map(function() {
   this.route('CRFsShowThis', {
     template: 'CRFsShow',
     path: '/CRF/lists/:_id/:_row/',
-    // subscribe to CRFs before the page is rendered but don't wait on the
-    // subscription, we'll just render the items as they arrive
     onBeforeAction: function() {
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
-
-      this.CRFsHandle = Meteor.subscribe('CRFs', this.params._id);
-      Meteor.subscribe('collaboration', this.params._id)
+      Meteor.subscribe('myForms', this.params._id, currentStudy())
       this.next();
     },
     data: function() {
@@ -99,13 +95,9 @@ Router.map(function() {
 
   this.route('CRFsShow', {
     path: '/CRF/lists/:_id',
-    // subscribe to CRFs before the page is rendered but don't wait on the
-    // subscription, we'll just render the items as they arrive
     onBeforeAction: function() {
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
-
-      this.CRFsHandle = Meteor.subscribe('CRFs', this.params._id);
-      Meteor.subscribe('collaboration', this.params._id)
+      Meteor.subscribe('myForms', this.params._id, currentStudy())
       this.next();
     },
     data: function() {

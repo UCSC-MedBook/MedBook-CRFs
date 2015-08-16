@@ -1,5 +1,5 @@
  Meteor.startup(function() {
-     CRFcollections.studies.upsert({id: "prad_wcdt"}, {$set: { 
+     Collections.studies.upsert({id: "prad_wcdt"}, {$set: { 
 	"cbio_id" : "112",
 	"id" : "prad_wcdt",
 	"type_of_cancer_id" : "prad",
@@ -12,7 +12,7 @@
         "collaborations" :  ["WCDT"],
      }});
 
-     CRFcollections.studies.upsert({id: "prad_tcga"}, {$set: { 
+     Collections.studies.upsert({id: "prad_tcga"}, {$set: { 
 	"cbio_id" : "?",
 	"id" : "prad_tcga",
 	"type_of_cancer_id" : "prad",
@@ -25,7 +25,7 @@
         "collaborations" :  ["public"],
      }});
 
-     CRFcollections.studies.upsert({id: "ckcc"}, {$set: { 
+     Collections.studies.upsert({id: "ckcc"}, {$set: { 
 	"cbio_id" : "?",
 	"id" : "ckcc",
 	"type_of_cancer_id" : "many",
@@ -38,7 +38,7 @@
         "collaborations" :  ["ckcc"],
      }});
 
-     CRFcollections.studies.upsert({id: "treehouse"}, {$set: { 
+     Collections.studies.upsert({id: "treehouse"}, {$set: { 
 	"cbio_id" : "?",
 	"id" : "treehouse",
 	"type_of_cancer_id" : "many",

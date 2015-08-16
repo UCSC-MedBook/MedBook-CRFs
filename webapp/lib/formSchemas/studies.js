@@ -9,7 +9,7 @@ Meteor.startup(function() {
   	"public" : { optional: true, type: 'Number', decimal: true },
   	"pmid" :  { optional: true, type: 'String'},
   	"citation" :  { optional: true, type: 'String'},
-  	"collaborations" :  { optional: true, type: '[String]'},
+  	"collaborations" :  { optional: true, type: [String]},
   	"tables" :  { optional: true, type: [String]},
   };
 

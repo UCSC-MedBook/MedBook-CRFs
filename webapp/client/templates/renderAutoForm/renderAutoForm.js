@@ -1,9 +1,9 @@
 
 fixUpRenderedAutoForm = function() {
-    var pef = CRFcollections.Patient_Enrollment_form.find({}, { fields: {Patient_ID:1}}).fetch();
-    var dem = CRFcollections.Demographics.find({}, { fields: {Patient_ID:1}}).fetch();
-    var biops = CRFcollections.SU2C_Biopsy_V3.find({}, { fields: {Sample_ID:1}}).fetch();
-	  var br = CRFcollections.Biopsy_Research.find({}, { fields: {Sample_ID:1}}).fetch();
+    var pef = Collections.Patient_Enrollment_form.find({}, { fields: {Patient_ID:1}}).fetch();
+    var dem = Collections.Demographics.find({}, { fields: {Patient_ID:1}}).fetch();
+    var biops = Collections.SU2C_Biopsy_V3.find({}, { fields: {Sample_ID:1}}).fetch();
+	  var br = Collections.Biopsy_Research.find({}, { fields: {Sample_ID:1}}).fetch();
     function id_text(s) { return { id: s, text: s}};
 
     var Patient_ID = _.union(

@@ -74,8 +74,8 @@ collectionsInPreferredTableOrder =  function () {
 
 
         function prep(collName) {
-            if (collName in CRFcollections) {
-                var coll = CRFcollections[collName];
+            if (collName in Collections) {
+                var coll = Collections[collName];
                 // console.log("prep", collName, "fieldOrder", CRFfieldOrder[collName]);
                 var docs = coll.find({
                       $or: [

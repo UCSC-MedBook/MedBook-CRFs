@@ -61,8 +61,8 @@ Router.map(function() {
     },
     data: function() {
       var manyCursors = []
-      Object.keys(CRFcollections).map(function(collName) {
-          var coll = CRFcollections[collName];
+      Object.keys(Collections).map(function(collName) {
+          var coll = Collections[collName];
           var patient_id = Session.get("Current_Patient_ID");
           var cursor = coll.find({
               $or: [
@@ -85,7 +85,7 @@ Router.map(function() {
       this.next();
     },
     data: function() {
-      var item = CRFcollections[this.params._id].findOne({_id: this.params._row});
+      var item = Collections[this.params._id].findOne({_id: this.params._row});
       console.log("Show This", this.params._id, item);
       Session.set("CurrentDoc", item)
       return CRFmetadataCollection.findOne(this.params._id);

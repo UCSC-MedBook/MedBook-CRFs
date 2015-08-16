@@ -11,7 +11,7 @@ Meteor.publish('patient', function(patient_id) {
       // kosher user
       var manyCursors = []
       CRFs.map(function(collName) {
-          var coll = CRFcollections[collName];
+          var coll = Collections[collName];
           var cursor = coll.find({
               $or: [
                   {Patient_ID: patient_id},
@@ -33,7 +33,7 @@ Meteor.publish('collaboration', function(name) {
   var user = Meteor.users.findOne({_id: this.userId});
   var collaborations = user.profile.collaborations;
   if (collaborations && collaborations.indexOf("WCDT") >= 0)
-      return CRFcollections[name].find({});
+      return Collections[name].find({});
   return [];
 });
 

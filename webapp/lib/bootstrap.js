@@ -35,7 +35,6 @@ Meteor.startup(function() {
   // if the database is empty on server start, create some sample data.
   ComplexIDFields = {};
   
-  CRFcollections = {}
   var common_crfs = [
       'studies',
       'Clinical_Info',
@@ -294,7 +293,7 @@ Meteor.startup(function() {
                       // OncoreCollections[t].upsert({Sample_ID: Sample_ID, "Date": d}, {$set: row});
                       // OncoreCollections[t].upsert({Sample_ID: Sample_ID}, {$set: row});
 
-                         CRFcollections[t].insert(row);
+                         Collections[t].insert(row);
 
                       } catch (ex) {
                           console.log("insert exception", i, t, row);
@@ -317,11 +316,11 @@ Meteor.startup(function() {
 
 
                       try {
-                          // CRFcollections[t].upsert({Patient_ID: Patient_ID}, {$set: obj});
+                          // Collections[t].upsert({Patient_ID: Patient_ID}, {$set: obj});
                           obj.Patient_ID = Patient_ID;
                           if (t == "Followup" && obj.Date_of_Progression)
                               console.log("insert Followup.Date_of_Progression", obj.Date_of_Progression);
-                          CRFcollections[t].insert( obj );
+                          Collections[t].insert( obj );
                       } catch (ex) {
                           console.log("insert exception", t, obj);
                           throw ex
@@ -390,9 +389,9 @@ Meteor.startup(function() {
 
   ingestOncore = function () {
     Object.keys(OncoreTable_NeedsSample_ID).map(function(name) {
-      CRFcollections[name].remove({});
+      Collections[name].remove({});
     });
-	  console.log('Clinical info', CRFcollections['Clinical_Info'].find().count())
+	  console.log('Clinical info', Collections['Clinical_Info'].find().count())
     console.log("Ingesting begun");
     Oncore.find({}, {sort: {patient:1}}).forEach(function(patient) {
 
@@ -408,12 +407,12 @@ Meteor.startup(function() {
 
   ingestClinical = function () {
   	var samples = {}
-  	var SU2C_Biopsy_V3 = CRFcollections['SU2C_Biopsy_V3']
-  	var SU2C_Prior_TX_V3 = CRFcollections['SU2C_Prior_TX_V3']
-  	var SU2C_Subsequent_Treatment_V1 = CRFcollections['SU2C_Subsequent_Treatment_V1']
-  	var clinical_info = CRFcollections['Clinical_Info']
-  	var Demographics = CRFcollections['Demographics']
-  	var Followup = CRFcollections['Followup']
+  	var SU2C_Biopsy_V3 = Collections['SU2C_Biopsy_V3']
+  	var SU2C_Prior_TX_V3 = Collections['SU2C_Prior_TX_V3']
+  	var SU2C_Subsequent_Treatment_V1 = Collections['SU2C_Subsequent_Treatment_V1']
+  	var clinical_info = Collections['Clinical_Info']
+  	var Demographics = Collections['Demographics']
+  	var Followup = Collections['Followup']
 
         clinical_info.remove({});
 
@@ -639,9 +638,9 @@ Meteor.startup(function() {
   propagateClinical = function () {
         /* Propogate all earlier treatments whether in the  prior or subsequent collections */
         /* there are many different ways to do this. But I'm trying to make as few changes to the code as possible */
-  	var clinical_info = CRFcollections['Clinical_Info']
-  	var SU2C_Prior_TX_V3 = CRFcollections['SU2C_Prior_TX_V3']
-  	var SU2C_Subsequent_Treatment_V1 = CRFcollections['SU2C_Subsequent_Treatment_V1']
+  	var clinical_info = Ctions['Clinical_Info']
+  	var SU2C_Prior_TX_V3 = Collections['SU2C_Prior_TX_V3']
+  	var SU2C_Subsequent_Treatment_V1 = Collections['SU2C_Subsequent_Treatment_V1']
         clinical_info.find({Sample_ID: /Pro/}).forEach(function(progression) {
             function copyForward(coll,collName) {
                 if (progression.Patient_ID == "DTB-073")
@@ -681,7 +680,7 @@ Meteor.startup(function() {
 
 
   get_PSA_response = function(sample, date) {
-  	var blood_lab = CRFcollections['Blood_Labs_V2']
+  	var blood_lab = Collections['Blood_Labs_V2']
   	psa_list = blood_lab.find({"Sample_ID":sample,"PSA__complexed__direct_measurement_":{$exists:true}}).fetch()
   	var minPSA = 0
   	var maxPSA = 999999999;
@@ -781,9 +780,8 @@ Meteor.startup(function() {
 
 
   function initializeCollectionCRF(x, n) {
-
-    var aCRFcollection = new Mongo.Collection(x);
-    CRFcollections[x] = aCRFcollection;
+    var aCRFcollection = x in Collections ? Collections[x] : new Mongo.Collection(x);
+    Collections[x] = aCRFcollection;
     /*
     if (Meteor.isServer)
     aCRFcollection.remove({});

@@ -72,7 +72,7 @@ Template.CRFsShow.helpers({
   },
 
   currentCollection: function () {
-    return CRFcollections[this._id];
+    return Collections[this._id];
   },
   snowball: function () {
     var data = UI._templateInstance().data || {};

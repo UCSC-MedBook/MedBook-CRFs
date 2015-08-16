@@ -7,7 +7,7 @@ Meteor.methods({
             var name = coll.name;
             var inv = {};
             inventory[name] = inv;
-            var coll = CRFcollections[name].find({}, { fields: {Patient_ID:1, Sample_ID: 1}});
+            var coll = Collections[name].find({}, { fields: {Patient_ID:1, Sample_ID: 1}});
             console.log("dashboard", name, coll.count());
             coll.forEach(function(obj) {
                 var id = null;

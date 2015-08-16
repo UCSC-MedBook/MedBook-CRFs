@@ -15,14 +15,14 @@ Meteor.startup(
 		  if (user && user.profile.collaborations)
 		  	collabs = _.union(collabs, user.profile.collaborations);
 	     }
-             var studies = CRFcollections.studies.find({collaborations: collabs}).fetch();
+             var studies = Collections.studies.find({collaborations: collabs}).fetch();
 	     return studies;
 	},
 
         addCRF : function(insertDoc, updateDoc) {
            var crf = insertDoc.crf;
             delete insertDoc["crf"];
-            var coll = CRFcollections[crf];
+            var coll = Collections[crf];
             var _id;
 			if (this.userId) {
 				insertDoc['userID'] = this.userId;	

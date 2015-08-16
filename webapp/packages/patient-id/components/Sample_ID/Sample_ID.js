@@ -43,9 +43,9 @@ Meteor.startup(function() {
         var clinicalBiopsyInfo = null;
 
         if(currentDoc && currentDoc.Sample_ID){
-          var b =  CRFcollections.SU2C_Biopsy_V3.find({"Patient_ID": currentDoc.Patient_ID}, { fields: {"Sample_ID":1}}).fetch().map(function(pef) { return pef.Sample_ID});
-          var t =  CRFcollections.Tissue_Specimen_form.find({"Patient_ID": currentDoc.Patient_ID}, { fields: {"Sample_ID":1}}).fetch().map(function(pef) { return pef.Sample_ID});
-          var c =  CRFcollections.Clinical_Info.find({"Patient_ID": currentDoc.Patient_ID}, { fields: {"Sample_ID":1}}).fetch().map(function(ci) { return ci.Sample_ID});
+          var b =  Collections.SU2C_Biopsy_V3.find({"Patient_ID": currentDoc.Patient_ID}, { fields: {"Sample_ID":1}}).fetch().map(function(pef) { return pef.Sample_ID});
+          var t =  Collections.Tissue_Specimen_form.find({"Patient_ID": currentDoc.Patient_ID}, { fields: {"Sample_ID":1}}).fetch().map(function(pef) { return pef.Sample_ID});
+          var c =  Collections.Clinical_Info.find({"Patient_ID": currentDoc.Patient_ID}, { fields: {"Sample_ID":1}}).fetch().map(function(ci) { return ci.Sample_ID});
 
           clinicalBiopsyInfo = _.union(b,t,c).sort();
 

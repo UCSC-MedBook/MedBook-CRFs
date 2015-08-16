@@ -3,9 +3,18 @@
 
 
     <section id="sidebarMenu">
-       <div  class="MainCRFLists" style="height:80px; margin-top: 20px; margin-left:10px">
+       <div  class="MainCRFLists" style="height:auto; margin-top: 20px; margin-left:10px">
           {{> MedBookNavigator}}
        </div>
+
+    <div class="MainCRFLists panel panel-default">
+      <div class="panel-heading" data-toggle="collapse" data-target="#p1" > 
+          Study 
+      </div>
+      <div id="p1" class="panel-body collapse">
+         {{>contextContentStudyChooser}}
+      </div>
+    </div>
 
        <div id="accountEntryButtons" class="MainCRFLists btns-group-vertical">
         {{#if currentUser}}

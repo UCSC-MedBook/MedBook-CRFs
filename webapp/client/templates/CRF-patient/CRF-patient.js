@@ -37,7 +37,7 @@ Template.registerHelper("AllCRFs",
 );
 
 window.currentStudy = function () {
-  var study = Session.get("Current_Study");
+  var study = Session.get("CurrentStudy");
   if (study == null) study = "prad_wcdt";
   return study;
 }

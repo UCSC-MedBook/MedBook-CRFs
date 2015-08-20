@@ -31,8 +31,7 @@ Router.configure({
   // the data it's expecting is present
   waitOn: function() {
     return [
-      Meteor.subscribe('publicLists'),
-      Meteor.subscribe('privateLists')
+      Meteor.subscribe('studies'),
     ];
   }
 });

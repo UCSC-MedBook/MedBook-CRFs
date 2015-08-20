@@ -17,7 +17,7 @@ Meteor.publish('patient', function(patient_id) {
                   {Patient_ID: patient_id},
 				          {Sample_ID: { $regex: "^" + patient_id + ".*"}}
               ]});
-          console.log("subscribe patient", patient_id, collName);
+          console.log("publish patient", patient_id, collName);
           manyCursors.push(cursor);
       });
       return manyCursors;
@@ -25,56 +25,25 @@ Meteor.publish('patient', function(patient_id) {
   return [];
 });
 
-Meteor.publish('collaboration', function(name) {
+Meteor.publish('myForms', function(formName, studyName) {
   console.log("publish collaboration", name);
   if (this.userId == null)
       return [];
-
   var user = Meteor.users.findOne({_id: this.userId});
-  var collaborations = user.profile.collaborations;
-  if (collaborations && collaborations.indexOf("WCDT") >= 0)
-      return Collections[name].find({});
-  return [];
-});
+  var collaborations = user.profile.collaboration;
 
-Meteor.publish('Oncore', function() {
-  if (this.userId == null)
+  var study = Collections.studies.findOne({name: studyName, 
+      $or: [ 
+	    { public: true},
+	    { collaborations: {$in: collaborations }}
+	    ]
+  });
+  if (study == null)
       return [];
 
-  var user = Meteor.users.findOne({_id: this.userId});
-  var collaborations = user.profile.collaborations;
-  if (collaborations && collaborations.indexOf("WCDT") >= 0)
-      return Oncore.find({});
+  var coll = CRFmetadataCollection.findOne({study: studyName, name: formName});
+  if (coll)
+      return Collections[formName].find({});
   return [];
-
 });
 
-Meteor.publish('publicLists', function() {
-  console.log("publication: publicLists");
-
-  var result = CRFmetadataCollection.find({userId: {$exists: false}});
-  //console.log(result);
-
-  return result;
-});
-
-Meteor.publish('privateLists', function() {
-  console.log("publication: privateLists");
-
-  if (this.userId) {
-    var result = CRFmetadataCollection.find({userId: this.userId});
-    //console.log(result);
-
-    return result;
-
-  } else {
-    this.ready();
-  }
-});
-
-
-/*Meteor.publish('CRFs', function(listId) {
-  check(listId, String);
-
-  return CRFs.find({listId: listId});
-});*/

@@ -18,6 +18,7 @@ function summarizeTreatment(table, treatment) {
 Meteor.startup(function() {
 
   CRFmetadataCollection = new Meteor.Collection('CRFmetadataCollection');
+  Collections.studies = new Meteor.Collection('studies');
 
   // Calculate a default name for a list in the form of 'List A'
   CRFmetadataCollection.defaultName = function() {
@@ -34,9 +35,13 @@ Meteor.startup(function() {
 
   // if the database is empty on server start, create some sample data.
   ComplexIDFields = {};
+
+  var admin_crfs = [
+      "MetaForm",
+      'studies',
+  ]
   
   var common_crfs = [
-      'studies',
       'Clinical_Info',
   ];
 
@@ -779,39 +784,42 @@ Meteor.startup(function() {
   }
 
 
-  function initializeCollectionCRF(x, n) {
-    var aCRFcollection = x in Collections ? Collections[x] : new Mongo.Collection(x);
-    Collections[x] = aCRFcollection;
+  function initializeCollectionCRF(collectionName, nthCollection) {
+    var aCRFcollection = collectionName in Collections ? Collections[collectionName] : new Mongo.Collection(collectionName);
+    Collections[collectionName] = aCRFcollection;
     /*
     if (Meteor.isServer)
     aCRFcollection.remove({});
     */
     if (Meteor.isClient)
-       window[x] = aCRFcollection;
+       window[collectionName] = aCRFcollection;
 
-    var aCRFschema = new SimpleSchema([clinicalReportFormSchemaObject, CRFprototypes[x]]);
+    var aCRFschema = new SimpleSchema([clinicalReportFormSchemaObject, CRFprototypes[collectionName]]);
     aCRFcollection.attachSchema(aCRFschema);
-    console.log('#attach',x)
-    Schemas[x] = aCRFschema;
+
+    console.log('#attach',collectionName)
+    Schemas[collectionName] = aCRFschema;
 
     if (Meteor.isServer) {
 
-      CRFmetadataCollection.update({_id: x},
+      CRFmetadataCollection.update({_id: collectionName},
       {
-        _id: x,
-        name: x,
-        n: n,
+        _id: collectionName,
+        name: collectionName,
+        n: nthCollection,
         incompleteCount: 0,
-        fieldTypes: copyClean(CRFprototypes[x]),
-        fieldOrder: CRFfieldOrder[x],
+        fieldTypes: copyClean(CRFprototypes[collectionName]),
+        fieldOrder: CRFfieldOrder[collectionName],
 	study: this.study,
       }
       ,
       {
         upsert: true
       })
+
+      Collections.studies.update({name: this.study}, {$addToSet: {tables: collectionName}});
+
     } else if (Meteor.isClient) {
-      Meteor.subscribe(x);
       function lambda(aCRFschema) {
         return function() {
           var context = aCRFschema.namedContext("myContext");
@@ -826,10 +834,12 @@ Meteor.startup(function() {
     }
   };
 
+  _.each(admin_crfs, initializeCollectionCRF, {study: 'admin'}); 
   _.each(prad_wcdt_crfs, initializeCollectionCRF, {study: 'prad_wcdt'});
   _.each(common_crfs, initializeCollectionCRF, {study: 'common'}); 
 
 }); // end Meteor.startup
 
 Expression = new Meteor.Collection("expression2"); // not yet necessary to publish as its only used by MedBookLib for Gene names
+
 

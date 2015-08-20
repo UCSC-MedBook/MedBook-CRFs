@@ -46,8 +46,12 @@ window.personalPreferredTableOrder = function () {
   var user = Meteor.user();
   var study = currentStudy();
   var crfs = 
+      Collections.studies.findOne({id: study}).tables;
+
+      /*
       CRFmetadataCollection.find({study:"common"}, {fields: {name:1}}).fetch().map(function(o) {return o.name}).concat(
       CRFmetadataCollection.find({study:study}, {fields: {name:1}}).fetch().map(function(o) {return o.name}));
+      */
   
   if (user && user.profile) {
        var prefer = user.profile.preferredTableOrder;

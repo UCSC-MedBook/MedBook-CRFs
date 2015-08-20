@@ -77,17 +77,17 @@ Router.map(function() {
 
   this.route('CRFsShowThis', {
     template: 'CRFsShow',
-    path: '/CRF/lists/:_id/:_row/',
+    path: '/CRF/lists/:_id/:_row',
     onBeforeAction: function() {
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
-      Meteor.subscribe('myForms', this.params._id, currentStudy())
       this.next();
     },
+    waitOn: function() {
+      return Meteor.subscribe('myForms', this.params._id, currentStudy());
+    },
     data: function() {
-      var item = Collections[this.params._id].findOne({_id: this.params._row});
-      console.log("Show This", this.params._id, item);
-      Session.set("CurrentDoc", item)
-      return CRFmetadataCollection.findOne(this.params._id);
+      Session.set("CRF_filter", this.params._row)
+      return this.params;
     }
   });
 
@@ -96,11 +96,13 @@ Router.map(function() {
     path: '/CRF/lists/:_id',
     onBeforeAction: function() {
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
-      Meteor.subscribe('myForms', this.params._id, currentStudy())
       this.next();
     },
+    waitOn: function() {
+      return Meteor.subscribe('myForms', this.params._id, currentStudy());
+    },
     data: function() {
-      return CRFmetadataCollection.findOne(this.params._id);
+      return this.params;
     }
   });
 

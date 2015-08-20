@@ -44,20 +44,22 @@ window.currentStudy = function () {
 
 window.personalPreferredTableOrder = function () {
   var user = Meteor.user();
-  var study = currentStudy();
-  var crfs = 
-      Collections.studies.findOne({id: study}).tables;
+  var studyId = currentStudy();
+  var study = Collections.studies.findOne({id: studyId});
+  if (study == null)
+      return [];
+  var crfs = study.tables;
 
       /*
       CRFmetadataCollection.find({study:"common"}, {fields: {name:1}}).fetch().map(function(o) {return o.name}).concat(
-      CRFmetadataCollection.find({study:study}, {fields: {name:1}}).fetch().map(function(o) {return o.name}));
+      CRFmetadataCollection.find({study:studyId}, {fields: {name:1}}).fetch().map(function(o) {return o.name}));
       */
   
   if (user && user.profile) {
        var prefer = user.profile.preferredTableOrder;
        if (prefer != null)  {
-           if (study in prefer)
-	       prefer = prefer[study];
+           if (studyId in prefer)
+	       prefer = prefer[studyId];
            var first = _.intersection(crfs, prefer);
            var remaining = _.difference(crfs, prefer);
            return first.concat(remaining);

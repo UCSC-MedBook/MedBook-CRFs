@@ -26,13 +26,14 @@ Meteor.publish('patient', function(patient_id) {
 });
 
 Meteor.publish('myForms', function(formName, studyName) {
-  console.log("publish collaboration", name);
+  console.log("publish myForms", formName, studyName);
   if (this.userId == null)
       return [];
   var user = Meteor.users.findOne({_id: this.userId});
-  var collaborations = user.profile.collaboration;
+  var collaborations = user.profile.collaborations;
+  if (collaborations == null) collaborations = [];
 
-  var study = Collections.studies.findOne({name: studyName, 
+  var study = Collections.studies.findOne({id: studyName, 
       $or: [ 
 	    { public: true},
 	    { collaborations: {$in: collaborations }}
@@ -42,8 +43,11 @@ Meteor.publish('myForms', function(formName, studyName) {
       return [];
 
   var coll = CRFmetadataCollection.findOne({study: studyName, name: formName});
-  if (coll)
-      return Collections[formName].find({});
+  if (coll) {
+      var cursor =  Collections[formName].find({});
+      console.log("publish myForms", formName, cursor.count());
+      return cursor
+  }
   return [];
 });
 

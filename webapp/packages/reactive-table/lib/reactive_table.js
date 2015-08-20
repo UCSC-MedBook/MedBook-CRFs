@@ -112,15 +112,13 @@ var getDefaultTrueSetting = function (key, templateData) {
     return true;
 };
 
-/*
-if (Meter.isClient)
+if (Meteor.isClient)
     Template.registerHelper("CRF_filter", function() {
         var val = Session.get("CRF_filter");
         if (/^\s+$/.test(val))
             return null;
         return val;
     });
-*/
 
 var setup = function () {
     var context = {};

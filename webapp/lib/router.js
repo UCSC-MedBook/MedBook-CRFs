@@ -53,22 +53,22 @@ Router.map(function() {
   this.route('CRFsPatient', {
     path: '/CRF/patient/:_patient',
     onBeforeAction: function() {
-      var patient_id = this.params._patient;
-      this.state.set("Current_Patient_ID", patient_id);
-      Meteor.subscribe('patient', patient_id);
+      var patient_crfName = this.params._patient;
+      this.state.set("Current_Patient_ID", patient_crfName);
+      Meteor.subscribe('patient', patient_crfName);
       this.next();
     },
     data: function() {
       var manyCursors = []
       Object.keys(Collections).map(function(collName) {
           var coll = Collections[collName];
-          var patient_id = Session.get("Current_Patient_ID");
+          var patient_crfName = Session.get("Current_Patient_ID");
           var cursor = coll.find({
               $or: [
-                  {Patient_ID: patient_id},
-                  {Sample_ID: { $regex: "^" + patient_id + ".*"}}
+                  {Patient_ID: patient_crfName},
+                  {Sample_ID: { $regex: "^" + patient_crfName + ".*"}}
               ]});
-          console.log("subscribe patient", patient_id, collName);
+          console.log("subscribe patient", patient_crfName, collName);
           manyCursors.push(cursor);
       });
       return manyCursors;
@@ -77,13 +77,13 @@ Router.map(function() {
 
   this.route('CRFsShowThis', {
     template: 'CRFsShow',
-    path: '/CRF/lists/:_id/:_row',
+    path: '/CRF/lists/:_crfName/:_row',
     onBeforeAction: function() {
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
       this.next();
     },
     waitOn: function() {
-      return Meteor.subscribe('myForms', this.params._id, currentStudy());
+      return Meteor.subscribe('myForms', this.params._crfName, currentStudy());
     },
     data: function() {
       Session.set("CRF_filter", this.params._row)
@@ -93,13 +93,13 @@ Router.map(function() {
 
 
   this.route('CRFsShow', {
-    path: '/CRF/lists/:_id',
+    path: '/CRF/lists/:_crfName',
     onBeforeAction: function() {
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
       this.next();
     },
     waitOn: function() {
-      return Meteor.subscribe('myForms', this.params._id, currentStudy());
+      return Meteor.subscribe('myForms', this.params._crfName, currentStudy());
     },
     data: function() {
       return this.params;

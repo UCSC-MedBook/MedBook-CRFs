@@ -120,7 +120,7 @@ Template.appBody.helpers({
   activeListClass: function() {
     var current = Router.current();
     if (current && current.route && current.params &&
-        current.route.name === 'CRFsShow' && current.params._id === this._id) {
+        current.route.name === 'CRFsShow' && current.params._crfName === this._crfName) {
           return 'active';
     }
     return null;
@@ -141,7 +141,7 @@ Template.appBody.events({
 
   'click .list-1-CRF' : function(event) {
       event.preventDefault();
-      Router.go("CRFsShow", {_id: $(event.target).data("crfname") });
+      Router.go("CRFsShow", {_crfName: $(event.target).data("crfname") });
    },
 
   'click .content-overlay': function(event) {

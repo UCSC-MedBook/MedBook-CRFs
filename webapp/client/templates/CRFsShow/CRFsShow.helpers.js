@@ -110,8 +110,8 @@ reactiveTableSettings = function () {
       collName = this;
     }else if (this.name && this.name in CRFprototypes){
       collName = this.name;
-    }else if (this._id && this._id in CRFprototypes){
-      collName = this._id;
+    }else if (this._crfName && this._crfName in CRFprototypes){
+      collName = this._crfName;
     }else{
       throw "reactiveTableSettings needs to know what collection to use";
     }

@@ -23,7 +23,7 @@ Template.CRFsShow.helpers({
   },
 
   getType: function() {
-    if (TableNeedsSample_ID.indexOf(this._id) >= 0)
+    if (TableNeedsSample_ID.indexOf(this._crfName) >= 0)
         return "readonly"
     return "update";
   },
@@ -50,11 +50,11 @@ Template.CRFsShow.helpers({
   },
 
   CRFs: function () {
-    return CRFs.find({listId: this._id}, {sort: {createdAt: -1}});
+    return CRFs.find({listId: this._crfName}, {sort: {createdAt: -1}});
   },
 
   fieldOrder: function () {
-    var fieldOrder = CRFfieldOrder[this._id];
+    var fieldOrder = CRFfieldOrder[this._crfName];
 
 
     if (fieldOrder && fieldOrder.length > 0)
@@ -63,21 +63,21 @@ Template.CRFsShow.helpers({
   },
 
   currentForm: function () {
-    Session.set("currentForm", this._id);
-    return this._id;
+    Session.set("currentForm", this._crfName);
+    return this._crfName;
   },
 
   readOnly: function () {
-      return this._id in OncoreTable_NeedsSample_ID;
+      return this._crfName in OncoreTable_NeedsSample_ID;
   },
 
   currentCollection: function () {
-    return Collections[this._id];
+    return Collections[this._crfName];
   },
   snowball: function () {
     var data = UI._templateInstance().data || {};
-    data.collection = window[this._id];
-    data.id = this._id;
+    data.collection = window[this._crfName];
+    data.id = this._crfName;
     data.type = "insert";
     alert("snowball: " + data)
     return data;
@@ -86,8 +86,8 @@ Template.CRFsShow.helpers({
   previousEntries: function () {
     console.log("previousEntries", this);
 
-    if (this._id == null) return false;
-    var coll = window[this._id];
+    if (this._crfName == null) return false;
+    var coll = window[this._crfName];
     if (coll == null) return false;
     return coll;
   }
@@ -173,12 +173,12 @@ Template.CRFsShow.events({
       return;
 
     CRFs.insert({
-      listId: this._id,
+      listId: this._crfName,
       text: $input.val(),
       checked: false,
       createdAt: new Date()
     });
-    CRFmetadataCollection.update(this._id, {$inc: {incompleteCount: 1}});
+    CRFmetadataCollection.update(this._crfName, {$inc: {incompleteCount: 1}});
     $input.val('');
   }
 });

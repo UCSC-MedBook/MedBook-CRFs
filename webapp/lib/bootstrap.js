@@ -37,7 +37,7 @@ Meteor.startup(function() {
   ComplexIDFields = {};
 
   var admin_crfs = [
-      "MetaForm",
+      // "MetaForm",
       'studies',
   ]
   
@@ -114,13 +114,14 @@ Meteor.startup(function() {
         return s;
     }
 
-    clinicalReportFormSchemaObject = SimpleSchema({
+    clinicalReportFormSchemaObject = new SimpleSchema({
       _id: {
           type: String,
           optional: true,
       },
       createdAt: {
           type: Date,
+          optional: true,
       },
       updatedAt: {
           type: Date,
@@ -128,6 +129,7 @@ Meteor.startup(function() {
       },
   		userId: {
   			type: String,
+          optional: true,
   		}
     });
   }
@@ -216,7 +218,6 @@ Meteor.startup(function() {
       var biopsies = tables["SU2C_Biopsy_V3"];
       var baseline, pro, pro2;
 
-      console.log("Patient_ID", Patient_ID);
 
       if (biopsies) {
 
@@ -241,7 +242,6 @@ Meteor.startup(function() {
               }
 
               if (pro == null && d > baseline )  {
-                  console.log(Patient_ID, "Pro")
                   pro = d;
                   continue;
               }
@@ -726,30 +726,6 @@ Meteor.startup(function() {
     })
   }// isServer
 
-  Core = {
-    // found in between CRFfieldOrder and CRFprototypes while refractoring
-    // (defined in formSchemas/Histological_Assessment_form.js)
-    "Core": core_type,
-    'BlockImage': {
-      type: String
-    },
-    'ReferenceSlideNumber': {
-      type: String
-    },
-    'ReferenceSlideImages': {
-      type: String
-    },
-    'BlockStatus': {
-      type: String,
-      "allowedValues": [
-                  "negative",
-                  "negative with potential",
-                  "defer to pathologist",
-                  "positive for cancer (but not suitable for processing)",
-                  "positive for processing"]
-    }
-  };
-
   // This is never used anywhere here... If you find this and removing it
   // hasn't broken anything, please delete it!
   // var timestamp = (new Date()).getTime();
@@ -770,7 +746,6 @@ Meteor.startup(function() {
       else if (type == "function") {
         value = value.name;
         if (value == null || value.length == 0) {
-          console.log("key", key, " function is unamed");
           value = "object";
         }
 
@@ -785,6 +760,8 @@ Meteor.startup(function() {
 
 
   function initializeCollectionCRF(collectionName, nthCollection) {
+ console.log("initializeCollectionCRF >  CRFinit", Object.keys(CRFinit), collectionName);
+
     var aCRFcollection = collectionName in Collections ? Collections[collectionName] : new Mongo.Collection(collectionName);
     Collections[collectionName] = aCRFcollection;
     /*
@@ -794,13 +771,26 @@ Meteor.startup(function() {
     if (Meteor.isClient)
        window[collectionName] = aCRFcollection;
 
-    var aCRFschema = new SimpleSchema([clinicalReportFormSchemaObject, CRFprototypes[collectionName]]);
+    var fo = _.pluck(CRFinit[collectionName].Fields, "Field_Name");
+    var fs = _.clone(CRFinit[collectionName]);
+    var xx = {};
+    fs.Fields.map(function(field) {
+       var name =  field["Field_Name"];
+       delete field["Field_Name"];
+       xx[name] = field;
+    });
+
+    console.log("XYZ",collectionName);
+    var aCRFschema = new SimpleSchema([clinicalReportFormSchemaObject, xx]);
     aCRFcollection.attachSchema(aCRFschema);
 
-    console.log('#attach',collectionName)
     Schemas[collectionName] = aCRFschema;
 
     if (Meteor.isServer) {
+
+ console.log("pluck ", collectionName, CRFinit[collectionName].Fields )
+
+      console.log("pluck", collectionName, fo);
 
       CRFmetadataCollection.update({_id: collectionName},
       {
@@ -808,8 +798,8 @@ Meteor.startup(function() {
         name: collectionName,
         n: nthCollection,
         incompleteCount: 0,
-        fieldTypes: copyClean(CRFprototypes[collectionName]),
-        fieldOrder: CRFfieldOrder[collectionName],
+        fieldTypes: copyClean(CRFinit[collectionName]),
+        fieldOrder: fo,
 	study: this.study,
       }
       ,
@@ -817,6 +807,8 @@ Meteor.startup(function() {
         upsert: true
       })
 
+
+console.log("before", this.study, collectionName);
       Collections.studies.update({name: this.study}, {$addToSet: {tables: collectionName}});
 
     } else if (Meteor.isClient) {

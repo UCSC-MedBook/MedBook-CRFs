@@ -38,7 +38,6 @@ Template.registerHelper("AllCRFs",
 
 window.currentStudy = function () {
   var study = Session.get("CurrentStudy");
-  if (study == null) study = "prad_wcdt";
   return study;
 }
 
@@ -58,7 +57,7 @@ window.personalPreferredTableOrder = function () {
            if (studyId in prefer)
 	       prefer = prefer[studyId];
            var first     = _.intersection(prefer, crfs);
-           var remaining = _.difference(prefer, crfs);
+           var remaining = _.difference(crfs, prefer);
            return first.concat(remaining);
        }
   }

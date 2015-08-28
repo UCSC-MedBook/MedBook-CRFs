@@ -54,10 +54,11 @@ Template.CRFsShow.helpers({
   },
 
   fieldOrder: function () {
+    debugger;
     var fo = fieldOrder(this._crfName);
 
     if (fo && fo.length > 0)
-        return fo.join(",")
+        return fo   // fo.join(",")
     return "";
   },
 

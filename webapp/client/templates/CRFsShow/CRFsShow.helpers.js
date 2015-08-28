@@ -103,12 +103,9 @@ simpleDate = function (obj) {
 
 reactiveTableSettings = function () {
 
-    var collName = this;
-
-
+    var collName = this._crfName;
     var schemaObj = schema(collName);
     var fields = fieldOrder(collName);
-
     fields = fields.map(
       function(fieldName, i) {
         try {

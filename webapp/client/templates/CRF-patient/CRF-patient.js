@@ -48,12 +48,8 @@ window.personalPreferredTableOrder = function () {
   var study = Collections.studies.findOne({id: studyId});
   if (study == null)
       return [];
-  var crfs = study.tables;
-
-      /*
-      CRFmetadataCollection.find({study:"common"}, {fields: {name:1}}).fetch().map(function(o) {return o.name}).concat(
-      CRFmetadataCollection.find({study:studyId}, {fields: {name:1}}).fetch().map(function(o) {return o.name}));
-      */
+  var common = CRFmetadataCollection.find({study:"common"}, {fields: {name:1}}).fetch().map(function(o) {return o.name})
+  var crfs = common.concat(study.tables);
   
   if (user && user.profile) {
        var prefer = user.profile.preferredTableOrder;

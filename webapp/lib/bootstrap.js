@@ -787,7 +787,7 @@ Meteor.startup(function() {
       })
 
 
-console.log("before", this.study, collectionName);
+      // console.log("before", this.study, collectionName);
       Collections.studies.update({name: this.study}, {$addToSet: {tables: collectionName}});
 
     } else if (Meteor.isClient) {

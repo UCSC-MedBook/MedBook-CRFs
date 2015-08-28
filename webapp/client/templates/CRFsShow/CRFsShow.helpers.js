@@ -32,7 +32,6 @@ customHandler = function(insertDoc, updateDoc, currentDoc) {
                     //alert("LastSubmit: " + v);
                     console.log("Updating window[currentForm] wasnt successful.  :(");
 
-                    //debugger;
                 }
                 insertDoc._id = currentDoc.id;
             } else {
@@ -104,25 +103,16 @@ simpleDate = function (obj) {
 
 reactiveTableSettings = function () {
 
-    var collName;
+    var collName = this;
 
-    if (this instanceof String && this.name in CRFprototypes){
-      collName = this;
-    }else if (this.name && this.name in CRFprototypes){
-      collName = this.name;
-    }else if (this._crfName && this._crfName in CRFprototypes){
-      collName = this._crfName;
-    }else{
-      throw "reactiveTableSettings needs to know what collection to use";
-    }
 
-    var schema = CRFprototypes[collName];
-    var fields = CRFfieldOrder[collName];
+    var schemaObj = schema(collName);
+    var fields = fieldOrder(collName);
 
     fields = fields.map(
       function(fieldName, i) {
         try {
-            var schemaField = schema[fieldName];
+            var schemaField = schemaObj[fieldName];
             var isDecimal = schemaField.decimal;
             var isDate = schemaField.type == Date || schemaField.type == "Date";
             var isArray = schemaField.type == Array;
@@ -170,6 +160,17 @@ reactiveTableSettings = function () {
 };
 
 Template.registerHelper("reactiveTableSettings", reactiveTableSettings);
+
+Template.registerHelper("schema", function() {
+   var name = Router.current().params._crfName;
+   var s =  schema(name);
+   return s;
+});
+
+Template.registerHelper("fieldOrder", function() {
+   var name = Router.current().params._crfName;
+   return fieldOrder(name);
+});
 
 
 

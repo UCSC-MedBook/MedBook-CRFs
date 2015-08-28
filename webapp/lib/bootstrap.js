@@ -323,8 +323,6 @@ Meteor.startup(function() {
                       try {
                           // Collections[t].upsert({Patient_ID: Patient_ID}, {$set: obj});
                           obj.Patient_ID = Patient_ID;
-                          if (t == "Followup" && obj.Date_of_Progression)
-                              console.log("insert Followup.Date_of_Progression", obj.Date_of_Progression);
                           Collections[t].insert( obj );
                       } catch (ex) {
                           console.log("insert exception", t, obj);
@@ -369,23 +367,17 @@ Meteor.startup(function() {
 
           if (SU2C_Subsequent_Treatment_V1.Drug_Name)
               SU2C_Subsequent_Treatment_V1.Drug_Name.split("; ").filter(function(d) {
-                  console.log("Drug_Name", d);
                   if (d == "Enzalutamide")
                       SU2C_Subsequent_Treatment_V1.ResponderEnzalutamide = SU2C_Subsequent_Treatment_V1.Responder;
                   else if (d == "Abiraterone")
                       SU2C_Subsequent_Treatment_V1.ResponderAbiraterone  = SU2C_Subsequent_Treatment_V1.Responder;
                   else {
                       SU2C_Subsequent_Treatment_V1.ResponderOtherTherapy = SU2C_Subsequent_Treatment_V1.Responder;
-  					console.log('other drug',d)
                   }
               });
           else
                   SU2C_Subsequent_Treatment_V1.ResponderOtherTherapy = SU2C_Subsequent_Treatment_V1.Responder;
 
-          //console.log("SU2C_Subsequent_Treatment_V1.Responder", SU2C_Subsequent_Treatment_V1.Responder);
-          //console.log("SU2C_Subsequent_Treatment_V1.ResponderEnzalutamide", SU2C_Subsequent_Treatment_V1.ResponderEnzalutamide);
-          //console.log("SU2C_Subsequent_Treatment_V1.ResponderAbiraterone", SU2C_Subsequent_Treatment_V1.ResponderAbiraterone);
-          //console.log("SU2C_Subsequent_Treatment_V1.ResponderOtherTherapy", SU2C_Subsequent_Treatment_V1.ResponderOtherTherapy);
       }
 
   };
@@ -396,7 +388,6 @@ Meteor.startup(function() {
     Object.keys(OncoreTable_NeedsSample_ID).map(function(name) {
       Collections[name].remove({});
     });
-	  console.log('Clinical info', Collections['Clinical_Info'].find().count())
     console.log("Ingesting begun");
     Oncore.find({}, {sort: {patient:1}}).forEach(function(patient) {
 
@@ -693,7 +684,6 @@ Meteor.startup(function() {
 
   	})
   }
-  console.log("Oncore is defined");
   if (Meteor.isServer)  {
 
     HTTP.methods({
@@ -730,9 +720,6 @@ Meteor.startup(function() {
   // hasn't broken anything, please delete it!
   // var timestamp = (new Date()).getTime();
 
-  Schemas = {};
-
-  Meteor.isClient && Template.registerHelper("Schemas", Schemas);
 
   function copyClean(a)  {
     var copy = {};
@@ -760,7 +747,7 @@ Meteor.startup(function() {
 
 
   function initializeCollectionCRF(collectionName, nthCollection) {
- console.log("initializeCollectionCRF >  CRFinit", Object.keys(CRFinit), collectionName);
+    // console.log("initializeCollectionCRF >  CRFinit", Object.keys(CRFinit), collectionName);
 
     var aCRFcollection = collectionName in Collections ? Collections[collectionName] : new Mongo.Collection(collectionName);
     Collections[collectionName] = aCRFcollection;
@@ -773,24 +760,15 @@ Meteor.startup(function() {
 
     var fo = _.pluck(CRFinit[collectionName].Fields, "Field_Name");
     var fs = _.clone(CRFinit[collectionName]);
-    var xx = {};
+    var schema = {};
     fs.Fields.map(function(field) {
-       var name =  field["Field_Name"];
+       field = _.clone(field);
+       var name = field["Field_Name"];
        delete field["Field_Name"];
-       xx[name] = field;
+       schema[name] = field;
     });
 
-    console.log("XYZ",collectionName);
-    var aCRFschema = new SimpleSchema([clinicalReportFormSchemaObject, xx]);
-    aCRFcollection.attachSchema(aCRFschema);
-
-    Schemas[collectionName] = aCRFschema;
-
     if (Meteor.isServer) {
-
- console.log("pluck ", collectionName, CRFinit[collectionName].Fields )
-
-      console.log("pluck", collectionName, fo);
 
       CRFmetadataCollection.update({_id: collectionName},
       {
@@ -798,7 +776,8 @@ Meteor.startup(function() {
         name: collectionName,
         n: nthCollection,
         incompleteCount: 0,
-        fieldTypes: copyClean(CRFinit[collectionName]),
+        schema: schema,
+	metadata: CRFinit[collectionName],
         fieldOrder: fo,
 	study: this.study,
       }
@@ -812,17 +791,6 @@ console.log("before", this.study, collectionName);
       Collections.studies.update({name: this.study}, {$addToSet: {tables: collectionName}});
 
     } else if (Meteor.isClient) {
-      function lambda(aCRFschema) {
-        return function() {
-          var context = aCRFschema.namedContext("myContext");
-          if (!context.isValid()) {
-            console.log("invalidKeys", context.invalidKeys());
-          }
-        }
-      }
-      Tracker.autorun(lambda(aCRFschema));
-
-
     }
   };
 
@@ -835,3 +803,32 @@ console.log("before", this.study, collectionName);
 Expression = new Meteor.Collection("expression2"); // not yet necessary to publish as its only used by MedBookLib for Gene names
 
 
+fieldOrder = function(collName) {
+   var meta = CRFmetadataCollection.findOne({name: collName});
+   if (meta)
+       return meta.fieldOrder;
+   return [];
+}
+
+schema = function(collName) {
+   var meta = CRFmetadataCollection.findOne({name: collName});
+   if (meta) {
+       Object.keys(meta.schema).map(function(fn) {
+       	  var f = meta.schema[fn]
+	  if (f.autoform == null)
+	  	f.autoform = {};
+       });
+       return new SimpleSchema( meta.schema );
+   }
+   return null;
+}
+
+if (Meteor.isServer) {
+    Meteor.publish("metadata", function() {
+	var cursor = CRFmetadataCollection.find() 
+	console.log("CRFmetadataCollection", cursor.count())
+	return cursor;
+    });
+} else {
+    Meteor.subscribe("metadata");
+}

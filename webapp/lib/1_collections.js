@@ -7,3 +7,6 @@ Collections.Blobs = new FS.Collection("blobs", {
   chunkSize: 4 * 1024 * 1024
 });
 
+
+Collections.CRFs = new Meteor.Collection("CRFs");
+

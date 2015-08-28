@@ -82,13 +82,13 @@ collectionsInPreferredTableOrder =  function () {
         function prep(collName) {
             if (collName in Collections) {
                 var coll = Collections[collName];
-                // console.log("prep", collName, "fieldOrder", CRFfieldOrder[collName]);
+                // console.log("prep", collName, "fieldOrder", fieldOrder(collName));
                 var docs = coll.find({
                       $or: [
                           {Patient_ID: patient_id},
                           {Sample_ID: { $regex: "^" + patient_id + ".*"}}
                       ]}).fetch();
-                output.push({ name: collName, displayName: collName.replace(/_/g, " "), collection: coll, fieldOrder: CRFfieldOrder[collName],   docs: docs, count: docs.length });
+                output.push({ name: collName, displayName: collName.replace(/_/g, " "), collection: coll, fieldOrder: fieldOrder(collName),   docs: docs, count: docs.length });
             }
         };
         var myOrder = personalPreferredTableOrder();

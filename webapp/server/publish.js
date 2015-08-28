@@ -44,7 +44,7 @@ Meteor.publish('myForms', function(formName, studyName) {
 
   var coll = CRFmetadataCollection.findOne({study: studyName, name: formName});
   if (coll) {
-      var cursor =  Collections[formName].find({});
+      var cursor =  Collections.CRFs.find({CRF:formName});
       console.log("publish myForms", formName, cursor.count());
       return cursor
   }

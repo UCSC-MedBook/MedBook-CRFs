@@ -54,11 +54,10 @@ Template.CRFsShow.helpers({
   },
 
   fieldOrder: function () {
-    var fieldOrder = CRFfieldOrder[this._crfName];
+    var fo = fieldOrder(this._crfName);
 
-
-    if (fieldOrder && fieldOrder.length > 0)
-        return fieldOrder.join(",")
+    if (fo && fo.length > 0)
+        return fo.join(",")
     return "";
   },
 
@@ -84,10 +83,8 @@ Template.CRFsShow.helpers({
   },
 
   previousEntries: function () {
-    console.log("previousEntries", this);
-
     if (this._crfName == null) return false;
-    var coll = window[this._crfName];
+    var coll = Collections.CRFs.find({CRF: this._crfName});
     if (coll == null) return false;
     return coll;
   }

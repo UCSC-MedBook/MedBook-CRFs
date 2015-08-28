@@ -50,14 +50,15 @@ window.personalPreferredTableOrder = function () {
       return [];
   var common = CRFmetadataCollection.find({study:"common"}, {fields: {name:1}}).fetch().map(function(o) {return o.name})
   var crfs = common.concat(study.tables);
+
   
   if (user && user.profile) {
        var prefer = user.profile.preferredTableOrder;
        if (prefer != null)  {
            if (studyId in prefer)
 	       prefer = prefer[studyId];
-           var first = _.intersection(crfs, prefer);
-           var remaining = _.difference(crfs, prefer);
+           var first     = _.intersection(prefer, crfs);
+           var remaining = _.difference(prefer, crfs);
            return first.concat(remaining);
        }
   }
@@ -66,6 +67,9 @@ window.personalPreferredTableOrder = function () {
 }
 
 Template.registerHelper("personalPreferredTableOrder", personalPreferredTableOrder);
+
+Template.registerHelper("fixUnderscores", function(f) {return f.replace(/_/g, " ")});
+
 
 
 

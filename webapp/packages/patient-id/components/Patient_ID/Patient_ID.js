@@ -37,12 +37,9 @@ Meteor.startup(function() {
         else
           return "form-control"
       },
-      patients : function() {
-          var p = Collections.Patient_Enrollment_form.find({}, { fields: {"Patient_ID":1}}).fetch().map(function(pef) { return pef.Patient_ID});
-          var d = Collections.Demographics.find({}, { fields:  {"Patient_ID":1}}).fetch().map(function(dem) { return dem.Patient_ID});
-          var c = Collections.Clinical_Info.find({}, { fields:  {"Patient_ID":1}}).fetch().map(function(dem) { return dem.Patient_ID});
-          var clinicalPatientDemographcis = _.union(d, p, c).sort();
-          return clinicalPatientDemographcis;
+      patients: function() {
+          var study = Collections.studies.findOne({id: Session.get("CurrentStudy") });
+          return study.Patient_IDs;
      }
    });
 

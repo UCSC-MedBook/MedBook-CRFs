@@ -11,6 +11,8 @@
         "citation" :  "admin",
         "collaborations" :  ["admin"],
 	"tables": [],
+	"Sample_IDs": [],
+	"Patient_IDs": [],
      }});
 
      Collections.studies.upsert({id: "prad_wcdt"}, {$set: { 
@@ -25,6 +27,8 @@
         "citation" :  "unpublished",
         "collaborations" :  ["WCDT"],
 	"tables": [],
+	"Sample_IDs": [],
+	"Patient_IDs": [],
      }});
 
      Collections.studies.upsert({id: "prad_tcga"}, {$set: { 
@@ -39,6 +43,8 @@
         "citation" :  "Schultz 2015",
         "collaborations" :  ["public"],
 	"tables": [],
+	"Sample_IDs": [],
+	"Patient_IDs": [],
      }});
 
      Collections.studies.upsert({id: "ckcc"}, {$set: { 
@@ -53,6 +59,8 @@
         "citation" :  "unpublished",
         "collaborations" :  ["ckcc"],
 	"tables": [],
+	"Sample_IDs": [],
+	"Patient_IDs": [],
      }});
 
      Collections.studies.upsert({id: "treehouse"}, {$set: { 
@@ -67,6 +75,8 @@
         "citation" :  "unpublished",
         "collaborations" :  ["treehouse"],
 	"tables": [],
+	"Sample_IDs": [],
+	"Patient_IDs": [],
      }});
 
 

@@ -83,7 +83,11 @@ Template.CRFsShow.helpers({
 
   previousEntries: function () {
     if (this._crfName == null) return false;
-    var coll = Collections.CRFs.find({CRF: this._crfName});
+
+    var coll = this._crfName == "CRFmetadataCollection" 
+	? CRFmetadataCollection.find().fetch().map(function(f) { return f.metadata })
+	: Collections.CRFs.find({CRF: this._crfName});
+    debugger;
     if (coll == null) return false;
     return coll;
   }

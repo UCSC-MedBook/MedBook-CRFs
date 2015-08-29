@@ -170,7 +170,7 @@ Template.appBody.events({
   },
 
   'click .js-new-list': function() {
-    var list = {name: CRFmetadataCollection.defaultName(), incompleteCount: 0};
+    var list = {name: defaultName(), incompleteCount: 0};
     list._id = CRFmetadataCollection.insert(list);
 
     Router.go('CRFsShow', list);

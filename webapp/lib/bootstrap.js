@@ -17,27 +17,14 @@ function summarizeTreatment(table, treatment) {
 
 Meteor.startup(function() {
 
-  CRFmetadataCollection = new Meteor.Collection('CRFmetadataCollection');
   Collections.studies = new Meteor.Collection('studies');
-
-  // Calculate a default name for a list in the form of 'List A'
-  CRFmetadataCollection.defaultName = function() {
-    var nextLetter = 'A', nextName = 'List ' + nextLetter;
-    while (CRFmetadataCollection.findOne({name: nextName})) {
-      // not going to be too smart here, can go past Z
-      nextLetter = String.fromCharCode(nextLetter.charCodeAt(0) + 1);
-      nextName = 'CRF ' + nextLetter;
-    }
-
-    return nextName;
-  };
 
 
   // if the database is empty on server start, create some sample data.
   ComplexIDFields = {};
 
   var admin_crfs = [
-      // "MetaForm",
+      "CRFmetadataCollection",
       'studies',
   ]
   
@@ -73,6 +60,7 @@ Meteor.startup(function() {
       'Pathology_form',
       // Obsolete 'Treatment_Response_form', (if obsolete also remove formSchemas/* file)
   ];
+
   CRFsInfo = [
     "Demographics",
     "Followup",
@@ -87,7 +75,7 @@ Meteor.startup(function() {
     "SU2C_Specimen_V1",
     'SU2C_Subsequent_Treatment_V1',
     "Patient_Enrollment_form",
-	  "Biopsy_Research",
+    "Biopsy_Research",
     // Obsolete: 'Treatment_History',
     'Tissue_Specimen_form',
     'Blood_Specimen_form',
@@ -99,13 +87,8 @@ Meteor.startup(function() {
     // Obsolete 'Treatment_Response_form',(if obsolete also remove formSchemas/*.js file)
   ];
 
-  // TEO: this is super hacker-y
-  if (Meteor.isServer) {
-    CRFmetadataCollection.remove({});
 
-  }
-
-  if (true || CRFmetadataCollection.find().count() === 0) {
+  if (true) {
     // this needs to be parameterized by study somehow.
     function crf_ids_potential() {
         var s = [];
@@ -312,13 +295,10 @@ Meteor.startup(function() {
                       fixRow(obj);
                       fixDate(row);
 
-
                       if (t == "Followup")
                           mapIfPossible(obj, "Followup_Center", SU2C_Center_map);
                       else if (t == "Demographics")
                           mapIfPossible(obj, "Study_Site", SU2C_Center_map);
-
-
 
                       try {
                           // Collections[t].upsert({Patient_ID: Patient_ID}, {$set: obj});
@@ -749,14 +729,14 @@ Meteor.startup(function() {
   function initializeCollectionCRF(collectionName, nthCollection) {
     // console.log("initializeCollectionCRF >  CRFinit", Object.keys(CRFinit), collectionName);
 
+    /*
     var aCRFcollection = collectionName in Collections ? Collections[collectionName] : new Mongo.Collection(collectionName);
     Collections[collectionName] = aCRFcollection;
-    /*
     if (Meteor.isServer)
     aCRFcollection.remove({});
-    */
     if (Meteor.isClient)
        window[collectionName] = aCRFcollection;
+    */
 
     var fo = _.pluck(CRFinit[collectionName].Fields, "Field_Name");
     var fs = _.clone(CRFinit[collectionName]);
@@ -770,7 +750,7 @@ Meteor.startup(function() {
 
     if (Meteor.isServer) {
 
-      CRFmetadataCollection.update({_id: collectionName},
+      var n = CRFmetadataCollection.update({_id: collectionName},
       {
         _id: collectionName,
         name: collectionName,
@@ -821,14 +801,4 @@ schema = function(collName) {
        return new SimpleSchema( meta.schema );
    }
    return null;
-}
-
-if (Meteor.isServer) {
-    Meteor.publish("metadata", function() {
-	var cursor = CRFmetadataCollection.find() 
-	console.log("CRFmetadataCollection", cursor.count())
-	return cursor;
-    });
-} else {
-    Meteor.subscribe("metadata");
 }

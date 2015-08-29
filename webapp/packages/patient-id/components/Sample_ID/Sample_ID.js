@@ -42,16 +42,11 @@ Meteor.startup(function() {
 
         var clinicalBiopsyInfo = null;
 
-        if(currentDoc && currentDoc.Sample_ID){
-          var b =  Collections.SU2C_Biopsy_V3.find({"Patient_ID": currentDoc.Patient_ID}, { fields: {"Sample_ID":1}}).fetch().map(function(pef) { return pef.Sample_ID});
-          var t =  Collections.Tissue_Specimen_form.find({"Patient_ID": currentDoc.Patient_ID}, { fields: {"Sample_ID":1}}).fetch().map(function(pef) { return pef.Sample_ID});
-          var c =  Collections.Clinical_Info.find({"Patient_ID": currentDoc.Patient_ID}, { fields: {"Sample_ID":1}}).fetch().map(function(ci) { return ci.Sample_ID});
-
-          clinicalBiopsyInfo = _.union(b,t,c).sort();
-
-          console.log("clinicalBiopsyInfo", clinicalBiopsyInfo);
+        if (currentDoc && currentDoc.Sample_ID){
+	   var study = Collections.studies.findOne({id: Session.get("CurrentStudy") });
+	   clinicalBiopsyInfo = study.Sample_IDs;
         }
-
+        console.log("clinicalBiopsyInfo", clinicalBiopsyInfo);
         return clinicalBiopsyInfo;
       }
     });

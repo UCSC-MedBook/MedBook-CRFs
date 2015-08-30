@@ -33,12 +33,15 @@ Meteor.startup(function() {
 	    var aList = objectList.map(function(object) { return object[field]}).filter(function(element) { return element != null });
 	    var sortedSet = _.union(aList).sort();
 
+	    var updateClause = {};
+	    updateClause[field + 's'] = { $each: sortedSet };
 
 	    var updateResult = Collections.studies.update(
 	       { id: "prad_wcdt" },
-	       { $addToSet: { tags: { $each: sortedSet } } }
+	       { $addToSet: updateClause }
 	     );
-	    console.log("maintain_prad_wcdt", field, sortedSet, updateResult);
+	    var final = Collections.studies.findOne( { id: "prad_wcdt" } );
+	    console.log("maintain_prad_wcdt", updateClause, sortedSet, updateResult, "\nfinal", final);
 
 	  };
 	  maintain_prad_wcdt("Patient_ID");

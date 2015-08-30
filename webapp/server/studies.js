@@ -27,8 +27,10 @@
         "citation" :  "unpublished",
         "collaborations" :  ["WCDT"],
 	"tables": [],
+	/*
 	"Sample_IDs": [],
 	"Patient_IDs": [],
+	*/
      }});
 
      Collections.studies.upsert({id: "prad_tcga"}, {$set: { 

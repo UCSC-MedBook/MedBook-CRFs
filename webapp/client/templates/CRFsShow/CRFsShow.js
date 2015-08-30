@@ -87,7 +87,6 @@ Template.CRFsShow.helpers({
     var coll = this._crfName == "CRFmetadataCollection" 
 	? CRFmetadataCollection.find().fetch().map(function(f) { return f.metadata })
 	: Collections.CRFs.find({CRF: this._crfName});
-    debugger;
     if (coll == null) return false;
     return coll;
   }

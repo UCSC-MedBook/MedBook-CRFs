@@ -778,6 +778,24 @@ Meteor.startup(function() {
   _.each(prad_wcdt_crfs, initializeCollectionCRF, {study: 'prad_wcdt'});
   _.each(common_crfs, initializeCollectionCRF, {study: 'common'}); 
 
+  var fields = _.clone(CRFinit.CRFmetadataCollection.Fields);
+  var ss = {}
+  fields.map(function(f) { 
+      ss[f["Field_Name"]] = f;
+      delete f["Field_Name"];
+  });
+  console.log("fields", fields);
+/*
+  CRFmetadataCollection.attachSchema(new SimpleSchema({
+      Form_Name : {
+	  type: "String",
+      },
+      Fields : {
+	  type: [ "String" ]
+      }
+  }));
+*/
+
 }); // end Meteor.startup
 
 Expression = new Meteor.Collection("expression2"); // not yet necessary to publish as its only used by MedBookLib for Gene names

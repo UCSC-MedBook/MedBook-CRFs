@@ -15,6 +15,8 @@ function summarizeTreatment(table, treatment) {
     return s;
 }
 
+prad_wcdt_crfs = null;
+
 Meteor.startup(function() {
 
   Collections.studies = new Meteor.Collection('studies');
@@ -32,7 +34,7 @@ Meteor.startup(function() {
       'Clinical_Info',
   ];
 
-  var prad_wcdt_crfs = [
+  prad_wcdt_crfs = [
       "SU2C_Biopsy_V3",
       "Followup",
       'SU2C_Subsequent_Treatment_V1',

@@ -5,7 +5,9 @@ Template.dashboard.rendered = function() {
 
     paper = Raphael("dashboard", 1600, 800);
 
-    Meteor.call("dashboard", function(err, dashboard) {
+    var currentStudy = Session.get("CurrentStudy");
+
+    Meteor.call("dashboard", currentStudy, function(err, dashboard) {
         var labels = dashboard._allLabels;
         delete  dashboard["_allLabels"];
 

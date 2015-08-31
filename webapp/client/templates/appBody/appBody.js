@@ -141,7 +141,7 @@ Template.appBody.events({
 
   'click .list-1-CRF' : function(event) {
       event.preventDefault();
-      Router.go("CRFsShow", {_crfName: $(event.target).data("crfname") });
+      Router.go("CRFsShow", {_study: Session.get("CurrentStudy"), _crfName: $(event.target).data("crfname") });
    },
 
   'click .content-overlay': function(event) {
@@ -161,18 +161,5 @@ Template.appBody.events({
 
   'click .js-logout': function() {
     Meteor.logout();
-
-    // if we are on a private list, we'll need to go to a public one
-    var current = Router.current();
-    if (current.route.name === 'CRFsShow' && current.data().userId) {
-      Router.go('CRFsShow', CRFmetadataCollection.findOne({userId: {$exists: false}}));
-    }
-  },
-
-  'click .js-new-list': function() {
-    var list = {name: defaultName(), incompleteCount: 0};
-    list._id = CRFmetadataCollection.insert(list);
-
-    Router.go('CRFsShow', list);
   }
 });

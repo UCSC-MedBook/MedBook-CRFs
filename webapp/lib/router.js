@@ -50,52 +50,14 @@ Router.map(function() {
   // this.route('join');
   this.route('signin');
 
-  this.route('CRFsPatient', {
-    path: '/CRF/patient/:_patient',
-    onBeforeAction: function() {
-      var patient_crfName = this.params._patient;
-      this.state.set("Current_Patient_ID", patient_crfName);
-      Meteor.subscribe('patient', patient_crfName);
-      this.next();
-    },
-    data: function() {
-      var manyCursors = []
-      Object.keys(Collections).map(function(collName) {
-          var coll = Collections[collName];
-          var patient_crfName = Session.get("Current_Patient_ID");
-          var cursor = coll.find({
-              $or: [
-                  {Patient_ID: patient_crfName},
-                  {Sample_ID: { $regex: "^" + patient_crfName + ".*"}}
-              ]});
-          console.log("subscribe patient", patient_crfName, collName);
-          manyCursors.push(cursor);
-      });
-      return manyCursors;
-    }
-  });
-
-  this.route('CRFsShowThis', {
-    template: 'CRFsShow',
-    path: '/CRF/lists/:_crfName/:_row',
-    onBeforeAction: function() {
-      Session.set("PreferredTableOrder", personalPreferredTableOrder());
-      this.next();
-    },
-    waitOn: function() {
-      return Meteor.subscribe('myForms', this.params._crfName, currentStudy());
-    },
-    data: function() {
-      Session.set("CRF_filter", this.params._row)
-      return this.params;
-    }
-  });
-
-
   this.route('CRFsShow', {
-    path: '/CRF/lists/:_crfName',
+    path: '/CRF/:_study/:_crfName/',
     onBeforeAction: function() {
+      Session.set("CurrentStudy", this.params._study);
+      Session.set("currentForm", this.params._crfName);
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
+
+      Session.set("CRF_filter", this.params._row)
       this.next();
     },
     waitOn: function() {
@@ -106,10 +68,12 @@ Router.map(function() {
     }
   });
 
-
-  this.route('home', {
-    template: "dashboard",
+  this.route('pleaseSelectStudy', {
     path: '/CRF/',
+  });
+
+  this.route('dashboard', {
+    path: '/CRF/:_crfName',
   });
 });
 

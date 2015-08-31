@@ -22,32 +22,39 @@ Meteor.startup(function() {
     },
   });
 
+  function grep(array, regex) {
+     return $.grep(array, function(x) {return String(x).match(regex)});
+  }
+
 
   Template.Sample_ID.helpers({
       samples : function() {
-        var query = {};
-        var currentDoc = Session.get("CurrentDoc");
-        console.log("CurrentDoc", currentDoc);
+        var currentStudy = Session.get("CurrentStudy");
+	if (currentStudy) {
+	    var study = Collections.studies.findOne({id: currentStudy});
+	    if (study && study.Sample_IDs) {
 
+		// good found what we are looking for
+		var sampleList = study.Sample_IDs;
 
-        /*
-        console.log("BTC", query, clinicalBiopsyInfo);*/
-        /*if (currentDoc && (currentDoc.Patient_ID != null))  {
-           query["Patient_ID"] = currentDoc.Patient_ID;
-           if (currentDoc.Sample_ID != null)
-               setTimeout(function() {
-                   $("[name='Sample_ID']").val(currentDoc.Sample_ID);
-               }, 2000);
-        }*/
+		var currentPatient_ID = $("[name='Patient_ID']").val();
+		if (currentPatient_ID && currentPatient_ID.length > 0) {
+		    debugger;
+		    sampleList = grep(sampleList, currentPatient_ID);
+		} else {
+		    var currentDoc = Session.get("CurrentDoc");
+		    if (currentDoc && curentDoc.Patient_ID) {
+			debugger;
+			sampleList = grep(sampleList, curentDoc.Patient_ID);
+		    }
+		}
 
-        var clinicalBiopsyInfo = null;
-
-        if (currentDoc && currentDoc.Sample_ID){
-	   var study = Collections.studies.findOne({id: Session.get("CurrentStudy") });
-	   clinicalBiopsyInfo = study.Sample_IDs;
-        }
-        console.log("clinicalBiopsyInfo", clinicalBiopsyInfo);
-        return clinicalBiopsyInfo;
+		debugger;
+		return sampleList;
+	      }
+	  }
+	  debugger;
+	  return ["fi","fi","fo", "fum"];
       }
     });
 

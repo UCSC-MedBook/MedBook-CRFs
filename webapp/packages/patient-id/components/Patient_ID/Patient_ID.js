@@ -39,7 +39,9 @@ Meteor.startup(function() {
       },
       patients: function() {
           var study = Collections.studies.findOne({id: Session.get("CurrentStudy") });
-          return study.Patient_IDs;
+	  if (study && study.Patient_IDs)
+	      return study.Patient_IDs;
+	  return [];
      }
    });
 

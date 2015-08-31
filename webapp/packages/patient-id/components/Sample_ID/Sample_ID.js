@@ -33,28 +33,22 @@ Meteor.startup(function() {
 	if (currentStudy) {
 	    var study = Collections.studies.findOne({id: currentStudy});
 	    if (study && study.Sample_IDs) {
-
-		// good found what we are looking for
 		var sampleList = study.Sample_IDs;
 
 		var currentPatient_ID = $("[name='Patient_ID']").val();
 		if (currentPatient_ID && currentPatient_ID.length > 0) {
-		    debugger;
 		    sampleList = grep(sampleList, currentPatient_ID);
 		} else {
 		    var currentDoc = Session.get("CurrentDoc");
 		    if (currentDoc && curentDoc.Patient_ID) {
-			debugger;
 			sampleList = grep(sampleList, curentDoc.Patient_ID);
 		    }
 		}
 
-		debugger;
 		return sampleList;
 	      }
 	  }
-	  debugger;
-	  return ["fi","fi","fo", "fum"];
+	  return [];
       }
     });
 

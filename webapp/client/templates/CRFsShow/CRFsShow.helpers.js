@@ -25,6 +25,8 @@ customHandler = function(insertDoc, updateDoc, currentDoc) {
     updateDoc.$set.study = CurrentStudy;
     updateDoc.$set.CRF = currentForm;
 
+    debugger;
+
     if (insertDoc == null) {
         debugger;
         console.log("insertDoc==null how did this happen?");

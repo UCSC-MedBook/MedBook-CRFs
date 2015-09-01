@@ -84,9 +84,20 @@ Template.CRFsShow.helpers({
   previousEntries: function () {
     if (this._crfName == null) return false;
 
-    var coll = this._crfName == "CRFmetadataCollection" 
-	? CRFmetadataCollection.find().fetch().map(function(f) { return f.metadata })
-	: Collections.CRFs.find({CRF: this._crfName});
+    var coll;
+    
+    switch (this._crfName) 
+      {
+    case "studies":
+	coll =  Collections.studies.find();
+	break;
+    case "CRFmetadataCollection":
+	coll =  CRFmetadataCollection.find().fetch().map(function(f) { return f.metadata })
+	break;
+    default:
+	Collections.CRFs.find({CRF: this._crfName});
+	break;
+      }
     if (coll == null) return false;
     return coll;
   }

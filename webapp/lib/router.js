@@ -73,7 +73,11 @@ Router.map(function() {
   });
 
   this.route('dashboard', {
-    path: '/CRF/:_crfName',
+    path: '/CRF/:_study',
+    onBeforeAction: function() {
+      Session.set("CurrentStudy", this.params._study);
+      this.next();
+    },
   });
 });
 

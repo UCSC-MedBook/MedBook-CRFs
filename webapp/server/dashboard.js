@@ -14,34 +14,25 @@ Meteor.methods({
 
 	if (studyId == null)
 	   throw new Error("need a valid study");
-	var study = studies.find({id: studyId});
+	var study = Collections.studies.findOne({id: studyId});
 	if (studyId == null)
 	   throw new Error("study id not found");
 
-	var target = _.intersection(study.collaborations, user.collaborations);
+	console.log("user.profile.collaborations", user.profile.collaborations);
+	user.profile.collaborations.push("public");
+
+	var target = _.intersection(study.collaborations, user.profile.collaborations);
 	console.log("dashboard", target);
 	if (target.length == 0)
 	   throw new Error("User not allowed to access this study");
-	   
-	if (studyId == null)
-	   throw new Error("need a valid study");
-	var study = studies.find({id: studyId});
-	if (studyId == null)
-	   throw new Error("study id not found");
 
-	var target = _.intersection(study.collaborations, user.collaborations);
-	console.log("dashboard", target);
-	if (target.length == 0)
-	   throw new Error("User not allowed to access this study");
-	   
-
-	var Sample_Ids  = study.Sample_IDs;
-	var Patient_ids = study.Patient_IDs;
+	var Sample_IDs  = study.Sample_IDs;
+	var Patient_IDs = study.Patient_IDs;
 
 	var mapSample_IDtoPatientID = {};
 
-	Sample_Ids.map(function(s) {
-	    Patient_ids.map(function(p) {
+	Sample_IDs.map(function(s) {
+	    Patient_IDs.map(function(p) {
 	    	if (s.match(p))
 		    mapSample_IDtoPatientID[s] = p;
 	    })
@@ -52,8 +43,7 @@ Meteor.methods({
 	    var inv = {};
 	    inventory[tableName] = inv;
 
-	    CRFs.find({CRF: tableName}, {fields: { Sample_ID:1, Patient_ID: 1}}).forEach(function(obj) {
-		console.log("dashboard", name, coll.count());
+	    Collections.CRFs.find({CRF: tableName}, {fields: { Sample_ID:1, Patient_ID: 1}}).forEach(function(obj) {
 
 		try {
 		    if (obj.Patient_ID) {

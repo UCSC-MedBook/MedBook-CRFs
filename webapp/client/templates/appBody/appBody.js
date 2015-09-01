@@ -142,6 +142,7 @@ Template.appBody.events({
   'click .list-1-CRF' : function(event) {
       event.preventDefault();
       Router.go("CRFsShow", {_study: Session.get("CurrentStudy"), _crfName: $(event.target).data("crfname") });
+
    },
 
   'click .content-overlay': function(event) {

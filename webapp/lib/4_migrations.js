@@ -5,7 +5,7 @@ Meteor.startup(function() {
 	    Collections.DataMigrations = new Meteor.Collection("DataMigrations");
 	}
 
-	var migrationName = 'CRFunification 20150831-D' 
+	var migrationName = 'CRFunification 20150901-B' 
 	var migration = Collections.DataMigrations.findOne({name: migrationName});
 
 	if (migration == null) {

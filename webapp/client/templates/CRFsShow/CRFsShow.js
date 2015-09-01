@@ -3,7 +3,6 @@ var EDITING_KEY = "EditingCRFsShow";
 AutoForm.hooks({
     CRFquickForm: {
           docToForm: function(doc, ss) {
-	  debugger;
 	    doc.Study_ID = Session.get("CurrentStudy");
 	    return doc;
 	  },

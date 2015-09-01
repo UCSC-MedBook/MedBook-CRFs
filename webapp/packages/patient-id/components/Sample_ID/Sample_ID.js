@@ -35,24 +35,31 @@ Meteor.startup(function() {
 	    var study = Collections.studies.findOne({id: currentStudy});
 	    if (study && study.Sample_IDs) {
 		var sampleList = study.Sample_IDs;
+		var currentDoc = Session.get("CurrentDoc");
 
 
-		// var currentPatient_ID = $("[name='Patient_ID']").val();
-		var currentPatient_ID = Session.get("Patient_ID");
-		if (currentPatient_ID && currentPatient_ID.length > 0) {
-		    sampleList = grep(sampleList, currentPatient_ID);
+
+		if (currentDoc && currentDoc.Patient_ID) {
+		    sampleList = grep(sampleList, currentDoc.Patient_ID);
 		} else {
-		    var currentDoc = Session.get("CurrentDoc");
-		    if (currentDoc && currentDoc.Patient_ID) {
-			sampleList = grep(sampleList, currentDoc.Patient_ID);
+		    var currentPatient_ID = Session.get("Patient_ID")
+		    if (currentPatient_ID) {
+			var tmp = grep(sampleList, currentPatient_ID );
+			if (tmp.length > 0)
+			    sampleList = tmp;
 		    }
 		}
 
 		var s = '<select class="Sample_ID form-control" type="text" name="Sample_ID" data-schema-key="Sample_ID">';
 		sampleList.map(function(e) {
-		    s += '<option value="' + e + '">' + e + '</option>';
+		    var selected =  currentDoc && currentDoc.Sample_ID == e ?  'selected="selected"' : "";
+		    s += '<option value="' + e + '" ' + selected + ' > ' + e + '</option>';
 		});
 		s += '</select>';
+		if (currentDoc)
+		    console.log("currentDoc.Sample_ID", currentDoc.Sample_ID, s);
+		else
+		    console.log("Sample_ID", s);
 		return s;
 	      }
 	  }

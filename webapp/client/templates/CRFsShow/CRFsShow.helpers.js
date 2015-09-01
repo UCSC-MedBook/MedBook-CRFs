@@ -14,7 +14,6 @@ stopMe = function() {
 LastSubmit = null;
 
 customHandler = function(insertDoc, updateDoc, currentDoc) {
-    debugger;
 
     var CurrentStudy = Session.get("CurrentStudy");
     var currentForm = Session.get("currentForm");
@@ -34,6 +33,8 @@ customHandler = function(insertDoc, updateDoc, currentDoc) {
         return new Error("Submission failed");
     } else
         try {
+
+	    debugger;
 
             if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
 	        console.log("updateDoc", updateDoc);

@@ -1,5 +1,9 @@
 
 fixUpRenderedAutoForm = function() {
+
+    return;
+    
+
     // Step 1. Check all pre requisities
     var currentStudy = Session.get("CurrentStudy");
     if (currentStudy == null)

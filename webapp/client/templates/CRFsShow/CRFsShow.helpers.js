@@ -13,6 +13,7 @@ stopMe = function() {
 }
 
 customHandler = function(insertDoc, updateDoc, currentDoc) {
+    debugger;
 
     var CurrentStudy = Session.get("CurrentStudy");
     var currentForm = Session.get("currentForm");

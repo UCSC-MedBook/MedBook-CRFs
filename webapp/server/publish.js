@@ -42,12 +42,13 @@ Meteor.publish('myForms', function(formName, studyName) {
   if (study == null)
       return [];
 
-  var coll = CRFmetadataCollection.findOne({study: studyName, name: formName});
+  var coll = CRFmetadataCollection.findOne({study: { $in: [ "common", studyName]}, name: formName});
   if (coll) {
       var cursor =  Collections.CRFs.find({CRF:formName});
       console.log("publish myForms", formName, cursor.count());
       return cursor
   }
+  console.log("myForms empty");
   return [];
 });
 

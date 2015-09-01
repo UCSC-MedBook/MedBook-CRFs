@@ -43,8 +43,8 @@ Meteor.startup(function() {
 		    sampleList = grep(sampleList, currentPatient_ID);
 		} else {
 		    var currentDoc = Session.get("CurrentDoc");
-		    if (currentDoc && curentDoc.Patient_ID) {
-			sampleList = grep(sampleList, curentDoc.Patient_ID);
+		    if (currentDoc && currentDoc.Patient_ID) {
+			sampleList = grep(sampleList, currentDoc.Patient_ID);
 		    }
 		}
 

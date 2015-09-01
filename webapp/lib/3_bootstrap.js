@@ -25,12 +25,12 @@ Meteor.startup(function() {
   // if the database is empty on server start, create some sample data.
   ComplexIDFields = {};
 
-  var admin_crfs = [
+  admin_crfs = [
       "CRFmetadataCollection",
       'studies',
   ]
   
-  var common_crfs = [
+  common_crfs = [
       'Clinical_Info',
   ];
 

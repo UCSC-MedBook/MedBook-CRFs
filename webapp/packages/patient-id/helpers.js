@@ -13,7 +13,6 @@ SetCurrentDoc = function(field, value) {
     var currentDoc = Collections.CRFs.findOne(queryPattern);
 
     Session.set("CurrentDoc", currentDoc);
-    console.log("SetCurrentDoc", currentDoc);
 
     return currentDoc;
 }

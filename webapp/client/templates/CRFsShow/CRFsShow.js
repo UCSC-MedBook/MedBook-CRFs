@@ -1,15 +1,27 @@
 var EDITING_KEY = "EditingCRFsShow";
 
+AutoForm.hooks({
+    CRFquickForm: {
+          docToForm: function(doc, ss) {
+	    doc.Study_ID = Session.get("CurrentStudy");
+	    return doc;
+	  },
+    }
+});
+
+
 Template.CRFsShow.rendered = function() {
   LastSubmit = null;
+  var This = this;
 
-  debugger;
-  var Study_ID = this.find('input[name="Study_ID"]');
+Tracker.autorun(function() {
+  var Study_ID = This.find('input[name="Study_ID"]');
   if (Study_ID) {
-     Study_ID.readOnly = true;
+     Session.get("CurrentDoc");
      Study_ID.value = Session.get("CurrentStudy");
+     Study_ID.readOnly = true;
   }
-
+});
 
   this.find('.js-title-nav')._uihooks = {
     insertElement: function(node, next) {
@@ -26,6 +38,7 @@ Template.CRFsShow.rendered = function() {
   };
 };
 Template.CRFsShow.helpers({
+
   currentDoc: function () {
     return Session.get("CurrentDoc");
   },

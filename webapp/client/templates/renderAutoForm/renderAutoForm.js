@@ -37,14 +37,23 @@ fixUpRenderedAutoForm = function() {
     }
 
     // Step 2. Update elements
+    /*
     var $Patient_ID = $("select[name='Patient_ID']");
     if ($Patient_ID) {
-	$Patient_ID.find('option').remove();
+        debugger;
+	// $Patient_ID.find('option').remove();
 	Patient_IDs.map(function(p) {
-	    $Patient_ID.append('<option value="' +  p + '">' + p  + '</option>')
+
+	    if ($Patient_ID.find("option[value='" + p+ "']").length == 0) { // doesn't exist, add it
+		$Patient_ID.append('<option value="' +  p + '">' + p  + '</option>')
+		debugger;
+	    }
+
 	});
+        debugger;
 	$Patient_ID.val(Patient_ID)
     };
+	*/
 
     var $Sample_ID = $("select[name='Sample_ID']");
     if ($Sample_ID) {

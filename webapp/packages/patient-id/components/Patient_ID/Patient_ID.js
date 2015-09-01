@@ -38,9 +38,14 @@ Meteor.startup(function() {
       patients: function() {
           var study = Collections.studies.findOne({id: Session.get("CurrentStudy") });
 	  if (study && study.Patient_IDs) {
-	      return study.Patient_IDs;
+		var s = '<select class="Patient_ID form-control" type="text" name="Patient_ID" data-schema-key="Patient_ID">';
+		study.Patient_IDs.map(function(e) {
+		    s += '<option value="' + e + '">' + e + '</option>';
+		});
+		s += '</select>';
+		return s;
 	  }
-	  return [];
+	  return ""
      }
    });
 

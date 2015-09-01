@@ -14,8 +14,13 @@ stopMe = function() {
 
 customHandler = function(insertDoc, updateDoc, currentDoc) {
 
+    var CurrentStudy = Session.get("CurrentStudy");
     var currentForm = Session.get("currentForm");
-    var coll = window[currentForm];
+    insertDoc.study = CurrentStudy;
+    insertDoc.CRF = currentForm;
+    updateDoc.study = CurrentStudy;
+    updateDoc.CRF = currentForm;
+
     if (insertDoc == null) {
         debugger;
         console.log("insertDoc==null how did this happen?");
@@ -27,7 +32,8 @@ customHandler = function(insertDoc, updateDoc, currentDoc) {
 
             var cc;
             if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
-                v = window[currentForm].update({_id: currentDoc._id}, updateDoc );
+
+                v = Collections.CRFs.update({_id: currentDoc._id}, updateDoc );
                 if (v != 1) {
                     //alert("LastSubmit: " + v);
                     console.log("Updating window[currentForm] wasnt successful.  :(");
@@ -223,27 +229,6 @@ var toggleListPrivacy = function(list) {
   }
 };
 
-Patient_ID_Update_Sample_ID = function(event) {
-  var patient_id = $(event.target).val();
-  SetCurrentDoc('Patient_ID', patient_id);
-  var Sample_ID = All_Sample_ID.filter(
-      function(f) {
-          try {
-              return f.text.match(patient_id + ".*")
-          } catch (s) {
-              debugger
-          }
-      });
-  /*
-  if (Session.get("currentForm") != "Biopsy_Research") {
-  	$("input[name='Sample_ID']").select2( { data: Sample_ID });
-  }
-  */
-}
-
-
-
-
 
 coreProperty = function(index, property) {
   return function (row, newValue) {
@@ -256,42 +241,3 @@ coreProperty = function(index, property) {
 }
 
 
-/*SetCurrentDoc = function(field, value) {
-    var currentForm = Session.get("currentForm");
-    var collection = window[currentForm];
-    var queryRecord = {};
-    queryRecord[field] = value;
-    var currentDoc = collection.findOne(queryRecord);
-    Session.set("CurrentDoc", currentDoc);
-    console.log("SetCurrentDoc", currentDoc);
-
-    return currentDoc;
-}*/
-
-
-
-/*
-
-function currentDoc() {
-
-    var crf = Session.get("currentForm");
-    var coll = window[crf];
-    var q = {};
-
-    if (crf in ComplexIDFields) {
-        _id = {}
-        _.each(ComplexIDFields[crf], function(f) {
-            q[f] = $('form').find("[name='" + f + "']").val();
-        })
-    } else {
-        var s = $('form').find("[name='Sample_ID']").val();
-        if (s == null)
-            q["Patient_ID"] = $('form').find("[name='Patient_ID']").val();
-        else
-            q["Sample_ID"] = s;
-    }
-    var cd = coll.findOne(q);
-    return cd;
-}
-window.currentDoc = currentDoc
-*/

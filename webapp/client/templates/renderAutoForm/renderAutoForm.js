@@ -1,38 +1,59 @@
 
 fixUpRenderedAutoForm = function() {
-    var pef   = Collections.CRFs.find({CRF: "Patient_Enrollment_form"}, { fields: {Patient_ID:1}}).fetch();
-    var dem   = Collections.CRFs.find({CRF: "Demographics"}, { fields: {Patient_ID:1}}).fetch();
-    var biops = Collections.CRFs.find({CRF: "SU2C_Biopsy_V3"}, { fields: {Sample_ID:1}}).fetch();
-    var br    = Collections.CRFs.find({CRF: "Biopsy_Research"}, { fields: {Sample_ID:1}}).fetch();
+    // Step 1. Check all pre requisities
+    var currentStudy = Session.get("CurrentStudy");
+    if (currentStudy == null)
+        return;
+    var study = Collections.studies.findOne({ id: currentStudy });
+    if (study == null)
+        return;
+
+    var thereIsPatient_IDs = $("select[name='Patient_ID']").length > 0;
+    var thereIsSample_IDs  = $("select[name='Sample_ID']").length > 0;
+
+    if (!thereIsPatient_IDs && !thereIsSample_IDs)
+        return;
+
 
     function id_text(s) { return { id: s, text: s}};
 
-    var Patient_ID = _.union(
-        _.pluck(pef, 'Patient_ID'),
-        _.pluck(dem, 'Patient_ID')
-    ).filter(function(f) {return f != null}).sort().map(id_text);
+    var Patient_IDs = study.Patient_IDs.sort();
+    var Sample_IDs = study.Sample_IDs.sort();
+    var Patient_ID = null;
+    var Sample_ID  = null;
 
-    if (Session.get("currentForm") != "Patient_Enrollment_form") {
-          $("input[name='Patient_ID']").val(Patient_ID)
+    var currentDoc = Session.get("CurrentDoc");
+    if (currentDoc) {
+        Patient_ID = currentDoc.Patient_ID;
+        Sample_ID = currentDoc.Sample_ID;
+
+        Patient_ID = Patient_ID;
+
+	// filter Sample_IDs by the Patient_ID
+	if (Patient_ID != null && Sample_IDs && Sample_IDs.length > 0) {
+	    Sample_IDs = Sample_IDs.filter(function(s) { return s.match(Patient_ID)});
+	}
+
     }
 
-    var Sample_ID = _.union(
-        _.pluck(pef, 'Patient_ID'),
-        _.pluck(br, 'Sample_ID'),
-        _.pluck(biops, 'Sample_ID')
-    ).filter(function(f) {return f != null}).sort().map(id_text);
-    All_Sample_ID = Sample_ID;
+    // Step 2. Update elements
+    var $Patient_ID = $("select[name='Patient_ID']");
+    if ($Patient_ID) {
+	$Patient_ID.find('option').remove({});
+	Patient_IDs.map(function(p) {
+	    $Patient_ID.append('<option value="' +  p + '">' + p  + '</option>')
+	});
+	$Patient_ID.val(Patient_ID)
+    };
 
-    if (Session.get("currentForm") != "Biopsy_Research") {
-        if ($("select[name='Patient_ID']").length == 0 && $("select[name='Sample_ID']").length > 0) {
-            var $s = $("select[name='Sample_ID']");
-            $s.find('option').remove();
-            All_Sample_ID.map(function(o) {
-                var o = o.text;
-                $s.append('<option value="' +  o + '">' + o  + '</option>')
-            });
-        }
-    }
+    var $Sample_ID = $("select[name='Sample_ID']");
+    if ($Sample_ID) {
+	$Sample_ID.find('option').remove({});
+	Sample_IDs.map(function(s) {
+	    $Sample_ID.append('<option value="' +  s + '">' + s  + '</option>')
+	});
+	$Sample_ID.val(Sample_ID)
+    };
 };
 
 

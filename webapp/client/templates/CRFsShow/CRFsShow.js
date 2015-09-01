@@ -94,14 +94,6 @@ Template.CRFsShow.helpers({
 
 Template.CRFsShow.events({
 
-  'change select[name="Patient_ID"]': Patient_ID_Update_Sample_ID,
-
-  'change input[name="Patient_ID"]':  Patient_ID_Update_Sample_ID,
-
-  'change input[name="Sample_ID"]': function (event) {
-      SetCurrentDoc('Sample_ID', $('input[name="Sample_ID"]').val());
-  },
-
   'change select[name="core"]': function (event) {
     // Session.set("CurrentDoc", currentDoc());
   },
@@ -166,12 +158,16 @@ Template.CRFsShow.events({
 
   'submit .js-CRF-new': function(event) {
     event.preventDefault();
+    debugger ;
+    alert("not implemented yet");
+    return;
 
     var $input = $(event.target).find('[type=text]');
     if (! $input.val())
       return;
 
-    CRFs.insert({
+
+    Collections.studies.insert({
       listId: this._crfName,
       text: $input.val(),
       checked: false,

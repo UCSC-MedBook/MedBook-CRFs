@@ -29,13 +29,16 @@ Meteor.startup(function() {
 
   Template.Sample_ID.helpers({
       samples : function() {
+
         var currentStudy = Session.get("CurrentStudy");
 	if (currentStudy) {
 	    var study = Collections.studies.findOne({id: currentStudy});
 	    if (study && study.Sample_IDs) {
 		var sampleList = study.Sample_IDs;
 
-		var currentPatient_ID = $("[name='Patient_ID']").val();
+
+		// var currentPatient_ID = $("[name='Patient_ID']").val();
+		var currentPatient_ID = Session.get("Patient_ID");
 		if (currentPatient_ID && currentPatient_ID.length > 0) {
 		    sampleList = grep(sampleList, currentPatient_ID);
 		} else {
@@ -45,10 +48,15 @@ Meteor.startup(function() {
 		    }
 		}
 
-		return sampleList;
+		var s = '<select class="Sample_ID form-control" type="text" name="Sample_ID">';
+		sampleList.map(function(e) {
+		    s += '<option value="' + e + '">' + e + '</option>';
+		});
+		s += '</select>';
+		return s;
 	      }
 	  }
-	  return [];
+	  return ""
       }
     });
 

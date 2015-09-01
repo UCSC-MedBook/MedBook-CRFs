@@ -5,16 +5,21 @@ Meteor.startup(function() {
 	    Collections.DataMigrations = new Meteor.Collection("DataMigrations");
 	}
 
-	var migrationName = 'CRFunification 20150830' 
+	var migrationName = 'CRFunification 20150831-B' 
 	var migration = Collections.DataMigrations.findOne({name: migrationName});
 
 	if (migration == null) {
 	    prad_wcdt_crfs.map(function(collName) {
+	        Collections.CRFs.remove({});
+
 		var count = 0;
 		var coll = new Meteor.Collection(collName);
 		coll.find({}).forEach(function(doc) {
 		    count++;
+
+		    doc.study = 'prad_wcdt'; // needs both
 		    doc.CRF = collName;
+
 		    if (Collections.CRFs.findOne({_id: doc._id}) == null)
 			Collections.CRFs.insert(doc);
 		});

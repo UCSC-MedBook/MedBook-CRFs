@@ -18,11 +18,9 @@ Meteor.startup(function() {
 
   Template.Patient_ID.events({
     'change select[name="Patient_ID"]': function (event, tmpl) {
-      if (Session.get("currentForm") != "Patient_Enrollment_form") {
         var p = $(event.target).val();
         Session.set("Patient_ID", $(event.target).val());
         SetCurrentDoc("Patient_ID", p);
-      }
     }
   });
 
@@ -39,8 +37,9 @@ Meteor.startup(function() {
       },
       patients: function() {
           var study = Collections.studies.findOne({id: Session.get("CurrentStudy") });
-	  if (study && study.Patient_IDs)
+	  if (study && study.Patient_IDs) {
 	      return study.Patient_IDs;
+	  }
 	  return [];
      }
    });

@@ -1,6 +1,5 @@
 var EDITING_KEY = 'editingList';
 
-LastSubmit = null;
 All_Sample_ID = [];
 
 Session.set("RowsPerPage", 10);
@@ -12,15 +11,19 @@ stopMe = function() {
     debugger;
 }
 
+LastSubmit = null;
+
 customHandler = function(insertDoc, updateDoc, currentDoc) {
     debugger;
 
     var CurrentStudy = Session.get("CurrentStudy");
     var currentForm = Session.get("currentForm");
+
     insertDoc.study = CurrentStudy;
     insertDoc.CRF = currentForm;
-    updateDoc.study = CurrentStudy;
-    updateDoc.CRF = currentForm;
+
+    updateDoc.$set.study = CurrentStudy;
+    updateDoc.$set.CRF = currentForm;
 
     if (insertDoc == null) {
         debugger;
@@ -29,28 +32,23 @@ customHandler = function(insertDoc, updateDoc, currentDoc) {
         return new Error("Submission failed");
     } else
         try {
-            LastSubmit = insertDoc.Patient_ID != null ? insertDoc.Patient_ID : insertDoc.Sample_ID;
 
-            var cc;
             if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
-
-                v = Collections.CRFs.update({_id: currentDoc._id}, updateDoc );
-                if (v != 1) {
-                    //alert("LastSubmit: " + v);
-                    console.log("Updating window[currentForm] wasnt successful.  :(");
-
-                }
+	        console.log("updateDoc", updateDoc);
+                var v = Collections.CRFs.update({_id: currentDoc._id}, updateDoc );
+                if (v != 1) 
+                    console.log("Updating wasnt successful.  :(", v);
                 insertDoc._id = currentDoc.id;
             } else {
-                insertDoc._id = window[currentForm].insert(insertDoc);
+                insertDoc._id = Collections.CRFs.insert(insertDoc);
             }
-            // Session.set("RowsPerPage", 1 + Session.get("RowsPerPage"));
+
+            LastSubmit = insertDoc.Patient_ID;
             Session.set("CRF_filter", insertDoc.Patient_ID)
             Session.set("CurrentDoc", insertDoc);
             return null;
         } catch (why) {
             debugger;
-            alert("LastSubmit[error]: " + 3);
             return new Error("Submission failed: " + why);
         }
 }

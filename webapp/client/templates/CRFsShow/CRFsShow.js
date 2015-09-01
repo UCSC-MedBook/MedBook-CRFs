@@ -3,6 +3,14 @@ var EDITING_KEY = "EditingCRFsShow";
 Template.CRFsShow.rendered = function() {
   LastSubmit = null;
 
+  debugger;
+  var Study_ID = this.find('input[name="Study_ID"]');
+  if (Study_ID) {
+     Study_ID.readOnly = true;
+     Study_ID.value = Session.get("CurrentStudy");
+  }
+
+
   this.find('.js-title-nav')._uihooks = {
     insertElement: function(node, next) {
       $(node)
@@ -95,7 +103,7 @@ Template.CRFsShow.helpers({
 	coll =  CRFmetadataCollection.find().fetch().map(function(f) { return f.metadata })
 	break;
     default:
-	Collections.CRFs.find({CRF: this._crfName});
+	coll = Collections.CRFs.find({CRF: this._crfName});
 	break;
       }
     if (coll == null) return false;

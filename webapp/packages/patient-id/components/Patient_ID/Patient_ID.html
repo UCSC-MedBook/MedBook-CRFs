@@ -5,9 +5,10 @@
 </template>
 
 <template name="Patient_IDselect">
-    <select data-role="tagsinput" class="Patient_ID form-control" type="text" name="Patient_ID" {{atts}}>
+    <select data-role="tagsinput" class="Patient_ID form-control" type="text" name="Patient_ID" {{atts}} data-schema-key="Patient_ID">
     {{#each arg}}
         <option value={{this}}>{{this}}</option>
     {{/each}}
     </select>
 </template>
+

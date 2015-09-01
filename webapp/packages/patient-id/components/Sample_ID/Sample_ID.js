@@ -48,7 +48,7 @@ Meteor.startup(function() {
 		    }
 		}
 
-		var s = '<select class="Sample_ID form-control" type="text" name="Sample_ID">';
+		var s = '<select class="Sample_ID form-control" type="text" name="Sample_ID" data-schema-key="Sample_ID">';
 		sampleList.map(function(e) {
 		    s += '<option value="' + e + '">' + e + '</option>';
 		});

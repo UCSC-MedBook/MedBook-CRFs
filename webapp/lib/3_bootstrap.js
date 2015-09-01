@@ -786,7 +786,6 @@ Meteor.startup(function() {
       ss[f["Field_Name"]] = f;
       delete f["Field_Name"];
   });
-  console.log("fields", fields);
 /*
   CRFmetadataCollection.attachSchema(new SimpleSchema({
       Form_Name : {
@@ -817,6 +816,8 @@ schema = function(collName) {
        	  var f = meta.schema[fn]
 	  if (f.autoform == null)
 	  	f.autoform = {};
+	  if (f.allowedValues)
+	     f.allowedValues = _.union(f.allowedValues);
        });
        return new SimpleSchema( meta.schema );
    }

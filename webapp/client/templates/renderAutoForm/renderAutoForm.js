@@ -39,7 +39,7 @@ fixUpRenderedAutoForm = function() {
     // Step 2. Update elements
     var $Patient_ID = $("select[name='Patient_ID']");
     if ($Patient_ID) {
-	$Patient_ID.find('option').remove({});
+	$Patient_ID.find('option').remove();
 	Patient_IDs.map(function(p) {
 	    $Patient_ID.append('<option value="' +  p + '">' + p  + '</option>')
 	});
@@ -48,7 +48,7 @@ fixUpRenderedAutoForm = function() {
 
     var $Sample_ID = $("select[name='Sample_ID']");
     if ($Sample_ID) {
-	$Sample_ID.find('option').remove({});
+	$Sample_ID.find('option').remove();
 	Sample_IDs.map(function(s) {
 	    $Sample_ID.append('<option value="' +  s + '">' + s  + '</option>')
 	});

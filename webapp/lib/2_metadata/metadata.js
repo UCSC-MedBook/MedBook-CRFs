@@ -1,5 +1,4 @@
 
-CRFmetadataCollection = new Meteor.Collection('CRFmetadataCollection');
 
 Meteor.startup(function() {
 

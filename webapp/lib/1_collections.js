@@ -8,5 +8,4 @@ Collections.Blobs = new FS.Collection("blobs", {
 });
 
 
-Collections.CRFs = new Meteor.Collection("CRFs");
 

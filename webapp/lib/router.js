@@ -31,6 +31,7 @@ Router.configure({
   // the data it's expecting is present
   waitOn: function() {
     return [
+      Meteor.subscribe('metadata'),
       Meteor.subscribe('studies'),
     ];
   }
@@ -61,7 +62,11 @@ Router.map(function() {
       this.next();
     },
     waitOn: function() {
-      return Meteor.subscribe('myForms', this.params._crfName, currentStudy());
+      return [
+	  Meteor.subscribe('metadata'),
+	  Meteor.subscribe('studies'),
+	  Meteor.subscribe('myForms', this.params._crfName, currentStudy())
+      ];
     },
     data: function() {
       return this.params;

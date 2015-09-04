@@ -190,12 +190,12 @@ var editList = function(list, template) {
 
 var saveList = function(list, template) {
   Session.set(EDITING_KEY, false);
-  CRFmetadataCollection.update(list._id, {$set: {name: template.$('[name=name]').val()}});
+  Collections.CRFmetadataCollection.update(list._id, {$set: {name: template.$('[name=name]').val()}});
 }
 
 var deleteList = function(list) {
   // ensure the last public list cannot be deleted.
-  if (! list.userId && CRFmetadataCollection.find({userId: {$exists: false}}).count() === 1) {
+  if (! list.userId && Collections.CRFmetadataCollection.find({userId: {$exists: false}}).count() === 1) {
     return alert("Sorry, you cannot delete the final public list!");
   }
 
@@ -205,7 +205,7 @@ var deleteList = function(list) {
     CRFs.find({listId: list._id}).forEach(function(crf) {
       CRFs.remove(crf._id);
     });
-    CRFmetadataCollection.remove(list._id);
+    Collections.CRFmetadataCollection.remove(list._id);
 
     Router.go('home');
     return true;
@@ -220,14 +220,14 @@ var toggleListPrivacy = function(list) {
   }
 
   if (list.userId) {
-    CRFmetadataCollection.update(list._id, {$unset: {userId: true}});
+    Collections.CRFmetadataCollection.update(list._id, {$unset: {userId: true}});
   } else {
     // ensure the last public list cannot be made private
-    if (CRFmetadataCollection.find({userId: {$exists: false}}).count() === 1) {
+    if (Collections.CRFmetadataCollection.find({userId: {$exists: false}}).count() === 1) {
       return alert("Sorry, you cannot make the final public list private!");
     }
 
-    CRFmetadataCollection.update(list._id, {$set: {userId: Meteor.userId()}});
+    Collections.CRFmetadataCollection.update(list._id, {$set: {userId: Meteor.userId()}});
   }
 };
 

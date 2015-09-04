@@ -7,5 +7,3 @@ Collections.Blobs = new FS.Collection("blobs", {
   chunkSize: 4 * 1024 * 1024
 });
 
-
-

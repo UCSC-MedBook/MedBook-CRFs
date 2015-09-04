@@ -87,7 +87,7 @@ Template.CRFsShow.helpers({
   },
 
   readOnly: function () {
-      return this._crfName in OncoreTable_NeedsSample_ID;
+      return false; // this._crfName in OncoreTable_NeedsSample_ID;
   },
 
   currentCollection: function () {
@@ -113,7 +113,7 @@ Template.CRFsShow.helpers({
 	coll =  Collections.studies.find();
 	break;
     case "CRFmetadataCollection":
-	coll =  CRFmetadataCollection.find().fetch().map(function(f) { return f.metadata })
+	coll =  Collections.CRFmetadataCollection.find().fetch().map(function(f) { return f.metadata })
 	break;
     default:
 	coll = Collections.CRFs.find({CRF: this._crfName});
@@ -205,7 +205,7 @@ Template.CRFsShow.events({
       checked: false,
       createdAt: new Date()
     });
-    CRFmetadataCollection.update(this._crfName, {$inc: {incompleteCount: 1}});
+    Collections.CRFmetadataCollection.update(this._crfName, {$inc: {incompleteCount: 1}});
     $input.val('');
   }
 });

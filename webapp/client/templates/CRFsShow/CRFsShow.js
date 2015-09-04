@@ -112,8 +112,8 @@ Template.CRFsShow.helpers({
     case "studies":
 	coll =  Collections.studies.find();
 	break;
-    case "CRFmetadataCollection":
-	coll =  Collections.CRFmetadataCollection.find().fetch().map(function(f) { return f.metadata })
+    case "Metadata":
+	coll =  Collections.Metadata.find().fetch().map(function(f) { return f.metadata })
 	break;
     default:
 	coll = Collections.CRFs.find({CRF: this._crfName});
@@ -205,7 +205,7 @@ Template.CRFsShow.events({
       checked: false,
       createdAt: new Date()
     });
-    Collections.CRFmetadataCollection.update(this._crfName, {$inc: {incompleteCount: 1}});
+    Collections.Metadata.update(this._crfName, {$inc: {incompleteCount: 1}});
     $input.val('');
   }
 });

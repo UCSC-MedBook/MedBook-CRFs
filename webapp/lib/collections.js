@@ -1,3 +1,3 @@
 Collections.CRFs = new Meteor.Collection("CRFs");
-Collections.CRFmetadataCollection = new Meteor.Collection("CRFmetadataCollection");
+Collections.Metadata = new Meteor.Collection("Metadata");
 Collections.studies = new Meteor.Collection('studies');

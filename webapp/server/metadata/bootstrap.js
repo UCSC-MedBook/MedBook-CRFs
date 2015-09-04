@@ -23,7 +23,7 @@ Meteor.startup(function() {
   ComplexIDFields = {};
 
   admin_crfs = [
-      "CRFmetadataCollection",
+      "Metadata",
       'studies',
   ]
   

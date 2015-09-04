@@ -114,7 +114,7 @@ Template.appBody.helpers({
     return Session.get(USER_MENU_KEY);
   },
   lists: function() {
-    var md =  Collections.CRFmetadataCollection.find({}, {sort: {n: 1}});
+    var md =  Collections.Metadata.find({}, {sort: {n: 1}});
     return md;
   },
   activeListClass: function() {

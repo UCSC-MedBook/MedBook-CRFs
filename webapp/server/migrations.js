@@ -1,5 +1,6 @@
 // Initialize and migrate data
 initializeMetadata = function() {
+  console.log("initializeMetadata");
 
   function initializeCollectionCRF(collectionName, nthCollection) {
     // console.log("initializeCollectionCRF >  CRFinit", Object.keys(CRFinit), collectionName);
@@ -24,7 +25,7 @@ initializeMetadata = function() {
     });
 
 
-      var n = Collections.CRFmetadataCollection.update({_id: collectionName},
+      var n = Collections.Metadata.update({_id: collectionName},
       {
         _id: collectionName,
         name: collectionName,
@@ -57,7 +58,7 @@ initializeMetadata = function() {
 	    Collections.DataMigrations = new Meteor.Collection("DataMigrations");
 	}
 
-	var migrationName = 'CRFunification 20150901-B' 
+	var migrationName = 'CRFunification 20150901-D' 
 	var migration = Collections.DataMigrations.findOne({name: migrationName});
 
 	if (migration == null) {
@@ -78,6 +79,7 @@ initializeMetadata = function() {
 		console.log("migration", collName, count);
 	    });
 	    Collections.DataMigrations.insert({name: migrationName});
+
 
 	} //if migration
 
@@ -105,3 +107,4 @@ initializeMetadata = function() {
          maintain_prad_wcdt("Sample_ID");
 
 };
+Meteor.startup( initializeMetadata );

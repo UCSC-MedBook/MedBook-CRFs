@@ -47,7 +47,7 @@ window.personalPreferredTableOrder = function () {
   var study = Collections.studies.findOne({id: studyId});
   if (study == null)
       return [];
-  var common = Collections.CRFmetadataCollection.find({study:"common"}, {fields: {name:1}}).fetch().map(function(o) {return o.name})
+  var common = Collections.Metadata.find({study:"common"}, {fields: {name:1}}).fetch().map(function(o) {return o.name})
   var crfs = common.concat(study.tables);
 
   

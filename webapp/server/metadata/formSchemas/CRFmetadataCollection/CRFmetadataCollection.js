@@ -1,6 +1,6 @@
 Meteor.startup(function() {
 
-    CRFinit.CRFmetadataCollection = {
+    CRFinit.Metadata = {
         "Form_Name": "String",
         "Fields": [
 	    { "Field_Name": "Form_Name", "type": "String", },

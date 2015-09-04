@@ -83,7 +83,7 @@
 
 
      function maintainReferentialIntegrity() {
-	  Collections.CRFmetadataCollection.find({study: {$exists: 1}}).forEach( function (table) {
+	  Collections.Metadata.find({study: {$exists: 1}}).forEach( function (table) {
 	     if (table.study && table.study.length > 0) {
 		  var n = Collections.studies.update({id: table.study}, {$addToSet: {tables: table.name}});
 		  //  console.log("maintainReferentialIntegrity", table.study, table.name, n);

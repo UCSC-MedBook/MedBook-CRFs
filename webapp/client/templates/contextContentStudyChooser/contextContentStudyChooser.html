@@ -1,0 +1,14 @@
+<template name="contextContentStudyChooser">
+    <label for="sel1">Select list (select one):</label>
+    Current: {{$.Session.get 'CurrentStudy'}}
+    <select class="form-control" id="currentStudy">
+	{{#each studies}}
+	    {{#if $.Session.equals 'CurrentStudy' this.id}}
+		<option value="{{this.id}}" selected> {{this.name}}</option>
+	    {{else}}
+		<option value="{{this.id}}" > {{this.name}}</option>
+	    {{/if}}
+	    
+	{{/each}}
+    </select>
+</template>

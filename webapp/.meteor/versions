@@ -60,10 +60,9 @@ livedata@1.0.13
 localstorage@1.0.3
 logging@1.0.7
 matb33:collection-hooks@0.7.14
-medbook:metadata@0.0.1
+medbook:metadata@0.0.2
 medbook:patient-id@0.0.1
 medbook:testing-accounts@1.0.4
-medbook:user-context@0.0.1
 meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:async@1.0.0

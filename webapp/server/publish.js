@@ -52,3 +52,13 @@ Meteor.publish('myForms', function(formName, studyName) {
   return [];
 });
 
+
+Meteor.publish('studies', function() {
+  if (this.userId == null)
+      return [];
+
+  var cursor = Collections.studies.find();
+  console.log("publish studies", cursor.count());
+  return cursor;
+});
+

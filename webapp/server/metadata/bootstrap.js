@@ -192,12 +192,13 @@ Meteor.startup(function() {
   }
 
 
-  function mapPatient(patient) {
+  function mapPatient(patient, schemaMap) {
       var Patient_ID = patient.patient;
 
       var tables = patient.attributes;
       fixRow(tables);
       var biopsies = tables["SU2C_Biopsy_V3"];
+
       var baseline, pro, pro2;
 
 
@@ -239,6 +240,7 @@ Meteor.startup(function() {
           var t = TableNeedsSample_ID[ti][0];
           var n = TableNeedsSample_ID[ti][1];
 
+
           if (n) {
               var rows = tables[t];
               if (rows) {
@@ -252,7 +254,7 @@ Meteor.startup(function() {
                           d =  row["Date_of_Procedure"];
                           if (d == null || d == "")
                               d = row["Visit_Date"];
-                      } if ( t == "SU2C_Subsequent_Treatment_V1") {
+                      } else if ( t == "SU2C_Subsequent_Treatment_V1") {
                           d = row["Start_Date"];
                       } else {
                           d = row["Visit_Date"];
@@ -261,7 +263,7 @@ Meteor.startup(function() {
 
                       if ( t == "SU2C_Subsequent_Treatment_V1") {
                           map_Drug_Name(row);
-  						map_SU2C_Subsequent_Treatment_V1__Responder(row);
+                          map_SU2C_Subsequent_Treatment_V1__Responder(row);
                       } else if (t == "SU2C_Prior_TX_V3") {
                           map_Drug_Name(row);
                       }
@@ -273,42 +275,51 @@ Meteor.startup(function() {
                       if (d >= pro2)
                           Sample_ID += "2";
 
-                      row.Patient_ID = Patient_ID;
-                      row.Sample_ID = Sample_ID;
-
-                      try {
-                      // OncoreCollections[t].upsert({Sample_ID: Sample_ID, "Date": d}, {$set: row});
-                      // OncoreCollections[t].upsert({Sample_ID: Sample_ID}, {$set: row});
-
-                         Collections[t].insert(row);
-
-                      } catch (ex) {
-                          console.log("insert exception", i, t, row);
-                          throw ex
+                      var target = {};
+                      if ('Patient_ID' in schemaMap[t]) {
+                           target.Patient_ID = Patient_ID;
+                           row.Patient_ID    = Patient_ID;
                       }
+                      if ('Sample_ID' in schemaMap[t]) {
+                           row.Sample_ID = Sample_ID;
+                           target.Sample_ID = Sample_ID;
+                      }
+                      row.CRF = t;
+                      row.Study_ID = "prad_wcdt";
+
+                      target.CRF = t;
+                      target.Study_ID = "prad_wcdt";
+
+                      var ret = Collections.CRFs.upsert(target, row);
                   }
               }
           } else {
                   var obj = patient.attributes[t];
+
                   if (obj) {
                       fixRow(obj);
-                      fixDate(row);
+                      fixDate(obj);
 
                       if (t == "Followup")
                           mapIfPossible(obj, "Followup_Center", SU2C_Center_map);
                       else if (t == "Demographics")
                           mapIfPossible(obj, "Study_Site", SU2C_Center_map);
 
-                      try {
-                          // Collections[t].upsert({Patient_ID: Patient_ID}, {$set: obj});
-                          obj.Patient_ID = Patient_ID;
-                          Collections[t].insert( obj );
-                      } catch (ex) {
-                          console.log("insert exception", t, obj);
-                          throw ex
+                      var target = {};
+                      if ('Patient_ID' in schemaMap[t]) {
+                           target.Patient_ID = Patient_ID;
+                           obj.Patient_ID    = Patient_ID;
                       }
+                      if ('Sample_ID' in schemaMap[t]) {
+                           obj.Sample_ID = Sample_ID;
+                           target.Sample_ID = Sample_ID;
+                      }
+                      obj.CRF = t;
+                      obj.Study_ID = "prad_wcdt";
+                      target.CRF = t;
+                      target.Study_ID = "prad_wcdt";
+                      ret = Collections.CRFs.upsert(target, obj);
                   }
-                  // else console.log(Patient_ID, "is missing", t);
           }
       };
   	//mapClinicalInfo();
@@ -364,36 +375,42 @@ Meteor.startup(function() {
 
 
   ingestOncore = function () {
-    Object.keys(OncoreTable_NeedsSample_ID).map(function(name) {
-      Collections[name].remove({});
+    var study  = Collections.studies.findOne({id:"prad_wcdt"})
+    var schemaMap = {};
+    Collections.Metadata.find({study: "prad_wcdt", name: {$in: study.tables}}).forEach(function (crf) {
+        schemaMap[crf.name] = crf.schema;
     });
-    console.log("Ingesting begun");
+
+
     Oncore.find({}, {sort: {patient:1}}).forEach(function(patient) {
 
-      if (patient.attributes && patient.attributes.Followup && patient.attributes.Followup["Date of Progression"])
-          console.log("patient.attributes.Followup.Date of Progression", patient.attributes.Followup["Date of Progression"]);
-      mapPatient(patient)
+      mapPatient(patient, schemaMap)
     });
     console.log("Ingesting finished");
 
     console.log("Starting Cohort Level Analysis")
-    ingestClinical();
+    // ingestClinical();
   }
 
-  ingestClinical = function () {
-  	var samples = {}
-  	var SU2C_Biopsy_V3 = Collections['SU2C_Biopsy_V3']
-  	var SU2C_Prior_TX_V3 = Collections['SU2C_Prior_TX_V3']
-  	var SU2C_Subsequent_Treatment_V1 = Collections['SU2C_Subsequent_Treatment_V1']
-  	var clinical_info = Collections['Clinical_Info']
-  	var Demographics = Collections['Demographics']
-  	var Followup = Collections['Followup']
+    function find(crf) {
+      var ret = Collections.CRFs.find({ Study_ID: "prad_wcdt", CRF: crf}).fetch(); 
+      return ret;
+    }
 
-        clinical_info.remove({});
+    ingestClinical = function () {
+        var study  = Collections.studies.findOne({id:"prad_wcdt"})
+        var schemas = {};
+        Collections.Metadata.find({study: "prad_wcdt", name: {$in: study.tables}}).forEach(function (crf) {
+            schemas[crf.name] = crf.schema;
+        });
+
+
+        console.log("Ingesting begun");
+        var samples = {}
 
   	// ingest Demographics
 
-  	var sample_list = Demographics.find({})
+  	var sample_list = find("Demographics");
   	sample_list.forEach(function(sample) {
   		var sample_id = sample['Patient_ID']
   		//data = {'Sample_ID':sample_id}
@@ -411,20 +428,17 @@ Meteor.startup(function() {
   		}
   		if (sample["On_Study_Date"]) {
   			samples[sample_id]["On_Study_Date"] = sample["On_Study_Date"]
-  			//if (samples[sample_id]["On_Study_Date"])
-  			//	console.log('ON type of date',samples[sample_id]["On_Study_Date"],samples[sample_id]["On_Study_Date"] instanceof Date, samples[sample_id]["On_Study_Date"].valueOf())
   		}
   		samples[sample_id]["Study_ID"] = 'prad_wcdt'
 
 
   		try {
-  			console.log('s',sample_id,samples[sample_id])
-   			var ret = clinical_info.update(
-  				{'Sample_ID':sample_id},
+   			var ret = Collections.CRFs.upsert(
+  				{CRF: "Clinical_Info", "Study_ID":"prad_wcdt", 'Sample_ID':sample_id},
   				{$set:samples[sample_id]},
   				{upsert:true}
   			)
-  			if (ret != 1) console.log('clinical info returns', ret)
+  			if (ret && ret.numberAffected != 1) console.log('clinical info returns', ret)
   		}
     	catch (ex) {
        		console.log("update exception", sample_id, samples[sample_id]);
@@ -434,7 +448,7 @@ Meteor.startup(function() {
 
   	// ingest Followup
 
-  	var sample_list = Followup.find({})
+  	var sample_list = find("Followup");
   	sample_list.forEach(function(sample) {
   		var sample_id = sample['Patient_ID']
   		if (!samples[sample_id]) {
@@ -455,30 +469,27 @@ Meteor.startup(function() {
 
   		}
 
-  	})
+            })
 
   	// ingest Biopsy
 
-  	var sample_list = SU2C_Biopsy_V3.find({})
-  	console.log('count of samples', sample_list.length)
+  	var sample_list = find("SU2C_Biopsy_V3")
+
   	sample_list.forEach(function(sample) {
   		var sample_id = sample['Sample_ID']
   		//data = {'Sample_ID':sample_id}
   		if (!samples[sample_id]) {
-  			//console.log('no record for', sample_id)
   			samples[sample_id] = {}
   		}
   	    if (sample['Site']) {
-  			//console.log('before biopsy',sample_id, samples[sample_id])
   			samples[sample_id]['biopsy_site'] = sample['Site']
   			samples[sample_id]['Patient_ID'] = sample['Patient_ID']
   			samples[sample_id]['Study_ID'] = 'prad_wcdt'
   			samples[sample_id]['biopsy_date'] = sample.Date_of_Procedure;
   			map_biopsy_site(samples[sample_id]);
-  			//console.log('upsert biopsy',sample_id, {$set:samples[sample_id]})
   			try {
-  	 			var ret = clinical_info.update(
-  					{'Sample_ID':sample_id},
+  	 			var ret = Collections.CRFs.update(
+  					{CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
   					{$set:samples[sample_id]},
   					{upsert:true}
   				)
@@ -493,7 +504,7 @@ Meteor.startup(function() {
 
   	// ingest Prior Treatment
 
-  	var treatment_list = SU2C_Prior_TX_V3.find({})
+  	var treatment_list = find("SU2C_Prior_TX_V3")
   	var prior = {}
   	treatment_list.forEach(function(treatment) {
   		var sample_id = treatment['Sample_ID']
@@ -522,8 +533,8 @@ Meteor.startup(function() {
   			var data = {'sample_ID':sample_id}
   			prior[sample_id][drug] = 'Resistant'
   		}
-                ret = clinical_info.update(
-                            {'Sample_ID':sample_id},
+                ret = Collections.CRFs.update(
+                            {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
                             { $addToSet: { prior_txs: summarizeTreatment("SU2C_Prior_TX_V3", treatment) }});
   	})
   	for (var sample_id in prior) {
@@ -543,10 +554,8 @@ Meteor.startup(function() {
                                         samples[sample_id]['Patient_ID'] = sample_id
                                     samples[sample_id]['Abiraterone'] = prior[sample_id]['Abiraterone']
                                     samples[sample_id]['Enzalutamide'] = prior[sample_id]['Enzalutamide']
-                                    //console.log("update ",sample_id,{$set:samples[sample_id]})
-                                    //console.log('upsert',sample_id, {$set:samples[sample_id]})
-                                    var ret = clinical_info.update(
-  						{'Sample_ID':sample_id},
+                                    var ret = Collections.CRFs.update(
+                                                {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
   						{$set:samples[sample_id]},
   						{upsert:true} );
   				}
@@ -559,8 +568,8 @@ Meteor.startup(function() {
   		/*	try {
 
   				console.log("update ",sample_id,{ $set: update_j } )
-  	 			var ret = clinical_info.update(
-  					{'Sample_ID':sample_id},
+  	 			var ret = Collections.CRFs.update(
+                                        {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
   					{ $set: update_j },
   					{upsert:true}
   				)
@@ -581,75 +590,65 @@ Meteor.startup(function() {
   	// ingest Subsequent Treatment
 
 
-  	var treatment_list = SU2C_Subsequent_Treatment_V1.find({})
+  	var treatment_list = find("SU2C_Subsequent_Treatment_V1")
   	treatment_list.forEach(function(treatment) {
   		var patient_id = treatment['Patient_ID']
   		var sample_id = treatment['Sample_ID']
-  		var timepoint = 'baseline'
-  		if (sample_id.search(/pro/i) > 0) {
-  			timepoint = 'progression'
-                }
   		
   		var drug = treatment['Drug_Name']
   		var priorAbi = samples[patient_id]['Abiraterone']
-  		console.log('Pat samp time drug', patient_id, sample_id , timepoint, drug);
   		var data = {'Study_ID':'prad_wcdt', 'Abiraterone':priorAbi, 'Patient_ID': patient_id}
   		if (drug == 'Abiraterone') {
   			data.abi_psa_response = treatment.PSA_Response
   		}
-  		console.log("subs TX", data,'input',sample_id)
 
-  		var ret = clinical_info.update(
-  			{'Sample_ID':sample_id},
+  		var ret = Collections.CRFs.update(
+                        {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
   			{$set:data},
   			{upsert:true})
-                ret = clinical_info.update( 
-                            {'Sample_ID':sample_id},
+                ret = Collections.CRFs.update( 
+                            {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
                             { $addToSet: { subsequent_txs: summarizeTreatment("SU2C_Subsequent_Treatment_V1", treatment) }});  // TCG 8/2/2015
   	})
       propagateClinical();
   }
 
   propagateClinical = function () {
+
         /* Propogate all earlier treatments whether in the  prior or subsequent collections */
         /* there are many different ways to do this. But I'm trying to make as few changes to the code as possible */
-  	var clinical_info = Ctions['Clinical_Info']
-  	var SU2C_Prior_TX_V3 = Collections['SU2C_Prior_TX_V3']
-  	var SU2C_Subsequent_Treatment_V1 = Collections['SU2C_Subsequent_Treatment_V1']
-        clinical_info.find({Sample_ID: /Pro/}).forEach(function(progression) {
-            function copyForward(coll,collName) {
-                if (progression.Patient_ID == "DTB-073")
-                    console.log("XYZ prog", progression)
-                coll.find( 
+        Collections.CRFs.find({CRF: "Clinical_Info", Sample_ID: /Pro/}).forEach(function(progression) {
+            var target = {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':progression.Sample_ID};
+
+            function copyForward(collName) {
+                Collections.CRFs.find( 
                     {$and: [
+                        {CRF: collName},
+                        {Study_ID: "prad_wcdt"},
                         {Patient_ID: progression.Patient_ID},
                         {Start_Date: {$lt: progression.biopsy_date}}
                     ]}).forEach(function(treatment) {
-                        if (progression.Patient_ID == "DTB-073")
-                                console.log("XYZ treatment", treatment)
-                        clinical_info.update( 
-                            {_id: progression._id},
+                        Collections.CRFs.update( target,
                             { $push: { prior_txs: summarizeTreatment(collName, treatment) }});  // TCG 8/2/2015
 
                         if (treatment.Drug_Name == "Abiraterone") {
-                            ret = clinical_info.update( {_id: progression._id}, { $set: { Abiraterone: "Resistant"}});
-                            console.log("abi ret", ret);
+                            ret = Collections.CRFs.update( target, { $set: { Abiraterone: "Resistant"}});
                         }
 
                         if (treatment.Drug_Name == "Enzalutamide") {
-                            ret = clinical_info.update( {_id: progression._id}, { $set: { Enzalutamide: "Resistant"}});
-                            console.log("enz ret", ret);
+                            ret = Collections.CRFs.update( target, { $set: { Enzalutamide: "Resistant"}});
                         }
                     });
                 } // copyForward
-            clinical_info.update( {_id: progression._id},
+
+            Collections.CRFs.update( {_id: progression._id},
                 { $set:   {
                     Enzalutamide: "Naive",
                     Abiraterone: "Naive"
                 }});  
 
-            copyForward(SU2C_Prior_TX_V3, "SU2C_Prior_TX_V3");
-            copyForward(SU2C_Subsequent_Treatment_V1, "SU2C_Subsequent_Treatment_V1");
+            copyForward("SU2C_Prior_TX_V3");
+            copyForward("SU2C_Subsequent_Treatment_V1");
         }) // forEach
   }
 
@@ -664,3 +663,4 @@ Meteor.startup(function() {
   	})
   }
 });
+

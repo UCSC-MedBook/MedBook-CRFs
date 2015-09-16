@@ -100,7 +100,7 @@ initializeMetadata = function() {
 	       { $addToSet: updateClause }
 	     );
 	    var final = Collections.studies.findOne( { id: "prad_wcdt" } );
-	    console.log("maintain_prad_wcdt", updateClause, sortedSet, updateResult, "\nfinal", final);
+	    // console.log("maintain_prad_wcdt", updateClause, sortedSet, updateResult, "\nfinal", final);
 
 	  };
          maintain_prad_wcdt("Patient_ID");

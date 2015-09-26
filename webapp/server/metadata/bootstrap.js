@@ -1,6 +1,6 @@
 function summarizeTreatment(table, treatment) {
 
-    var s = "<div style='width:300px;'><a href='/CRF/prad_wcdt/" + table + "/q=?" +  treatment.Patient_ID + "'>";
+    var s = "<div style='width:300px;'><a href='/CRF/prad_wcdt/" + table + "/?q=" +  treatment.Patient_ID + "'>";
     var dn = treatment.Drug_Name ;
     if (dn == null)
         dn = treatment.Treatment_Details;
@@ -391,16 +391,19 @@ Meteor.startup(function() {
 
     // We re-import these CRFs every time
     prad_wcdt_oncore_crfs.map(function(oncore_crf) {
+        console.log("Removing CRFs", oncore_crf)
         Collections.CRFs.remove({CRF: oncore_crf});
     });
 
     Oncore.find({}, {sort: {patient:1}}).forEach(function(patient) {
+      console.log("Mapping Patient", patient.patient)
       mapPatient(patient, schemaMap)
     });
     console.log("Ingesting finished");
 
-    console.log("Starting Cohort Level Analysis")
+    console.log("ingestClinical- Starting Cohort Level Analysis")
     ingestClinical();
+    console.log("ingestClinical- Finished ")
   }
 
     function find(crf) {
@@ -410,16 +413,20 @@ Meteor.startup(function() {
 
     ingestClinical = function () {
         var study  = Collections.studies.findOne({id:"prad_wcdt"})
+
+        Collections.CRFs.remove({CRF: "Clinical_Info", Study_ID: "prad_wcdt"});
+
         var schemas = {};
         Collections.Metadata.find({study: "prad_wcdt", name: {$in: study.tables}}).forEach(function (crf) {
             schemas[crf.name] = crf.schema;
         });
 
 
-        console.log("Ingesting begun");
+        console.log("Ingesting Clinical begun, 6 steps");
         var samples = {}
 
   	// ingest Demographics
+        console.log("0 Demographics");
 
   	var sample_list = find("Demographics");
   	sample_list.forEach(function(sample) {
@@ -459,6 +466,7 @@ Meteor.startup(function() {
     });
 
   	// ingest Followup
+        console.log("1 Followup")
 
   	var sample_list = find("Followup");
   	sample_list.forEach(function(sample) {
@@ -484,6 +492,7 @@ Meteor.startup(function() {
             })
 
   	// ingest Biopsy
+        console.log("2 Biopsy")
 
   	var sample_list = find("SU2C_Biopsy_V3")
 
@@ -515,6 +524,7 @@ Meteor.startup(function() {
   	})
 
   	// ingest Prior Treatment
+        console.log("3 Prior Treatment")
 
   	var treatment_list = find("SU2C_Prior_TX_V3")
   	var prior = {}
@@ -522,21 +532,6 @@ Meteor.startup(function() {
   		var sample_id = treatment['Sample_ID']
   		var patient_id = treatment['Patient_ID']
   		var drug = treatment['Drug_Name']
-  		/*if (treatment.Drug_Name && treatment.Drug_name != 'undefined') {
-  			if (!samples[sample_id]['treatment_for_mcrpc_prior_to_biopsy']) {
-  				samples[sample_id]['treatment_for_mcrpc_prior_to_biopsy'] = []
-  			}
-  			//console.log('before drug',sample_id, treatment.Drug_Name, samples[sample_id]['treatment_for_mcrpc_prior_to_biopsy'])
-  			samples[sample_id]['treatment_for_mcrpc_prior_to_biopsy'].push(treatment.Drug_Name)
-  			//console.log('after drug',sample_id, treatment.Drug_Name, samples[sample_id]['treatment_for_mcrpc_prior_to_biopsy'])
-  		}
-  		if (treatment.Reason_for_Stopping_Treatment == undefined) {
-  			console.log('no reason for stopping', sample_id)
-  		}
-  		else {
-  			console.log('stopping', sample_id, treatment.Reason_for_Stopping_Treatment)
-  			//prior[sample_id][drug]['Reason_for_Stopping_Treatment'] = treatment.Reason_for_Stopping_Treatment
-  		}*/
   		if (drug) {
   			if (!(sample_id in prior)) {
   				prior[sample_id] = {}
@@ -549,6 +544,8 @@ Meteor.startup(function() {
                             {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
                             { $addToSet: { prior_txs: summarizeTreatment("SU2C_Prior_TX_V3", treatment) }});
   	})
+
+        console.log("4 Drug State")
   	for (var sample_id in prior) {
   		if (prior[sample_id]) {
   			var abi = prior[sample_id]['Abiraterone']
@@ -601,6 +598,7 @@ Meteor.startup(function() {
 
   	// ingest Subsequent Treatment
 
+        console.log("5 Subsequent Treatment State")
 
   	var treatment_list = find("SU2C_Subsequent_Treatment_V1")
   	treatment_list.forEach(function(treatment) {
@@ -627,6 +625,7 @@ Meteor.startup(function() {
 
   propagateClinical = function () {
 
+      console.log("6. Propogate all earlier treatments to prior and subsequent collections");
         /* Propogate all earlier treatments whether in the  prior or subsequent collections */
         /* there are many different ways to do this. But I'm trying to make as few changes to the code as possible */
         Collections.CRFs.find({CRF: "Clinical_Info", Sample_ID: /Pro/}).forEach(function(progression) {

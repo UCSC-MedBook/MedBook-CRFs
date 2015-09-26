@@ -3,7 +3,7 @@ initializeMetadata = function() {
   console.log("initializeMetadata");
 
   function initializeCollectionCRF(collectionName, nthCollection) {
-    console.log("initializeCollectionCRF >  CRFinit", Object.keys(CRFinit), collectionName);
+    console.log("initializeCollectionCRF >  CRFinit", collectionName);
 
     /*
     var aCRFcollection = collectionName in Collections ? Collections[collectionName] : new Mongo.Collection(collectionName);

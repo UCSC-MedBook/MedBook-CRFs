@@ -1,14 +1,14 @@
 function summarizeTreatment(table, treatment) {
 
-    var s = "<div style='width:300px;'><a href='/CRF/lists/" + table + "/" +  treatment._id + "/'>";
+    var s = "<div style='width:300px;'><a href='/CRF/prad_wcdt/" + table + "/q=?" +  treatment.Patient_ID + "'>";
     var dn = treatment.Drug_Name ;
     if (dn == null)
         dn = treatment.Treatment_Details;
     s += dn + ": ";
-    s += moment(treatment.Start_Date).utc().format("MM/DD/YYYY")
+    s += moment(new Date(treatment.Start_Date)).utc().format("MM/DD/YYYY")
     s +='-';
     if (treatment.Stop_Date)
-        s += moment(treatment.Stop_Date).utc().format("MM/DD/YYYY")
+        s += moment(new Date(treatment.Stop_Date)).utc().format("MM/DD/YYYY")
     else if (treatment.Stop_Date_Ext)
         s += treatment.Stop_Date_Ext;
     s += "</a></div>";
@@ -31,7 +31,7 @@ Meteor.startup(function() {
       'Clinical_Info',
   ];
 
-  prad_wcdt_crfs = [
+  prad_wcdt_oncore_crfs = [
       "SU2C_Biopsy_V3",
       "Followup",
       'SU2C_Subsequent_Treatment_V1',
@@ -47,11 +47,8 @@ Meteor.startup(function() {
       "SU2C_Specimen_V1",
 
       "Patient_Enrollment_form",
-      "Biopsy_Research",
       // Obsolete: 'Treatment_History',
-      'Histology_Research',
 
-      'Tissue_Specimen_form',
       'Blood_Specimen_form',
       'Histological_Assessment_form',
       'Laser_Capture_Microdissection',
@@ -64,8 +61,9 @@ Meteor.startup(function() {
    prad_wcdt_unique_crfs = [
        "Biopsy_Research",
        "Histology_Research",
-       "Tissue_Speciman_form",
+       "Tissue_Specimen_form",
    ];
+  prad_wcdt_crfs = prad_wcdt_oncore_crfs.concat(prad_wcdt_unique_crfs);
 
 
   CRFsInfo = [
@@ -391,15 +389,18 @@ Meteor.startup(function() {
         schemaMap[crf.name] = crf.schema;
     });
 
+    // We re-import these CRFs every time
+    prad_wcdt_oncore_crfs.map(function(oncore_crf) {
+        Collections.CRFs.remove({CRF: oncore_crf});
+    });
 
     Oncore.find({}, {sort: {patient:1}}).forEach(function(patient) {
-
       mapPatient(patient, schemaMap)
     });
     console.log("Ingesting finished");
 
     console.log("Starting Cohort Level Analysis")
-    // ingestClinical();
+    ingestClinical();
   }
 
     function find(crf) {

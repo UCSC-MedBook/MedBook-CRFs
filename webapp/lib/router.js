@@ -58,7 +58,9 @@ Router.map(function() {
       Session.set("currentForm", this.params._crfName);
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
 
-      Session.set("CRF_filter", this.params._row)
+      console.log("query params", this.params.query);
+      if (this.params.query && 'q' in this.params.query)
+          Session.set("CRF_filter", this.params.query.q)
       this.next();
     },
     waitOn: function() {

@@ -54,34 +54,42 @@ initializeMetadata = function() {
 
 
 
-	if (!('DataMigrations' in Collections)) {
-	    Collections.DataMigrations = new Meteor.Collection("DataMigrations");
-	}
+    if (!('DataMigrations' in Collections)) {
+        Collections.DataMigrations = new Meteor.Collection("DataMigrations");
+    }
 
-	var migrationName = 'CRFunification 20150901-D' 
-	var migration = Collections.DataMigrations.findOne({name: migrationName});
-
-	if (migration == null) {
-	    Collections.CRFs.remove({});
-	    common_crfs.concat(prad_wcdt_crfs).map(function(collName) {
-
-		var count = 0;
-		var coll = new Meteor.Collection(collName);
-		coll.find({}).forEach(function(doc) {
-		    count++;
-
-		    doc.study = 'prad_wcdt'; // needs both
-		    doc.CRF = collName;
-
-		    if (Collections.CRFs.findOne({_id: doc._id}) == null)
-			Collections.CRFs.insert(doc);
-		});
-		console.log("migration", collName, count);
-	    });
-	    Collections.DataMigrations.insert({name: migrationName});
+    var migrationName = 'CRFunification 20150925-D' 
+    var migration = Collections.DataMigrations.findOne({name: migrationName});
 
 
-	} //if migration
+function migrateCollection(collName, query) {
+
+    var count = 0;
+    var coll = new Meteor.Collection(collName);
+    if (query == null)
+        query = {};
+    coll.find(query).forEach(function(doc) {
+        count++;
+
+        doc.study = 'prad_wcdt'; // needs both
+        doc.CRF = collName;
+
+        if (Collections.CRFs.findOne({_id: doc._id}) == null)
+            Collections.CRFs.insert(doc);
+    });
+    console.log("migration", collName, count);
+};
+
+
+    if (migration == null) {
+        console.log("migrating");
+        Collections.CRFs.remove({});
+        console.log("CRFs", Collections.CRFs.find().count());
+        prad_wcdt_unique_crfs.map(migrateCollection);
+        migrateCollection("Clinical_Info", {Study_ID: "prad_tcga"});
+
+        Collections.DataMigrations.insert({name: migrationName});
+    } //if migration
 
 
 

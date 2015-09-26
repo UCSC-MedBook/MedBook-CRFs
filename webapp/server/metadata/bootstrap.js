@@ -60,6 +60,14 @@ Meteor.startup(function() {
       // Obsolete 'Treatment_Response_form', (if obsolete also remove formSchemas/* file)
   ];
 
+
+   prad_wcdt_unique_crfs = [
+       "Biopsy_Research",
+       "Histology_Research",
+       "Tissue_Speciman_form",
+   ];
+
+
   CRFsInfo = [
     "Demographics",
     "Followup",
@@ -290,7 +298,8 @@ Meteor.startup(function() {
                       target.CRF = t;
                       target.Study_ID = "prad_wcdt";
 
-                      var ret = Collections.CRFs.upsert(target, row);
+                      // var ret = Collections.CRFs.upsert(target, row);
+                      var ret = Collections.CRFs.insert(row);
                   }
               }
           } else {
@@ -318,7 +327,8 @@ Meteor.startup(function() {
                       obj.Study_ID = "prad_wcdt";
                       target.CRF = t;
                       target.Study_ID = "prad_wcdt";
-                      ret = Collections.CRFs.upsert(target, obj);
+                      // ret = Collections.CRFs.upsert(target, obj);
+                      ret = Collections.CRFs.insert(obj);
                   }
           }
       };
@@ -430,6 +440,7 @@ Meteor.startup(function() {
   			samples[sample_id]["On_Study_Date"] = sample["On_Study_Date"]
   		}
   		samples[sample_id]["Study_ID"] = 'prad_wcdt'
+  		samples[sample_id]["CRF"] = 'Clinical_Info'
 
 
   		try {

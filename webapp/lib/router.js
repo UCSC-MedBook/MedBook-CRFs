@@ -61,6 +61,12 @@ Router.map(function() {
       console.log("query params", this.params.query);
       if (this.params.query && 'q' in this.params.query)
           Session.set("CRF_filter", this.params.query.q)
+
+      if (Meteor.userId()) {
+        var data = Iron.Location.get().path;
+        if (data)
+            Meteor.users.update(Meteor.userId(), {$set: {"profile.lastCRFroute": data}});
+      }
       this.next();
     },
     waitOn: function() {
@@ -77,6 +83,13 @@ Router.map(function() {
 
   this.route('pleaseSelectStudy', {
     path: '/CRF/',
+    onBeforeAction: function() {
+       var lastCRFroute = Meteor.user().profile.lastCRFroute;
+       if (lastCRFroute)
+          Router.go(lastCRFroute);
+      this.next();
+
+    }
   });
 
   this.route('dashboard', {

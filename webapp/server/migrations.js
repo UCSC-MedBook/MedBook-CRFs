@@ -58,7 +58,7 @@ initializeMetadata = function() {
         Collections.DataMigrations = new Meteor.Collection("DataMigrations");
     }
 
-    var migrationName = 'CRFunification 20150925-D' 
+    var migrationName = 'CRFunification 20150928-A' 
     var migration = Collections.DataMigrations.findOne({name: migrationName});
 
 
@@ -77,7 +77,7 @@ function migrateCollection(collName, query) {
         if (Collections.CRFs.findOne({_id: doc._id}) == null)
             Collections.CRFs.insert(doc);
     });
-    console.log("migration", collName, count);
+    console.log("migration", collName, count, query);
 };
 
 
@@ -85,7 +85,8 @@ function migrateCollection(collName, query) {
         console.log("migrating");
         Collections.CRFs.remove({});
         console.log("CRFs", Collections.CRFs.find().count());
-        prad_wcdt_unique_crfs.map(migrateCollection);
+        for (var i = 0; i < prad_wcdt_unique_crfs.length; i++)
+            migrateCollection(prad_wcdt_unique_crfs[i]);
         migrateCollection("Clinical_Info", {Study_ID: "prad_tcga"});
 
         Collections.DataMigrations.insert({name: migrationName});

@@ -46,14 +46,8 @@ Meteor.startup(function() {
       "SU2C_Pr_Ca_Tx_Sumry_V2",
       "SU2C_Specimen_V1",
 
-      "Patient_Enrollment_form",
       // Obsolete: 'Treatment_History',
 
-      'Blood_Specimen_form',
-      'Histological_Assessment_form',
-      'Laser_Capture_Microdissection',
-      'RNASeq_completion_form',
-      'Pathology_form',
       // Obsolete 'Treatment_Response_form', (if obsolete also remove formSchemas/* file)
   ];
 
@@ -62,6 +56,12 @@ Meteor.startup(function() {
        "Biopsy_Research",
        "Histology_Research",
        "Tissue_Specimen_form",
+      "Patient_Enrollment_form",
+      'Pathology_form',
+      'Blood_Specimen_form',
+      'Histological_Assessment_form',
+      'Laser_Capture_Microdissection',
+      'RNASeq_completion_form',
    ];
   prad_wcdt_crfs = prad_wcdt_oncore_crfs.concat(prad_wcdt_unique_crfs);
 
@@ -622,6 +622,23 @@ Meteor.startup(function() {
   	})
       propagateClinical();
   }
+  fixSample_IDs = function() {
+      console.log("fixSample_IDs")
+      var prad = [],tcga = [];
+
+      Expression.find({gene: "TP53", Study_ID: "prad_wcdt"}, {"samples":1, _id:0}).forEach(function(doc) {
+            prad = _.union(prad, Object.keys(doc.samples));
+      });
+      var ret = Collections.studies.update( {id: "prad_wcdt"}, {$set: { Sample_IDs: prad.sort() }});
+      console.log("fixSample_IDs, update prad_wcdt", ret)
+
+      Expression.find({gene: "TP53", Study_ID: "prad_tcga"}, {"samples":1, _id:0}).forEach(function(doc) {
+            tcga = _.union(tcga, Object.keys(doc.samples));
+      });
+      Collections.studies.update( {id: "prad_tcga"}, {$set: { Sample_IDs: tcga.sort() }});
+      console.log("fixSample_IDs, update prad_tcga", ret)
+  }
+  Meteor.startup(fixSample_IDs);
 
   propagateClinical = function () {
 

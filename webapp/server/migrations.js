@@ -68,7 +68,7 @@ initializeMetadata = function() {
         Collections[collName] = coll;
         if (query == null)
             query = {};
-        coll.find().forEach(function(doc) {
+        coll.find(query).forEach(function(doc) {
             count++;
 
             doc.Study_ID = query.Study_ID ? query.Study_ID : 'prad_wcdt'; // needs both
@@ -100,7 +100,7 @@ initializeMetadata = function() {
     }
 
     console.log("before");
-    Migration('CRFunification 20151023-D', function() {
+    Migration('CRFunification 20151107-A', function() {
         Collections.CRFs.remove({});
         console.log("Migration before CRFs", Collections.CRFs.find().count());
         for (var i = 0; i < prad_wcdt_unique_crfs.length; i++)

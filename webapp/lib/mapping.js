@@ -39,6 +39,8 @@ map_biopsy_site = function(anObj) {
 		return;
 	anObj.biopsy_site = site.replace("Lymph nodes", "Lymph node")
 };
+
+// Rev2 names: "Adeno" "SCNC" "IAC" "SCNC+IAC" "SCNC+Adeno" "Adeno+IAC" "Cytology mixed"
 generate_histology_categories = function(obj) {
 
 	var hist = obj.Histology_Call;
@@ -47,15 +49,15 @@ generate_histology_categories = function(obj) {
 	if (hist == 'Adeno') {
 		obj.Adeno = "Adeno"
 	}
-	if (hist == 'Small Cell' || hist == 'IAC' || hist == 'IAC/SC') {
+	if (hist == 'SCNC' || hist == 'IAC' || hist == 'SCNC+IAC) {
 		obj.Adeno = "Not Adeno"
 	}
 
 	obj.Small_Cell = "Exclude"
-	if (hist == 'Small Cell') {
+	if (hist == 'SCNC') {
 		obj.Small_Cell = "Small Cell"
 	}
-	if (hist == 'Adeno' || hist == 'IAC' || hist == 'IAC/Adeno') {
+	if (hist == 'Adeno' || hist == 'IAC' || hist == 'Adeno+IAC') {
 		obj.Small_Cell = "Not Small Cell"
 	}
 

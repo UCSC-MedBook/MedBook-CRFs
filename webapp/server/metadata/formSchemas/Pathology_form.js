@@ -1,4 +1,11 @@
 Meteor.startup(function() {
+    quantification = [
+       "NA",
+       "0",
+       "1",
+       "2",
+       "3",
+    ];
 
     CRFinit.Pathology_form = {
         "Form_Name": "Pathology_form",
@@ -163,7 +170,40 @@ Meteor.startup(function() {
                 "max": 200,
                 "optional": true,
                 "type": "String"
-            }
+            },
+
+
+            {
+                "Field_Name": "AR_N",
+                "label": "AR (N) nucleus",
+                "type": "String",
+                "allowedValues": quantification,
+            },
+            {
+                "Field_Name": "AR_C",
+                "label": "AR (C) cytoplasm",
+                "type": "String",
+                "allowedValues": quantification,
+            },
+            {
+                "Field_Name": "CHG",
+                "label": "CHG",
+                "type": "String",
+                "allowedValues": quantification,
+            },
+            {
+                "Field_Name": "PTEN",
+                "label": "PTEN",
+                "type": "String",
+                "allowedValues": quantification,
+            },
+            {
+                "Field_Name": "ERG",
+                "label": "ERG",
+                "type": "String",
+                "allowedValues": quantification,
+            },
+
         ]
     }
     

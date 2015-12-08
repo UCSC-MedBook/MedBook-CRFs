@@ -49,7 +49,7 @@ generate_histology_categories = function(obj) {
 	if (hist == 'Adeno') {
 		obj.Adeno = "Adeno"
 	}
-	if (hist == 'SCNC' || hist == 'IAC' || hist == 'SCNC+IAC) {
+	if (hist == 'SCNC' || hist == 'IAC' || hist == 'SCNC+IAC') {
 		obj.Adeno = "Not Adeno"
 	}
 

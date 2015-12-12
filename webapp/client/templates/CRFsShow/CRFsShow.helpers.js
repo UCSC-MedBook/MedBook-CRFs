@@ -13,37 +13,55 @@ stopMe = function() {
 
 LastSubmit = null;
 
-customHandler = function(insertDoc, updateDoc, currentDoc) {
+CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
 
     var CurrentStudy = Session.get("CurrentStudy");
     var currentForm = Session.get("currentForm");
+
+    var collection;
 
     insertDoc.study = CurrentStudy;
     insertDoc.CRF = currentForm;
 
     updateDoc.$set.study = CurrentStudy;
     updateDoc.$set.CRF = currentForm;
+    collection = Collections.CRFs;
 
-    debugger;
+    if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
+        console.log("updateDoc", updateDoc);
+
+        var v = collection.update({_id: currentDoc._id}, updateDoc );
+        if (v != 1) 
+            console.log("Updating wasnt successful.  :(", v);
+        insertDoc._id = currentDoc.id;
+    } else {
+        insertDoc._id = collection.insert(insertDoc);
+    }
+
+    LastSubmit = insertDoc.Patient_ID;
+    Session.set("CRF_filter", insertDoc.Patient_ID)
+    Session.set("CurrentDoc", insertDoc);
+    return null;
+}
+Admin_Handler = function(insertDoc, updateDoc, currentDoc) {
+
+    var currentForm = Session.get("currentForm");
+    var collection = Collections[currentForm];
+
+    if (collection == null)
+        return new Error("Submission failed: form="+ String(currentForm));
 
     if (insertDoc == null) {
-        debugger;
-        console.log("insertDoc==null how did this happen?");
-        alert("customHandler: " + 1);
-        return new Error("Submission failed");
+        return new Error("Submission failed, insertDoc==null");
     } else
         try {
-
-	    debugger;
-
-            if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
-	        console.log("updateDoc", updateDoc);
-                var v = Collections.CRFs.update({_id: currentDoc._id}, updateDoc );
+            if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null) {
+	        console.log("admin updateDoc", updateDoc);
+                var v = collection.update({_id: currentDoc._id}, updateDoc );
                 if (v != 1) 
-                    console.log("Updating wasnt successful.  :(", v);
-                insertDoc._id = currentDoc.id;
+                    console.log("Updating was not successful.", v);
             } else {
-                insertDoc._id = Collections.CRFs.insert(insertDoc);
+                insertDoc._id = collection.insert(insertDoc);
             }
 
             LastSubmit = insertDoc.Patient_ID;
@@ -51,7 +69,6 @@ customHandler = function(insertDoc, updateDoc, currentDoc) {
             Session.set("CurrentDoc", insertDoc);
             return null;
         } catch (why) {
-            debugger;
             return new Error("Submission failed: " + why);
         }
 }
@@ -65,12 +82,12 @@ AutoForm.hooks({
      fixUpRenderedAutoForm();
     },
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
-      //debugger;
-      console.log("AutoForm.onSubmit.insertDoc", insertDoc);
-      console.log("AutoForm.onSubmit.updateDoc", updateDoc);
-      console.log("AutoForm.onSubmit.currentDoc", currentDoc);
+      debugger;
 
-      this.done(customHandler(insertDoc, updateDoc, currentDoc));
+      if ("admin" == Session.get("CurrentStudy"))
+          this.done(Admin_Handler(insertDoc, updateDoc, currentDoc));
+      else
+          this.done(CRF_Handler(insertDoc, updateDoc, currentDoc));
       return false;
     }
   }

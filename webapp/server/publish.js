@@ -43,8 +43,18 @@ Meteor.publish('myForms', function(formName, studyName) {
       return [];
 
   var coll = Collections.Metadata.findOne({study: { $in: [ "common", studyName]}, name: formName});
+  var q = {CRF:formName};
+
+  var schema = coll.schema;
+  if ("study" in schema)
+       q.study = studyName;
+  else if ("studies" in schema)
+       q.study = {$in: studyName};
+  else if ("Study_ID" in schema)
+       q.Study_ID = studyName;
+
   if (coll) {
-      var cursor =  Collections.CRFs.find({CRF:formName});
+      var cursor =  Collections.CRFs.find(q);
       console.log("publish myForms", formName, cursor.count());
       return cursor
   }

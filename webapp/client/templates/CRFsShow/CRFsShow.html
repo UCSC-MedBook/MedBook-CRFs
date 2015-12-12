@@ -22,13 +22,13 @@
 
              <div class="topMesg" style="background:white">This is a Read Only Table (information comes from OnCore or other system).</div>
         {{else}}
-            {{#if phaseIs "none"}} <div class="topMesg" style="background:lightyellow">Please select a patient other than 000.</div>
+            {{#if phaseIs "none"}} <div class="topMesg" style="background:lightyellow">Please select a record or insert a new entry</div>
             {{else}}
-              {{#if phaseIs "inserting"}} <div class="topMesg" style="background:lightgreen">New patient record for this form. </div>
+              {{#if phaseIs "inserting"}} <div class="topMesg" style="background:lightgreen">New record for this form. </div>
               {{else}}
-                  {{#if phaseIs "success"}} <div class="topMesg" style="background:lawngreen">Patient record successfully submitted.</div>
+                  {{#if phaseIs "success"}} <div class="topMesg" style="background:lawngreen">Record successfully submitted.</div>
                   {{else}}
-                        {{#if phaseIs "updating"}} <div class="topMesg" style="background:yellow">Caution: you are updating an existing patient record. </div>{{/if}}
+                        {{#if phaseIs "updating"}} <div class="topMesg" style="background:yellow">Caution: you are updating an existing record. </div>{{/if}}
               {{/if}}
               {{/if}}
             {{/if}}

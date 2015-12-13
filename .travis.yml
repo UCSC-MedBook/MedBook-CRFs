@@ -41,6 +41,7 @@ before_install:
 
   # install starrynight, so we can launch nightwatch and selenium
   - "npm install -g starrynight"
+  - "pwd"
 
   # fire up xvfb on port :99.0
   - "sh -e /etc/init.d/xvfb start"
@@ -66,6 +67,7 @@ before_install:
 
   - "sleep 90"
   - "ls -la ~/.meteor/packages"
+  - "cd .."
 
   # check that node_modules exist, and what's inside
   #- "echo $(npm config get prefix)/lib/node_modules"

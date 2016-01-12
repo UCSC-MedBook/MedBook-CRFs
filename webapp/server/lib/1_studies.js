@@ -14,6 +14,21 @@
 	"Sample_IDs": [],
 	"Patient_IDs": [],
      }});
+     Collections.studies.upsert({id: "common"}, {$set: { 
+	"cbio_id" : "?",
+	"id" : "common",
+	"type_of_cancer_id" : "many",
+	"name" : "Common to all studies",
+	"short_name" : "common",
+	"description" : "",
+	"public" : false,
+	"pmid" : "NULL",
+        "citation" :  "common",
+        "collaborations" :  ["admin", "public"],
+	"tables": [],
+	"Sample_IDs": [],
+	"Patient_IDs": [],
+     }});
 
      Collections.studies.upsert({id: "prad_wcdt"}, {$set: { 
 	"cbio_id" : "112",

@@ -1,6 +1,4 @@
 
-CRFinit = {};
-
 
 // the not so big ones
 

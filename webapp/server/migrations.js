@@ -1,64 +1,9 @@
-// Initialize and migrate data
-initializeMetadata = function() {
-  console.log("initializeMetadata");
-
-  function initializeCollectionCRF(collectionName, nthCollection) {
-    // console.log("initializeCollectionCRF >  CRFinit", collectionName);
-
-    /*
-    var aCRFcollection = collectionName in Collections ? Collections[collectionName] : new Mongo.Collection(collectionName);
-    Collections[collectionName] = aCRFcollection;
-    if (Meteor.isServer)
-    aCRFcollection.remove({});
-    if (Meteor.isClient)
-       window[collectionName] = aCRFcollection;
-    */
-
-    var fo = _.pluck(CRFinit[collectionName].Fields, "Field_Name");
-    var fs = _.clone(CRFinit[collectionName]);
-    var schema = {};
-    fs.Fields.map(function(field) {
-       field = _.clone(field);
-       var name = field["Field_Name"];
-       delete field["Field_Name"];
-       schema[name] = field;
-    });
-
-
-      var n = Collections.Metadata.update({_id: collectionName},
-      {
-        _id: collectionName,
-        name: collectionName,
-        n: nthCollection,
-        incompleteCount: 0,
-        schema: schema,
-	metadata: CRFinit[collectionName],
-        fieldOrder: fo,
-	study: this.study,
-      }
-      ,
-      {
-        upsert: true
-      })
-
-
-      // console.log("before", this.study, collectionName);
-      Collections.studies.update({name: this.study}, {$addToSet: {tables: collectionName}});
-
-    }
-
-  _.each(admin_crfs, initializeCollectionCRF, {study: 'admin'}); 
-  _.each(prad_wcdt_crfs, initializeCollectionCRF, {study: 'prad_wcdt'});
-  _.each(common_crfs, initializeCollectionCRF, {study: 'common'}); 
-
-
-
+Meteor.startup( function() {
+    console.log("initialize Migrations");
 
     if (!('DataMigrations' in Collections)) {
         Collections.DataMigrations = new Meteor.Collection("DataMigrations");
     }
-
-
 
     function migrateCollection(collName, query) {
 
@@ -85,9 +30,6 @@ initializeMetadata = function() {
         });
         console.log("migration", collName, count, countInserted, query);
     };
-
-
-
 
 
     Migration = function(migrationName, func) {
@@ -132,5 +74,4 @@ initializeMetadata = function() {
          maintain_prad_wcdt("Patient_ID");
          maintain_prad_wcdt("Sample_ID");
 
-};
-Meteor.startup( initializeMetadata );
+});

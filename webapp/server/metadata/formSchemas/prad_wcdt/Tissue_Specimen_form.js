@@ -16,10 +16,9 @@ LoadMetadata("prad_wcdt",{
 	},
 	{
 	    "Field_Name": "Procedure_Date",
-	    "autoform": autoformDate,
 	    "label": "Procedure Date",
 	    "type": "Date",
-	    "autoform": autoformDate,
+	    "autoform": autoformDate
 	},
 	{
 	    "Field_Name": "Attending_Radiologist",

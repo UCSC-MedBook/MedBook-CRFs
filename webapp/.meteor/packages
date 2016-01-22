@@ -5,7 +5,6 @@
 
 meteor-platform
 accounts-password
-insecure
 iron:router
 less
 standard-app-packages

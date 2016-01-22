@@ -74,7 +74,7 @@
 	"public" : false,
 	"pmid" : "NULL",
         "citation" :  "unpublished",
-        "collaborations" :  ["ckcc"],
+        "collaborations" :  ["CKCC"],
 	"tables": [],
 	"Sample_IDs": [],
 	"Patient_IDs": [],

@@ -43,6 +43,9 @@ Meteor.publish('myForms', function(formName, studyName) {
       return [];
 
   var coll = Collections.Metadata.findOne({study: { $in: [ "common", studyName]}, name: formName});
+  if (coll == null)
+      throw new Error("Could not find Metadata for form " + formName + " in study " + studyName);
+
   var q = {CRF:formName};
 
   var schema = coll.schema;
@@ -55,7 +58,7 @@ Meteor.publish('myForms', function(formName, studyName) {
 
   if (coll) {
       var cursor =  Collections.CRFs.find(q);
-      console.log("publish myForms", formName, cursor.count());
+      console.log("publish myForms", formName, "count=", cursor.count());
       return cursor
   }
   console.log("myForms empty");

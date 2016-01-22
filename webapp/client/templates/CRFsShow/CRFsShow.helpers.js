@@ -20,10 +20,10 @@ CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
 
     var collection;
 
-    insertDoc.study = CurrentStudy;
+    insertDoc.Study_ID = CurrentStudy;
     insertDoc.CRF = currentForm;
 
-    updateDoc.$set.study = CurrentStudy;
+    updateDoc.$set.Study_ID = CurrentStudy;
     updateDoc.$set.CRF = currentForm;
     collection = Collections.CRFs;
 

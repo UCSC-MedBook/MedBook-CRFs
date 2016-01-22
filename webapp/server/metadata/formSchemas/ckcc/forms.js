@@ -19,11 +19,8 @@ LoadMetadata("ckcc", {
         "Field_Name": "Protocol Name"
       },
       {
-        "type": "String",
+        "type": "Number",
         "Field_Name": "Protocol Number",
-        "allowedValues": [
-          "Number"
-        ]
       },
       {
         "type": "String",
@@ -35,11 +32,13 @@ LoadMetadata("ckcc", {
       },
       {
         "type": "Date",
-        "Field_Name": "Study Enrollment Start Date"
+        "Field_Name": "Study Enrollment Start Date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Study Enrollment Stop Date"
+        "Field_Name": "Study Enrollment Stop Date",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -53,15 +52,18 @@ LoadMetadata("ckcc", {
       },
       {
         "type": "Date",
-        "Field_Name": "Tissue initial consent form signed date"
+        "Field_Name": "Tissue initial consent form signed date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Genomics initial consent form signed date"
+        "Field_Name": "Genomics initial consent form signed date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Enrolled in genomics trial date"
+        "Field_Name": "Enrolled in genomics trial date",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -109,40 +111,36 @@ LoadMetadata("ckcc", {
       },
       {
         "type": "Date",
-        "Field_Name": "Date of Birth"
+        "Field_Name": "Date of Birth",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Date of Initial Diagnosis"
+        "Field_Name": "Date of Initial Diagnosis",
+	"autoform": autoformDate,
       },
       {
-        "type": "String",
+        "type": "Number",
         "Field_Name": "Height",
-        "allowedValues": [
-          "Number"
-        ]
       },
       {
         "type": "String",
         "Field_Name": "Height Unit",
         "allowedValues": [
-          "Kilos",
-          "Pounds"
+          "inches",
+          "centimeters"
         ]
       },
       {
-        "type": "String",
+        "type": "Number",
         "Field_Name": "Weight",
-        "allowedValues": [
-          "Number"
-        ]
       },
       {
         "type": "String",
         "Field_Name": "Weight Unit",
         "allowedValues": [
-          "Kilos",
-          "Pounds"
+          "kilos",
+          "pounds"
         ]
       },
       {
@@ -285,7 +283,8 @@ LoadMetadata("ckcc", {
       },
       {
         "type": "Date",
-        "Field_Name": "Date of diagnosis"
+        "Field_Name": "Date of diagnosis",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -302,7 +301,8 @@ LoadMetadata("ckcc", {
       },
       {
         "type": "Date",
-        "Field_Name": "Date biological sample taken"
+        "Field_Name": "Date biological sample taken",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -411,20 +411,24 @@ LoadMetadata("ckcc", {
       {
         "type": "Date",
         "label": "(Molecular test for each surgery and specimen collected. Abstracted from path report. Suggest including date performed/completed & place to load results hypelinked?)",
-        "Field_Name": "Molecular Tests "
+        "Field_Name": "Molecular Tests ",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "FISH date"
+        "Field_Name": "FISH date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
         "label": "(IHC)",
-        "Field_Name": "Immunohistocheimstry date"
+        "Field_Name": "Immunohistocheimstry date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Mutation Analysis date"
+        "Field_Name": "Mutation Analysis date",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -433,15 +437,18 @@ LoadMetadata("ckcc", {
       {
         "type": "Date",
         "label": "(tumor /germline)",
-        "Field_Name": "Whole Genome date "
+        "Field_Name": "Whole Genome date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Exome date"
+        "Field_Name": "Exome date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "RNA Sequencing date"
+        "Field_Name": "RNA Sequencing date",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -500,7 +507,7 @@ LoadMetadata("ckcc",{
         "Field_Name": "Patient_ID"
       },
       {
-        "type": "String",
+        "type": "Number",
         "Field_Name": "Event Number"
       },
       {
@@ -514,15 +521,18 @@ LoadMetadata("ckcc",{
       },
       {
         "type": "Date",
-        "Field_Name": "UAE Start Date"
+        "Field_Name": "UAE Start Date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "UAE Stop Date"
+        "Field_Name": "UAE Stop Date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "UAE Ongoing as of date"
+        "Field_Name": "UAE Ongoing as of date",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -566,15 +576,18 @@ LoadMetadata("ckcc", {
       },
       {
         "type": "Date",
-        "Field_Name": "Admit date"
+        "Field_Name": "Admit date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Discharge date"
+        "Field_Name": "Discharge date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Treatment date"
+        "Field_Name": "Treatment date",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -603,11 +616,13 @@ LoadMetadata("ckcc", {
       },
       {
         "type": "Date",
-        "Field_Name": "Start Date"
+        "Field_Name": "Start Date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Stop Date"
+        "Field_Name": "Stop Date",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -636,15 +651,18 @@ LoadMetadata("ckcc",{
       },
       {
         "type": "Date",
-        "Field_Name": "Patient study completion date"
+        "Field_Name": "Patient study completion date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Patient withdrew from study date"
+        "Field_Name": "Patient withdrew from study date",
+	"autoform": autoformDate,
       },
       {
         "type": "Date",
-        "Field_Name": "Patient expire date"
+        "Field_Name": "Patient expire date",
+	"autoform": autoformDate,
       },
       {
         "type": "String",
@@ -656,7 +674,8 @@ LoadMetadata("ckcc",{
       },
       {
         "type": "Date",
-        "Field_Name": "Patient status unknown date"
+        "Field_Name": "Patient status unknown date",
+	"autoform": autoformDate,
       }
     ]
 });

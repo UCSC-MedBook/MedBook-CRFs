@@ -107,7 +107,7 @@ initializeMetadata = function() {
             migrateCollection(prad_wcdt_unique_crfs[i]);
         migrateCollection("Clinical_Info", {Study_ID: "prad_tcga"});
         console.log("Migration after CRFs", Collections.CRFs.find().count());
-        ingestOncore();
+        // ingestOncore();
     });
     console.log("after");
 

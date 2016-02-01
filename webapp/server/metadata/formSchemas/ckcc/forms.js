@@ -3,7 +3,7 @@ LoadMetadata("ckcc", {
     "Fields": [
       {
         "type": "String",
-        "Field_Name": "Patient ID"
+        "Field_Name": "Patient_ID"
       },
       {
         "type": "String",
@@ -103,7 +103,7 @@ LoadMetadata("ckcc", {
     "Fields": [
       {
         "type": "String",
-        "Field_Name": "Patient ID"
+        "Field_Name": "Patient_ID"
       },
       {
         "type": "String",

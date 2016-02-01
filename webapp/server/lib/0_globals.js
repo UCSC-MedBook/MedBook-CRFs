@@ -17,14 +17,26 @@ Patient_ID_Type = {
   }
 };
 
+/*
+Specimen_ID_Type = {
+  "Field_Name": "Specimen_ID",
+  "label": "Specimen ID",
+  type: "String",
+  autoform: {
+       type: 'Specimen_ID',
+  }
+};
+*/
+
 Sample_ID_Type = {
   "Field_Name": "Sample_ID",
   "label": "Sample ID",
   type: "String",
   autoform: {
-           type: 'Sample_ID',
+       type: 'Sample_ID',
   }
 };
+
 
 CoreAllowedValues = [
         "A",

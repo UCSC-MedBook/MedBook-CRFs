@@ -691,4 +691,3 @@ Meteor.startup(function() {
   	})
   }
 });
-

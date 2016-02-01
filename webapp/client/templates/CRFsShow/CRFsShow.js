@@ -116,7 +116,7 @@ Template.CRFsShow.helpers({
 	coll =  Collections.Metadata.find().fetch().map(function(f) { return f.metadata })
 	break;
     default:
-	coll = Collections.CRFs.find({CRF: this._crfName});
+	coll = Collections.CRFs.find({CRF: this._crfName}).fetch();
 	break;
       }
     if (coll == null) return false;

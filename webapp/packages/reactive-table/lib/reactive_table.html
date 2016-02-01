@@ -78,7 +78,7 @@
           <tr class="{{../rowClass this}}">
             {{#each ../fields}}
               {{#if isVisible}}
-                <td class="{{getCellClass ..}}">{{#if tmpl}}{{#with ..}}{{> ../tmpl}}{{/with}}{{else}}{{getField ..}}{{/if}}</td>
+                <td class="{{getCellClass ..}}"><div class="reactive-table-div">{{#if tmpl}}{{#with ..}}{{> ../tmpl}}{{/with}}{{else}}{{getField ..}}{{/if}}</div></td>
               {{/if}}
             {{/each}}
           </tr>

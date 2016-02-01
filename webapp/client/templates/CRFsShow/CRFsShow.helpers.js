@@ -6,11 +6,6 @@ Session.set("RowsPerPage", 10);
 
 
 
-stopMe = function() {
-    console.log("stopMe");
-    debugger;
-}
-
 LastSubmit = null;
 
 CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
@@ -73,16 +68,36 @@ Admin_Handler = function(insertDoc, updateDoc, currentDoc) {
         }
 }
 
+function referentialIntegrity(doc, fieldName) {
+   if (study == "admin")
+       return;
+
+   if (fieldName in doc) {
+       var study = Collections.studies.findOne({id: Session.get("CurrentStudy")}, {fields: {_id:1}});
+       if (study != null) {
+	   var value  = doc[fieldName];
+	   var q = {};
+	   q[fieldName +"s"] = value;
+
+	   debugger;
+	   var ret = Collections.studies.update({_id: study._id}, { $addToSet: q})
+       }
+   }
+}
+
+
 AutoForm.hooks({
   CRFquickForm: {
     onSuccess: function(formType, result) {
       console.log("Autoform.onSuccess.formType", formType);
       console.log("Autoform.onSuccess.result", result);
 
-     fixUpRenderedAutoForm();
+       referentialIntegrity(this.currentDoc, "Patient_ID");
+       referentialIntegrity(this.currentDoc, "Sample_ID");
+
+       fixUpRenderedAutoForm();
     },
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
-      debugger;
 
       if ("admin" == Session.get("CurrentStudy"))
           this.done(Admin_Handler(insertDoc, updateDoc, currentDoc));

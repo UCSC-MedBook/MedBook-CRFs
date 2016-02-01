@@ -1,7 +1,15 @@
 LoadMetadata("prad_wcdt",{
     "Form_Name": "Tissue_Specimen_form",
     "Fields": [
-	Sample_ID_Type,
+	Patient_ID_Type,
+	{
+
+	    "Field_Name": "Specimen_ID",
+	    "label": "Specimen ID",
+	    "optional": false,
+	    "type": "String"
+	},
+
 	{
 	    "Field_Name": "Timepoint",
 	    "allowedValues": [

@@ -91,9 +91,15 @@ AutoForm.hooks({
     onSuccess: function(formType, result) {
       console.log("Autoform.onSuccess.formType", formType);
       console.log("Autoform.onSuccess.result", result);
+      var doc = this.insertDoc;
+      if (doc == null)
+        doc = this.currentDoc;
 
-       referentialIntegrity(this.currentDoc, "Patient_ID");
-       referentialIntegrity(this.currentDoc, "Sample_ID");
+      if (doc != null) {
+       referentialIntegrity(doc, "Patient_ID");
+       referentialIntegrity(doc, "Sample_ID");
+       referentialIntegrity(doc, "Specimen_ID");
+      }
 
        fixUpRenderedAutoForm();
     },

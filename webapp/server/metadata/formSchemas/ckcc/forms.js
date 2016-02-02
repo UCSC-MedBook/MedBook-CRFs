@@ -39,6 +39,7 @@ LoadMetadata("ckcc", {
         "type": "Date",
         "Field_Name": "Study Enrollment Stop Date",
 	"autoform": autoformDate,
+	optional: true
       },
       {
         "type": "String",
@@ -46,7 +47,7 @@ LoadMetadata("ckcc", {
         "Field_Name": "Inclusion Criteria Met?",
         "allowedValues": [
           "Not yet determined",
-          "Inclusion Met ",
+          "Inclusion Met",
           "Exclusion Met"
         ]
       },
@@ -83,17 +84,19 @@ LoadMetadata("ckcc", {
           "American Inidian or Alaskan Native",
           "Native Hawaiian or Other Pacific Islander",
           "Other"
-        ]
+        ],
+	optional: true
       },
       {
         "type": "String",
         "Field_Name": "Ethnicity",
         "allowedValues": [
           "Not Hispanic or Latino",
-          "Hispanic or Latino ",
+          "Hispanic or Latino",
           "Other",
           "Unavailable or not reported"
-        ]
+        ],
+	optional: true
       }
     ]
 });
@@ -101,10 +104,7 @@ LoadMetadata("ckcc", {
 LoadMetadata("ckcc", {
     "Form_Name": "Baseline Clinical History",
     "Fields": [
-      {
-        "type": "String",
-        "Field_Name": "Patient_ID"
-      },
+      Patient_ID_Type,
       {
         "type": "String",
         "Field_Name": "History and Physical"
@@ -172,7 +172,7 @@ LoadMetadata("ckcc", {
       {
         "type": "String",
         "label": "(pick all that apply)",
-        "Field_Name": "Next Generation Sequence ",
+        "Field_Name": "Next Generation Sequence",
         "allowedValues": [
           "Tumor Whole Genome",
           "Exome",
@@ -199,7 +199,7 @@ LoadMetadata("ckcc", {
       {
         "type": "String",
         "label": "(pick all that apply)",
-        "Field_Name": "Cancer Predisposition ",
+        "Field_Name": "Cancer Predisposition",
         "allowedValues": [
           "NF-1",
           "Schwannnomatosis",
@@ -220,7 +220,7 @@ LoadMetadata("ckcc", {
       {
         "type": "String",
         "label": "(example: Mother)",
-        "Field_Name": "List Family Members ",
+        "Field_Name": "List Family Members",
         "allowedValues": [
           "Text Box"
         ]
@@ -228,7 +228,7 @@ LoadMetadata("ckcc", {
       {
         "type": "String",
         "label": "(refer to family members affected)",
-        "Field_Name": "Specific Family History of Cancer ",
+        "Field_Name": "Specific Family History of Cancer",
         "allowedValues": [
           "Text Box"
         ]
@@ -242,7 +242,7 @@ LoadMetadata("ckcc", {
       },
       {
         "type": "String",
-        "Field_Name": "Pathology report ",
+        "Field_Name": "Pathology report",
         "allowedValues": [
           "Text Box"
         ]
@@ -264,7 +264,7 @@ LoadMetadata("ckcc", {
       {
         "type": "String",
         "label": "(pick all that apply)",
-        "Field_Name": "Relevant specimens ",
+        "Field_Name": "Relevant specimens",
         "allowedValues": [
           "Pathology report",
           "Operative report",
@@ -277,10 +277,7 @@ LoadMetadata("ckcc", {
 LoadMetadata("ckcc", {
     "Form_Name": "Diagnosis and Progression",
     "Fields": [
-      {
-        "type": "String",
-        "Field_Name": "Patient_ID"
-      },
+      Patient_ID_Type,
       {
         "type": "Date",
         "Field_Name": "Date of diagnosis",
@@ -411,7 +408,7 @@ LoadMetadata("ckcc", {
       {
         "type": "Date",
         "label": "(Molecular test for each surgery and specimen collected. Abstracted from path report. Suggest including date performed/completed & place to load results hypelinked?)",
-        "Field_Name": "Molecular Tests ",
+        "Field_Name": "Molecular Tests",
 	"autoform": autoformDate,
       },
       {
@@ -502,10 +499,7 @@ LoadMetadata("ckcc", {
 LoadMetadata("ckcc",{
     "Form_Name": "Unanticipated Adverse Events (UAE)",
     "Fields": [
-      {
-        "type": "String",
-        "Field_Name": "Patient_ID"
-      },
+      Patient_ID_Type,
       {
         "type": "Number",
         "Field_Name": "Event Number"
@@ -523,16 +517,19 @@ LoadMetadata("ckcc",{
         "type": "Date",
         "Field_Name": "UAE Start Date",
 	"autoform": autoformDate,
+	optional: true
       },
       {
         "type": "Date",
         "Field_Name": "UAE Stop Date",
 	"autoform": autoformDate,
+	optional: true
       },
       {
         "type": "Date",
         "Field_Name": "UAE Ongoing as of date",
 	"autoform": autoformDate,
+	optional: true
       },
       {
         "type": "String",
@@ -550,132 +547,146 @@ LoadMetadata("ckcc",{
       {
         "type": "String",
         "label": "(if any Provide Tx provided)",
-        "Field_Name": "Event Treatment "
+        "Field_Name": "Event Treatment",
+	optional: true,
       },
       {
         "type": "String",
         "label": "(eg. Event resolved without sequelae, death etc)",
-        "Field_Name": "Outcome of event "
+        "Field_Name": "Outcome of event",
+	optional: true,
       }
     ]
   });
 LoadMetadata("ckcc", {
     "Form_Name": "Treatment",
+
     "Fields": [
-      {
-        "type": "String",
-        "Field_Name": "Patient_ID"
-      },
+      Patient_ID_Type,
+
       {
         "type": "String",
         "label": "(examples: Hospitalization, Radiation, Chemotherapy)",
-        "Field_Name": "Name of Treatment ",
+        "Field_Name": "Name of Treatment",
         "allowedValues": [
           ""
-        ]
+        ],
+	optional: true,
       },
       {
         "type": "Date",
         "Field_Name": "Admit date",
 	"autoform": autoformDate,
+	optional: true,
       },
       {
         "type": "Date",
         "Field_Name": "Discharge date",
 	"autoform": autoformDate,
+	optional: true,
       },
       {
         "type": "Date",
         "Field_Name": "Treatment date",
 	"autoform": autoformDate,
+	optional: true,
       },
       {
         "type": "String",
-        "Field_Name": "Outcomes"
+        "Field_Name": "Outcomes",
+	optional: true,
       }
     ]
   });
 LoadMetadata("ckcc", {
     "Form_Name": "Medications List",
     "Fields": [
+      Patient_ID_Type,
       {
         "type": "String",
-        "Field_Name": "Patient_ID"
+        "Field_Name": "Medication Name",
+	optional: true,
       },
       {
         "type": "String",
-        "Field_Name": "Name"
+        "Field_Name": "Dosage",
+	optional: true,
       },
       {
         "type": "String",
-        "Field_Name": "Dosage"
-      },
-      {
-        "type": "String",
-        "Field_Name": "Route"
+        "Field_Name": "Route",
+	optional: true,
       },
       {
         "type": "Date",
         "Field_Name": "Start Date",
 	"autoform": autoformDate,
+	optional: true,
       },
       {
         "type": "Date",
         "Field_Name": "Stop Date",
 	"autoform": autoformDate,
+	optional: true,
       },
       {
         "type": "String",
-        "Field_Name": "Contraindications"
+        "Field_Name": "Contraindications",
+	optional: true,
       },
       {
         "type": "String",
-        "Field_Name": "Comments"
+        "Field_Name": "Comments",
+	optional: true,
       }
     ]
 });
 LoadMetadata("ckcc",{
     "Form_Name": "Study Completion",
     "Fields": [
+      Patient_ID_Type,
       {
         "type": "String",
-        "Field_Name": "Patient_ID"
-      },
-      {
-        "type": "String",
-        "Field_Name": "Withdrew? ",
+        "Field_Name": "Withdrew?",
         "allowedValues": [
           "Y",
           "N"
-        ]
+        ],
+	optional: true,
       },
       {
         "type": "Date",
         "Field_Name": "Patient study completion date",
 	"autoform": autoformDate,
+	optional: true,
       },
       {
         "type": "Date",
         "Field_Name": "Patient withdrew from study date",
 	"autoform": autoformDate,
+	optional: true,
       },
       {
         "type": "Date",
         "Field_Name": "Patient expire date",
 	"autoform": autoformDate,
+	optional: true,
       },
       {
         "type": "String",
-        "Field_Name": "Cause of death"
+        "Field_Name": "Cause of death",
+	optional: true,
       },
       {
         "type": "String",
-        "Field_Name": "ICD10 Code"
+        "Field_Name": "ICD10 Code",
+	optional: true,
       },
       {
         "type": "Date",
         "Field_Name": "Patient status unknown date",
 	"autoform": autoformDate,
+	optional: true,
       }
     ]
 });

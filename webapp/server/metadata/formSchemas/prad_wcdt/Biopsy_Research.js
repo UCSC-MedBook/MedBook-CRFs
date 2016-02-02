@@ -40,7 +40,7 @@ LoadMetadata("prad_wcdt",{
 	{
 	    "Field_Name": "If_Patient_took_a_Steroid_in_the_Last_7_Days__was_it_within_24_hours_of_Biopsy?",
 	    "optional": true,
-	    "type": "Boolean"
+	    "type": "String"
 	}
     ]
 });

@@ -690,4 +690,28 @@ Meteor.startup(function() {
 
   	})
   }
+
+    // Maintain following fields maintained in study
+    crossReferencesInStudies = [
+       { Study_ID: "ckcc", studyField: "Patient_IDs", CRFname: "CKCC Patient Enrollment", CRFfield: "Patient_ID"}
+       // don't maintain prad_wcdt here
+    ];
+
+    CreateCrossReferencesForStudies = function(doc, fieldName) {
+       crossReferencesInStudies.map(function(xRef) {
+          var fields = {};
+	  fields[xRef.CRFfield] = 1;
+	  var value = []
+	  Collections.CRFs.find({Study_ID: xRef.Study_ID, CRF: xRef.CRFname}, {fields: fields})
+	   .forEach(function(form){
+	       value.push(form[xRef.CRFfield]);
+	   });
+
+	   var s = {};
+	   s[xRef.studyField] = value.sort();
+	   var ret = Collections.studies.update({id: xRef.Study_ID}, { $set: s})
+	   console.log(ret, "CreateCrossReferencesForStudies", xRef, value);
+	});
+    }
+    CreateCrossReferencesForStudies();
 });

@@ -35,12 +35,12 @@ LoadMetadata("prad_wcdt",{
 	{
 	    "Field_Name": "List_all_anticancer_meds__including_steroids__taken_within_the_7_days_leading_up_to_biopsy",
 	    "optional": true,
-	    "type": "String"
+	    "type": "[String]"
 	},
 	{
 	    "Field_Name": "If_Patient_took_a_Steroid_in_the_Last_7_Days__was_it_within_24_hours_of_Biopsy?",
 	    "optional": true,
-	    "type": "String"
+	    "type": "Boolean"
 	}
     ]
 });

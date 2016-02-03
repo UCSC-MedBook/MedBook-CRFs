@@ -48,7 +48,7 @@ Meteor.publish('myForms', function(formName, studyName) {
 
   var q = {CRF:formName};
 
-  var schema = coll.schema;
+  var schema = JSON.parse(coll.schema);
   if ("study" in schema)
        q.study = studyName;
   else if ("studies" in schema)

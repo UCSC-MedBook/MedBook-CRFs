@@ -1,6 +1,20 @@
 LoadMetadata("prad_wcdt",{
     "Form_Name": "Tissue_Specimen_form",
     "Fields": [
+        {
+	    "Field_Name": "Test",
+	    "label": "Test",
+	    "optional": false,
+	    "type": "Array",
+	},
+        {
+	    "Field_Name": "Test.$",
+	    "label": "Test",
+	    "optional": false,
+	    "type": "Object",
+	    "autoform": { afFieldInput: { type: 'bootstrap-TestType', } }
+	}
+    /*
 	Patient_ID_Type,
 	{
 
@@ -87,6 +101,7 @@ LoadMetadata("prad_wcdt",{
 	    "optional": true,
 	    "type": "String"
 	}
+	*/
     ]
 
 })

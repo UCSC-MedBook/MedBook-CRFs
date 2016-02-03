@@ -22,7 +22,7 @@ LoadMetadata = function(study, preload) {
 	    _id: preload.Form_Name,
 	    name: preload.Form_Name,
 	    incompleteCount: 0,
-	    schema: schema,
+	    schema: JSON.stringify(schema),
 	    metadata: preload,
 	    fieldOrder: fo,
 	    study: study,

@@ -1,20 +1,7 @@
 LoadMetadata("prad_wcdt",{
     "Form_Name": "Tissue_Specimen_form",
     "Fields": [
-        {
-	    "Field_Name": "Test",
-	    "label": "Test",
-	    "optional": false,
-	    "type": "Array",
-	},
-        {
-	    "Field_Name": "Test.$",
-	    "label": "Test",
-	    "optional": false,
-	    "type": "Object",
-	    "autoform": { afFieldInput: { type: 'bootstrap-TestType', } }
-	}
-    /*
+
 	Patient_ID_Type,
 	{
 
@@ -60,6 +47,29 @@ LoadMetadata("prad_wcdt",{
 	    "label": "Number of Cores Collected",
 	    "type": "Number"
 	},
+
+        {
+	    "Field_Name": "Cores",
+	    "label": "Cores",
+	    "optional": false,
+	    "type": "Array",
+	},
+        {
+	    "Field_Name": "Cores.$",
+	    "label": "Test",
+	    "optional": false,
+	    "type": "Object",
+	    "autoform": { afFieldInput: { type: 'bootstrap-TestType', 
+	        subdocument: "Tissue_Specimen_core",
+	    } }
+	},
+    ]
+});
+
+
+LoadMetadata("prad_wcdt",{
+    "Form_Name": "Tissue_Specimen_core",
+    Fields: [
 	{
 	    "Field_Name": "Cores",
 	    "optional": true,
@@ -101,7 +111,6 @@ LoadMetadata("prad_wcdt",{
 	    "optional": true,
 	    "type": "String"
 	}
-	*/
     ]
 
 })

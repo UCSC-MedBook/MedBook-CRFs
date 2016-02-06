@@ -75,6 +75,24 @@ Meteor.startup( function() {
 	console.log('Add BL n=', n);
     });
 
+    Migration("Rename core fields 20160205 C", function() {
+        var n = 0;
+	Collections.CRFs.find({ CRF: 'Tissue_Specimen_form',
+	    'Cores.0.ID': { $exists: 1 } }).forEach(function(item) {    
+		for(i = 0; i != item.Cores.length; ++i) {
+		    item.Cores[i].Core_ID = item.Cores[i].ID;
+		    delete item.Cores[i].ID;
+
+		    item.Cores[i].Core_State = item.Cores[i].Core;
+		    delete item.Cores[i].Core;
+		}
+
+		Collections.CRFs.update({_id: item._id}, item);
+		n++;
+	    });
+	console.log("n=", n );
+    });
+
     function maintain_prad_wcdt(field)  {
         var fields = {};
         fields[field] = 1;

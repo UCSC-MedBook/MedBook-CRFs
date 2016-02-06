@@ -79,7 +79,6 @@ function referentialIntegrity(doc, fieldName) {
 	   var q = {};
 	   q[fieldName +"s"] = value;
 
-	   debugger;
 	   var ret = Collections.studies.update({_id: study._id}, { $addToSet: q})
        }
    }
@@ -151,7 +150,23 @@ reactiveTableSettings = function () {
 
     var collName = this._crfName;
     var schemaObj = schema(collName)._schema;
-    var fields = fieldOrder(collName);
+
+    var fields = [];
+
+    // The SimpleSchemaschema has names like "Cores.$.Core_ID", "Cores.$.Core_State",
+    // We don't need it. But we do need just "Cores". So filter out
+    fieldOrder(collName).map(function (field)  {
+       var k = field.indexOf(".$.");
+       if (k < 0)
+          fields.push(field);
+       else {
+          field = field.substring(0,k);
+	  if (!_.contains(fields, field))
+	      fields.push(field);
+       }
+    });
+
+
     fields = fields.map(
       function(fieldName, i) {
         try {

@@ -2,13 +2,6 @@ Router.onBeforeAction(function () {
   // all properties available in the route function
   // are also available here such as this.params
 
-  /*var user = Meteor.user();
-  if (user && user.profile && user.profile.collaborations && user.profile.collaborations.indexOf("WCDT")) {
-      this.next();
-      return;
-  }
-  this.render('signin');*/
-
   if(!Meteor.user()){
     this.render('signin');
   }else{

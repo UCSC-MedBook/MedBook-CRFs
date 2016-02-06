@@ -49,34 +49,15 @@ LoadMetadata("prad_wcdt",{
 	},
 
         {
-	    "Field_Name": "Cores",
-	    "label": "Cores",
-	    "optional": false,
-	    "type": "Array",
+	    "Field_Name": "Cores.$.Core_ID",
+	    "type": "String",
 	},
+
         {
-	    "Field_Name": "Cores.$",
-	    "label": "Test",
-	    "optional": false,
-	    "type": "Object",
-	    "autoform": { afFieldInput: { type: 'bootstrap-TestType', 
-	        subdocument: "Tissue_Specimen_core",
-	    } }
+	    "Field_Name": "Cores.$.Core_State",
+	    "type": "String",
 	},
-    ]
-});
 
-
-LoadMetadata("prad_wcdt",{
-    "Form_Name": "Tissue_Specimen_core",
-    Fields: [
-	{
-	    "Field_Name": "Cores",
-	    "optional": true,
-	    "type": [
-		null
-	    ]
-	},
 	{
 	    "Field_Name": "Fixed_Core_Ship_Date",
 	    "autoform": autoformDate,
@@ -102,7 +83,12 @@ LoadMetadata("prad_wcdt",{
 	    "Field_Name": "Core_Notes",
 	    "label": "Core Notes",
 	    "optional": true,
-	    "type": "String"
+	    "type": "String",
+	     autoform: {
+	      type: "textarea",
+	      rows: 10
+	    }
+
 	},
 	{
 	    "Field_Name": "TimepointNotes",

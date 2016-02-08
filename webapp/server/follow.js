@@ -2,28 +2,30 @@ Meteor.methods({
    "CRF/follow":  function(CRF, Study_ID) {
        var follow = {
 	  userId: this.userId,
-          email: Meteor.users.find({_id: this.userId}).defaultEmail(),
+          email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
           CRF: CRF,
           Study_ID: Study_ID,
        };
-       Collections.Followers.insert(follow);
+       var ret = Collections.Followers.insert(follow);
+       console.log("CRF/follow",  CRF, Study_ID, ret);
    },
 
    "CRF/unfollow":  function(CRF, Study_ID) {
        var follow = {
 	  userId: this.userId,
-          email: Meteor.users.find({_id: this.userId}).defaultEmail(),
+          email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
           CRF: CRF,
           Study_ID: Study_ID,
        };
-       Collections.Followers.remove(follow);
+       var ret = Collections.Followers.remove(follow);
+       console.log("CRF/unfollow",  CRF, Study_ID, ret);
    },
 });
 
 Meteor.startup(function() {
     var ted = Meteor.users.findOne({username:"ted"});
     Collections.Followers.upsert({CRF: "*",  Study_ID: "*"},
-	{CRF: "*",  Study_ID: "*", userId:ted._id, email: ted.defaultEmail() });
+	{CRF: "*",  Study_ID: "*", userId: ted._id, email: ted.defaultEmail() });
 });
 
 // Summarize the contents of the change and tell the followers
@@ -41,8 +43,8 @@ NotifyFollowers = function(userId, doc, change) {
 	      searchKey = doc[field];
       }
    });
-   var url =  "/CRF/" + doc.Study_ID + "/" + doc.CRF + "/?q=" + searchKey
-   summary += "was " + change  + ". To see the change click <a href='" + url + "' >here.</a>";
+   var url =  process.ROOT_URL +  doc.Study_ID + "/" + doc.CRF + "/?q=" + searchKey
+   summary += "was " + change  + ". To see the change click <a href='" + url + "' >" + url + "</a>";
 
    var followers = Collections.Followers.find(
       {$or : [
@@ -81,6 +83,8 @@ sendEmailTest = function() {
 
 Meteor.publish("Following", function(query) {
    query.userId = this.userId;
-   return Collections.Followers.find(query);
+   var cursor = Collections.Followers.find(query);
+   console.log("publish Following", query, cursor.count());
+   return cursor;
 });
 

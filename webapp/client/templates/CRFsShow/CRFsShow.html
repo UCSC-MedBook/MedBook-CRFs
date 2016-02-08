@@ -1,6 +1,5 @@
 <template name="CRFsShow">
   <div class="page lists-show">
-
     <nav class="js-title-nav">
       <h1 style="margin:25px;">
 	  <span>
@@ -8,12 +7,24 @@
 	      {{>Follow}}
 	  </span>
       </h1>
-      <br>
+      {{#if editing}}
+        <form class="js-edit-form list-edit-form">
+          <input type="text" name="name" value="{{name}}">
+          <div class="nav-group right">
+            <a href="#" class="js-cancel nav-item"><span class="icon-close js-cancel" title="Cancel"></span></a>
+          </div>
+        </form>
+      {{else}}
         <div class="nav-group">
           <a href="#" class="js-menu nav-item"><span class="icon-list-unordered" title="Show menu"></span></a>
         </div>
 
-        {{#if readOnly}}
+        <h1 class="js-edit-list title-page"><span class="title-wrapper">{{name}}</span>
+            <!--
+                 <span class="count-list">{{incompleteCount}}</span>
+            -->
+        </h1>
+          {{#if readOnly}}
 
              <div class="topMesg" style="background:white">This is a Read Only Table (information comes from OnCore or other system).</div>
         {{else}}
@@ -27,6 +38,7 @@
               {{/if}}
               {{/if}}
             {{/if}}
+        {{/if}}
       <!--
         <div class="nav-group right">
           <div class="nav-item options-mobile">

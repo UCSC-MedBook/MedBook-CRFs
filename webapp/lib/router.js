@@ -66,6 +66,7 @@ Router.map(function() {
       return [
 	  Meteor.subscribe('metadata'),
 	  Meteor.subscribe('studies'),
+	  Meteor.subscribe('Following', {Study_ID: currentStudy()}),
 	  Meteor.subscribe('myForms', this.params._crfName, currentStudy())
       ];
     },

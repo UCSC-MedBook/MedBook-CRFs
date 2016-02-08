@@ -1,6 +1,8 @@
 Collections.CRFs = new Meteor.Collection("CRFs");
 Collections.Metadata = new Meteor.Collection("Metadata");
 Collections.studies = new Meteor.Collection('studies');
+Collections.AuditTrail = new Meteor.Collection('AuditTrail');
+Collections.Followers = new Meteor.Collection('Followers');
 
 
 Collections.CRFs.allow({
@@ -22,11 +24,61 @@ Collections.CRFs.allow({
     // fetch: ['owner']
 });
 
-/*
-Collections.CRFs.before.insert(function (userId, doc) { console.log("before insert called", userId, doc); });
-Collections.CRFs.before.update(function (userId, selector, modifier, options) { console.log("before update called", doc); });
-*/
-// Collections.CRFs.before.upsert(function (userId, selector, modifier, options) { console.log("before upsert called", doc); });
+Collections.CRFs.after.insert(function (userId, doc) { 
+    var transactionRecord = {
+	date: Date.now(),
+	type: "insert",
+        userId: userId,
+	doc: doc
+    }
+    Collections.AuditTrail.insert(transactionRecord);
+    NotifyFollowers(userId, doc, "inserted");
+});
+
+
+Collections.CRFs.after.update(function (userId, fieldNames, modifier, options) {  
+
+    function noDollar(obj) {
+	Object.keys(obj).map(function(key) {
+	   if (typeof(obj[key]) == "object")
+	       noDollar(obj[key]);
+
+	   if (key[0] == '$') {
+	       var keyNoDollar = key.substring(1);
+	       obj[keyNoDollar] = obj[key];
+	       delete obj[key];
+	   }
+	})
+    }
+
+    noDollar(options);
+
+    var transactionRecord = {
+	date: Date.now(),
+	type: "update",
+        userId: userId,
+        fieldNames: fieldNames,
+	modifier: modifier,
+	previous: this.previous,
+	options: options,
+    }
+    console.log("transactionRecord", transactionRecord);
+    Collections.AuditTrail.insert(transactionRecord);
+    NotifyFollowers(userId, this.previous, "updated");
+});
+
+Collections.CRFs.after.remove(function (userId, doc) { 
+    var transactionRecord = {
+	date: Date.now(),
+	type: "removed",
+        userId: userId,
+	doc: doc
+    }
+    Collections.AuditTrail.insert(transactionRecord);
+    NotifyFollowers(userId, doc, "removed");
+});
+
+
 
 Collections.studies.allow({
     insert: function (userId, doc) {

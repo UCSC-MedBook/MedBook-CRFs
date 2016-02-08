@@ -11,7 +11,7 @@ LastSubmit = null;
 CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
 
     var CurrentStudy = Session.get("CurrentStudy");
-    var currentForm = Session.get("currentForm");
+    var currentForm = Session.get("CurrentForm");
 
     var collection;
 
@@ -40,7 +40,7 @@ CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
 }
 Admin_Handler = function(insertDoc, updateDoc, currentDoc) {
 
-    var currentForm = Session.get("currentForm");
+    var currentForm = Session.get("CurrentForm");
     var collection = Collections[currentForm];
 
     if (collection == null)

@@ -82,7 +82,7 @@ Template.CRFsShow.helpers({
   },
 
   currentForm: function () {
-    Session.set("currentForm", this._crfName);
+    Session.set("CurrentForm", this._crfName);
     return this._crfName;
   },
 

@@ -51,7 +51,6 @@ Router.map(function() {
       Session.set("currentForm", this.params._crfName);
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
 
-      console.log("query params", this.params.query);
       if (this.params.query && 'q' in this.params.query)
           Session.set("CRF_filter", this.params.query.q)
 

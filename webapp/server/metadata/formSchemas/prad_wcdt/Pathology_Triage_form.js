@@ -30,7 +30,8 @@ LoadMetadata("prad_wcdt", {
       },
       {
         "type": "Date",
-        "Field_Name": "Received Date"
+        "Field_Name": "Received Date",
+        "autoform": autoformDate
       },
       {
         "type": "String",
@@ -104,14 +105,16 @@ LoadMetadata("prad_wcdt", {
         "type": "String",
         "Field_Name": "DNA to be collected for shipment to Broad",
         "allowedValues": [
-          "Yes"
+          "Yes",
+          "No"
         ]
       },
       {
         "type": "String",
         "Field_Name": "Slides to be sent to Jiaoti Huang for Pathology Reporting",
         "allowedValues": [
-          "Yes"
+          "Yes",
+          "No"
         ]
       }
     ]

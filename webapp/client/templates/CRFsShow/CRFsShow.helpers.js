@@ -22,7 +22,11 @@ CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
     updateDoc.$set.CRF = currentForm;
     collection = Collections.CRFs;
 
-    if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
+    if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && 
+            insertDoc.Patient_ID == currentDoc.Patient_ID && 
+            insertDoc.Sample_ID == currentDoc.Sample_ID &&
+            insertDoc.Specimen_ID == currentDoc.Specimen_ID 
+    ) {
         console.log("updateDoc", updateDoc);
 
         var v = collection.update({_id: currentDoc._id}, updateDoc );
@@ -30,6 +34,7 @@ CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
             console.log("Updating wasnt successful.  :(", v);
         insertDoc._id = currentDoc.id;
     } else {
+        debugger; // suspicious
         insertDoc._id = collection.insert(insertDoc);
     }
 

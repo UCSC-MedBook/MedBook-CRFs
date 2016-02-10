@@ -45,7 +45,7 @@ NotifyFollowers = function(userId, doc, change) {
    });
    var url =  process.env.ROOT_URL +  doc.Study_ID + "/" + doc.CRF + "/";
    if (searchKey)
-       q += "?q=" + searchKey;
+       url += "?q=" + searchKey;
    summary += "was " + change  + ". To see the change click <a href='" + url + "' >" + url + "</a>";
 
    var followers = Collections.Followers.find(

@@ -56,7 +56,6 @@ Collections.CRFs.after.update(function (userId, fieldNames, modifier, options) {
 	previous: this.previous,
 	options: options,
     }
-    console.log("transactionRecord", transactionRecord);
     Collections.AuditTrail.insert(transactionRecord);
     NotifyFollowers(userId, this.previous, "updated");
 });

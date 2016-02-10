@@ -39,7 +39,7 @@ NotifyFollowers = function(userId, doc, change) {
    ["CRF", "Study_ID", "Patient_ID", "Specimen_ID", "Sample_ID"].map(function(field) {
       if (field in doc) {
           summary += field + "=" + doc[field] + ", ";
-	  if (searchKey == null)
+	  if (searchKey == null && field.match(/_ID$/))
 	      searchKey = doc[field];
       }
    });

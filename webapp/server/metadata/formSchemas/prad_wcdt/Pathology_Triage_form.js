@@ -109,7 +109,7 @@ LoadMetadata("prad_wcdt", {
       },
       {
         "type": "String",
-        "Field_Name": "Slides to be sent to Jiaoti Huang for Pathology Reporting",
+        "Field_Name": "Slides to be sent to Duke University for Pathology Reporting",
         "allowedValues": [
           "Yes"
         ]

@@ -56,10 +56,6 @@ Meteor.startup(function() {
 		    s += '<option value="' + e + '" ' + selected + ' > ' + e + '</option>';
 		});
 		s += '</select>';
-		if (currentDoc)
-		    console.log("currentDoc.Specimen_ID", currentDoc.Specimen_ID, s);
-		else
-		    console.log("Specimen_ID", s);
 		return s;
 	      }
 	  }

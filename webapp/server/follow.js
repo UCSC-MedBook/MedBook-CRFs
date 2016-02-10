@@ -36,7 +36,7 @@ NotifyFollowers = function(userId, doc, change) {
 
    var summary = "The record with ";
    var searchKey = null;
-   ["CRF", "Study_ID", "Patient_ID", "Specimen_ID", "Sample_ID"].map(function(field) {
+   ["Patient_ID", "Specimen_ID", "Sample_ID", "CRF", "Study_ID"].map(function(field) {
       if (field in doc) {
           summary += field + "=" + doc[field] + ", ";
 	  if (searchKey == null && field.match(/_ID$/))

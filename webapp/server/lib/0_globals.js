@@ -17,7 +17,6 @@ Patient_ID_Type = {
   }
 };
 
-/*
 Specimen_ID_Type = {
   "Field_Name": "Specimen_ID",
   "label": "Specimen ID",
@@ -26,7 +25,6 @@ Specimen_ID_Type = {
        type: 'Specimen_ID',
   }
 };
-*/
 
 Sample_ID_Type = {
   "Field_Name": "Sample_ID",

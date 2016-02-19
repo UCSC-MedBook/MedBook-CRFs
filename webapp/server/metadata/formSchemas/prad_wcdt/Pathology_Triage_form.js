@@ -50,7 +50,9 @@ LoadMetadata("prad_wcdt", {
       },
       {
         "type": "String",
-        "Field_Name": "Biopsy_Site_Other"
+        "Field_Name": "Biopsy_Site_Other",
+	"label": "Other (optional, use if Biopsy Site is Other)",
+        "optional": true,
       },
       {
         "type": "String",

@@ -47,6 +47,8 @@ Router.map(function() {
   this.route('CRFsShow', {
     path: '/CRF/:_study/:_crfName/',
     onBeforeAction: function() {
+      var path = Iron.Location.get().path;
+      console.log("path", path);
       Session.set("CurrentStudy", this.params._study);
       Session.set("currentForm", this.params._crfName);
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
@@ -55,11 +57,13 @@ Router.map(function() {
       if (this.params.query && 'q' in this.params.query)
           Session.set("CRF_filter", this.params.query.q)
 
+/*
       if (Meteor.userId()) {
         var data = Iron.Location.get().path;
         if (data)
             Meteor.users.update(Meteor.userId(), {$set: {"profile.lastCRFroute": data}});
       }
+*/
       this.next();
     },
     waitOn: function() {

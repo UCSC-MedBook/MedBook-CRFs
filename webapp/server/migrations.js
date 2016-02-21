@@ -94,7 +94,36 @@ Meteor.startup( function() {
         // console.log("maintain_prad_wcdt", updateClause, sortedSet, updateResult, "\nfinal", final);
 
       };
+
       maintain_prad_wcdt("Patient_ID");
       maintain_prad_wcdt("Sample_ID");
+
+      Migration("expression2 to gene_expression 20160221", function() {
+         var gene_expression = new Meteor.Collection("gene_expression");
+         gene_expression._ensureIndex({gene_label: 1, sample_label: 1});
+
+          Expression.find().forEach(function(doc) {
+	    Object.keys(doc.samples).map(function(sample_label) {
+	       var log2 = doc.samples[sample_label].rsem_quan_log2;
+	       var log = log2 * Math.LN2;
+	       var counts = Math.exp(log) - 1; // approximate counts
+	       var data = {
+		    gene_label: doc.gene,
+		    sample_label: sample_label,
+		    study_label: doc.Study_ID,
+		    collaborations: doc.Collaborations,
+		    values: {
+			"quantile_counts_log" : log2,
+			"quantile_counts" : counts,
+		    }
+		};
+		var old = gene_expression.findOne( {gene_label: doc.gene, sample_label: sample_label});
+		if (old == null) {
+		    gene_expression.insert(data);
+		}
+
+	    }) // keys.map
+	}) //expression2.foreach
+     }); // Migration
 
 });

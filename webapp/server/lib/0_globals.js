@@ -26,6 +26,15 @@ Sample_ID_Type = {
   }
 };
 
+Specimen_ID_Type = {
+  "Field_Name": "Specimen_ID",
+  "label": "Specimen ID",
+  type: "String",
+  autoform: {
+           type: 'Sample_ID',
+  }
+};
+
 CoreAllowedValues = [
         "A",
         "B",

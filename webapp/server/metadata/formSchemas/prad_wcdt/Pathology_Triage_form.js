@@ -4,19 +4,19 @@ LoadMetadata("prad_wcdt", {
 
       Patient_ID_Type,
 
-      Specimen_ID_Type,
-
       {
         "type": "String",
         "Field_Name": "Timepoint",
         "allowedValues": [
           "Baseline",
-          "3 Months",
           "Progression",
           "Progression2",
           "Progression3"
         ]
       },
+
+      Specimen_ID_Type,
+
       {
         "type": "String",
         "Field_Name": "Institution",

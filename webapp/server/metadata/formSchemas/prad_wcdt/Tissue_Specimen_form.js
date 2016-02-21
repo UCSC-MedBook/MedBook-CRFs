@@ -4,14 +4,6 @@ LoadMetadata("prad_wcdt",{
 
 	Patient_ID_Type,
 	{
-
-	    "Field_Name": "Specimen_ID",
-	    "label": "Specimen ID",
-	    "optional": false,
-	    "type": "String"
-	},
-
-	{
 	    "Field_Name": "Timepoint",
 	    "allowedValues": [
 		"Baseline",
@@ -23,6 +15,28 @@ LoadMetadata("prad_wcdt",{
 	    "label": "Timepoint",
 	    "type": "String"
 	},
+	{
+
+	    "Field_Name": "Specimen_ID",
+	    "label": "Specimen ID",
+	    "optional": false,
+	    "type": "String",
+
+		 value: function () {
+		    alert(1);
+		    /*
+		    if (this.isInsert) {
+			return new Date;
+		    } else if (this.isUpsert) {
+			return {$setOnInsert: new Date};
+		    } else {
+			this.unset();
+		    }
+		    */
+		}
+
+	},
+
 	{
 	    "Field_Name": "Procedure_Date",
 	    "label": "Procedure Date",

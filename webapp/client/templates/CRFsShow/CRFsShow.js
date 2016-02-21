@@ -1,10 +1,26 @@
 var EDITING_KEY = "EditingCRFsShow";
 
+var mapTimepoints = {
+  null           : "BL",
+  "Baseline"     : "BL",
+  "Progression"  : "Pro",
+  "Progression2" : "Pro2",
+  "Progression3" : "Pro3",
+};
+
 AutoForm.hooks({
     CRFquickForm: {
-          docToForm: function(doc, ss) {
-	    doc.Study_ID = Session.get("CurrentStudy");
-	    return doc;
+
+          formToDoc: function(doc) {
+	     if (_.intersection(this.schema._schemaKeys, [ "Patient_ID", "Timepoint", "Specimen_ID"]).length == 3) {
+		$("[name='Specimen_ID']").prop('readonly', true);
+	        if (doc.Timepoint != null)  {
+		    doc.Specimen_ID = doc.Patient_ID +  mapTimepoints[doc.Timepoint];
+		    $("[name='Specimen_ID']").val( doc.Specimen_ID );
+	        }
+	     }
+	     
+	     return doc;
 	  },
     }
 });

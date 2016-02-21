@@ -1,9 +1,6 @@
 Meteor.startup( function() {
     console.log("initialize Migrations");
 
-    if (!('DataMigrations' in Collections)) {
-        Collections.DataMigrations = new Meteor.Collection("DataMigrations");
-    }
 
     function migrateCollection(collName, query) {
 
@@ -31,20 +28,6 @@ Meteor.startup( function() {
         console.log("migration", collName, count, countInserted, query);
     };
 
-
-    Migration = function(migrationName, func) {
-        var migration = Collections.DataMigrations.findOne({name: migrationName});
-        if (migration == null) {
-            console.log("migrating", migrationName);
-	    try {
-		func();
-                Collections.DataMigrations.insert({name: migrationName});
-                console.log("migrating", migrationName, "success");
-	    } catch (error) {
-                console.log("migrating", migrationName, "FAIL", error);
-	    }
-        }
-    }
 
     /* DANGEROUS 
     Migration('CRFunification 20151107-A', function() {

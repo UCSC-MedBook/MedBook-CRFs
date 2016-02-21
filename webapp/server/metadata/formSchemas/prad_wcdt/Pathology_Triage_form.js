@@ -4,6 +4,7 @@ LoadMetadata("prad_wcdt", {
 
       Patient_ID_Type,
 
+      /*
       {
         "type": "String",
         "Field_Name": "Timepoint",
@@ -14,6 +15,7 @@ LoadMetadata("prad_wcdt", {
           "Progression3"
         ]
       },
+      */
 
       Specimen_ID_Type,
 
@@ -94,12 +96,12 @@ LoadMetadata("prad_wcdt", {
         "allowedValues": [
           "Adenocarcinoma",
           "Small Cell",
-          "ANPC",
+          "IAC",
           "Indeterminate",
           "Atypical with Adeno Architecture",
-          "Adeno+ANPC",
+          "Adeno+IAC",
           "Adeno+SC",
-          "ANPC+SC",
+          "IAC+SC",
           "N/A"
         ]
       },

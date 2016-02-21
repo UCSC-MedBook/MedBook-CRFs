@@ -12,7 +12,9 @@ AutoForm.hooks({
     CRFquickForm: {
 
           formToDoc: function(doc) {
-	     if (_.intersection(this.schema._schemaKeys, [ "Patient_ID", "Timepoint", "Specimen_ID"]).length == 3) {
+	     if (_.intersection(this.schema._schemaKeys, [ "Patient_ID", "Timepoint", "Specimen_ID"]).length == 3 
+	     && this.schema._schema.Specimen_ID.autoform.type !=  "Specimen_ID" ) {
+
 		$("[name='Specimen_ID']").prop('readonly', true);
 	        if (doc.Timepoint != null)  {
 		    doc.Specimen_ID = doc.Patient_ID +  mapTimepoints[doc.Timepoint];

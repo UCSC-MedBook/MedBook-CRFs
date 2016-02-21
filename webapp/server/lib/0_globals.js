@@ -17,21 +17,21 @@ Patient_ID_Type = {
   }
 };
 
-Sample_ID_Type = {
-  "Field_Name": "Sample_ID",
-  "label": "Sample ID",
-  type: "String",
-  autoform: {
-           type: 'Sample_ID',
-  }
-};
-
 Specimen_ID_Type = {
   "Field_Name": "Specimen_ID",
   "label": "Specimen ID",
   type: "String",
   autoform: {
-           type: 'Sample_ID',
+       type: 'Specimen_ID',
+  }
+};
+
+Sample_ID_Type = {
+  "Field_Name": "Sample_ID",
+  "label": "Sample ID",
+  type: "String",
+  autoform: {
+       type: 'Sample_ID',
   }
 };
 

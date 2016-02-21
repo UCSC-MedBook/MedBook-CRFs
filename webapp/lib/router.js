@@ -2,13 +2,6 @@ Router.onBeforeAction(function () {
   // all properties available in the route function
   // are also available here such as this.params
 
-  /*var user = Meteor.user();
-  if (user && user.profile && user.profile.collaborations && user.profile.collaborations.indexOf("WCDT")) {
-      this.next();
-      return;
-  }
-  this.render('signin');*/
-
   if(!Meteor.user()){
     this.render('signin');
   }else{
@@ -54,6 +47,8 @@ Router.map(function() {
   this.route('CRFsShow', {
     path: '/CRF/:_study/:_crfName/',
     onBeforeAction: function() {
+      var path = Iron.Location.get().path;
+      console.log("path", path);
       Session.set("CurrentStudy", this.params._study);
       Session.set("currentForm", this.params._crfName);
       Session.set("PreferredTableOrder", personalPreferredTableOrder());
@@ -62,17 +57,20 @@ Router.map(function() {
       if (this.params.query && 'q' in this.params.query)
           Session.set("CRF_filter", this.params.query.q)
 
+/*
       if (Meteor.userId()) {
         var data = Iron.Location.get().path;
         if (data)
             Meteor.users.update(Meteor.userId(), {$set: {"profile.lastCRFroute": data}});
       }
+*/
       this.next();
     },
     waitOn: function() {
       return [
 	  Meteor.subscribe('metadata'),
 	  Meteor.subscribe('studies'),
+	  Meteor.subscribe('Following', {Study_ID: currentStudy()}),
 	  Meteor.subscribe('myForms', this.params._crfName, currentStudy())
       ];
     },

@@ -1,0 +1,4 @@
+.follow-span .following-btn { display:block; }
+.follow-span  .unfollow-btn { display:none; }
+.follow-span:hover .following-btn { display:none; }
+.follow-span:hover  .unfollow-btn { display:block; }

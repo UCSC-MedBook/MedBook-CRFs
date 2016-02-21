@@ -1,7 +1,16 @@
 LoadMetadata("prad_wcdt",{
     "Form_Name": "Tissue_Specimen_form",
     "Fields": [
-	Sample_ID_Type,
+
+	Patient_ID_Type,
+	{
+
+	    "Field_Name": "Specimen_ID",
+	    "label": "Specimen ID",
+	    "optional": false,
+	    "type": "String"
+	},
+
 	{
 	    "Field_Name": "Timepoint",
 	    "allowedValues": [
@@ -38,13 +47,17 @@ LoadMetadata("prad_wcdt",{
 	    "label": "Number of Cores Collected",
 	    "type": "Number"
 	},
-	{
-	    "Field_Name": "Cores",
-	    "optional": true,
-	    "type": [
-		null
-	    ]
+
+        {
+	    "Field_Name": "Cores.$.Core_ID",
+	    "type": "String",
 	},
+
+        {
+	    "Field_Name": "Cores.$.Core_State",
+	    "type": "String",
+	},
+
 	{
 	    "Field_Name": "Fixed_Core_Ship_Date",
 	    "autoform": autoformDate,
@@ -70,7 +83,12 @@ LoadMetadata("prad_wcdt",{
 	    "Field_Name": "Core_Notes",
 	    "label": "Core Notes",
 	    "optional": true,
-	    "type": "String"
+	    "type": "String",
+	     autoform: {
+	      type: "textarea",
+	      rows: 10
+	    }
+
 	},
 	{
 	    "Field_Name": "TimepointNotes",

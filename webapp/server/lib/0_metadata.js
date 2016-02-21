@@ -3,7 +3,7 @@
 
 LoadMetadata = function(study, preload) {
     Meteor.startup(function() {
-	console.log("LoadMetadata(",study, preload.Form_Name, ")");
+	console.log("LoadMetadata(", study, preload, ")");
        
 
 	var fo = _.pluck(preload.Fields, "Field_Name");
@@ -22,7 +22,7 @@ LoadMetadata = function(study, preload) {
 	    _id: preload.Form_Name,
 	    name: preload.Form_Name,
 	    incompleteCount: 0,
-	    schema: schema,
+	    schema: JSON.stringify(schema),
 	    metadata: preload,
 	    fieldOrder: fo,
 	    study: study,
@@ -34,7 +34,7 @@ LoadMetadata = function(study, preload) {
 
 
 	var ret = Collections.studies.update({id: study}, {$addToSet: {tables: preload.Form_Name}});
-	console.log("ret", ret);
+	// console.log("ret", ret);
 	if (ret == 0)
 	   throw new Error("could not update " + study + " with " + preload.Form_Name);
 

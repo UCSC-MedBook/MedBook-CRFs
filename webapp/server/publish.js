@@ -1,28 +1,16 @@
 
-Meteor.publish('patient', function(patient_id) {
+Meteor.publish('patient', function(patient_id, study_id) {
   console.log("publish patient", patient_id);
   if (this.userId == null)
       return [];
 
   var user = Meteor.users.findOne({_id: this.userId});
-  var collaborations = user.profile.collaborations;
-  if (collaborations && collaborations.indexOf("WCDT") >= 0) {
-
-      // kosher user
-      var manyCursors = []
-      CRFs.map(function(collName) {
-          var coll = Collections[collName];
-          var cursor = coll.find({
-              $or: [
-                  {Patient_ID: patient_id},
-				          {Sample_ID: { $regex: "^" + patient_id + ".*"}}
-              ]});
-          console.log("publish patient", patient_id, collName);
-          manyCursors.push(cursor);
-      });
-      return manyCursors;
-  }
-  return [];
+  var collaborations = user.getAssociatedCollaborations();
+  return CRFs.find({Study_ID: study_id,
+		  $or: [
+		      {Patient_ID: patient_id},
+		      {Sample_ID: { $regex: "^" + patient_id + ".*"}}
+		  ]});
 });
 
 Meteor.publish('myForms', function(formName, studyName) {
@@ -30,8 +18,8 @@ Meteor.publish('myForms', function(formName, studyName) {
   if (this.userId == null)
       return [];
   var user = Meteor.users.findOne({_id: this.userId});
-  var collaborations = user.profile.collaborations;
-  if (collaborations == null) collaborations = [];
+  debugger;
+  var collaborations = user.getAssociatedCollaborations();
 
   var study = Collections.studies.findOne({id: studyName, 
       $or: [ 
@@ -48,7 +36,7 @@ Meteor.publish('myForms', function(formName, studyName) {
 
   var q = {CRF:formName};
 
-  var schema = coll.schema;
+  var schema = JSON.parse(coll.schema);
   if ("study" in schema)
        q.study = studyName;
   else if ("studies" in schema)

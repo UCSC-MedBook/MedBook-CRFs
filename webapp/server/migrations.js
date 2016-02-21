@@ -36,12 +36,17 @@ Meteor.startup( function() {
         var migration = Collections.DataMigrations.findOne({name: migrationName});
         if (migration == null) {
             console.log("migrating", migrationName);
-            func();
-            Collections.DataMigrations.insert({name: migrationName});
+	    try {
+		func();
+                Collections.DataMigrations.insert({name: migrationName});
+                console.log("migrating", migrationName, "success");
+	    } catch (error) {
+                console.log("migrating", migrationName, "FAIL", error);
+	    }
         }
     }
 
-    console.log("before");
+    /* DANGEROUS 
     Migration('CRFunification 20151107-A', function() {
         Collections.CRFs.remove({});
         console.log("Migration before CRFs", Collections.CRFs.find().count());
@@ -51,7 +56,42 @@ Meteor.startup( function() {
         console.log("Migration after CRFs", Collections.CRFs.find().count());
         ingestOncore();
     });
-    console.log("after");
+    */
+    Migration('Add BL 20160131-D', function() {
+        var n = 0;
+	Specimen_IDs  = [];
+
+        Collections.CRFs.find({CRF: "Tissue_Specimen_form", Patient_ID: /DTB.*/ }).forEach(
+	  function (doc) {
+	    var Specimen_ID = doc.Patient_ID + "BL";
+	    Specimen_IDs.push(Specimen_ID);
+	    n += Collections.CRFs.update({_id: doc._id},
+	        {$set: {Specimen_ID: Specimen_ID, Study_ID: "prad_wcdt" }});
+	});
+        var updateResult = Collections.studies.update(
+           { id: "prad_wcdt" },
+	   { $addToSet: { Specimen_IDs: { $each: Specimen_IDs } } }
+         );
+	console.log('Add BL n=', n);
+    });
+
+    Migration("Rename core fields 20160205 C", function() {
+        var n = 0;
+	Collections.CRFs.find({ CRF: 'Tissue_Specimen_form',
+	    'Cores.0.ID': { $exists: 1 } }).forEach(function(item) {    
+		for(i = 0; i != item.Cores.length; ++i) {
+		    item.Cores[i].Core_ID = item.Cores[i].ID;
+		    delete item.Cores[i].ID;
+
+		    item.Cores[i].Core_State = item.Cores[i].Core;
+		    delete item.Cores[i].Core;
+		}
+
+		Collections.CRFs.update({_id: item._id}, item);
+		n++;
+	    });
+	console.log("n=", n );
+    });
 
     function maintain_prad_wcdt(field)  {
         var fields = {};
@@ -71,7 +111,7 @@ Meteor.startup( function() {
         // console.log("maintain_prad_wcdt", updateClause, sortedSet, updateResult, "\nfinal", final);
 
       };
-         maintain_prad_wcdt("Patient_ID");
-         maintain_prad_wcdt("Sample_ID");
+      maintain_prad_wcdt("Patient_ID");
+      maintain_prad_wcdt("Sample_ID");
 
 });

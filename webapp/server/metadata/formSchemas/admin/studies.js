@@ -61,6 +61,21 @@ LoadMetadata("admin", {
 	    "type": [
 		null
 	    ]
-	}
+	},
+	{
+	    "Field_Name": "Patient_IDs",
+	    "optional": true,
+	    "type": "[String]"
+	},
+	{
+	    "Field_Name": "Specimen_IDs",
+	    "optional": true,
+	    "type": "[String]"
+	},
+	{
+	    "Field_Name": "Sample_IDs",
+	    "optional": true,
+	    "type": "[String]"
+	},
     ]
 });

@@ -1,9 +1,6 @@
 Meteor.startup( function() {
     console.log("initialize Migrations");
 
-    if (!('DataMigrations' in Collections)) {
-        Collections.DataMigrations = new Meteor.Collection("DataMigrations");
-    }
 
     function migrateCollection(collName, query) {
 
@@ -31,20 +28,6 @@ Meteor.startup( function() {
         console.log("migration", collName, count, countInserted, query);
     };
 
-
-    Migration = function(migrationName, func) {
-        var migration = Collections.DataMigrations.findOne({name: migrationName});
-        if (migration == null) {
-            console.log("migrating", migrationName);
-	    try {
-		func();
-                Collections.DataMigrations.insert({name: migrationName});
-                console.log("migrating", migrationName, "success");
-	    } catch (error) {
-                console.log("migrating", migrationName, "FAIL", error);
-	    }
-        }
-    }
 
     /* DANGEROUS 
     Migration('CRFunification 20151107-A', function() {
@@ -111,7 +94,36 @@ Meteor.startup( function() {
         // console.log("maintain_prad_wcdt", updateClause, sortedSet, updateResult, "\nfinal", final);
 
       };
+
       maintain_prad_wcdt("Patient_ID");
       maintain_prad_wcdt("Sample_ID");
+
+      Migration("expression2 to gene_expression 20160221", function() {
+         var gene_expression = new Meteor.Collection("gene_expression");
+         gene_expression._ensureIndex({gene_label: 1, sample_label: 1});
+
+          Expression.find().forEach(function(doc) {
+	    Object.keys(doc.samples).map(function(sample_label) {
+	       var log2 = doc.samples[sample_label].rsem_quan_log2;
+	       var log = log2 * Math.LN2;
+	       var counts = Math.exp(log) - 1; // approximate counts
+	       var data = {
+		    gene_label: doc.gene,
+		    sample_label: sample_label,
+		    study_label: doc.Study_ID,
+		    collaborations: doc.Collaborations,
+		    values: {
+			"quantile_counts_log" : log2,
+			"quantile_counts" : counts,
+		    }
+		};
+		var old = gene_expression.findOne( {gene_label: doc.gene, sample_label: sample_label});
+		if (old == null) {
+		    gene_expression.insert(data);
+		}
+
+	    }) // keys.map
+	}) //expression2.foreach
+     }); // Migration
 
 });

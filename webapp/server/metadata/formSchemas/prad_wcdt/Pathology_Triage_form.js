@@ -4,19 +4,21 @@ LoadMetadata("prad_wcdt", {
 
       Patient_ID_Type,
 
-      Specimen_ID_Type,
-
+      /*
       {
         "type": "String",
         "Field_Name": "Timepoint",
         "allowedValues": [
           "Baseline",
-          "3 Months",
           "Progression",
           "Progression2",
           "Progression3"
         ]
       },
+      */
+
+      Specimen_ID_Type,
+
       {
         "type": "String",
         "Field_Name": "Institution",
@@ -50,7 +52,9 @@ LoadMetadata("prad_wcdt", {
       },
       {
         "type": "String",
-        "Field_Name": "Biopsy_Site_Other"
+        "Field_Name": "Biopsy_Site_Other",
+	"label": "Other (optional, use if Biopsy Site is Other)",
+        "optional": true,
       },
       {
         "type": "String",
@@ -92,12 +96,12 @@ LoadMetadata("prad_wcdt", {
         "allowedValues": [
           "Adenocarcinoma",
           "Small Cell",
-          "ANPC",
+          "IAC",
           "Indeterminate",
           "Atypical with Adeno Architecture",
-          "Adeno+ANPC",
+          "Adeno+IAC",
           "Adeno+SC",
-          "ANPC+SC",
+          "IAC+SC",
           "N/A"
         ]
       },

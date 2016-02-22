@@ -36,7 +36,7 @@ LoadMetadata("prad_wcdt",{
 		"Adenocarcinoma",
 		"Possible SC",
 		"Small Cell",
-		"ANPC",
+		"IAC",
 		"Mixed",
 		"N/A"
 	    ],
@@ -49,12 +49,12 @@ LoadMetadata("prad_wcdt",{
 	    "allowedValues": [
 		"Adenocarcinoma",
 		"Small Cell",
-		"ANPC",
+		"IAC",
 		"Indeterminate",
 		"Atypical with Adeno Architecture",
-		"Adeno+ANPC",
+		"Adeno+IAC",
 		"Adeno+SC",
-		"ANPC+SC",
+		"IAC+SC",
 		"N/A"
 	    ],
 	    "label": "Final Histology Call",

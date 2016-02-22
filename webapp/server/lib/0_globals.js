@@ -35,7 +35,6 @@ Sample_ID_Type = {
   }
 };
 
-
 CoreAllowedValues = [
         "A",
         "B",

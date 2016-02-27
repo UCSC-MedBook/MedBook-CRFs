@@ -98,6 +98,9 @@ Meteor.startup( function() {
       maintain_prad_wcdt("Patient_ID");
       maintain_prad_wcdt("Sample_ID");
 
+      /*
+       * Withdrawn because gene_expression format is not viable
+       *
       Migration("expression2 to gene_expression 20160221", function() {
          var gene_expression = new Meteor.Collection("gene_expression");
          gene_expression._ensureIndex({gene_label: 1, sample_label: 1});
@@ -124,6 +127,8 @@ Meteor.startup( function() {
 
 	    }) // keys.map
 	}) //expression2.foreach
+
+        */
      }); // Migration
 
 });

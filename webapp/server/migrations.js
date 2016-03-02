@@ -127,7 +127,6 @@ Meteor.startup( function() {
      }); // Migration
 
      function read_TCGA_Clinical_Matrix(filename, Study_ID, CRF) {
-
 	 fs = Npm.require("fs");
 	 console.log("filename", filename);
 	 var lines = fs.readFileSync(filename, "utf8").split("\n")
@@ -148,6 +147,7 @@ Meteor.startup( function() {
 		 console.log("failed to upsert", doc);
 		 throw new Error("failed to upsert", String(doc));
 	     }
+
 	     count++;
 	     if ((count % 100) == 0)
 		 console.log("progress", count, "/", array.length);
@@ -160,6 +160,6 @@ Meteor.startup( function() {
 	 var filename = process.env.MEBBOOK_APP_DATA+ "/TCGA_PANCAN_clinicaMatrix.tsv";
 	 var count = read_TCGA_Clinical_Matrix(filename, "tcga", "TCGA_Clinical_Info");
 	 console.log("Ingest TCGA PANCAN ingest", count);
-	 throw new Error("not done");
      }); // Migration
+
 });

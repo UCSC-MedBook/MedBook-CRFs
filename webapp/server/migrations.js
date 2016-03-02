@@ -126,4 +126,40 @@ Meteor.startup( function() {
 	}) //expression2.foreach
      }); // Migration
 
+     function read_TCGA_Clinical_Matrix(filename, Study_ID, CRF) {
+
+	 fs = Npm.require("fs");
+	 console.log("filename", filename);
+	 var lines = fs.readFileSync(filename, "utf8").split("\n")
+	 var array = lines.map(function(line) { return line.split("\t")});
+	 var header = array[0];
+
+	 var count = 0;
+	 for (var i = 1; i < array.length; i++) {
+	     var Sample_ID = array[i][0];
+	     var Patient_ID = Sample_ID.substring(0,12);
+	     var doc = { Patient_ID: Patient_ID, Study_ID: Study_ID, CRF: CRF };
+
+	     for (var j = 0; j < header.length; j++) 
+	         doc[header[j]] = array[i][j];
+	     
+             var ret = Collections.CRFs.direct.upsert({ Sample_ID: doc.Sample_ID, CRF: doc.CRF }, doc);
+	     if (ret.numberAffected != 1) {
+		 console.log("failed to upsert", doc);
+		 throw new Error("failed to upsert", String(doc));
+	     }
+	     count++;
+	     if ((count % 100) == 0)
+		 console.log("progress", count, "/", array.length);
+	 }
+	 return count;
+     }
+
+     Migration("Ingest TCGA PANCAN 20160302", function() {
+	 var CRF = "TCGA_Clinical_Info";
+	 var filename = process.env.MEBBOOK_APP_DATA+ "/TCGA_PANCAN_clinicaMatrix.tsv";
+	 var count = read_TCGA_Clinical_Matrix(filename, "tcga", "TCGA_Clinical_Info");
+	 console.log("Ingest TCGA PANCAN ingest", count);
+	 throw new Error("not done");
+     }); // Migration
 });

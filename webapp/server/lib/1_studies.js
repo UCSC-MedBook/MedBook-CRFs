@@ -1,4 +1,25 @@
  Meteor.startup(function() {
+     Collections.studies.upsert({id: "tcga"}, {$set: { 
+	"cbio_id" : "?",
+	 "id" : "tcga", 
+	"type_of_cancer_id" : "many",
+	 "collaborations" : [ "public" ],
+	 "name" : "TCGA Recompute",
+	 "short_name" : "tcga_recompute",
+	"pmid" : "NULL",
+	 "tables" : [],
+	 "description" : "TCGA Recompute",
+	 "public" : true,
+
+	 /*
+	 "gene_expression_index" : {}, 
+	 "expression3" : [],
+	 "expression3_index" : {},
+	 "Sample_IDs" : [],
+	 "Patient_IDs" : [],
+	 */
+     }});
+
      Collections.studies.upsert({id: "admin"}, {$set: { 
 	"cbio_id" : "?",
 	"id" : "admin",

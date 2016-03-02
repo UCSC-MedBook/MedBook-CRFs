@@ -128,7 +128,7 @@ Meteor.startup( function() {
 	    }) // keys.map
 	}) //expression2.foreach
 
-        */
      }); // Migration
+     */
 
 });

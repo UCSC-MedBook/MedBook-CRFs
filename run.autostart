@@ -1,6 +1,6 @@
 # export NODE_OPTIONS='--debug'
 cd webapp
 
-# mine
+export MEBBOOK_APP_DATA=/data/MedBook/MedBook-CRFs5/data
 export ROOT_URL=http://$HOST/CRF/
 meteor  --port $PORT >& "../logs/log.crf.$$"

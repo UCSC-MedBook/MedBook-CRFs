@@ -70,9 +70,8 @@ Template.registerHelper("personalPreferredTableOrder", personalPreferredTableOrd
 Template.registerHelper("fixUnderscores", function(f) {
     if (f == null)
 	return "";
-    return f.replace(/_/g, " ")});
-
-
+    return f.replace(/_/g, " ")
+});
 
 
 collectionsInPreferredTableOrder =  function () {

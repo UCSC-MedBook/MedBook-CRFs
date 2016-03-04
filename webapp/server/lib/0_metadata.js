@@ -3,7 +3,7 @@
 
 LoadMetadata = function(study, preload) {
     Meteor.startup(function() {
-	console.log("LoadMetadata(", study, preload, ")");
+	// console.log("LoadMetadata(", study, preload, ")");
        
 
 	var fo = _.pluck(preload.Fields, "Field_Name");

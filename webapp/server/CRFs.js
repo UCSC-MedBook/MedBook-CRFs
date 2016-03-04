@@ -1,21 +1,41 @@
+SecurityCRF = function(userId, doc) {
+    var user = Meteor.users.findOne({_id: userId});
+    if (user == null) {
+	console.log("Security CRF:", userId, "unknown user");
+        return false;
+    }
+
+    var study = Collections.studies.findOne({id:doc.Study_ID});
+    if (study == null || study.collaborations == null || study.collaborations.length != 1) {
+	console.log("SecurityCRF", userId, "bad study");
+	return false;
+    }
+    var collaboration = Collaborations.findOne({name: study.collaborations[0], administrators: user.defaultEmail() });
+
+    if (collaboration == null) {
+       msg = "Security CRF:" +  userId + " " +  user.defaultEmail() + " not an administrator of collaboration " + " " + study.collaborations[0] 
+	   + " which is requried by " + study.id;
+       console.log(msg);
+
+       throw new Error(msg);
+       return false;
+    }
+    return true 
+
+};
+
+Meteor.methods({
+    securityCRF: function(doc) {
+	return SecurityCRF(this.userId, doc);
+    }
+});
+
 
 Collections.CRFs.allow({
-    insert: function (userId, doc) {
-	console.log("allow insert called");
-	// the user must be logged in, and the document must be owned by the user
-	return true || (userId && doc.owner === userId);
-    },
-    update: function (userId, doc, fields, modifier) {
-	console.log("allow update called");
-	// can only change your own documents
-	return true || doc.owner === userId;
-    },
-    remove: function (userId, doc) {
-	console.log("allow remove called");
-	// can only remove your own documents
-	return true || doc.owner === userId;
-    } //,
-    // fetch: ['owner']
+    insert: SecurityCRF,
+    update: SecurityCRF,
+    remove: SecurityCRF,
+    fetch: ['collaborations']
 });
 
 Collections.CRFs.after.insert(function (userId, doc) { 
@@ -73,21 +93,34 @@ Collections.CRFs.after.remove(function (userId, doc) {
 
 
 
+
 Collections.studies.allow({
     insert: function (userId, doc) {
-	console.log("allow insert called");
-	// the user must be logged in, and the document must be owned by the user
-	return true || (userId && doc.owner === userId);
+	console.log("studies allow insert called");
+	if (doc.collaborations == null || doc.collaborations.length != 1)
+	    return false;
+	var user = Meteor.users.findOne({_id: userId});
+	var collaboration = Collaborations.findOne({name: doc.collaborations[0], administrators: user.defaultEmail() });
+	if (collaboration == null)
+	   return false;
+	return true 
     },
+
     update: function (userId, doc, fields, modifier) {
-	console.log("allow update called");
-	// can only change your own documents
-	return true || doc.owner === userId;
+	var study = Collections.studies.findOne({_id:doc._id});
+	if (study.name != doc.name)
+	     return false;
+	if (study.collaborations == null || study.collaborations.length != 1)
+	    return false;
+	var user = Meteor.users.findOne({_id: userId});
+	debugger
+	var collaboration = Collaborations.findOne({name: doc.collaborations[0], administrators: user.defaultEmail() });
+	if (collaboration == null)
+	   return false;
+	return true 
     },
     remove: function (userId, doc) {
-	console.log("allow remove called");
-	// can only remove your own documents
-	return true || doc.owner === userId;
+	return false;
     } //,
     // fetch: ['owner']
 });

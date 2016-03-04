@@ -1,5 +1,20 @@
 function summarizeTreatment(table, treatment) {
 
+    var s = treatment.Patient_ID;
+    var dn = treatment.Drug_Name;
+    if (dn == null)
+        dn = treatment.Treatment_Details;
+    s += " " + dn + ": ";
+    s += " " + moment(new Date(treatment.Start_Date)).utc().format("MM/DD/YYYY")
+    s +='-';
+    if (treatment.Stop_Date)
+        s += moment(new Date(treatment.Stop_Date)).utc().format("MM/DD/YYYY")
+    else if (treatment.Stop_Date_Ext)
+        s += treatment.Stop_Date_Ext;
+    return s;
+}
+function summarizeTreatmentHTML(table, treatment) {
+
     var s = "<div style='width:300px;'><a href='/CRF/prad_wcdt/" + table + "/?q=" +  treatment.Patient_ID + "'>";
     var dn = treatment.Drug_Name ;
     if (dn == null)
@@ -296,8 +311,8 @@ Meteor.startup(function() {
                       target.CRF = t;
                       target.Study_ID = "prad_wcdt";
 
-                      // var ret = Collections.CRFs.upsert(target, row);
-                      var ret = Collections.CRFs.insert(row);
+                      // var ret = Collections.CRFs.direct.upsert(target, row);
+                      var ret = Collections.CRFs.direct.insert(row);
                   }
               }
           } else {
@@ -325,8 +340,8 @@ Meteor.startup(function() {
                       obj.Study_ID = "prad_wcdt";
                       target.CRF = t;
                       target.Study_ID = "prad_wcdt";
-                      // ret = Collections.CRFs.upsert(target, obj);
-                      ret = Collections.CRFs.insert(obj);
+                      // ret = Collections.CRFs.direct.upsert(target, obj);
+                      ret = Collections.CRFs.direct.insert(obj);
                   }
           }
       };
@@ -452,7 +467,7 @@ Meteor.startup(function() {
 
 
   		try {
-   			var ret = Collections.CRFs.upsert(
+   			var ret = Collections.CRFs.direct.upsert(
   				{CRF: "Clinical_Info", "Study_ID":"prad_wcdt", 'Sample_ID':sample_id},
   				{$set:samples[sample_id]},
   				{upsert:true}
@@ -509,7 +524,7 @@ Meteor.startup(function() {
   			samples[sample_id]['biopsy_date'] = sample.Date_of_Procedure;
   			map_biopsy_site(samples[sample_id]);
   			try {
-  	 			var ret = Collections.CRFs.update(
+  	 			var ret = Collections.CRFs.direct.update(
   					{CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
   					{$set:samples[sample_id]},
   					{upsert:true}
@@ -540,7 +555,7 @@ Meteor.startup(function() {
   			var data = {'sample_ID':sample_id}
   			prior[sample_id][drug] = 'Resistant'
   		}
-                ret = Collections.CRFs.update(
+                ret = Collections.CRFs.direct.update(
                             {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
                             { $addToSet: { prior_txs: summarizeTreatment("SU2C_Prior_TX_V3", treatment) }});
   	})
@@ -563,7 +578,7 @@ Meteor.startup(function() {
                                         samples[sample_id]['Patient_ID'] = sample_id
                                     samples[sample_id]['Abiraterone'] = prior[sample_id]['Abiraterone']
                                     samples[sample_id]['Enzalutamide'] = prior[sample_id]['Enzalutamide']
-                                    var ret = Collections.CRFs.update(
+                                    var ret = Collections.CRFs.direct.update(
                                                 {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
   						{$set:samples[sample_id]},
   						{upsert:true} );
@@ -577,7 +592,7 @@ Meteor.startup(function() {
   		/*	try {
 
   				console.log("update ",sample_id,{ $set: update_j } )
-  	 			var ret = Collections.CRFs.update(
+  	 			var ret = Collections.CRFs.direct.update(
                                         {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
   					{ $set: update_j },
   					{upsert:true}
@@ -612,11 +627,11 @@ Meteor.startup(function() {
   			data.abi_psa_response = treatment.PSA_Response
   		}
 
-  		var ret = Collections.CRFs.update(
+  		var ret = Collections.CRFs.direct.update(
                         {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
   			{$set:data},
   			{upsert:true})
-                ret = Collections.CRFs.update( 
+                ret = Collections.CRFs.direct.update( 
                             {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
                             { $addToSet: { subsequent_txs: summarizeTreatment("SU2C_Subsequent_Treatment_V1", treatment) }});  // TCG 8/2/2015
   	})
@@ -656,20 +671,20 @@ Meteor.startup(function() {
                         {Patient_ID: progression.Patient_ID},
                         {Start_Date: {$lt: progression.biopsy_date}}
                     ]}).forEach(function(treatment) {
-                        Collections.CRFs.update( target,
+                        Collections.CRFs.direct.update( target,
                             { $push: { prior_txs: summarizeTreatment(collName, treatment) }});  // TCG 8/2/2015
 
                         if (treatment.Drug_Name == "Abiraterone") {
-                            ret = Collections.CRFs.update( target, { $set: { Abiraterone: "Resistant"}});
+                            ret = Collections.CRFs.direct.update( target, { $set: { Abiraterone: "Resistant"}});
                         }
 
                         if (treatment.Drug_Name == "Enzalutamide") {
-                            ret = Collections.CRFs.update( target, { $set: { Enzalutamide: "Resistant"}});
+                            ret = Collections.CRFs.direct.update( target, { $set: { Enzalutamide: "Resistant"}});
                         }
                     });
                 } // copyForward
 
-            Collections.CRFs.update( {_id: progression._id},
+            Collections.CRFs.direct.update( {_id: progression._id},
                 { $set:   {
                     Enzalutamide: "Naive",
                     Abiraterone: "Naive"

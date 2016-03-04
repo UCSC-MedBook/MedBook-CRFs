@@ -1,3 +1,4 @@
+
 function summarizeTreatment(table, treatment) {
 
     var s = treatment.Patient_ID;
@@ -13,6 +14,8 @@ function summarizeTreatment(table, treatment) {
         s += treatment.Stop_Date_Ext;
     return s;
 }
+
+// Obsolete function
 function summarizeTreatmentHTML(table, treatment) {
 
     var s = "<div style='width:300px;'><a href='/CRF/prad_wcdt/" + table + "/?q=" +  treatment.Patient_ID + "'>";

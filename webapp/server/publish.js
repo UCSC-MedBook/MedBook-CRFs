@@ -18,7 +18,6 @@ Meteor.publish('myForms', function(formName, studyName) {
   if (this.userId == null)
       return [];
   var user = Meteor.users.findOne({_id: this.userId});
-  debugger;
   var collaborations = user.getAssociatedCollaborations();
 
   var study = Collections.studies.findOne({id: studyName, 
@@ -27,8 +26,10 @@ Meteor.publish('myForms', function(formName, studyName) {
 	    { collaborations: {$in: collaborations }}
 	    ]
   });
-  if (study == null)
+  if (study == null) {
+      console.log("no study");
       return [];
+  }
 
   var coll = Collections.Metadata.findOne({study: { $in: [ "common", studyName]}, name: formName});
   if (coll == null)
@@ -58,7 +59,15 @@ Meteor.publish('studies', function() {
   if (this.userId == null)
       return [];
 
-  var cursor = Collections.studies.find();
+  var user = Meteor.users.findOne({_id: this.userId});
+  var collaborations = user.getAssociatedCollaborations();
+
+  var cursor = Collections.studies.find({
+      $or: [ 
+	    { public: true},
+	    { collaborations: {$in: collaborations }}
+	    ]
+  });
   console.log("publish studies", cursor.count());
   return cursor;
 });

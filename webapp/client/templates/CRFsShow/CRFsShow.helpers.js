@@ -8,6 +8,13 @@ Session.set("RowsPerPage", 10);
 
 LastSubmit = null;
 
+function handleError(error, id) {
+    if (error) {
+        var userEmail = Meteor.user().defaultEmail();
+        $(".ExceptionMesg").html("<big>" + userEmail + " cannot make this change to this form because: " +  error.message + "<big>"); 
+    }
+}
+
 CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
 
     var CurrentStudy = Session.get("CurrentStudy");
@@ -25,12 +32,12 @@ CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
     if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
         console.log("updateDoc", updateDoc);
 
-        var v = collection.update({_id: currentDoc._id}, updateDoc );
+        var v = collection.update({_id: currentDoc._id}, updateDoc, handleError);
         if (v != 1) 
             console.log("Updating wasnt successful.  :(", v);
         insertDoc._id = currentDoc.id;
     } else {
-        insertDoc._id = collection.insert(insertDoc);
+        insertDoc._id = collection.insert(insertDo, handleError);
     }
 
     LastSubmit = insertDoc.Patient_ID;

@@ -56,7 +56,7 @@ LoadMetadata("prad_wcdt",{
 	},
 	{
 	    "Field_Name": "Trichotomy",
-	    "type": "String"
+	    "type": "String",
 	    "allowedValues": [
 		"Small Cell",
 		"Adeno", 

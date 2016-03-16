@@ -331,11 +331,13 @@ Meteor.startup(function() {
                           mapIfPossible(obj, "Study_Site", SU2C_Center_map);
 
                       var target = {};
-                      if ('Patient_ID' in schemaMap[t]) {
+                      var sm = schemaMap[t];
+
+                      if ('Patient_ID' in sm) {
                            target.Patient_ID = Patient_ID;
                            obj.Patient_ID    = Patient_ID;
                       }
-                      if ('Sample_ID' in schemaMap[t]) {
+                      if ('Sample_ID' in sm) {
                            obj.Sample_ID = Sample_ID;
                            target.Sample_ID = Sample_ID;
                       }
@@ -401,10 +403,14 @@ Meteor.startup(function() {
 
 
   ingestOncore = function () {
+    ++SuppressEmail;
     var study  = Collections.studies.findOne({id:"prad_wcdt"})
     var schemaMap = {};
     Collections.Metadata.find({study: "prad_wcdt", name: {$in: study.tables}}).forEach(function (crf) {
-        schemaMap[crf.name] = crf.schema;
+        var sm = crf.schema;
+        if (typeof(sm) == "string")
+           sm = JSON.parse(sm);
+        schemaMap[crf.name] = sm;
     });
 
     // We re-import these CRFs every time
@@ -422,6 +428,7 @@ Meteor.startup(function() {
     console.log("ingestClinical- Starting Cohort Level Analysis")
     ingestClinical();
     console.log("ingestClinical- Finished ")
+    --SuppressEmail;
   }
 
     function find(crf) {
@@ -430,6 +437,7 @@ Meteor.startup(function() {
     }
 
     ingestClinical = function () {
+        ++SuppressEmail;
         var study  = Collections.studies.findOne({id:"prad_wcdt"})
 
         Collections.CRFs.remove({CRF: "Clinical_Info", Study_ID: "prad_wcdt"});
@@ -639,6 +647,7 @@ Meteor.startup(function() {
                             { $addToSet: { subsequent_txs: summarizeTreatment("SU2C_Subsequent_Treatment_V1", treatment) }});  // TCG 8/2/2015
   	})
       propagateClinical();
+      --SuppressEmail;
   }
   fixSample_IDs = function() {
       console.log("fixSample_IDs")

@@ -60,8 +60,12 @@ NotifyFollowers = function(userId, doc, change) {
    if (followers.length > 0)
        sendEmail(followers, "MedBook CRF Change Notification", summary);
 }
+SuppressEmail = 0;
 
 sendEmail = function(to, subject, html) {
+    if (SuppressEmail)
+       return;
+
     console.log("sendEmail", to, subject,html);
     Email.send({
       to: to.join(","),

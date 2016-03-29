@@ -5,7 +5,7 @@ Template.contextContentStudyChooser.helpers({
   }
 });
 Template.contextContentStudyChooser.events({
-    "change #currentStudy": function (event) {
+    "click .setCurrentStudy": function (event) {
         var currentStudy = event.target.value;
 	Session.set("CurrentStudy", currentStudy);
 	Router.go("/CRF/"+currentStudy);

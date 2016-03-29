@@ -8,12 +8,7 @@
        </div>
 
     <div class="MainCRFLists panel panel-default">
-      <div class="panel-heading" data-toggle="collapse" data-target="#p1" > 
-          Study 
-      </div>
-      <div id="p1" class="panel-body collapse">
          {{>contextContentStudyChooser}}
-      </div>
     </div>
 
        <div id="accountEntryButtons" class="MainCRFLists btns-group-vertical">
@@ -25,7 +20,6 @@
        </div>
        {{userContext}}
 
-      {{>MainCRFLists}}
 
     </section>
 
@@ -51,26 +45,3 @@
   </div>
 </template>
 
-<template name="MainCRFLists">
-      <div class="MainCRFLists">
-       <h3><center>Find Form</center></h3>
-<!--
-        <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
--->
-        {{#each personalPreferredTableOrder}}
-          <a id="{{this}}Button" href="/CRF/lists/{{this}}" data-crfname="{{this}}" class="notdraggable list-1-CRF {{activeListClass}}" title="{{this}}">
-            {{#if userId}}
-              <span class="icon-lock"></span>
-            {{/if}}
-            {{#if incompleteCount}}
-              <span class="count-list">{{incompleteCount}}</span>
-            {{/if}}
-            {{fixUnderscores this}}
-            <span class="handle" title="Drag handle up or down to rearrange order">
-                <i class="fa fa-reorder"></i>
-            </span>
-          </a>
-        {{/each}}
-
-      </div>
-</template>

@@ -1,0 +1,26 @@
+<template name="contextContentStudyChooser">
+    <ul>
+    {{#each studies}}
+	<li>
+	<div>
+	{{#if $.Session.equals 'CurrentStudy' this.id}}
+	    <div value="{{this.id}}"><span style="font-size: 120%;">&#x25bc;</span>{{this.name}}</div>
+	    <ul style="margin-left:20px;">
+		{{#each personalPreferredTableOrder}}
+		    <li>
+		      <a id="{{this}}Button" href="/CRF/lists/{{this}}" data-crfname="{{this}}" 
+			 class="list-1-CRF {{activeListClass}}" title="{{this}}">
+			{{fixUnderscores this}}
+		      </a>
+		    </li>
+		{{/each}}
+	    </ul>
+
+	{{else}}
+	    <a href="/CRF/{{this.id}}" class="setCurrentStudy"><span>&nbsp;&#x25b6;</span>{{this.name}}</a>
+	{{/if}}
+	</div>
+	</li>
+    {{/each}}
+    </ul>
+</template>

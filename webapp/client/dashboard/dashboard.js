@@ -16,6 +16,10 @@ Template.dashboard.helpers( {
 
 
     Meteor.call("dashboard", currentStudy, function(err, dashboard) {
+        if (err)
+	    return $('#dashboard').html("<center><H3><font face='verdana' size=10 color='red'>" + String(err) + "</font></H3></center>");
+
+
 	var labels = dashboard._allLabels;
 	delete  dashboard["_allLabels"];
 
@@ -44,7 +48,7 @@ Template.dashboard.helpers( {
 		var form = forms[j];
 		var yy = y + (j*h);
 
-		if (i == 0){
+	if (i == 0){
 		  paper.text(x-10, yy+(0.33*h), form).attr(textAttrRows);
 		}
 

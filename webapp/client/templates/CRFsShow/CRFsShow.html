@@ -1,6 +1,12 @@
 <template name="CRFsShow">
   <div class="page lists-show">
     <nav class="js-title-nav">
+      <h1 style="margin:25px;">
+	  <span>
+	      <b>{{$.Session.get 'CurrentStudy'}}&nbsp;study</b>&nbsp;&nbsp;{{$.Session.get 'CurrentForm'}}&nbsp;form&nbsp;&nbsp;
+	      {{>Follow}}
+	  </span>
+      </h1>
       {{#if editing}}
         <form class="js-edit-form list-edit-form">
           <input type="text" name="name" value="{{name}}">
@@ -18,59 +24,27 @@
                  <span class="count-list">{{incompleteCount}}</span>
             -->
         </h1>
+	  <div class="ExceptionMesg" style="background:red"></div>
           {{#if readOnly}}
-
              <div class="topMesg" style="background:white">This is a Read Only Table (information comes from OnCore or other system).</div>
         {{else}}
             {{#if phaseIs "none"}} <div class="topMesg" style="background:lightyellow">Please select a record or insert a new entry</div>
             {{else}}
               {{#if phaseIs "inserting"}} <div class="topMesg" style="background:lightgreen">New record for this form. </div>
               {{else}}
-                  {{#if phaseIs "success"}} <div class="topMesg" style="background:lawngreen">Record successfully submitted.</div>
+                  {{#if phaseIs "success"}} 
+		      <div class="topMesg" style="background:lawngreen">Record successfully submitted.</div>
                   {{else}}
-                        {{#if phaseIs "updating"}} <div class="topMesg" style="background:yellow">Caution: you are updating an existing record. </div>{{/if}}
+		    {{#if phaseIs "updating"}} <div class="topMesg" style="background:yellow">Caution: you are updating an existing record. </div>{{/if}}
               {{/if}}
               {{/if}}
             {{/if}}
         {{/if}}
-      <!--
-        <div class="nav-group right">
-          <div class="nav-item options-mobile">
-
-
-
-            <select class="list-edit">
-              <option disabled selected>Select an action</option>
-              {{#if userId}}
-                <option value="public">Make Public</option>
-              {{else}}
-                <option value="private">Make Private</option>
-              {{/if}}
-              <option value="delete">Delete</option>
-            </select>
-
-            <span class="icon-cog"></span>
-          </div>
-          <div class="options-web">
-            <a class="js-toggle-list-privacy nav-item">
-              {{#if userId}}
-                <span class="icon-lock" title="Make list private"></span>
-              {{else}}
-                <span class="icon-unlock" title="Make list public"></span>
-              {{/if}}
-            </a>
-
-            <a class="js-delete-list nav-item">
-              <span class="icon-trash" title="Delete list"></span>
-            </a>
-          </div>
-        </div>
-        -->
       {{/if}}
     </nav>
 
     {{#if currentForm }}
-        {{>renderAutoForm collection=Collections.CRFs schema=schema fields=fieldOrder doc=currentDoc filter=CRF_filter settings=reactiveTableSettings previousEntries=previousEntries }}
+        {{>renderAutoForm collection=Collections.CRFs schema=schema doc=currentDoc filter=CRF_filter settings=reactiveTableSettings previousEntries=previousEntries }}
     {{/if}}
 
   </div>

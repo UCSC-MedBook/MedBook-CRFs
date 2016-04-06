@@ -34,6 +34,7 @@
 }
 
 
+
 .reactive-table-navigation .rows-per-page {
     float: left;
 }
@@ -61,4 +62,22 @@
 .reactive-table .fa-sort-desc {
 	position: relative;
 	top: 2px;
+}
+.reactive-table-div {
+    min-width: 100px;
+    max-height: 40px;
+    max-width: 200px;
+    overflow: hidden; 
+    text-overflow:ellipsis;
+    -webkit-transition: All 0.5s ease-in-out;
+}
+
+.reactive-table-div:hover {
+    text-overflow: unset;
+    min-width: 100px;
+    max-width:500px;
+    max-height:1000px;
+    overflow: visible;
+    background-color: white;
+    border: 1px solid #000000;
 }

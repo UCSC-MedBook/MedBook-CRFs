@@ -23,6 +23,9 @@ Package.onUse(function(api) {
   api.addFiles('components/Sample_ID/Sample_ID.html', 'client');
   api.addFiles('components/Sample_ID/Sample_ID.js', 'client');
 
+  api.addFiles('components/Specimen_ID/Specimen_ID.html', 'client');
+  api.addFiles('components/Specimen_ID/Specimen_ID.js', 'client');
+
   api.addFiles('server.js', 'server');
 
   api.export('SetCurrentDoc');

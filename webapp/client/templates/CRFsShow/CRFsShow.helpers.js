@@ -6,36 +6,42 @@ Session.set("RowsPerPage", 10);
 
 
 
-stopMe = function() {
-    console.log("stopMe");
-    debugger;
-}
-
 LastSubmit = null;
+
+function handleError(error, id) {
+    if (error) {
+        var userEmail = Meteor.user().defaultEmail();
+        $(".ExceptionMesg").html("<big>" + userEmail + " cannot make this change to this form because: " +  error.message + "<big>"); 
+    }
+}
 
 CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
 
     var CurrentStudy = Session.get("CurrentStudy");
-    var currentForm = Session.get("currentForm");
+    var currentForm = Session.get("CurrentForm");
 
     var collection;
 
-    insertDoc.study = CurrentStudy;
+    insertDoc.Study_ID = CurrentStudy;
     insertDoc.CRF = currentForm;
 
-    updateDoc.$set.study = CurrentStudy;
+    updateDoc.$set.Study_ID = CurrentStudy;
     updateDoc.$set.CRF = currentForm;
     collection = Collections.CRFs;
 
-    if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && insertDoc.Patient_ID == currentDoc.Patient_ID && insertDoc.Sample_ID == currentDoc.Sample_ID) {
+    if (insertDoc && currentDoc && updateDoc && currentDoc._id != null && currentDoc != null && 
+            insertDoc.Patient_ID == currentDoc.Patient_ID && 
+            insertDoc.Sample_ID == currentDoc.Sample_ID &&
+            insertDoc.Specimen_ID == currentDoc.Specimen_ID 
+    ) {
         console.log("updateDoc", updateDoc);
 
-        var v = collection.update({_id: currentDoc._id}, updateDoc );
+        var v = collection.update({_id: currentDoc._id}, updateDoc, handleError);
         if (v != 1) 
             console.log("Updating wasnt successful.  :(", v);
         insertDoc._id = currentDoc.id;
     } else {
-        insertDoc._id = collection.insert(insertDoc);
+        insertDoc._id = collection.insert(insertDo, handleError);
     }
 
     LastSubmit = insertDoc.Patient_ID;
@@ -45,7 +51,7 @@ CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
 }
 Admin_Handler = function(insertDoc, updateDoc, currentDoc) {
 
-    var currentForm = Session.get("currentForm");
+    var currentForm = Session.get("CurrentForm");
     var collection = Collections[currentForm];
 
     if (collection == null)
@@ -73,16 +79,41 @@ Admin_Handler = function(insertDoc, updateDoc, currentDoc) {
         }
 }
 
+function referentialIntegrity(doc, fieldName) {
+   if (study == "admin")
+       return;
+
+   if (fieldName in doc) {
+       var study = Collections.studies.findOne({id: Session.get("CurrentStudy")}, {fields: {_id:1}});
+       if (study != null) {
+	   var value  = doc[fieldName];
+	   var q = {};
+	   q[fieldName +"s"] = value;
+
+	   var ret = Collections.studies.update({_id: study._id}, { $addToSet: q})
+       }
+   }
+}
+
+
 AutoForm.hooks({
   CRFquickForm: {
     onSuccess: function(formType, result) {
       console.log("Autoform.onSuccess.formType", formType);
       console.log("Autoform.onSuccess.result", result);
+      var doc = this.insertDoc;
+      if (doc == null)
+        doc = this.currentDoc;
 
-     fixUpRenderedAutoForm();
+      if (doc != null) {
+       referentialIntegrity(doc, "Patient_ID");
+       referentialIntegrity(doc, "Sample_ID");
+       referentialIntegrity(doc, "Specimen_ID");
+      }
+
+       fixUpRenderedAutoForm();
     },
     onSubmit: function (insertDoc, updateDoc, currentDoc) {
-      debugger;
 
       if ("admin" == Session.get("CurrentStudy"))
           this.done(Admin_Handler(insertDoc, updateDoc, currentDoc));
@@ -130,7 +161,23 @@ reactiveTableSettings = function () {
 
     var collName = this._crfName;
     var schemaObj = schema(collName)._schema;
-    var fields = fieldOrder(collName);
+
+    var fields = [];
+
+    // The SimpleSchemaschema has names like "Cores.$.Core_ID", "Cores.$.Core_State",
+    // We don't need it. But we do need just "Cores". So filter out
+    fieldOrder(collName).map(function (field)  {
+       var k = field.indexOf(".$.");
+       if (k < 0)
+          fields.push(field);
+       else {
+          field = field.substring(0,k);
+	  if (!_.contains(fields, field))
+	      fields.push(field);
+       }
+    });
+
+
     fields = fields.map(
       function(fieldName, i) {
         try {

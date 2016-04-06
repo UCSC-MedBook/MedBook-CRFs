@@ -1,10 +1,28 @@
 var EDITING_KEY = "EditingCRFsShow";
 
+var mapTimepoints = {
+  null           : "BL",
+  "Baseline"     : "BL",
+  "Progression"  : "Pro",
+  "Progression2" : "Pro2",
+  "Progression3" : "Pro3",
+};
+
 AutoForm.hooks({
     CRFquickForm: {
-          docToForm: function(doc, ss) {
-	    doc.Study_ID = Session.get("CurrentStudy");
-	    return doc;
+
+          formToDoc: function(doc) {
+	     if (_.intersection(this.schema._schemaKeys, [ "Patient_ID", "Timepoint", "Specimen_ID"]).length == 3 
+	     && this.schema._schema.Specimen_ID.autoform.type !=  "Specimen_ID" ) {
+
+		$("[name='Specimen_ID']").prop('readonly', true);
+	        if (doc.Timepoint != null)  {
+		    doc.Specimen_ID = doc.Patient_ID +  mapTimepoints[doc.Timepoint];
+		    $("[name='Specimen_ID']").val( doc.Specimen_ID );
+	        }
+	     }
+	     
+	     return doc;
 	  },
     }
 });
@@ -82,7 +100,7 @@ Template.CRFsShow.helpers({
   },
 
   currentForm: function () {
-    Session.set("currentForm", this._crfName);
+    Session.set("CurrentForm", this._crfName);
     return this._crfName;
   },
 
@@ -116,7 +134,7 @@ Template.CRFsShow.helpers({
 	coll =  Collections.Metadata.find().fetch().map(function(f) { return f.metadata })
 	break;
     default:
-	coll = Collections.CRFs.find({CRF: this._crfName});
+	coll = Collections.CRFs.find({CRF: this._crfName}).fetch();
 	break;
       }
     if (coll == null) return false;

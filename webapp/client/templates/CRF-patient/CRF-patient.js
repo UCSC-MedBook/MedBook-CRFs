@@ -67,9 +67,11 @@ window.personalPreferredTableOrder = function () {
 
 Template.registerHelper("personalPreferredTableOrder", personalPreferredTableOrder);
 
-Template.registerHelper("fixUnderscores", function(f) {return f.replace(/_/g, " ")});
-
-
+Template.registerHelper("fixUnderscores", function(f) {
+    if (f == null)
+	return "";
+    return f.replace(/_/g, " ")
+});
 
 
 collectionsInPreferredTableOrder =  function () {

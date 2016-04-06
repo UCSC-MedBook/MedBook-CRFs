@@ -41,7 +41,7 @@ CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
             console.log("Updating wasnt successful.  :(", v);
         insertDoc._id = currentDoc.id;
     } else {
-        insertDoc._id = collection.insert(insertDo, handleError);
+        insertDoc._id = collection.insert(insertDoc, handleError);
     }
 
     LastSubmit = insertDoc.Patient_ID;

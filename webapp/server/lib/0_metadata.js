@@ -5,6 +5,10 @@ LoadMetadata = function(study, preload) {
     Meteor.startup(function() {
 	// console.log("LoadMetadata(", study, preload, ")");
        
+        if (study == "ckcc")
+	    preload.Fields.map(function(field) {
+	       field.optional = true;
+	    });
 
 	var fo = _.pluck(preload.Fields, "Field_Name");
 	var fs = _.clone(preload);

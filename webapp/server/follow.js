@@ -23,9 +23,15 @@ Meteor.methods({
 });
 
 Meteor.startup(function() {
-    var ted = Meteor.users.findOne({username:"ted"});
-    Collections.Followers.upsert({CRF: "*",  Study_ID: "*"},
-	{CRF: "*",  Study_ID: "*", userId: ted._id, email: ted.defaultEmail() });
+  var ted = Meteor.users.findOne({username: "ted"});
+  if (ted) {
+    Collections.Followers.upsert({CRF: "*",  Study_ID: "*"}, {
+      CRF: "*",
+      Study_ID: "*",
+      userId: ted._id,
+      email: ted.defaultEmail()
+    });
+  }
 });
 
 // Summarize the contents of the change and tell the followers
@@ -93,4 +99,3 @@ Meteor.publish("Following", function(query) {
    console.log("publish Following", query, cursor.count());
    return cursor;
 });
-

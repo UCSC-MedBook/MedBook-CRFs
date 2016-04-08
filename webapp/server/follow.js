@@ -1,25 +1,27 @@
 Meteor.methods({
-   "CRF/follow":  function(CRF, Study_ID) {
-       var follow = {
-	  userId: this.userId,
-          email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
-          CRF: CRF,
-          Study_ID: Study_ID,
-       };
-       var ret = Collections.Followers.insert(follow);
-       console.log("CRF/follow",  CRF, Study_ID, ret);
-   },
+  "CRF/follow": function(CRF, Study_ID) {
+    var user = MedBook.find
 
-   "CRF/unfollow":  function(CRF, Study_ID) {
-       var follow = {
-	  userId: this.userId,
-          email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
-          CRF: CRF,
-          Study_ID: Study_ID,
-       };
-       var ret = Collections.Followers.remove(follow);
-       console.log("CRF/unfollow",  CRF, Study_ID, ret);
-   },
+    var follow = {
+      userId: this.userId,
+      email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
+      CRF: CRF,
+      Study_ID: Study_ID,
+    };
+    var ret = Collections.Followers.insert(follow);
+    console.log("CRF/follow",  CRF, Study_ID, ret);
+  },
+
+  "CRF/unfollow":  function(CRF, Study_ID) {
+     var follow = {
+  userId: this.userId,
+        email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
+        CRF: CRF,
+        Study_ID: Study_ID,
+     };
+     var ret = Collections.Followers.remove(follow);
+     console.log("CRF/unfollow",  CRF, Study_ID, ret);
+  },
 });
 
 Meteor.startup(function() {

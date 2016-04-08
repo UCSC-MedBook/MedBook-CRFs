@@ -1,3 +1,6 @@
+// Ted: not yet necessary to publish as its only used by MedBookLib for Gene names
+// Teo: this is only used in one place: "fixSample_IDs" Meteor method
+var Expression = MedBook.Collections.Expression2;
 
 function summarizeTreatment(table, treatment) {
 

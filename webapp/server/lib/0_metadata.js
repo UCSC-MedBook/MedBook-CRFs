@@ -4,7 +4,7 @@
 LoadMetadata = function(study, preload) {
     Meteor.startup(function() {
 	// console.log("LoadMetadata(", study, preload, ")");
-       
+
 
 	var fo = _.pluck(preload.Fields, "Field_Name");
 	var fs = _.clone(preload);
@@ -26,8 +26,7 @@ LoadMetadata = function(study, preload) {
 	    metadata: preload,
 	    fieldOrder: fo,
 	    study: study,
-	  }
-	  ,
+	  },
 	  {
 	    upsert: true
 	  })
@@ -40,13 +39,3 @@ LoadMetadata = function(study, preload) {
 
     })
 }
-
-
-
-Meteor.startup(function() {
-    Meteor.publish("metadata", function() {
-	var cursor = Collections.Metadata.find() 
-	console.log("Metadata", cursor.count())
-	return cursor;
-    });
-});

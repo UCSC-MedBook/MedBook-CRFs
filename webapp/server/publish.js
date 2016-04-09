@@ -5,7 +5,7 @@ Meteor.publish('patient', function(patient_id, study_id) {
 
   var user = MedBook.ensureUser(this.userId);
   var collaborations = user.getCollaborations();
-  var study = Studies.findOne({id: study_id});
+  var study = Collections.Studies.findOne({id: study_id});
   user.ensureAccess(study);
 
   return CRFs.find({
@@ -18,6 +18,8 @@ Meteor.publish('patient', function(patient_id, study_id) {
 });
 
 Meteor.publish('myForms', function(formName, studyName) {
+  console.log("formName:", formName);
+  console.log("studyName:", studyName);
   check([formName, studyName], [String]);
 
   console.log("publish myForms", formName, studyName);
@@ -35,7 +37,7 @@ Meteor.publish('myForms', function(formName, studyName) {
   //     console.log("no study");
   //     return [];
   // }
-  var study = Studies.findOne({id: studyName});
+  var study = Collections.Studies.findOne({id: studyName});
   user.ensureAccess(study);
 
   var coll = Collections.Metadata.findOne({
@@ -75,4 +77,18 @@ Meteor.publish('studies', function() {
   });
   console.log("publish studies", cursor.count());
   return cursor;
+});
+
+Meteor.publish("metadata", function () {
+  var user = MedBook.ensureUser(this.userId);
+  console.log("user.getCollaborations():", user.getCollaborations());
+
+  var studies = Collections.Studies.find({
+    collaborations: { $in: user.getCollaborations() }
+  }, { fields: { id: 1 } }).fetch();
+  var studyLabels = _.pluck(studies, "id");
+
+  return Collections.Metadata.find({
+    study: { $in: studyLabels },
+  });
 });

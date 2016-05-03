@@ -404,7 +404,7 @@ Meteor.startup(function() {
 
   ingestOncore = function () {
     ++SuppressEmail;
-    var study  = Collections.studies.findOne({id:"prad_wcdt"})
+    var study  = Collections.Studies.findOne({id:"prad_wcdt"})
     var schemaMap = {};
     Collections.Metadata.find({study: "prad_wcdt", name: {$in: study.tables}}).forEach(function (crf) {
         var sm = crf.schema;
@@ -438,7 +438,7 @@ Meteor.startup(function() {
 
     ingestClinical = function () {
         ++SuppressEmail;
-        var study  = Collections.studies.findOne({id:"prad_wcdt"})
+        var study  = Collections.Studies.findOne({id:"prad_wcdt"})
 
         Collections.CRFs.remove({CRF: "Clinical_Info", Study_ID: "prad_wcdt"});
 
@@ -656,13 +656,13 @@ Meteor.startup(function() {
       Expression.find({gene: "TP53", Study_ID: "prad_wcdt"}, {"samples":1, _id:0}).forEach(function(doc) {
             prad = _.union(prad, Object.keys(doc.samples));
       });
-      var ret = Collections.studies.update( {id: "prad_wcdt"}, {$set: { Sample_IDs: prad.sort() }});
+      var ret = Collections.Studies.update( {id: "prad_wcdt"}, {$set: { Sample_IDs: prad.sort() }});
       console.log("fixSample_IDs, update prad_wcdt", ret)
 
       Expression.find({gene: "TP53", Study_ID: "prad_tcga"}, {"samples":1, _id:0}).forEach(function(doc) {
             tcga = _.union(tcga, Object.keys(doc.samples));
       });
-      Collections.studies.update( {id: "prad_tcga"}, {$set: { Sample_IDs: tcga.sort() }});
+      Collections.Studies.update( {id: "prad_tcga"}, {$set: { Sample_IDs: tcga.sort() }});
       console.log("fixSample_IDs, update prad_tcga", ret)
   }
   Meteor.startup(fixSample_IDs);
@@ -736,7 +736,7 @@ Meteor.startup(function() {
 
 	   var s = {};
 	   s[xRef.studyField] = value.sort();
-	   var ret = Collections.studies.update({id: xRef.Study_ID}, { $set: s})
+	   var ret = Collections.Studies.update({id: xRef.Study_ID}, { $set: s})
 	   // console.log(ret, "CreateCrossReferencesForStudies", xRef, value);
 	});
     }

@@ -33,7 +33,7 @@ LoadMetadata = function(study, preload) {
 	  })
 
 
-	var ret = Collections.studies.update({id: study}, {$addToSet: {tables: preload.Form_Name}});
+	var ret = Collections.Studies.update({id: study}, {$addToSet: {tables: preload.Form_Name}});
 	// console.log("ret", ret);
 	if (ret == 0)
 	   throw new Error("could not update " + study + " with " + preload.Form_Name);

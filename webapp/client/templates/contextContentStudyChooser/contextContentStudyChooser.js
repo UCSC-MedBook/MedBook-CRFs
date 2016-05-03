@@ -1,7 +1,7 @@
 // Meteor Collection Pattern
 Template.contextContentStudyChooser.helpers({
   studies: function () {
-      return Collections.studies.find({}, {sort: ["name"]});
+      return Collections.Studies.find({}, {sort: ["name"]});
   }
 });
 Template.contextContentStudyChooser.events({

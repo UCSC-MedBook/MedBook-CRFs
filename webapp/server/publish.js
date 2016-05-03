@@ -20,8 +20,8 @@ Meteor.publish('myForms', function(formName, studyName) {
   var user = Meteor.users.findOne({_id: this.userId});
   var collaborations = user.getAssociatedCollaborations();
 
-  var study = Collections.studies.findOne({id: studyName, 
-      $or: [ 
+  var study = Collections.Studies.findOne({id: studyName, 
+      $or: [
 	    { public: true},
 	    { collaborations: {$in: collaborations }}
 	    ]
@@ -62,8 +62,8 @@ Meteor.publish('studies', function() {
   var user = Meteor.users.findOne({_id: this.userId});
   var collaborations = user.getAssociatedCollaborations();
 
-  var cursor = Collections.studies.find({
-      $or: [ 
+  var cursor = Collections.Studies.find({
+      $or: [
 	    { public: true},
 	    { collaborations: {$in: collaborations }}
 	    ]
@@ -71,4 +71,3 @@ Meteor.publish('studies', function() {
   console.log("publish studies", cursor.count());
   return cursor;
 });
-

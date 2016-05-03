@@ -5,7 +5,7 @@ SecurityCRF = function(userId, doc) {
         return false;
     }
 
-    var study = Collections.studies.findOne({id:doc.Study_ID});
+    var study = Collections.Studies.findOne({id:doc.Study_ID});
     if (study == null || study.collaborations == null || study.collaborations.length != 1) {
 	console.log("SecurityCRF", userId, "bad study");
 	return false;
@@ -94,7 +94,7 @@ Collections.CRFs.after.remove(function (userId, doc) {
 
 
 
-Collections.studies.allow({
+Collections.Studies.allow({
     insert: function (userId, doc) {
 	console.log("studies allow insert called");
 	if (doc.collaborations == null || doc.collaborations.length != 1)
@@ -107,7 +107,7 @@ Collections.studies.allow({
     },
 
     update: function (userId, doc, fields, modifier) {
-	var study = Collections.studies.findOne({_id:doc._id});
+	var study = Collections.Studies.findOne({_id:doc._id});
 	if (study.name != doc.name)
 	     return false;
 	if (study.collaborations == null || study.collaborations.length != 1)

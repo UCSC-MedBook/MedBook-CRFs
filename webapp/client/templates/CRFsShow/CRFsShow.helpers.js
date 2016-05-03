@@ -84,13 +84,13 @@ function referentialIntegrity(doc, fieldName) {
        return;
 
    if (fieldName in doc) {
-       var study = Collections.studies.findOne({id: Session.get("CurrentStudy")}, {fields: {_id:1}});
+       var study = Collections.Studies.findOne({id: Session.get("CurrentStudy")}, {fields: {_id:1}});
        if (study != null) {
 	   var value  = doc[fieldName];
 	   var q = {};
 	   q[fieldName +"s"] = value;
 
-	   var ret = Collections.studies.update({_id: study._id}, { $addToSet: q})
+	   var ret = Collections.Studies.update({_id: study._id}, { $addToSet: q})
        }
    }
 }

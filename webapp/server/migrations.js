@@ -51,7 +51,7 @@ Meteor.startup( function() {
 	    n += Collections.CRFs.update({_id: doc._id},
 	        {$set: {Specimen_ID: Specimen_ID, Study_ID: "prad_wcdt" }});
 	});
-        var updateResult = Collections.studies.update(
+        var updateResult = Collections.Studies.update(
            { id: "prad_wcdt" },
 	   { $addToSet: { Specimen_IDs: { $each: Specimen_IDs } } }
          );
@@ -86,11 +86,11 @@ Meteor.startup( function() {
         var updateClause = {};
         updateClause[field + 's'] = { $each: sortedSet };
 
-        var updateResult = Collections.studies.update(
+        var updateResult = Collections.Studies.update(
            { id: "prad_wcdt" },
            { $addToSet: updateClause }
          );
-        var final = Collections.studies.findOne( { id: "prad_wcdt" } );
+        var final = Collections.Studies.findOne( { id: "prad_wcdt" } );
         // console.log("maintain_prad_wcdt", updateClause, sortedSet, updateResult, "\nfinal", final);
 
       };

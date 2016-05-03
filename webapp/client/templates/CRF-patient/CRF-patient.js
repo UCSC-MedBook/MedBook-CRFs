@@ -44,7 +44,7 @@ window.currentStudy = function () {
 window.personalPreferredTableOrder = function () {
   var user = Meteor.user();
   var studyId = currentStudy();
-  var study = Collections.studies.findOne({id: studyId});
+  var study = Collections.Studies.findOne({id: studyId});
   if (study == null)
       return [];
   var common = Collections.Metadata.find({study:"common"}, {fields: {name:1}}).fetch().map(function(o) {return o.name})

@@ -32,7 +32,7 @@ Meteor.startup(function() {
 
         var currentStudy = Session.get("CurrentStudy");
 	if (currentStudy) {
-	    var study = Collections.studies.findOne({id: currentStudy});
+	    var study = Collections.Studies.findOne({id: currentStudy});
 	    if (study && study.Specimen_IDs) {
 		var specimenList = study.Specimen_IDs;
 		var currentDoc = Session.get("CurrentDoc");

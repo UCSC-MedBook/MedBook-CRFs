@@ -8,7 +8,7 @@ fixUpRenderedAutoForm = function() {
     var currentStudy = Session.get("CurrentStudy");
     if (currentStudy == null)
         return;
-    var study = Collections.studies.findOne({ id: currentStudy });
+    var study = Collections.Studies.findOne({ id: currentStudy });
     if (study == null)
         return;
 

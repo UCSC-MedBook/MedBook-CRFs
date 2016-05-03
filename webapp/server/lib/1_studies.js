@@ -1,5 +1,5 @@
  Meteor.startup(function() {
-     Collections.studies.upsert({id: "tcga"}, {$set: { 
+     Collections.Studies.upsert({id: "tcga"}, {$set: { 
 	"cbio_id" : "?",
 	 "id" : "tcga", 
 	"type_of_cancer_id" : "many",
@@ -20,7 +20,7 @@
 	 */
      }});
 
-     Collections.studies.upsert({id: "admin"}, {$set: { 
+     Collections.Studies.upsert({id: "admin"}, {$set: { 
 	"cbio_id" : "?",
 	"id" : "admin",
 	"type_of_cancer_id" : "many",
@@ -35,7 +35,7 @@
 	"Sample_IDs": [],
 	"Patient_IDs": [],
      }});
-     Collections.studies.upsert({id: "common"}, {$set: { 
+     Collections.Studies.upsert({id: "common"}, {$set: { 
 	"cbio_id" : "?",
 	"id" : "common",
 	"type_of_cancer_id" : "many",
@@ -51,7 +51,7 @@
 	"Patient_IDs": [],
      }});
 
-     Collections.studies.upsert({id: "prad_wcdt"}, {$set: { 
+     Collections.Studies.upsert({id: "prad_wcdt"}, {$set: { 
 	"cbio_id" : "112",
 	"id" : "prad_wcdt",
 	"type_of_cancer_id" : "prad",
@@ -69,7 +69,7 @@
 	*/
      }});
 
-     Collections.studies.upsert({id: "prad_tcga"}, {$set: { 
+     Collections.Studies.upsert({id: "prad_tcga"}, {$set: { 
 	"cbio_id" : "?",
 	"id" : "prad_tcga",
 	"type_of_cancer_id" : "prad",
@@ -85,7 +85,7 @@
 	"Patient_IDs": [],
      }});
 
-     Collections.studies.upsert({id: "ckcc"}, {$set: { 
+     Collections.Studies.upsert({id: "ckcc"}, {$set: { 
 	"cbio_id" : "?",
 	"id" : "ckcc",
 	"type_of_cancer_id" : "many",
@@ -101,7 +101,7 @@
 	"Patient_IDs": [],
      }});
 
-     Collections.studies.upsert({id: "treehouse"}, {$set: { 
+     Collections.Studies.upsert({id: "treehouse"}, {$set: { 
 	"cbio_id" : "?",
 	"id" : "treehouse",
 	"type_of_cancer_id" : "many",
@@ -121,7 +121,7 @@
      function maintainReferentialIntegrity() {
 	  Collections.Metadata.find({study: {$exists: 1}}).forEach( function (table) {
 	     if (table.study && table.study.length > 0) {
-		  var n = Collections.studies.update({id: table.study}, {$addToSet: {tables: table.name}});
+		  var n = Collections.Studies.update({id: table.study}, {$addToSet: {tables: table.name}});
 		  //  console.log("maintainReferentialIntegrity", table.study, table.name, n);
 	     }
 	  });

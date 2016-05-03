@@ -128,7 +128,7 @@ Template.CRFsShow.helpers({
     switch (this._crfName) 
       {
     case "studies":
-	coll =  Collections.studies.find();
+	coll =  Collections.Studies.find();
 	break;
     case "Metadata":
 	coll =  Collections.Metadata.find().fetch().map(function(f) { return f.metadata })
@@ -217,7 +217,7 @@ Template.CRFsShow.events({
       return;
 
 
-    Collections.studies.insert({
+    Collections.Studies.insert({
       listId: this._crfName,
       text: $input.val(),
       checked: false,

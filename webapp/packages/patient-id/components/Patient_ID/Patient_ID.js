@@ -36,7 +36,7 @@ Meteor.startup(function() {
           return "form-control"
       },
       patients: function() {
-          var study = Collections.studies.findOne({id: Session.get("CurrentStudy") });
+          var study = Collections.Studies.findOne({id: Session.get("CurrentStudy") });
 	  if (study && study.Patient_IDs) {
 		var s = '<select class="Patient_ID form-control" type="text" name="Patient_ID" data-schema-key="Patient_ID">';
 		study.Patient_IDs.map(function(e) {

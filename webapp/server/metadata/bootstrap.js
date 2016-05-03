@@ -1,3 +1,6 @@
+// Ted: not yet necessary to publish as its only used by MedBookLib for Gene names
+// Teo: this is only used in one place: "fixSample_IDs" Meteor method
+var Expression = MedBook.collections.Expression2;
 
 function summarizeTreatment(table, treatment) {
 
@@ -36,18 +39,17 @@ function summarizeTreatmentHTML(table, treatment) {
 prad_wcdt_crfs = null;
 
 Meteor.startup(function() {
-
-  // if the database is empty on server start, create some sample data.
-  ComplexIDFields = {};
-
-  admin_crfs = [
-      "Metadata",
-      'studies',
-  ]
-  
-  common_crfs = [
-      'Clinical_Info',
-  ];
+  // // if the database is empty on server start, create some sample data.
+  // ComplexIDFields = {};
+  //
+  // admin_crfs = [
+  //     "Metadata",
+  //     'studies',
+  // ]
+  //
+  // common_crfs = [
+  //     'Clinical_Info',
+  // ];
 
   prad_wcdt_oncore_crfs = [
       "SU2C_Biopsy_V3",
@@ -432,7 +434,7 @@ Meteor.startup(function() {
   }
 
     function find(crf) {
-      var ret = Collections.CRFs.find({ Study_ID: "prad_wcdt", CRF: crf}).fetch(); 
+      var ret = Collections.CRFs.find({ Study_ID: "prad_wcdt", CRF: crf}).fetch();
       return ret;
     }
 
@@ -630,7 +632,7 @@ Meteor.startup(function() {
   	treatment_list.forEach(function(treatment) {
   		var patient_id = treatment['Patient_ID']
   		var sample_id = treatment['Sample_ID']
-  		
+
   		var drug = treatment['Drug_Name']
   		var priorAbi = samples[patient_id]['Abiraterone']
   		var data = {'Study_ID':'prad_wcdt', 'Abiraterone':priorAbi, 'Patient_ID': patient_id}
@@ -642,7 +644,7 @@ Meteor.startup(function() {
                         {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
   			{$set:data},
   			{upsert:true})
-                ret = Collections.CRFs.direct.update( 
+                ret = Collections.CRFs.direct.update(
                             {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':sample_id},
                             { $addToSet: { subsequent_txs: summarizeTreatment("SU2C_Subsequent_Treatment_V1", treatment) }});  // TCG 8/2/2015
   	})
@@ -676,7 +678,7 @@ Meteor.startup(function() {
             var target = {CRF: "Clinical_Info", Study_ID: "prad_wcdt", 'Sample_ID':progression.Sample_ID};
 
             function copyForward(collName) {
-                Collections.CRFs.find( 
+                Collections.CRFs.find(
                     {$and: [
                         {CRF: collName},
                         {Study_ID: "prad_wcdt"},
@@ -700,7 +702,7 @@ Meteor.startup(function() {
                 { $set:   {
                     Enzalutamide: "Naive",
                     Abiraterone: "Naive"
-                }});  
+                }});
 
             copyForward("SU2C_Prior_TX_V3");
             copyForward("SU2C_Subsequent_Treatment_V1");

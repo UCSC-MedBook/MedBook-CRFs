@@ -61,7 +61,6 @@ localstorage@1.0.3
 logging@1.0.7
 matb33:collection-hooks@0.8.1
 medbook:collaborations@2.4.12
-medbook:metadata@0.0.2
 medbook:namespace@0.0.2
 medbook:patient-id@0.0.1
 medbook:primary-collections@0.0.19

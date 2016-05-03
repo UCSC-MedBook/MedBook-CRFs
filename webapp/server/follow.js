@@ -1,31 +1,39 @@
 Meteor.methods({
-   "CRF/follow":  function(CRF, Study_ID) {
-       var follow = {
-	  userId: this.userId,
-          email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
-          CRF: CRF,
-          Study_ID: Study_ID,
-       };
-       var ret = Collections.Followers.insert(follow);
-       console.log("CRF/follow",  CRF, Study_ID, ret);
-   },
+  "CRF/follow": function(CRF, Study_ID) {
+    var user = MedBook.find
 
-   "CRF/unfollow":  function(CRF, Study_ID) {
-       var follow = {
-	  userId: this.userId,
-          email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
-          CRF: CRF,
-          Study_ID: Study_ID,
-       };
-       var ret = Collections.Followers.remove(follow);
-       console.log("CRF/unfollow",  CRF, Study_ID, ret);
-   },
+    var follow = {
+      userId: this.userId,
+      email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
+      CRF: CRF,
+      Study_ID: Study_ID,
+    };
+    var ret = Collections.Followers.insert(follow);
+    console.log("CRF/follow",  CRF, Study_ID, ret);
+  },
+
+  "CRF/unfollow":  function(CRF, Study_ID) {
+     var follow = {
+  userId: this.userId,
+        email: Meteor.users.findOne({_id: this.userId}).defaultEmail(),
+        CRF: CRF,
+        Study_ID: Study_ID,
+     };
+     var ret = Collections.Followers.remove(follow);
+     console.log("CRF/unfollow",  CRF, Study_ID, ret);
+  },
 });
 
 Meteor.startup(function() {
-    var ted = Meteor.users.findOne({username:"ted"});
-    Collections.Followers.upsert({CRF: "*",  Study_ID: "*"},
-	{CRF: "*",  Study_ID: "*", userId: ted._id, email: ted.defaultEmail() });
+  var ted = Meteor.users.findOne({username: "ted"});
+  if (ted) {
+    Collections.Followers.upsert({CRF: "*",  Study_ID: "*"}, {
+      CRF: "*",
+      Study_ID: "*",
+      userId: ted._id,
+      email: ted.defaultEmail()
+    });
+  }
 });
 
 // Summarize the contents of the change and tell the followers
@@ -93,4 +101,3 @@ Meteor.publish("Following", function(query) {
    console.log("publish Following", query, cursor.count());
    return cursor;
 });
-

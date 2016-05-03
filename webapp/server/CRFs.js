@@ -1,44 +1,38 @@
 SecurityCRF = function(userId, doc) {
-    var user = Meteor.users.findOne({_id: userId});
-    if (user == null) {
-	console.log("Security CRF:", userId, "unknown user");
-        return false;
-    }
+  var user = Meteor.users.findOne({_id: userId});
+  if (user == null) {
+    console.log("Security CRF:", userId, "unknown user");
+    return false;
+  }
 
-    var study = Collections.studies.findOne({id:doc.Study_ID});
-    if (study == null || study.collaborations == null || study.collaborations.length != 1) {
-	console.log("SecurityCRF", userId, "bad study");
-	return false;
-    }
-    var collaboration = Collaborations.findOne({name: study.collaborations[0], administrators: user.defaultEmail() });
+  var study = Collections.studies.findOne({id:doc.Study_ID});
+  if (study == null || study.collaborations == null || study.collaborations.length != 1) {
+    console.log("SecurityCRF", userId, "bad study");
+    return false;
+  }
+  var collaboration = Collaborations.findOne({name: study.collaborations[0], administrators: user.defaultEmail() });
 
-    if (collaboration == null) {
-       msg = "Security CRF:" +  userId + " " +  user.defaultEmail() + " not an administrator of collaboration " + " " + study.collaborations[0] 
-	   + " which is requried by " + study.id;
-       console.log(msg);
+  if (collaboration == null) {
+     msg = "Security CRF:" +  userId + " " +  user.defaultEmail() + " not an administrator of collaboration " + " " + study.collaborations[0]
+   + " which is requried by " + study.id;
+     console.log(msg);
 
-       throw new Error(msg);
-       return false;
-    }
-    return true 
+     throw new Error(msg);
+     return false;
+  }
+  return true
 
 };
 
-Meteor.methods({
-    securityCRF: function(doc) {
-	return SecurityCRF(this.userId, doc);
-    }
-});
-
 
 Collections.CRFs.allow({
-    insert: SecurityCRF,
-    update: SecurityCRF,
-    remove: SecurityCRF,
-    fetch: ['collaborations']
+  insert: SecurityCRF,
+  update: SecurityCRF,
+  remove: SecurityCRF,
+  fetch: ['collaborations']
 });
 
-Collections.CRFs.after.insert(function (userId, doc) { 
+Collections.CRFs.after.insert(function (userId, doc) {
     var transactionRecord = {
 	date: Date.now(),
 	type: "insert",
@@ -50,7 +44,7 @@ Collections.CRFs.after.insert(function (userId, doc) {
 });
 
 
-Collections.CRFs.after.update(function (userId, fieldNames, modifier, options) {  
+Collections.CRFs.after.update(function (userId, fieldNames, modifier, options) {
 
     function noDollar(obj) {
 	Object.keys(obj).map(function(key) {
@@ -80,7 +74,7 @@ Collections.CRFs.after.update(function (userId, fieldNames, modifier, options) {
     NotifyFollowers(userId, this.previous, "updated");
 });
 
-Collections.CRFs.after.remove(function (userId, doc) { 
+Collections.CRFs.after.remove(function (userId, doc) {
     var transactionRecord = {
 	date: Date.now(),
 	type: "removed",
@@ -103,7 +97,7 @@ Collections.studies.allow({
 	var collaboration = Collaborations.findOne({name: doc.collaborations[0], administrators: user.defaultEmail() });
 	if (collaboration == null)
 	   return false;
-	return true 
+	return true
     },
 
     update: function (userId, doc, fields, modifier) {
@@ -117,7 +111,7 @@ Collections.studies.allow({
 	var collaboration = Collaborations.findOne({name: doc.collaborations[0], administrators: user.defaultEmail() });
 	if (collaboration == null)
 	   return false;
-	return true 
+	return true
     },
     remove: function (userId, doc) {
 	return false;

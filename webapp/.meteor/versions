@@ -64,7 +64,6 @@ medbook:collaborations@2.4.12
 medbook:namespace@0.0.2
 medbook:patient-id@0.0.1
 medbook:primary-collections@0.0.19
-medbook:testing-accounts@1.0.4
 meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:async@1.0.0

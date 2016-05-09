@@ -1,80 +1,35 @@
-Meteor.publish('patient', function(patient_id, study_id) {
-  check([patient_id, study_id], [String]);
-
-  console.log("publish patient", patient_id);
+Meteor.publish('patient', function(patient_label, study_label) {
+  check([patient_label, study_label], [String]);
 
   var user = MedBook.ensureUser(this.userId);
-  var collaborations = user.getCollaborations();
-  var study = Collections.Studies.findOne({id: study_id});
+  var study = Collections.Studies.findOne({id: study_label});
   user.ensureAccess(study);
 
+  patient = _.findWhere(study.patients, { patient_label: patient_label });
+
   return CRFs.find({
-    Study_ID: study_id,
+    Study_ID: study_label,
     $or: [
-      {Patient_ID: patient_id},
-      {Sample_ID: { $regex: "^" + patient_id + ".*"}}
+      { Patient_ID: patient_label },
+      { Sample_ID: { $in: patient.sample_labels } }
     ]
   });
 });
 
-Meteor.publish('myForms', function(formName, studyName) {
-//   console.log("formName:", formName);
-//   console.log("studyName:", studyName);
-//   check([formName, studyName], [String]);
-//
-//   console.log("publish myForms", formName, studyName);
-// <<<<<<< HEAD
-//   if (this.userId == null)
-//       return [];
-//   var user = Meteor.users.findOne({_id: this.userId});
-//   var collaborations = user.getAssociatedCollaborations();
-//
-//   var study = Collections.Studies.findOne({id: studyName,
-//       $or: [
-// 	    { public: true},
-// 	    { collaborations: {$in: collaborations }}
-// 	    ]
-// =======
-//
-//   var user = MedBook.ensureUser(this.userId);
-//   var collaborations = user.getCollaborations();
-//
-//   // var study = Collections.Studies.findOne({id: studyName,
-//   //   $or: [
-//   //     { public: true},
-//   //     { collaborations: {$in: collaborations }}
-//   //   ]
-//   // });
-//   // if (study == null) {
-//   //     console.log("no study");
-//   //     return [];
-//   // }
-//   var study = Collections.Studies.findOne({id: studyName});
-//   user.ensureAccess(study);
-//
-//   var coll = Collections.Metadata.findOne({
-//     study: { $in: [ "common", studyName]},
-//     name: formName
-// >>>>>>> origin/collaborations
-//   });
-//   if (!coll) {
-//     throw new Error("Could not find Metadata for form " + formName + " in study " + studyName);
-//   }
-//
-//   var q = {CRF:formName};
-//
-//   var schema = JSON.parse(coll.schema);
-//   if ("study" in schema) {
-//     q.study = studyName;
-//   } else if ("studies" in schema) {
-//     q.study = {$in: studyName};
-//   } else if ("Study_ID" in schema) {
-//     q.Study_ID = studyName;
-//   }
-//
-//   var cursor =  Collections.CRFs.find(q);
-//   console.log("publish myForms", formName, "count=", cursor.count());
-//   return cursor
+Meteor.publish('myForms', function(formName, study_label) {
+  check([formName, study_label], [String]);
+
+  var user = MedBook.ensureUser(this.userId);
+  var study = Collections.Studies.findOne({id: study_label});
+  user.ensureAccess(study);
+
+  return CRFs.find({
+    CRF: formName,
+    $or: [
+      { study: study_label },
+      { Study_ID: study_label },
+    ],
+  });
 });
 
 

@@ -20,7 +20,6 @@ rajit:bootstrap3-datepicker
 momentjs:moment
 ucscmedbook:api@0.2.3
 
-medbook:testing-accounts
 cfs:standard-packages
 cfs:gridfs
 

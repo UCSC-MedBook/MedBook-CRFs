@@ -88,33 +88,33 @@ Collections.CRFs.after.remove(function (userId, doc) {
 
 
 
-Collections.Studies.allow({
-    insert: function (userId, doc) {
-	console.log("studies allow insert called");
-	if (doc.collaborations == null || doc.collaborations.length != 1)
-	    return false;
-	var user = Meteor.users.findOne({_id: userId});
-	var collaboration = Collaborations.findOne({name: doc.collaborations[0], administrators: user.defaultEmail() });
-	if (collaboration == null)
-	   return false;
-	return true
-    },
-
-    update: function (userId, doc, fields, modifier) {
-	var study = Collections.Studies.findOne({_id:doc._id});
-	if (study.name != doc.name)
-	     return false;
-	if (study.collaborations == null || study.collaborations.length != 1)
-	    return false;
-	var user = Meteor.users.findOne({_id: userId});
-	debugger
-	var collaboration = Collaborations.findOne({name: doc.collaborations[0], administrators: user.defaultEmail() });
-	if (collaboration == null)
-	   return false;
-	return true
-    },
-    remove: function (userId, doc) {
-	return false;
-    } //,
-    // fetch: ['owner']
-});
+// Collections.Studies.allow({
+//     insert: function (userId, doc) {
+// 	console.log("studies allow insert called");
+// 	if (doc.collaborations == null || doc.collaborations.length != 1)
+// 	    return false;
+// 	var user = Meteor.users.findOne({_id: userId});
+// 	var collaboration = Collaborations.findOne({name: doc.collaborations[0], administrators: user.defaultEmail() });
+// 	if (collaboration == null)
+// 	   return false;
+// 	return true
+//     },
+//
+//     update: function (userId, doc, fields, modifier) {
+// 	var study = Collections.Studies.findOne({_id:doc._id});
+// 	if (study.name != doc.name)
+// 	     return false;
+// 	if (study.collaborations == null || study.collaborations.length != 1)
+// 	    return false;
+// 	var user = Meteor.users.findOne({_id: userId});
+// 	debugger
+// 	var collaboration = Collaborations.findOne({name: doc.collaborations[0], administrators: user.defaultEmail() });
+// 	if (collaboration == null)
+// 	   return false;
+// 	return true
+//     },
+//     remove: function (userId, doc) {
+// 	return false;
+//     } //,
+//     // fetch: ['owner']
+// });

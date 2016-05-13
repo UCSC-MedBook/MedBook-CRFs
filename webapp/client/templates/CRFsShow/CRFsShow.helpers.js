@@ -39,7 +39,7 @@ CRF_Handler = function(insertDoc, updateDoc, currentDoc) {
         var v = collection.update({_id: currentDoc._id}, updateDoc, handleError);
         if (v != 1) 
             console.log("Updating wasnt successful.  :(", v);
-        insertDoc._id = currentDoc.id;
+        insertDoc._id = currentDoc._id;
     } else {
         insertDoc._id = collection.insert(insertDoc, handleError);
     }

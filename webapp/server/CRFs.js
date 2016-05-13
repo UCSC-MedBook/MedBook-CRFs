@@ -7,7 +7,7 @@ SecurityCRF = function(userId, doc) {
 
     var study = Collections.studies.findOne({id:doc.Study_ID});
     if (study == null || study.collaborations == null || study.collaborations.length != 1) {
-	console.log("SecurityCRF", userId, "bad study");
+	console.log("SecurityCRF", userId, "bad study", study, doc);
 	return false;
     }
     var collaboration = Collaborations.findOne({name: study.collaborations[0], administrators: user.defaultEmail() });
@@ -35,7 +35,7 @@ Collections.CRFs.allow({
     insert: SecurityCRF,
     update: SecurityCRF,
     remove: SecurityCRF,
-    fetch: ['collaborations']
+    fetch: ['Study_ID', 'collaborations']
 });
 
 Collections.CRFs.after.insert(function (userId, doc) { 

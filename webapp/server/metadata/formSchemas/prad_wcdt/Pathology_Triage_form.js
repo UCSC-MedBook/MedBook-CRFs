@@ -1,13 +1,16 @@
-LoadMetadata("prad_wcdt", {
-    "Form_Name": "Pathology Triage",
-    "Fields": [
+LoadMetadata({
+  collaborations: [ "WCDT" ],
+  name: "Pathology Triage",
+  specificity: "patient",
+  fields: [
+
 
       Patient_ID_Type,
 
       /*
       {
-        "type": "String",
-        "Field_Name": "Timepoint",
+        "type": "Select",
+        "label": "Timepoint",
         "allowedValues": [
           "Baseline",
           "Progression",
@@ -20,8 +23,8 @@ LoadMetadata("prad_wcdt", {
       Specimen_ID_Type,
 
       {
-        "type": "String",
-        "Field_Name": "Institution",
+        "type": "Select",
+        "label": "Institution",
         "allowedValues": [
           "UCSF",
           "OHSU",
@@ -32,12 +35,12 @@ LoadMetadata("prad_wcdt", {
       },
       {
         "type": "Date",
-        "Field_Name": "Received Date",
+        "label": "Received Date",
         "autoform": autoformDate
       },
       {
-        "type": "String",
-        "Field_Name": "Biopsy_Site",
+        "type": "Select",
+        "label": "Biopsy_Site",
         "allowedValues": [
           "Bone",
           "Liver",
@@ -52,13 +55,13 @@ LoadMetadata("prad_wcdt", {
       },
       {
         "type": "String",
-        "Field_Name": "Biopsy_Site_Other",
+
 	"label": "Other (optional, use if Biopsy Site is Other)",
         "optional": true,
       },
       {
-        "type": "String",
-        "Field_Name": "FFPE Cores",
+        "type": "Select",
+        "label": "FFPE Cores",
         "allowedValues": [
           "1",
           "2",
@@ -72,8 +75,8 @@ LoadMetadata("prad_wcdt", {
         ]
       },
       {
-        "type": "String",
-        "Field_Name": "Tumor Content",
+        "type": "Select",
+        "label": "Tumor Content",
         "allowedValues": [
           "None",
           "<5%",
@@ -91,8 +94,8 @@ LoadMetadata("prad_wcdt", {
         ]
       },
       {
-        "type": "String",
-        "Field_Name": "Preliminary Pathology Call",
+        "type": "Select",
+        "label": "Preliminary Pathology Call",
         "allowedValues": [
           "Adenocarcinoma",
           "Small Cell",
@@ -106,16 +109,16 @@ LoadMetadata("prad_wcdt", {
         ]
       },
       {
-        "type": "String",
-        "Field_Name": "DNA to be collected for shipment to Broad",
+        "type": "Select",
+        "label": "DNA to be collected for shipment to Broad",
         "allowedValues": [
           "Yes",
           "No"
         ]
       },
       {
-        "type": "String",
-        "Field_Name": "Slides to be sent to Duke Univeristy for Pathology Reporting",
+        "type": "Select",
+        "label": "Slides to be sent to Duke Univeristy for Pathology Reporting",
         "allowedValues": [
           "Yes",
           "No"

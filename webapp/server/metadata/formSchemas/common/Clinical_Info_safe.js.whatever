@@ -1,0 +1,603 @@
+LoadMetadata({
+  collaborations: [ "UCSC Forms" ],
+  name: "Clinical_Info",
+  specificity: "sample",
+  fields: [
+    {
+	    "label": "Prior Treatments",
+	    "optional": true,
+	    "type": "[String]",
+  	},
+    {
+	    "label": "Biopsy Date",
+	    "optional": true,
+	    "type": "Date",
+  	},
+    {
+	    "label": "Subsequent Treatments",
+	    "optional": true,
+	    "type": "[String]",
+  	},
+    {
+      "label": "Biopsy site",
+	    "allowedValues": [
+    		"Adrenal",
+    		"Bladder",
+    		"Bone",
+    		"Brain",
+    		"Liver",
+    		"Lung",
+    		"Lymph node",
+    		"Soft tissue",
+    		"Other"
+	    ],
+	    "optional": true,
+	    "type": "String",
+  	},
+    {
+      "label": "Enzalutamide",
+      "allowedValues": [
+        "Naive",
+        "On Tx",
+        "On-Tx",
+        "Resistant",
+        "Unk"
+      "optional": true,
+      "type": "String"
+    ],
+    {
+      "Abiraterone",
+        "allowedValues": [
+        "Exposed",
+        "Naive",
+        "On Tx",
+        "Resistant",
+        "Unk"
+      ],
+      "optional": true,
+      "type": "String"      
+    ],
+    {
+      "label": "site",
+      "allowedValues": [
+        "OHSU",
+        "UBC",
+        "UCD",
+        "UCLA",
+        "UCLA-VA",
+        "UCSF"
+      ],
+      "optional": true,
+      "type": "String"
+      ],
+    },
+    {
+	    "label": "Age",
+	    "optional": true,
+	    "type": "Integer", // "Decimal" if {"decimal": true}
+	   },
+     {
+    "label": "Reason for Stop",
+      "allowedValues": [
+        "Adverse Event",
+        "Adverse event (N/V)",
+        "Adverse event (fatigue)",
+        "Adverse event (febrile neutropenia)",
+        "Adverse Event/Side Effects/Complications",
+        "Adverse event - osteonecrosis",
+        "Clinical PD",
+        "Completed Treatment",
+        "Death",
+        "Death on study",
+        "Disease progression, relapse during active treatment",
+        "Lost to followup",
+        "Other",
+        "PD",
+        "PSA + radiographic PD",
+        "PSA PD",
+        "PSA PD, adverse event",
+        "PSA PD + patient withdrawal",
+        "Progressive Disease",
+        "Pt decision",
+        "Physician Discretion",
+        "Radiographic PD",
+        "Patient Choice",
+        "Patient Demise",
+        "Patient withdrawal or refusal after beginning protocol therapy",
+        "Patient withdrawal or refusal prior to beginning protocol therapy",
+        "Treatment completed per protocol criteria",
+        "TBD",
+        "Tx break",
+        "Tx ongoing",
+        "N/A"
+      ],
+      "optional": true,
+      "type": "String"     
+    }
+//copypasta
+   {
+      "label": "AR Amplification by FISH",
+      "optional": true,
+      "type": "String"
+    },
+  {
+      "label": "Days On Study",
+      "optional": true,
+      "type": "Number"
+  },
+  {
+      "label": "On Study Date",
+      "optional": true,
+      "type": "Date",
+
+  },
+  {
+
+      "label": "Off Study Date",
+      "optional": true,
+      "type": "Date",
+
+  },
+  {
+      "label": "Abi PSA response",
+      "allowedValues": [
+    "No Decline",
+    "0%-30%",
+    "30%-50%",
+    "50%-90%",
+    ">90%",
+    "N/A"
+      ],
+
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "label": "Abi radiographic response",
+      "allowedValues": [
+    "None",
+    "Complete response",
+    "Minor response",
+    "Partial response",
+    "Stable disease",
+    "N/A (bone only)",
+    "N/A (no mets at BL)",
+    "NE",
+    "PD",
+    "SD",
+    "N/A"
+      ],
+
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "label": "Abi reason for d/c",
+      "allowedValues": [
+    "Clinical PD",
+    "PD",
+    "PSA + radiographic PD",
+    "PSA PD",
+    "Radigraphic PD",
+    "Radiographic  PD",
+    "Radiographic + PSA PD",
+    "Radiographic PD",
+    "Tx ongoing",
+    "N/A"
+      ],
+
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "label": "Enza PSA response",
+      "allowedValues": [
+    "-",
+    "0-30%",
+    "30-50%",
+    "30-50% decline",
+    "> 50%",
+    "> 90%",
+    "N/A"
+      ],
+      "label": "Enza PSA response",
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "label": "Enza radiographic response",
+      "allowedValues": [
+    "None",
+    "BS with progression; CT stable",
+    "CT progression",
+    "NE",
+    "SD",
+    "Stable disease",
+    "Partial response",
+    "N/A"
+      ],
+      "label": "Enza radiographic response",
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "label": "Enza reason for D/C",
+      "allowedValues": [
+    "-",
+    "Clinical PD",
+    "PD",
+    "PSA + radiographic PD",
+    "PSA PD",
+    "PSA symptomatic PD",
+    "Radiographic PD",
+    "Tx ongoing",
+    "N/A"
+      ],
+      "label": "Enza reason for D/C",
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "label": "Prior tissue",
+      "allowedValues": [
+    "1. Prostate biopsy, 2. Prostate biopsy, 3. TURP",
+    "1. Prostate biopsy, 2. Radical Prostatectomy",
+    "1. Prostate biopsy, 2. Radical prostatectomy",
+    "1",
+    "1. Lung met",
+    "1. Lung nodule core biopsy 2. Lung nodule wedge resection",
+    "1. Prostate biopsy",
+    "1. Prostate biopsy 2.  Liver biopsy",
+    "1. Prostate biopsy 2. L Pelvic node",
+    "1. Prostate biopsy 2. Node biopsy 3. Node biopsy",
+    "1. Prostate biopsy 2. Prostate biopsy 3. Node biopsy",
+    "1. Prostate biopsy 2. Prostatectomy 3. Lymph biopsy",
+    "1. R iliac bone",
+    "1. Radical prostatectomy",
+    "1. SV biopsy",
+    "1. SV biopsy 2. T6 metastasis",
+    "1. TURP",
+    "1. left neck lymph node biopsy",
+    "1. prostate biopsy",
+    "1.Prostate biopsy 2. Prostatectomy 3. Liver biopsy",
+    "None",
+    "Prostate biopsy",
+    "n/a"
+      ],
+
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "label": "When/where stored?",
+      "optional": true,
+      "type": "Date",
+  },
+  {
+      "label": "Biopsy Date",
+      "optional": true,
+      "type": "Date",
+  },
+  {
+      "label": "Steroid at time of biopsy",
+      "allowedValues": [
+    "yes",
+    "beclomethasone",
+    "dexamethasone",
+    "hydrocortisone",
+    "prednisone",
+    "no",
+    "N/A"
+      ],
+      "label": "Steroid at time of biopsy",
+      "optional": true,
+      "type": "String"
+  },
+      "label": "Steroid stop date",
+      "optional": true,
+      "type": "Date",
+  },
+  {
+      "label": "Sites of Metastases at time of biopsy",
+      "allowedValues": [
+    "adrenal",
+    "adrenal gland",
+    "bone",
+    "brain",
+    "liver",
+    "lung",
+    "lymph node",
+    "nodes",
+    "nodes only",
+    "pleura",
+    "soft tissue",
+    "retroperitoneal and l paraaortic ln"
+      ],
+
+      "optional": true,
+      "type": "String"
+  },
+  {
+          "label": "PSA At Biopsy",
+
+
+      "optional": true,
+      "type": "Decimal"
+  },
+  {
+      "label": "LDH at biopsy",
+      "optional": true,
+      "type": "Number"
+  },
+  {
+      "label": "Alk phos at biopsy",
+      "optional": true,
+      "type": "Number"
+  },
+
+
+      "label": "Hemoglobin at biopsy",
+      "optional": true,
+      "type": "Decimal"
+  },
+  {
+
+
+      "label": "CHGA at biopsy",
+      "optional": true,
+      "type": "Decimal"
+  },
+  {
+
+      "label": "NSE at Biopsy",
+      "optional": true,
+      "type": "Decimal"
+  },
+  {
+
+      "label": "ECOG PS at biopsy",
+      "optional": true,
+      "type": "Number"
+  },
+  {
+      "label": "Gleason Grade",
+      "allowedValues": [
+    "3+3",
+    "3+4",
+    "4+3",
+    "4+4",
+    "4+5",
+    "5+4",
+    "5+5",
+    "N/A"
+      ],
+
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "label": "Orchiectomy",
+      "allowedValues": [
+    "No",
+    "Yes",
+    "n/a"
+      ],
+
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "label": "PSA Nadir on PADT",
+
+      "label": "PSA Nadir on PADT",
+      "optional": true,
+      "type": "Decimal"
+  },
+  {
+      "allowedValues": [
+    "Abiraterone",
+    "Abiraterone + enzalutamide",
+    "Abiraterone + prednisone",
+    "Abiraterone 2k clinical trial",
+    "adi peg (investigational)",
+    "bez235",
+    "Bicalutamide",
+    "Buparlisib",
+    "cabazitaxel + mitoxantrone (camp)",
+    "Cabazitaxel",
+    "Cabozantinib",
+    "camp",
+    "carboplatin + docetaxel",
+    "carboplatin + etoposide",
+    "carboplatin + taxotere",
+    "Carboplatin; Taxol",
+    "Casodex",
+    "cp-751871",
+    "Cixutumumab",
+    "Custirsen",
+    "Cypraterone",
+    "cytoxan + dex",
+    "Dasatinib",
+    "Degarelix",
+    "des",
+    "Dexamethasone",
+    "Docetaxel",
+    "Dutasteride",
+    "Enzalutamide",
+    "Estradiol",
+    "everolimus",
+    "Finasteride",
+    "Flutamide",
+    "gm-csf",
+    "gtx 758",
+    "hd casodex",
+    "imc-a12",
+    "investigational agent nos",
+    "ipi vs placebo",
+    "Ipilimumab",
+    "Ketoconazole",
+    "ketoconazole + prednisone",
+    "lbh589",
+    "Lupron",
+    "midazolam/ptk-787",
+    "Mitoxantrone",
+    "Nilutamide",
+    "Nilandron",
+    "none",
+    "nrx194204",
+    "ogx-427",
+    "Pazopanib",
+    "Panobinostat",
+    "pc-spes",
+    "Prednisone",
+    "Provenge",
+    "psma adc",
+    "px-866",
+    "Radiation",
+    "radium-223",
+    "radium-223 + abiraterone",
+    "Reolysin",
+    "Sipuleucel-t",
+    "Sulfurophane",
+    "Taxotere",
+    "Vandetanib",
+    "Zoladex",
+    "Zoladex;  Casodex",
+    "xl-184",
+    "N/A",
+    "Carboplatin;  Docetaxel",
+    "Carboplatin;  Taxotere",
+    "Carboplatin; Etoposide",
+    "Carboplatin; Taxol",
+    "Casodex;  Lupron",
+    "Docetaxel",
+    "Docetaxel;  Carboplatin",
+    "Estrogen",
+    "Flutamide;  Lupron",
+    "GM-CSF;  Cyclophosphamide",
+    "GM-CSF;  Ketoconazole;  Hydrocortisone Sodium Succinate",
+    "Goserelin",
+    "Hydrocortisone Sodium Succinate;  Ketoconazole",
+    "Ketoconazole",
+    "Leuprolide",
+    "Lupron",
+    "Lupron Depot",
+    "Lupron;  Bicalutamide;  Dutasteride",
+    "Lupron;  Casodex",
+    "Mitoxantrone",
+    "Mitoxantrone;  Cabazitaxel",
+    "NRX 194204",
+    "Nilandron",
+    "Nilutamide",
+    "OGX-427",
+    "PX-866",
+    "Panobinostat",
+    "Panobinostat;  Casodex",
+    "Pazopanib",
+    "Placebo",
+    "Placebo;  Ipilimumab",
+    "Provenge",
+    "RAD001",
+    "Reolysin",
+    "Sipuleucel-T",
+    "Taxotere",
+    "Taxotere;  Carboplatin",
+    "Vandetanib",
+    "Xofigo"
+      ],
+      "label": "Treatment for mCRPC Prior to Biopsy",
+      "optional": true,
+      "type": [
+    null
+      ]
+  },
+  {
+      "allowedValues": [
+    "Abiraterone",
+    "Abiraterone 2K clinical trial",
+    "BIND-014",
+    "CAMP clinical trial",
+    "CC-115",
+    "Cabazitaxel",
+    "Cabazitaxel + custirsen",
+    "Carbo/taxotere",
+    "Carbo/taxotere phase 3",
+    "Carboplatin + docetaxel",
+    "Carboplatin + Taxotere",
+    "Carboplatin + Taxotere phase 2",
+    "Chemotherapy for colon cancer",
+    "Cisplatin + Etoposide",
+    "Cytoxan + dexamethasone",
+    "Docetaxel",
+    "Docetaxel + radium-223",
+    "Docetaxel + phenelzine",
+    "Doxorubicin + cisplatin + 5-FU + MTX",
+    "Enzalutamide",
+    "Enzalutamide",
+    "Enzalutamide + radium-223",
+    "Hospice",
+    "Ipi + Provenge trial",
+    "Mitoxantrone",
+    "Nilandron",
+    "Radium-223",
+    "Sipuleucel-T",
+    "Taxotere",
+    "Taxotere + MLN8237",
+    "Weekly docetaxel",
+    "Xofigo",
+    "None",
+    "N/A"
+      ],
+      "label": "Post-Biopsy treatment",
+      "optional": true,
+      "type": "String"
+  },
+  {
+      "allowedValues": [
+    "0-30%",
+    "30%-50%",
+    "> 50%",
+    "None",
+    "N/A"
+      ],
+      "label": "PSA response",
+      "optional": true,
+      "type": "String"
+  },
+  {
+
+      "allowedValues": [
+    "Partial response",
+    "Stable response",
+    "PD",
+    "PR",
+    "SD",
+    "None",
+    "N/A"
+      ],
+      "label": "Radiographic Response",
+      "optional": true,
+      "type": "String"
+  },
+  {
+
+      "allowedValues": [
+    "Death",
+    "Last Contact",
+    "Last contact",
+    "Unk"
+      ],
+      "label": "Death or Last Contact",
+      "optional": true,
+      "type": "String"
+  },
+  {
+
+      "type": "String"
+  }
+    ]
+
+
+
+  ],
+});

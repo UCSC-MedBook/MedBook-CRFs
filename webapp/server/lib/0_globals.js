@@ -2,6 +2,8 @@
 
 // the not so big ones
 
+LoadMetadata = function () {};
+
 Patient_ID_Type_Meta = {
   "allowedValues": [],
   "label": "Patient ID",
@@ -46,7 +48,7 @@ CoreAllowedValues = [
         "N/A"
 ];
 
-core_type = {  
+core_type = {
     "allowedValues": CoreAllowedValues,
     "label": "Core",
     "max": 200,

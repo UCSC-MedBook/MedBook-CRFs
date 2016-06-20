@@ -22,11 +22,12 @@ Meteor.methods({
    },
 });
 
-Meteor.startup(function() {
-    var ted = Meteor.users.findOne({username:"ted"});
-    Collections.Followers.upsert({CRF: "*",  Study_ID: "*"},
-	{CRF: "*",  Study_ID: "*", userId: ted._id, email: ted.defaultEmail() });
-});
+// crashing on systems without Ted user
+// Meteor.startup(function() {
+//     var ted = Meteor.users.findOne({username:"ted"});
+//     Collections.Followers.upsert({CRF: "*",  Study_ID: "*"},
+// 	{CRF: "*",  Study_ID: "*", userId: ted._id, email: ted.defaultEmail() });
+// });
 
 // Summarize the contents of the change and tell the followers
 NotifyFollowers = function(userId, doc, change) {

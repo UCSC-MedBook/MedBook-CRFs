@@ -15,6 +15,8 @@ Template.dashboard.helpers( {
     paper = Raphael("dashboard", 1600, 800);
 
 
+    return "";
+
     Meteor.call("dashboard", currentStudy, function(err, dashboard) {
         if (err)
 	    return $('#dashboard').html("<center><H3><font face='verdana' size=10 color='red'>" + String(err) + "</font></H3></center>");

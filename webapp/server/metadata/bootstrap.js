@@ -470,6 +470,7 @@ Meteor.startup(function() {
   		if (sample['Age']) {
   			samples[sample_id]['age'] = sample['Age']
   		}
+		var On_Study_Date = null;
   		if (sample["On_Study_Date"]) {
   			samples[sample_id]["On_Study_Date"] = sample["On_Study_Date"]
   		}
@@ -498,20 +499,15 @@ Meteor.startup(function() {
   	sample_list.forEach(function(sample) {
   		var sample_id = sample['Patient_ID']
   		if (!samples[sample_id]) {
-  			//console.log('no record for', sample_id)
   			samples[sample_id] = {}
   		}
   		if (sample["Off_Treatment_Reason"] ) {
   			samples[sample_id]['Reason_for_Stopping_Treatment'] = sample['Off_Treatment_Reason']
-  			//console.log('Off_Treatment_Reason', samples[sample_id])
   		}
   		if (sample["Off_Study_Date"]) {
   			samples[sample_id]["Off_Study_Date"] = sample["Off_Study_Date"]
-  			//console.log('OFF type of date',samples[sample_id]["Off_Study_Date"],samples[sample_id]["Off_Study_Date"] instanceof Date, samples[sample_id]["Off_Study_Date"].valueOf())
   			if (samples[sample_id]["On_Study_Date"])
-  				//console.log('ON type of date',samples[sample_id]["On_Study_Date"],samples[sample_id]["On_Study_Date"] instanceof Date, samples[sample_id]["On_Study_Date"].valueOf())
-  				samples[sample_id]["Days_on_Study"] = (samples[sample_id]["Off_Study_Date"].valueOf() - samples[sample_id]["On_Study_Date"].valueOf()) / 86400000
-  				//console.log(sample_id,'Days_on_Study',samples[sample_id]["Days_on_Study"] )
+			    samples[sample_id]["Days_on_Study"] = (samples[sample_id]["Off_Study_Date"].valueOf() - samples[sample_id]["On_Study_Date"].valueOf()) / 86400000
 
   		}
 
@@ -647,6 +643,7 @@ Meteor.startup(function() {
                             { $addToSet: { subsequent_txs: summarizeTreatment("SU2C_Subsequent_Treatment_V1", treatment) }});  // TCG 8/2/2015
   	})
       propagateClinical();
+      aggregateEvents();
       --SuppressEmail;
   }
   fixSample_IDs = function() {
@@ -742,3 +739,111 @@ Meteor.startup(function() {
     }
     CreateCrossReferencesForStudies();
 });
+
+function aggregateEvents() {
+    var patients = {};
+    var now = Date.now();
+    var milliSecondsPerDay = 24*60*60*1000;
+    aggregated = [];
+    var max = 0;  // should this be MININT? 
+    var min = 0;  // should this be MAXINT? 
+
+    function aggregate(crf) {
+	Collections.CRFs.find({CRF: crf, Study_ID: "prad_wcdt"}, {sort: {Patient_ID:1, Sample_ID:1}})
+	   .forEach(function(treatment) {
+	       var patient = patients[treatment.Patient_ID];
+
+	       var onTreatment = parseInt((treatment.Start_Date - patient.On_Study_Date) / milliSecondsPerDay);
+
+	       if (onTreatment < -2000)
+		   onTreatment = -2000; // BAD HACK,
+
+	       var stop_Date = treatment.Stop_Date;
+	       if (stop_Date == null)
+		   stop_Date = now;
+
+	       var offTreatment = parseInt((stop_Date - patient.On_Study_Date) / milliSecondsPerDay);
+
+	       if (max < offTreatment) max = offTreatment;
+	       if (min > onTreatment) min = onTreatment;
+
+	       var description = treatment.Drug_Name || treatment.Treatment_Details;
+
+	       if (description != null) {
+		   patient.events.push({
+		       description: description,
+		       on: onTreatment,
+		       off: offTreatment,
+		   });
+
+
+		  if (patient.min > onTreatment) patient.min = onTreatment;
+		  if (patient.max < offTreatment) patient.max = offTreatment;
+	      } 
+	      // else console.log("bad treatment", treatment);
+
+	      if (treatment.Reason_for_Stopping_Treatment) {
+		   patient.events.push({
+		       description: treatment.Reason_for_Stopping_Treatment,
+		       on: offTreatment,
+		       off: null
+		   });
+	      }
+	  })
+    }
+
+
+    Collections.CRFs.find({Study_ID: "prad_wcdt", CRF: "Clinical_Info"}).map(function(ci) {
+    	if (ci.On_Study_Date == "N/A") ci.On_Study_Date = null;
+    	if (ci.On_Study_Date == null) return; // skip this record
+
+    	if (ci.Off_Study_Date == "N/A") ci.Off_Study_Date = null;
+
+	if (!(ci.Patient_ID in patients)) {
+	    var on = ci.On_Study_Date;
+	    var off = ci.Off_Study_Date ? ci.Off_Study_Date : now;
+	    var total = parseInt((off - on) / milliSecondsPerDay);
+	    var patient = {
+	        Patient_ID: ci.Patient_ID,
+		On_Study_Date:  on,
+		Off_Study_Date: off,
+		min: 0,
+		max: 0,
+		Days_on_Study: total,
+		events: []
+	    };
+	    Object.keys(ci).map(function(key) { patient[key] = ci[key]; });
+
+	    patients[ci.Patient_ID] = patient;
+	    aggregated.push(patient);
+	 } else /* seen already */ {
+
+	    if (patients[ci.Patient_ID].On_Study_Date == null  &&  ci.On_Study_Date != null)
+		patients[ci.Patient_ID].On_Study_Date = ci.On_Study_Date;
+
+	    else if ((patients[ci.Patient_ID].On_Study_Date != null) &&  ci.On_Study_Date == null)
+	       ; // don't care
+
+	    else if (patients[ci.Patient_ID].On_Study_Date != ci.On_Study_Date) {
+	       throw new Error("patients[ci.Patient_ID=", ci.Patient_ID, "].On_Study_Date", patients[ci.Patient_ID].On_Study_Date, ci.On_Study_Date);
+
+	    } else // both null
+	       ; // don't care
+
+	 } //else seen already
+    });
+
+    aggregate("SU2C_Prior_TX_V3");
+    aggregate("SU2C_Subsequent_Treatment_V1");
+
+    Collections.CRFs.find({Study_ID: "prad_wcdt", CRF: "Clinical_Info"}).forEach(function(ci) {
+       var patient = patients[ci.Patient_ID];
+       if (patient) {
+	   if (patient.events) {
+	       // console.log("adding events", patient);
+	       Collections.CRFs.direct.update({_id: ci._id}, {$set: {events: patient.events }});
+	   }
+       }
+   });
+}
+Meteor.methods({ aggregateEvents: aggregateEvents });
